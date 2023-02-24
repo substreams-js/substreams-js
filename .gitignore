@@ -1,0 +1,24 @@
+# Ignore all dotfiles except the whitelisted ones
+.*
+!.github
+!.gitignore
+!.eslintrc.js
+!.eslintignore
+!.prettierignore
+!.prettierrc.js
+!.node-version
+
+# Ignore log output
+*.log
+
+# Ignore tsbuildinfo
+*.tsbuildinfo
+
+# Ignore various outputs
+dist/
+build/
+generated/
+coverage/
+
+# Ignore dependencies
+node_modules/

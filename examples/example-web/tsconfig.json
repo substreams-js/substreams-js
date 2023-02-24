@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "files": ["vite.config.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@enzymefinance/substreams": ["../../packages/substreams/src/index.js"]
+    }
+  }
+}

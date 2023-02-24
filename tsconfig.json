@@ -1,0 +1,45 @@
+{
+  "include": [],
+  "compilerOptions": {
+    // Incremental builds
+    "incremental": true,
+
+    // Type Checking
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "useUnknownInCatchVariables": false,
+    "noUncheckedIndexedAccess": true,
+
+    // Modules
+    "module": "ESNext",
+    // TODO: We need Node module resolution for now until https://github.com/bufbuild/protobuf-es/issues/396 is resolved.
+    "moduleResolution": "Node",
+
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "stripInternal": true,
+
+    // JavaScript Support
+    "allowJs": false,
+    "checkJs": false,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    // Language and Environment
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+
+    // Completeness
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "lib": ["DOM"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@enzymefinance/substreams": ["../../packages/substreams/src/index.js"]
+    }
+  }
+}
