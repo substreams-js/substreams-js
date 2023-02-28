@@ -1,0 +1,13 @@
+version: v1
+name: buf.build/enzymefinance/substreams
+
+deps:
+  - buf.build/streamingfast/substreams:develop
+
+lint:
+  use:
+    - DEFAULT
+
+breaking:
+  use:
+    - FILE

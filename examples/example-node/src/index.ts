@@ -2,7 +2,8 @@ import { createGrpcTransport } from "@bufbuild/connect-node";
 import { Substream } from "@enzymefinance/substreams";
 
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-const BEARER = process.env.SUBSTREAMS_API_TOKEN; // Add your api token here
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const BEARER = process.env.SUBSTREAMS_API_TOKEN!; // Add your api token here
 const SUBSTREAM =
   "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.1.0/subtivity-ethereum-v0.1.0.spkg";
 const MODULE = "db_out";

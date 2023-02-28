@@ -1,3 +1,4 @@
+import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb";
 import { Package } from "./generated/sf/substreams/v1/package_pb";
 import {
   ForkStep,
@@ -10,6 +11,39 @@ export interface RequestOptions {
   productionMode?: boolean;
   startCursor?: string;
   forkSteps?: ForkStep[];
+}
+
+export function createProxyRequest(
+    pkg: Package,
+    module: string,
+    options?: RequestOptions
+) {
+  const modules = pkg.modules;
+  if (modules === undefined) {
+    throw new Error("Package doesn't contain any modules");
+  }
+
+  const mod = modules.modules.find((item) => item.name === module);
+  if (mod === undefined) {
+    throw new Error(`Module ${module} doesn't exist`);
+  }
+
+  const startBlockNum = options?.startBlockNum ?? mod.initialBlock;
+  const stopBlockNum = deriveStopBlockNum(options?.stopBlockNum, startBlockNum);
+
+  return new ProxyRequest({
+    package: pkg,
+    startBlockNum,
+    stopBlockNum,
+    productionMode: options?.productionMode ?? false,
+    forkSteps: options?.forkSteps ?? [ForkStep.STEP_IRREVERSIBLE],
+    outputModule: module,
+    ...(options?.startCursor !== undefined
+        ? {
+          startCursor: options.startCursor,
+        }
+        : undefined),
+  });
 }
 
 export function createRequest(

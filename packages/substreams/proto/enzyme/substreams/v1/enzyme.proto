@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package enzyme.substreams.v1;
+
+import "sf/substreams/v1/substreams.proto";
+import "sf/substreams/v1/package.proto";
+
+message ProxyRequest {
+  int64 start_block_num = 1;
+  string start_cursor = 2;
+  uint64 stop_block_num = 3;
+  repeated sf.substreams.v1.ForkStep fork_steps = 4;
+  string irreversibility_condition = 5;
+  sf.substreams.v1.Package package = 6;
+  repeated string output_modules = 7;
+  repeated string debug_initial_store_snapshot_for_modules = 8;
+  bool production_mode = 9;
+  string output_module = 10;
+}
+
+service ProxyService {
+  rpc Proxy(ProxyRequest) returns (stream sf.substreams.v1.Response);
+}

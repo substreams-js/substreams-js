@@ -21,23 +21,22 @@ export function App() {
     void (async () => {
       const substream = await fetchSubstream(SUBSTREAM);
       const stream = substream.streamBlocks({
-        request: substream.createRequest(MODULE, {
+        request: substream.createProxyRequest(MODULE, {
           stopBlockNum: STOP,
         }),
         transport: createConnectTransport({
           // Local proxy for the substreams proxy.
           baseUrl: "/substreams",
-          // NOTE: Json format is currently not supported because the proxy can't handle that atm (limitation of ConnectRouter).
-          useBinaryFormat: true,
+          jsonOptions: {
+            typeRegistry: substream.registry
+          }
         }),
       });
 
       for await (const response of stream) {
         setMessages((messages) => {
-          const message = response.toJson({ typeRegistry: substream.registry });
-
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-return
-          return [...messages, message];
+          return [...messages, response.toJson({ typeRegistry: substream.registry })];
         });
       }
     })();

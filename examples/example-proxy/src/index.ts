@@ -7,7 +7,8 @@ import { createSubstreamsProxy } from "./proxy";
 
 const PORT = 8080;
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-const BEARER = process.env.SUBSTREAMS_API_TOKEN; // Add your api token here
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const BEARER = process.env.SUBSTREAMS_API_TOKEN!; // Add your api token here
 
 const transport = createGrpcTransport({
   baseUrl: ENDPOINT,

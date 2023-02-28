@@ -15,18 +15,18 @@
     "import": "./dist/index.js"
   },
   "scripts": {
-    "codegen": "buf generate buf.build/streamingfast/substreams:develop",
+    "codegen": "buf generate buf.build/streamingfast/substreams:develop && buf generate proto",
     "build": "tsc --project tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.8.0",
+    "@bufbuild/connect": "^0.8.1",
     "@bufbuild/protobuf": "^1.0.0"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.14.0",
-    "@bufbuild/protoc-gen-connect-es": "^0.8.0",
+    "@bufbuild/protoc-gen-connect-es": "^0.8.1",
     "@bufbuild/protoc-gen-es": "^1.0.0",
     "tsx": "^3.12.3",
     "typescript": "^4.9.3",

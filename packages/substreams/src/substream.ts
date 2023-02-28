@@ -8,14 +8,16 @@ import {
   IEnumTypeRegistry,
   IServiceTypeRegistry,
 } from "@bufbuild/protobuf/dist/types/type-registry";
+import { ProxyService } from "./generated/enzyme/substreams/v1/enzyme_connect";
+import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb";
 import { Package } from "./generated/sf/substreams/v1/package_pb";
 import { Stream } from "./generated/sf/substreams/v1/substreams_connect";
 import { Request } from "./generated/sf/substreams/v1/substreams_pb";
-import { createRequest, RequestOptions } from "./request";
+import { createProxyRequest, createRequest, RequestOptions } from "./request";
 
 interface StreamBlocksOptions {
   transport: Transport;
-  request: Request;
+  request: Request | ProxyRequest;
   options?: CallOptions;
 }
 
@@ -36,8 +38,17 @@ export class Substream {
     return createRequest(this.pkg, module, options);
   }
 
+  public createProxyRequest(module: string, options?: RequestOptions) {
+    return createProxyRequest(this.pkg, module, options);
+  }
+
   public streamBlocks(options: StreamBlocksOptions) {
-    const client = createPromiseClient(Stream, options.transport);
-    return client.blocks(options.request, options.options);
+    if (options.request instanceof ProxyRequest) {
+      const client = createPromiseClient(ProxyService, options.transport);
+      return client.proxy(options.request, options.options);
+    } else {
+      const client = createPromiseClient(Stream, options.transport);
+      return client.blocks(options.request, options.options);
+    }
   }
 }
