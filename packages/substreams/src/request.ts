@@ -14,9 +14,9 @@ export interface RequestOptions {
 }
 
 export function createProxyRequest(
-    pkg: Package,
-    module: string,
-    options?: RequestOptions
+  pkg: Package,
+  module: string,
+  options?: RequestOptions
 ) {
   const modules = pkg.modules;
   if (modules === undefined) {
@@ -39,10 +39,10 @@ export function createProxyRequest(
     forkSteps: options?.forkSteps ?? [ForkStep.STEP_IRREVERSIBLE],
     outputModule: module,
     ...(options?.startCursor !== undefined
-        ? {
+      ? {
           startCursor: options.startCursor,
         }
-        : undefined),
+      : undefined),
   });
 }
 

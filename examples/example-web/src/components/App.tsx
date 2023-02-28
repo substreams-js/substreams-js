@@ -28,15 +28,18 @@ export function App() {
           // Local proxy for the substreams proxy.
           baseUrl: "/substreams",
           jsonOptions: {
-            typeRegistry: substream.registry
-          }
+            typeRegistry: substream.registry,
+          },
         }),
       });
 
       for await (const response of stream) {
         setMessages((messages) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-return
-          return [...messages, response.toJson({ typeRegistry: substream.registry })];
+          return [
+            ...messages,
+            response.toJson({ typeRegistry: substream.registry }),
+          ];
         });
       }
     })();
