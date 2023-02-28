@@ -11,8 +11,7 @@ import {
   createDescriptorSet,
   createRegistryFromDescriptors,
 } from "@bufbuild/protobuf";
-import { Stream, ProxyService } from "@enzymefinance/substreams";
-import { Request } from "./generated/sf/substreams/v1/substreams_pb";
+import { Stream, Request, ProxyService } from "@enzymefinance/substreams";
 
 export function createSubstreamsProxy(
   upstream: Transport,
