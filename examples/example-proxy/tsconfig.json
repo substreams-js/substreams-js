@@ -5,10 +5,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/substreams": ["../../packages/substreams/src/index.js"],
-      "@enzymefinance/substreams-proxy": [
-        "../../packages/substreams-proxy/src/index.js"
-      ]
+      "@enzymefinance/substreams": ["../../packages/substreams/src/index.js"]
     }
   }
 }
