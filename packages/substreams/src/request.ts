@@ -1,5 +1,5 @@
-import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb";
-import { Package } from "./generated/sf/substreams/v1/package_pb";
+import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb.js";
+import { Package } from "./generated/sf/substreams/v1/package_pb.js";
 import {
   ForkStep,
   Request,

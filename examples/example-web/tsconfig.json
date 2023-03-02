@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "files": ["vite.config.ts"],
   "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",

@@ -3,7 +3,7 @@ import {
   connectNodeAdapter,
   createGrpcTransport,
 } from "@bufbuild/connect-node";
-import { createSubstreamsProxy } from "./proxy";
+import { createSubstreamsProxy } from "./proxy.js";
 
 const PORT = 8080;
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";

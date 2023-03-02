@@ -17,8 +17,7 @@
 
     // Modules
     "module": "ESNext",
-    // TODO: We need Node module resolution for now until https://github.com/bufbuild/protobuf-es/issues/396 is resolved.
-    "moduleResolution": "Node",
+    "moduleResolution": "NodeNext",
 
     // Emit
     "declaration": true,

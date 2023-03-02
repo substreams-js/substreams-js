@@ -4,16 +4,16 @@ import {
   createRegistryFromDescriptors,
   IMessageTypeRegistry,
 } from "@bufbuild/protobuf";
+import { ProxyService } from "./generated/enzyme/substreams/v1/enzyme_connect.js";
+import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb.js";
+import { Package } from "./generated/sf/substreams/v1/package_pb.js";
+import { Stream } from "./generated/sf/substreams/v1/substreams_connect.js";
+import { Request } from "./generated/sf/substreams/v1/substreams_pb.js";
 import {
-  IEnumTypeRegistry,
-  IServiceTypeRegistry,
-} from "@bufbuild/protobuf/dist/types/type-registry";
-import { ProxyService } from "./generated/enzyme/substreams/v1/enzyme_connect";
-import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb";
-import { Package } from "./generated/sf/substreams/v1/package_pb";
-import { Stream } from "./generated/sf/substreams/v1/substreams_connect";
-import { Request } from "./generated/sf/substreams/v1/substreams_pb";
-import { createProxyRequest, createRequest, RequestOptions } from "./request";
+  createProxyRequest,
+  createRequest,
+  RequestOptions,
+} from "./request.js";
 
 interface StreamBlocksOptions {
   transport: Transport;
@@ -23,9 +23,7 @@ interface StreamBlocksOptions {
 
 export class Substream {
   public readonly pkg: Package;
-  public readonly registry: IMessageTypeRegistry &
-    IEnumTypeRegistry &
-    IServiceTypeRegistry;
+  public readonly registry: IMessageTypeRegistry;
 
   constructor(bytes: Uint8Array) {
     this.pkg = Package.fromBinary(bytes);
