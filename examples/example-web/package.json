@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@bufbuild/connect-query": "^0.1.0",
-    "@bufbuild/connect-web": "^0.8.0",
-    "@bufbuild/protobuf": "^1.0.0",
+    "@bufbuild/connect-web": "^0.8.1",
+    "@bufbuild/protobuf": "^1.1.0",
     "@enzymefinance/substreams": "workspace:*",
     "@tanstack/react-query": "^4.24.10",
     "react": "^18.2.0",
@@ -18,13 +18,13 @@
     "react-query": "^3.39.3"
   },
   "devDependencies": {
-    "@bufbuild/protoc-gen-es": "^1.0.0",
+    "@bufbuild/protoc-gen-es": "^1.1.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "@types/web": "^0.0.92",
+    "@types/web": "^0.0.93",
     "@vitejs/plugin-react": "^3.1.0",
     "tsx": "^3.12.3",
     "typescript": "^4.9.3",
-    "vite": "^4.1.0"
+    "vite": "^4.1.4"
   }
 }
