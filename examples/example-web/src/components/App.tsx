@@ -25,8 +25,7 @@ export function App() {
           stopBlockNum: STOP,
         }),
         transport: createConnectTransport({
-          // Local proxy for the substreams proxy.
-          baseUrl: "/substreams",
+          baseUrl: "http://localhost:3030",
           jsonOptions: {
             typeRegistry: substream.registry,
           },
