@@ -71,9 +71,11 @@ export function App() {
 
                   return false;
                 })
-                .map((item) =>
-                  item.toJsonString({ typeRegistry: substream.registry })
-                );
+                .map((item) => {
+                  return item.toJsonString({
+                    typeRegistry: substream.registry,
+                  });
+                });
 
               state.count = (state.count ?? 0n) + BigInt(messages.length);
               state.clock = message.value.clock;
