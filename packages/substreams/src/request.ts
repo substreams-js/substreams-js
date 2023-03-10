@@ -6,11 +6,11 @@ import {
 } from "./generated/sf/substreams/v1/substreams_pb.js";
 
 export interface RequestOptions {
-  startBlockNum?: bigint;
-  stopBlockNum?: string | bigint;
-  productionMode?: boolean;
-  startCursor?: string;
-  forkSteps?: ForkStep[];
+  startBlockNum?: bigint | undefined;
+  stopBlockNum?: string | bigint | undefined;
+  productionMode?: boolean | undefined;
+  startCursor?: string | undefined;
+  forkSteps?: [ForkStep, ...ForkStep[]] | undefined;
 }
 
 export function createProxyRequest(

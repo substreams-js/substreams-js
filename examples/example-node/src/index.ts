@@ -5,8 +5,8 @@ const ENDPOINT = "https://mainnet.eth.streamingfast.io";
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const BEARER = process.env.SUBSTREAMS_API_TOKEN!; // Add your api token here
 const SUBSTREAM =
-  "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.1.0/subtivity-ethereum-v0.1.0.spkg";
-const MODULE = "db_out";
+  "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.2.0/subtivity-ethereum-v0.2.0.spkg";
+const MODULE = "prom_out";
 const STOP = "+100";
 
 async function fetchSubstream(url: string) {
