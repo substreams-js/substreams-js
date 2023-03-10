@@ -35,23 +35,6 @@ importers:
       tsx: 3.12.3
       typescript: 4.9.5
 
-  examples/example-proxy:
-    specifiers:
-      '@bufbuild/connect': ^0.8.3
-      '@bufbuild/connect-node': ^0.8.3
-      '@bufbuild/protobuf': ^1.1.0
-      '@types/node': ^18.14.6
-      tsx: ^3.12.3
-      typescript: ^4.9.3
-    dependencies:
-      '@bufbuild/connect': 0.8.3_@bufbuild+protobuf@1.1.0
-      '@bufbuild/connect-node': 0.8.3_@bufbuild+protobuf@1.1.0
-      '@bufbuild/protobuf': 1.1.0
-    devDependencies:
-      '@types/node': 18.14.6
-      tsx: 3.12.3
-      typescript: 4.9.5
-
   examples/example-web:
     specifiers:
       '@bufbuild/connect-query': ^0.1.1
@@ -88,6 +71,23 @@ importers:
       tsx: 3.12.3
       typescript: 4.9.5
       vite: 4.1.4
+
+  examples/example-web-proxy:
+    specifiers:
+      '@bufbuild/connect': ^0.8.3
+      '@bufbuild/connect-node': ^0.8.3
+      '@bufbuild/protobuf': ^1.1.0
+      '@types/node': ^18.14.6
+      tsx: ^3.12.3
+      typescript: ^4.9.3
+    dependencies:
+      '@bufbuild/connect': 0.8.3_@bufbuild+protobuf@1.1.0
+      '@bufbuild/connect-node': 0.8.3_@bufbuild+protobuf@1.1.0
+      '@bufbuild/protobuf': 1.1.0
+    devDependencies:
+      '@types/node': 18.14.6
+      tsx: 3.12.3
+      typescript: 4.9.5
 
   packages/substreams:
     specifiers:
