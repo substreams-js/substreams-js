@@ -15,9 +15,22 @@ export SUBSTREAMS_API_TOKEN=<your token>
 
 # Install npm dependencies.
 pnpm install
+```
 
-# Start example web & proxy project.
-pnpm start
+### Web
+
+For the web example (using a [Connect](https://connect.build/) proxy), run this command:
+
+```sh
+pnpm start:web
 ```
 
 You should now be able to access http://localhost:3000.
+
+### Node
+
+For the standalone node example, run this command:
+
+```sh
+pnpm start:node
+```
