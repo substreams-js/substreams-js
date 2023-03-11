@@ -80,7 +80,7 @@ export function App() {
                         // TODO: This should not be necessary and it appears to only be needed in production mode.
                         const trimmed = type.replace(/^proto:/, "");
                         return substream.registry.findMessage(trimmed);
-                      }
+                      },
                     },
                   });
                 });
