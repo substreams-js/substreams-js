@@ -6,7 +6,6 @@ if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
 }
 
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const BEARER = process.env.SUBSTREAMS_API_TOKEN;
 const SUBSTREAM =
   "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.2.0/subtivity-ethereum-v0.2.0.spkg";

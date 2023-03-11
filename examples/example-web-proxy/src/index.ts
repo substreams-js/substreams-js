@@ -11,7 +11,6 @@ if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
 
 const PORT = 3030;
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const BEARER = process.env.SUBSTREAMS_API_TOKEN;
 
 const transport = createGrpcTransport({
