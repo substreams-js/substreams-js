@@ -5,10 +5,14 @@ import {
 } from "@bufbuild/connect-node";
 import { createSubstreamsProxy } from "./proxy.js";
 
+if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
+  throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
+}
+
 const PORT = 3030;
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const BEARER = process.env.SUBSTREAMS_API_TOKEN!; // Add your api token here
+const BEARER = process.env.SUBSTREAMS_API_TOKEN;
 
 const transport = createGrpcTransport({
   baseUrl: ENDPOINT,

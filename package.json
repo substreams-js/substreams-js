@@ -2,7 +2,9 @@
   "private": true,
   "packageManager": "pnpm@7.28.0",
   "scripts": {
-    "start": "pnpm run --recursive --parallel --filter example-web* start",
+    "start:node": "pnpm run --recursive --filter example-node start",
+    "start:web": "pnpm run --recursive --parallel --filter example-web* start",
+    "start": "pnpm run start:web",
     "codegen": "pnpm run --recursive codegen",
     "build": "pnpm run --recursive build",
     "test": "pnpm run --recursive test",

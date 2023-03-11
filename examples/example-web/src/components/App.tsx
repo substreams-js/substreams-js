@@ -7,6 +7,7 @@ const MODULE = "map_block_stats";
 const START = undefined;
 const STOP = "+100000";
 const LIMIT = 20;
+const PRODUCTION = false;
 
 async function fetchSubstream(url: string) {
   const response = await fetch(url);
@@ -44,6 +45,7 @@ export function App() {
         request: substream.createProxyRequest(MODULE, {
           stopBlockNum: STOP,
           startBlockNum: START,
+          productionMode: PRODUCTION,
         }),
         transport: createConnectTransport({
           baseUrl: "http://localhost:3030",
@@ -73,7 +75,13 @@ export function App() {
                 })
                 .map((item) => {
                   return item.toJsonString({
-                    typeRegistry: substream.registry,
+                    typeRegistry: {
+                      findMessage: (type) => {
+                        // TODO: This should not be necessary and it appears to only be needed in production mode.
+                        const trimmed = type.replace(/^proto:/, "");
+                        return substream.registry.findMessage(trimmed);
+                      }
+                    },
                   });
                 });
 
