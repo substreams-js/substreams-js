@@ -1,13 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["web"],
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/substreams": ["../../packages/substreams/src/index.js"]
+      "@fubhy/substreams": ["../../packages/substreams/src/index.js"]
     }
   }
 }

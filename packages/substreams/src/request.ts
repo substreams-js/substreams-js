@@ -1,9 +1,6 @@
-import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb.js";
+import { ProxyRequest } from "./generated/fubhy/substreams/proxy/v1/proxy_pb.js";
 import { Package } from "./generated/sf/substreams/v1/package_pb.js";
-import {
-  ForkStep,
-  Request,
-} from "./generated/sf/substreams/v1/substreams_pb.js";
+import { ForkStep, Request } from "./generated/sf/substreams/v1/substreams_pb.js";
 
 export interface RequestOptions {
   startBlockNum?: bigint | undefined;
@@ -13,11 +10,7 @@ export interface RequestOptions {
   forkSteps?: [ForkStep, ...ForkStep[]] | undefined;
 }
 
-export function createProxyRequest(
-  pkg: Package,
-  module: string,
-  options?: RequestOptions
-) {
+export function createProxyRequest(pkg: Package, module: string, options?: RequestOptions) {
   const modules = pkg.modules;
   if (modules === undefined) {
     throw new Error("Package doesn't contain any modules");
@@ -46,11 +39,7 @@ export function createProxyRequest(
   });
 }
 
-export function createRequest(
-  pkg: Package,
-  module: string,
-  options?: RequestOptions
-) {
+export function createRequest(pkg: Package, module: string, options?: RequestOptions) {
   const modules = pkg.modules;
   if (modules === undefined) {
     throw new Error("Package doesn't contain any modules");
@@ -79,10 +68,7 @@ export function createRequest(
   });
 }
 
-function deriveStopBlockNum(
-  stopBlockNum: bigint | string | undefined,
-  startBlockNum: bigint
-) {
+function deriveStopBlockNum(stopBlockNum: bigint | string | undefined, startBlockNum: bigint) {
   if (stopBlockNum === undefined) {
     return startBlockNum + 10n;
   }
@@ -91,9 +77,7 @@ function deriveStopBlockNum(
     if (/^\+[0-9]+$/.test(stopBlockNum)) {
       return startBlockNum + BigInt(stopBlockNum.slice(1));
     } else {
-      throw new Error(
-        "Invalid stopBlockNum. Expected number or relative offset (+12345)"
-      );
+      throw new Error("Invalid stopBlockNum. Expected number or relative offset (+12345)");
     }
   }
 

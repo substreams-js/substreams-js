@@ -4,11 +4,9 @@ managed:
   enabled: true
 
 plugins:
-  - name: es
-    path: ./node_modules/.bin/protoc-gen-es
+  - plugin: buf.build/bufbuild/es
     out: src/generated
     opt: target=ts
-  - name: connect-es
-    path: ./node_modules/.bin/protoc-gen-connect-es
+  - plugin: buf.build/bufbuild/connect-es
     out: src/generated
     opt: target=ts

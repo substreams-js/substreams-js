@@ -1,9 +1,6 @@
-# substreams-es
+# Substreams ES
 
-## Prerequisites
-
-- [Node.js](https://www.nodejs.org) (>= v18.3.0)
-- [pnpm](https://pnpm.io) (>= 7.26.0)
+This is a work in progress. Your mileage may vary.
 
 ## Quickstart
 
@@ -34,3 +31,11 @@ For the standalone node example, run this command:
 ```sh
 pnpm start:node
 ```
+
+## Authors
+
+- [@fubhy](https://github.com/fubhy) (fubhy.eth, [Twitter](https://twitter.com/thefubhy))
+
+## License
+
+[MIT](/LICENSE) License

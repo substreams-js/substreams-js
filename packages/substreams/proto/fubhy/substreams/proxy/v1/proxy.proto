@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package enzyme.substreams.v1;
+package fubhy.substreams.proxy.v1;
 
 import "sf/substreams/v1/substreams.proto";
 import "sf/substreams/v1/package.proto";

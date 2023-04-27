@@ -1,0 +1,14 @@
+{
+  "files": {
+    "ignore": ["dist", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "linter": {
+    "rules": {
+      "all": true
+    }
+  }
+}

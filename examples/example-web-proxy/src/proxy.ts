@@ -1,38 +1,29 @@
 import {
-  CallOptions,
+  type CallOptions,
   Code,
   ConnectError,
-  ConnectRouter,
+  type ConnectRouter,
   createPromiseClient,
-  HandlerContext,
-  Transport,
+  type HandlerContext,
+  type Transport,
 } from "@bufbuild/connect";
-import {
-  createDescriptorSet,
-  createRegistryFromDescriptors,
-} from "@bufbuild/protobuf";
-import { Stream, Request, ProxyService } from "@enzymefinance/substreams";
+import { createDescriptorSet, createRegistryFromDescriptors } from "@bufbuild/protobuf";
+import { Stream, Request, ProxyService } from "@fubhy/substreams";
 
 export function createSubstreamsProxy(
   upstream: Transport,
-  options?: ((context: HandlerContext) => CallOptions) | CallOptions
+  options?: ((context: HandlerContext) => CallOptions) | CallOptions,
 ) {
   const client = createPromiseClient(Stream, upstream);
 
   return function connectSubstreams(router: ConnectRouter) {
     router.rpc(ProxyService, ProxyService.methods.proxy, (proxied, context) => {
       if (proxied.package === undefined) {
-        throw new ConnectError(
-          "Missing package in request",
-          Code.InvalidArgument
-        );
+        throw new ConnectError("Missing package in request", Code.InvalidArgument);
       }
 
       if (proxied.package.modules === undefined) {
-        throw new ConnectError(
-          "Missing or empty package modules in request",
-          Code.InvalidArgument
-        );
+        throw new ConnectError("Missing or empty package modules in request", Code.InvalidArgument);
       }
 
       const opts = typeof options === "function" ? options(context) : options;
@@ -47,10 +38,8 @@ export function createSubstreamsProxy(
         [Symbol.asyncIterator]: async function* () {
           const stream = client.blocks(request, opts);
           for await (const message of stream) {
-            // @Timo: Yes, this is ugly. :-P
             const originalToJson = message.toJson.bind(message);
-            message.toJson = (options) =>
-              originalToJson({ ...options, typeRegistry: registry });
+            message.toJson = (options) => originalToJson({ ...options, typeRegistry: registry });
 
             yield message;
           }

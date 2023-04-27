@@ -1,8 +1,0 @@
-# Ignore various outputs
-dist/
-build/
-generated/
-coverage/
-
-*.js
-*.cjs

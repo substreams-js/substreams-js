@@ -1,8 +1,5 @@
-import http from "node:http";
-import {
-  connectNodeAdapter,
-  createGrpcTransport,
-} from "@bufbuild/connect-node";
+import { createServer } from "node:http";
+import { connectNodeAdapter, createGrpcTransport } from "@bufbuild/connect-node";
 import { createSubstreamsProxy } from "./proxy.js";
 
 if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
@@ -51,21 +48,19 @@ const corsHeaders = {
   "Access-Control-Max-Age": 2 * 3600,
 };
 
-http
-  .createServer((req, res) => {
-    if (req.method === "OPTIONS") {
-      res.writeHead(204, corsHeaders);
-      res.end();
+createServer((req, res) => {
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, corsHeaders);
+    res.end();
 
-      return;
-    }
+    return;
+  }
 
-    for (const [key, value] of Object.entries(corsHeaders)) {
-      res.setHeader(key, value);
-    }
+  for (const [key, value] of Object.entries(corsHeaders)) {
+    res.setHeader(key, value);
+  }
 
-    handler(req, res);
-  })
-  .listen(PORT, () => {
-    console.log(`Proxy listening at http://localhost:${PORT}`);
-  });
+  handler(req, res);
+}).listen(PORT, () => {
+  console.log(`Proxy listening at http://localhost:${PORT}`);
+});

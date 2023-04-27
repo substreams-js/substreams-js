@@ -1,0 +1,12 @@
+{
+  "editor.defaultFormatter": "rome.rome",
+  "editor.formatOnSave": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.autoImportFileExcludePatterns": ["**/index.ts"],
+  "[typescript]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rome.rome"
+  }
+}

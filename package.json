@@ -1,24 +1,33 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.28.0",
+  "packageManager": "pnpm@8.3.1",
   "scripts": {
+    "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",
     "start:web": "pnpm run --recursive --parallel --filter example-web* start",
-    "start": "pnpm run start:web",
-    "codegen": "pnpm run --recursive codegen",
-    "build": "pnpm run --recursive build",
-    "test": "pnpm run --recursive test",
-    "typecheck": "pnpm run --recursive typecheck",
-    "prettier": "prettier --check \"**/*.{ts,tsx,json,md,yml,yaml}\" --cache",
-    "eslint": "eslint \"**/*.{ts,tsx}\" --cache",
-    "format": "pnpm prettier --write && pnpm eslint --fix",
-    "lint": "pnpm prettier && pnpm eslint"
+    "build": "pnpm run --recursive --filter \"./packages/*\" build",
+    "release": "pnpm changeset version && pnpm run --recursive --filter \"./packages/*\" release && pnpm changeset publish",
+    "test": "pnpm run --recursive --filter \"./packages/*\" test --run",
+    "test:coverage": "pnpm run --recursive --filter \"./packages/*\" test:coverage",
+    "clean": "pnpm run --recursive --parallel clean",
+    "typecheck": "pnpm run --recursive --parallel typecheck",
+    "format": "rome format --write . && rome check --apply .",
+    "lint": "rome check ."
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
-    "eslint": "^8.35.0",
-    "prettier": "^2.8.4",
-    "typescript": "^4.9.5"
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.1",
+    "rome": "^12.0.0",
+    "typescript": "^5.0.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "@fubhy/substreams": "workspace:*"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "prop-types"
+      ]
+    }
   }
 }

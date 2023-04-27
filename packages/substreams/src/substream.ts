@@ -1,19 +1,11 @@
-import { CallOptions, createPromiseClient, Transport } from "@bufbuild/connect";
-import {
-  createDescriptorSet,
-  createRegistryFromDescriptors,
-  IMessageTypeRegistry,
-} from "@bufbuild/protobuf";
-import { ProxyService } from "./generated/enzyme/substreams/v1/enzyme_connect.js";
-import { ProxyRequest } from "./generated/enzyme/substreams/v1/enzyme_pb.js";
+import { type CallOptions, createPromiseClient, type Transport } from "@bufbuild/connect";
+import { createDescriptorSet, createRegistryFromDescriptors, type IMessageTypeRegistry } from "@bufbuild/protobuf";
+import { ProxyService } from "./generated/fubhy/substreams/proxy/v1/proxy_connect.js";
+import { ProxyRequest } from "./generated/fubhy/substreams/proxy/v1/proxy_pb.js";
 import { Package } from "./generated/sf/substreams/v1/package_pb.js";
 import { Stream } from "./generated/sf/substreams/v1/substreams_connect.js";
 import { Request } from "./generated/sf/substreams/v1/substreams_pb.js";
-import {
-  createProxyRequest,
-  createRequest,
-  RequestOptions,
-} from "./request.js";
+import { createProxyRequest, createRequest, type RequestOptions } from "./request.js";
 
 interface StreamBlocksOptions {
   transport: Transport;
@@ -27,9 +19,7 @@ export class Substream {
 
   constructor(bytes: Uint8Array) {
     this.pkg = Package.fromBinary(bytes);
-    this.registry = createRegistryFromDescriptors(
-      createDescriptorSet(this.pkg.protoFiles)
-    );
+    this.registry = createRegistryFromDescriptors(createDescriptorSet(this.pkg.protoFiles));
   }
 
   public createRequest(module: string, options?: RequestOptions) {

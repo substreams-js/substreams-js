@@ -1,12 +1,7 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./components/App.js";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+// rome-ignore lint/style/noNonNullAssertion: this is guaranteed in index.html
 const root = document.getElementById("root")!;
 
-ReactDOM.createRoot(root).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+ReactDOM.createRoot(root).render(<App />);

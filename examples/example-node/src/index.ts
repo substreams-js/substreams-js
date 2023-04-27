@@ -1,18 +1,19 @@
 import { createGrpcTransport } from "@bufbuild/connect-node";
-import { Substream } from "@enzymefinance/substreams";
+import { Substream } from "@fubhy/substreams";
 
-if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
+const token = process.env.SUBSTREAMS_API_TOKEN;
+if (token === undefined) {
   throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
 }
 
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-const BEARER = process.env.SUBSTREAMS_API_TOKEN;
+const BEARER = token;
 const SUBSTREAM =
   "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.2.0/subtivity-ethereum-v0.2.0.spkg";
 const MODULE = "map_block_stats";
 const START = undefined;
 const STOP = "+100000";
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 async function fetchSubstream(url: string) {
   const response = await fetch(url);
@@ -48,19 +49,9 @@ for await (const response of stream) {
       const outputs = message.value.outputs;
 
       for (const output of outputs) {
-        if (
-          output.name === MODULE &&
-          output.data.case === "mapOutput" &&
-          output.data.value.value.byteLength > 0
-        ) {
+        if (output.name === MODULE && output.data.case === "mapOutput" && output.data.value.value.byteLength > 0) {
           const json = output.toJson({
-            typeRegistry: {
-              findMessage: (type) => {
-                // TODO: This should not be necessary and it appears to only be needed in production mode.
-                const trimmed = type.replace(/^proto:/, "");
-                return substream.registry.findMessage(trimmed);
-              },
-            },
+            typeRegistry: substream.registry,
           });
 
           console.dir(json, { depth: 3, colors: true });

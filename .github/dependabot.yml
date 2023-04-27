@@ -4,12 +4,8 @@ updates:
     directory: /
     schedule:
       interval: "weekly"
+
   - package-ecosystem: docker
     directory: /
     schedule:
       interval: "weekly"
-# TODO: Currently not compatible with pnpm
-#  - package-ecosystem: 'npm'
-#    directory: /
-#    schedule:
-#      interval: 'weekly'

@@ -6,8 +6,6 @@ runs:
   steps:
     - name: Install pnpm
       uses: pnpm/action-setup@v2
-      with:
-        version: 7.27.1
 
     - name: Set up node
       uses: actions/setup-node@v3

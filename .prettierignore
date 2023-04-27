@@ -1,5 +1,0 @@
-pnpm-lock.yaml
-
-**/dist/
-**/generated/
-**/coverage/

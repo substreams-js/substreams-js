@@ -11,11 +11,7 @@
     "dependencyDashboardApproval": true
   },
   "postUpdateOptions": ["gomodTidy"],
-  "schedule": [
-    "after 10pm every weekday",
-    "before 5am every weekday",
-    "every weekend"
-  ],
+  "schedule": ["after 10pm every weekday", "before 5am every weekday", "every weekend"],
   "prCreation": "not-pending",
   "prConcurrentLimit": 5,
   "stabilityDays": 2

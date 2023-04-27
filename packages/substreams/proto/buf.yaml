@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/enzymefinance/substreams
+name: buf.build/fubhy/substreams
 
 deps:
   - buf.build/streamingfast/substreams:develop

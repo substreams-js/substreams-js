@@ -1,15 +1,17 @@
 # Ignore all dotfiles except the whitelisted ones
 .*
+!.changeset
 !.github
 !.gitignore
-!.eslintrc.js
-!.eslintignore
-!.prettierignore
-!.prettierrc.js
+!.vscode
 !.node-version
+!.env.tpl
 
 # Ignore log output
 *.log
+
+# Ignore backup files
+*.bkp
 
 # Ignore tsbuildinfo
 *.tsbuildinfo
@@ -17,7 +19,6 @@
 # Ignore various outputs
 dist/
 build/
-generated/
 coverage/
 
 # Ignore dependencies
