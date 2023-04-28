@@ -1,6 +1,6 @@
 {
   "name": "@fubhy/substreams",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "codegen": "buf generate buf.build/streamingfast/substreams && buf generate proto",
     "clean": "rm -rf dist",
