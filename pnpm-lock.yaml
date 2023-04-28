@@ -46,7 +46,38 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
-  packages/proxy:
+  packages/substreams:
+    dependencies:
+      '@bufbuild/connect':
+        specifier: ^0.8.3
+        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+      '@bufbuild/protobuf':
+        specifier: ^1.1.0
+        version: 1.2.0
+    devDependencies:
+      '@bufbuild/buf':
+        specifier: ^1.15.0
+        version: 1.15.0
+      '@types/node':
+        specifier: ^18.16.1
+        version: 18.16.1
+      '@vitest/coverage-c8':
+        specifier: ^0.30.1
+        version: 0.30.1(vitest@0.30.1)
+      '@vitest/ui':
+        specifier: ^0.30.1
+        version: 0.30.1
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+      vite:
+        specifier: ^4.3.3
+        version: 4.3.3(@types/node@18.16.1)
+      vitest:
+        specifier: ^0.30.1
+        version: 0.30.1(@vitest/ui@0.30.1)
+
+  packages/substreams-proxy:
     dependencies:
       '@bufbuild/connect':
         specifier: ^0.8.3
@@ -86,27 +117,36 @@ importers:
         specifier: ^0.30.1
         version: 0.30.1(@vitest/ui@0.30.1)
 
-  packages/substreams:
+  packages/substreams-react:
     dependencies:
       '@bufbuild/connect':
         specifier: ^0.8.3
         version: 0.8.6(@bufbuild/protobuf@1.2.0)
+      '@bufbuild/connect-web':
+        specifier: ^0.8.6
+        version: 0.8.6(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
+      '@fubhy/substreams':
+        specifier: workspace:*
+        version: link:../substreams
+      '@fubhy/substreams-proxy':
+        specifier: workspace:*
+        version: link:../substreams-proxy
     devDependencies:
-      '@bufbuild/buf':
-        specifier: ^1.15.0
-        version: 1.15.0
-      '@types/node':
-        specifier: ^18.16.1
-        version: 18.16.1
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.0
       '@vitest/coverage-c8':
         specifier: ^0.30.1
         version: 0.30.1(vitest@0.30.1)
       '@vitest/ui':
         specifier: ^0.30.1
         version: 0.30.1
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -228,6 +268,15 @@ packages:
       '@bufbuild/connect': 0.8.6(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf': 1.2.0
       headers-polyfill: 3.1.2
+    dev: false
+
+  /@bufbuild/connect-web@0.8.6(@bufbuild/protobuf@1.2.0):
+    resolution: {integrity: sha512-+ZI7Ercc0X1vlQr1iHa35EymtFjq1x4rByE+ToNyw05mwB7yxk4nw4iUa/Z7PfHYba1dAcgnnrvRDI2K7TBPBQ==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.2.0
+    dependencies:
+      '@bufbuild/connect': 0.8.6(@bufbuild/protobuf@1.2.0)
+      '@bufbuild/protobuf': 1.2.0
     dev: false
 
   /@bufbuild/connect@0.8.6(@bufbuild/protobuf@1.2.0):
@@ -818,6 +867,22 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
+  /@types/prop-types@15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react@18.2.0:
+    resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: true
+
+  /@types/scheduler@0.16.3:
+    resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
+    dev: true
+
   /@types/semver@6.2.3:
     resolution: {integrity: sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==}
     dev: true
@@ -1186,6 +1251,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+    dev: true
+
+  /csstype@3.1.2:
+    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
     dev: true
 
   /csv-generate@3.4.3:
@@ -1983,6 +2052,13 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: true
 
+  /loose-envify@1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
+    dependencies:
+      js-tokens: 4.0.0
+    dev: true
+
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
     dependencies:
@@ -2340,6 +2416,13 @@ packages:
 
   /react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+    dev: true
+
+  /react@18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
     dev: true
 
   /read-pkg-up@7.0.1:

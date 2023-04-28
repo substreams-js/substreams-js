@@ -36,5 +36,6 @@ jq '{
   "typesVersions": .typesVersions,
   "dependencies": .dependencies,
   "peerDependencies": .peerDependencies,
+  "peerDependenciesMeta": .peerDependenciesMeta,
   "files": .files
 } | del(..|nulls)' "$pkg.bkp" > "$pkg"

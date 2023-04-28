@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": [],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
+      "@fubhy/substreams-proxy": [
+        "../../packages/substreams-proxy/src/index.js"
+      ],
+      "@fubhy/substreams-proxy/client": [
+        "../../packages/substreams-proxy/src/client.js"
+      ]
+    }
+  }
+}
