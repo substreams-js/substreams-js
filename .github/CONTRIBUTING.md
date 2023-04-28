@@ -2,7 +2,7 @@
 
 Thanks for your interest in contributing! Please take a moment to review this document **before submitting a pull request**.
 
-If you want to contribute, but aren't sure where to start, you can create a [new discussion](https://github.com/fubhy/substreams-js/discussions).
+If you want to contribute, but aren't sure where to start, you can create a [new discussion](https://github.com/fubhy/substreams-es/discussions).
 
 ## Basic guide
 
@@ -15,13 +15,13 @@ This guide is intended to help you get started with contributing. By following t
 To start contributing to the project, clone it to your local machine using git:
 
 ```bash
-git clone https://github.com/fubhy/substreams-js.git
+git clone https://github.com/fubhy/substreams-es.git
 ```
 
 Or the [GitHub CLI](https://cli.github.com):
 
 ```bash
-gh repo clone fubhy/substreams-js
+gh repo clone fubhy/substreams-es
 ```
 
 ## Installing Node.js and pnpm
