@@ -1,8 +1,7 @@
 {
-  "name": "@fubhy/substreams",
-  "version": "0.0.0",
+  "name": "@fubhy/substreams-proxy",
+  "version": "0.0.1",
   "scripts": {
-    "codegen": "buf generate buf.build/streamingfast/substreams && buf generate proto",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
@@ -24,9 +23,25 @@
       "import": "./dist/esm/index.js",
       "default": "./dist/cjs/index.js"
     },
+    "./client": {
+      "types": "./dist/types/client.d.ts",
+      "import": "./dist/esm/client.js",
+      "default": "./dist/cjs/client.js"
+    },
     "./package.json": "./package.json"
   },
+  "typesVersions": {
+    "*": {
+      "client": [
+        "./dist/types/client.d.ts"
+      ]
+    }
+  },
+  "bin": {
+    "substreams-proxy": "./bin/proxy.js"
+  },
   "files": [
+    "bin/**",
     "dist/**",
     "!dist/**/*.tsbuildinfo",
     "src/**/*.ts",
@@ -34,11 +49,14 @@
   ],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
-    "@bufbuild/protobuf": "^1.1.0"
+    "@bufbuild/connect-node": "^0.8.3",
+    "@bufbuild/protobuf": "^1.1.0",
+    "@fubhy/substreams": "^0.0.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@bufbuild/buf": "^1.15.0",
     "@types/node": "^18.16.1",
+    "@types/yargs": "^17.0.24",
     "@vitest/coverage-c8": "^0.30.1",
     "@vitest/ui": "^0.30.1",
     "typescript": "^5.0.4",

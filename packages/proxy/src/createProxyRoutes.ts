@@ -9,10 +9,11 @@ import {
 } from "@bufbuild/connect";
 import { createDescriptorSet, createRegistryFromDescriptors } from "@bufbuild/protobuf";
 import { Stream, Request, ProxyService } from "@fubhy/substreams";
+import type { Awaitable } from "./types.js";
 
-export function createSubstreamsProxy(
+export function createProxyRoutes(
   upstream: Transport,
-  options?: ((context: HandlerContext) => CallOptions) | CallOptions,
+  options?: ((context: HandlerContext) => Awaitable<CallOptions | undefined>) | CallOptions,
 ) {
   const client = createPromiseClient(Stream, upstream);
 
@@ -26,7 +27,6 @@ export function createSubstreamsProxy(
         throw new ConnectError("Missing or empty package modules in request", Code.InvalidArgument);
       }
 
-      const opts = typeof options === "function" ? options(context) : options;
       const descriptor = createDescriptorSet(proxied.package.protoFiles);
       const registry = createRegistryFromDescriptors(descriptor);
       const request = new Request({
@@ -36,7 +36,9 @@ export function createSubstreamsProxy(
 
       return {
         [Symbol.asyncIterator]: async function* () {
+          const opts = typeof options === "function" ? await options(context) : options;
           const stream = client.blocks(request, opts);
+
           for await (const message of stream) {
             const originalToJson = message.toJson.bind(message);
             message.toJson = (options) => originalToJson({ ...options, typeRegistry: registry });

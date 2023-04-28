@@ -22,7 +22,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@fubhy/substreams": "workspace:*"
+      "@fubhy/substreams": "workspace:*",
+      "@fubhy/substreams-proxy": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": [
