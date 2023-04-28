@@ -46,27 +46,46 @@ export function unwrapResponse(response: Response, registry: IMessageTypeRegistr
 
   switch (kind) {
     case "data": {
-      const messages = value.outputs
-        .map((item) => {
-          const { case: kind, value } = item.data;
+      const messages = value.outputs.flatMap<AnyMessage>((item) => {
+        const { case: kind, value } = item.data;
 
-          switch (kind) {
-            case "mapOutput": {
-              if (value.value.byteLength > 0) {
-                return (value as Any).unpack(registry);
+        switch (kind) {
+          case "mapOutput": {
+            if (value.value.byteLength > 0) {
+              const message = (value as Any).unpack(registry);
+              if (message === undefined) {
+                return [];
               }
 
-              return undefined;
+              // Check if the field is just a repeated field of a single type. If so, we
+              // unwrap further. This is usually the case for a map module that returns
+              // multiple messages through a pluralized wrapper.
+              const type = message.getType();
+              const [first, ...rest] = type.fields.list();
+              if (first !== undefined && rest.length === 0) {
+                if (first.repeated && first.kind === "message") {
+                  const nested = message[first.name as keyof typeof message] as unknown as AnyMessage[] | undefined;
+                  if (nested !== undefined) {
+                    return nested;
+                  }
+
+                  return [];
+                }
+              }
+
+              return [message];
             }
 
-            case "debugStoreDeltas": {
-              return value;
-            }
+            return [];
           }
 
-          return undefined;
-        })
-        .filter((item) => item !== undefined) as AnyMessage[];
+          case "debugStoreDeltas": {
+            return [value];
+          }
+        }
+
+        return [];
+      });
 
       return {
         type: "data",

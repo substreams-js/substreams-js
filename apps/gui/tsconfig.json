@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["web"],
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
+      "@fubhy/substreams-proxy": [
+        "../../packages/substreams-proxy/src/index.js"
+      ],
+      "@fubhy/substreams-proxy/client": [
+        "../../packages/substreams-proxy/src/client.js"
+      ],
+      "@fubhy/substreams-react": [
+        "../../packages/substreams-react/src/index.js"
+      ]
+    }
+  }
+}

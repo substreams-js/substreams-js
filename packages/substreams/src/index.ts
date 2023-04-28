@@ -17,6 +17,8 @@ export { type PackageWithModules, hasModule } from "./hasModule.js";
 export { type MapModule, isMapModule } from "./isMapModule.js";
 export { type StoreModule, isStoreModule } from "./isStoreModule.js";
 export { getOutputType } from "./getOutputType.js";
+export { getProtoTypeName } from "./getProtoTypeName.js";
+export { getProtoType } from "./getProtoType.js";
 export {
   type Message,
   type DataMessage,

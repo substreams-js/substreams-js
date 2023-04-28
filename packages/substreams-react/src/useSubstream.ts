@@ -25,8 +25,8 @@ export type SubstreamContext = {
 export type UseSubstreamOptions = {
   substream: Package;
   module: MapModule;
-  token: string;
   endpoint: string;
+  token?: string | undefined;
   handlers: {
     onProgress?: (progress: ModulesProgress, ctx: SubstreamContext) => void;
     onError?: (error: Error, ctx: SubstreamContext) => void;
@@ -98,7 +98,7 @@ export function useSubstream(options: UseSubstreamOptions) {
 
       const transport = createConnectTransport({
         baseUrl: options.endpoint,
-        interceptors: [createAuthInterceptor(options.token)],
+        interceptors: options.token ? [createAuthInterceptor(options.token)] : [],
         useBinaryFormat: true,
         jsonOptions: {
           typeRegistry: registry,
