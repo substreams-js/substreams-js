@@ -1,6 +1,6 @@
 {
   "name": "@fubhy/substreams-proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
@@ -51,7 +51,7 @@
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-node": "^0.8.3",
     "@bufbuild/protobuf": "^1.1.0",
-    "@fubhy/substreams": "^0.0.0",
+    "@fubhy/substreams": "^0.0.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
