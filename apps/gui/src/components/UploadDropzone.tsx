@@ -2,7 +2,7 @@ import { type Package, createSubstream } from "@fubhy/substreams";
 import { Callout, Card, Title } from "@tremor/react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { ExclamationIcon } from "@heroicons/react/solid";
+import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 
 export function UploadDropzone({
   setUploaded,
@@ -53,7 +53,7 @@ export function UploadDropzone({
         </Title>
 
         {error ? (
-          <Callout className="mt-4" title="An error occurred" icon={ExclamationIcon} color="rose">
+          <Callout className="mt-4" title="An error occurred" icon={ExclamationTriangleIcon} color="rose">
             {error}
           </Callout>
         ) : null}

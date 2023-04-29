@@ -17,7 +17,7 @@
     "@fubhy/substreams": "latest",
     "@fubhy/substreams-proxy": "latest",
     "@fubhy/substreams-react": "latest",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.17",
     "@tremor/react": "^2.3.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",

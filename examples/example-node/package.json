@@ -14,7 +14,7 @@
     "@fubhy/substreams": "latest"
   },
   "devDependencies": {
-    "@types/node": "^18.14.6",
+    "@types/node": "^18.16.3",
     "tsx": "^3.12.3",
     "typescript": "^5.0.4"
   }
