@@ -17,6 +17,7 @@ import { createProxyRequest } from "@fubhy/substreams-proxy/client";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type SubstreamContext = {
+  options: CreateRequestOptions;
   substream: Package;
   module: MapModule;
   registry: IMessageTypeRegistry;
@@ -28,10 +29,11 @@ export type UseSubstreamOptions = {
   endpoint: string;
   token?: string | undefined;
   handlers: {
-    onProgress?: (progress: ModulesProgress, ctx: SubstreamContext) => void;
+    onStart?: (ctx: SubstreamContext) => void;
+    onFinished?: (ctx: SubstreamContext) => void;
     onError?: (error: Error, ctx: SubstreamContext) => void;
-    onClose?: (ctx: SubstreamContext) => void;
     onData?: (data: BlockScopedData, messages: AnyMessage[], ctx: SubstreamContext) => void;
+    onProgress?: (progress: ModulesProgress, ctx: SubstreamContext) => void;
   };
 };
 
@@ -109,6 +111,7 @@ export function useSubstream(options: UseSubstreamOptions) {
       const request = createProxyRequest(substream, module, opts);
 
       const context = {
+        options: opts,
         registry,
         substream,
         module,
@@ -133,9 +136,11 @@ export function useSubstream(options: UseSubstreamOptions) {
         if (error) {
           handlers.current.onError?.(error, context);
         } else {
-          handlers.current.onClose?.(context);
+          handlers.current.onFinished?.(context);
         }
       }
+
+      handlers.current.onStart?.(context);
 
       connect.proxy(request, handleResponse, handleClose, {
         signal,

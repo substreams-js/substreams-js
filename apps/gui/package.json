@@ -18,6 +18,8 @@
     "@fubhy/substreams-proxy": "latest",
     "@fubhy/substreams-react": "latest",
     "@heroicons/react": "^2.0.17",
+    "@tanstack/react-form": "^0.0.5",
+    "@textea/json-viewer": "^3.0.0",
     "@tremor/react": "^2.3.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
