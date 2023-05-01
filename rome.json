@@ -10,5 +10,8 @@
     "rules": {
       "all": true
     }
+  },
+  "organizeImports": {
+    "enabled": true
   }
 }

@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Col, Grid } from "@tremor/react";
-import { type Package, type MapModule } from "@fubhy/substreams";
-import { useKey } from "@fubhy/substreams-react";
 import { UploadDropzone } from "./UploadDropzone.js";
-import { StreamingCard } from "./substreams/StreamingCard.js";
 import { ModuleList } from "./substreams/ModuleList.js";
+import { StreamingCard } from "./substreams/StreamingCard.js";
+import { type MapModule, type Package } from "@fubhy/substreams";
+import { useKey } from "@fubhy/substreams-react";
+import { Col, Grid } from "@tremor/react";
+import { useState } from "react";
 
 export function App() {
   const [uploaded, setUploaded] = useState<Package | undefined>(undefined);

@@ -1,5 +1,5 @@
-import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
 import { getProtoTypeName } from "./getProtoTypeName.js";
+import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
 
 export function getProtoType(typeName: string, registry: IMessageTypeRegistry) {
   const protoTypeName = getProtoTypeName(typeName);

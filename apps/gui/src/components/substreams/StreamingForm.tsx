@@ -1,6 +1,6 @@
-import type { MapModule, CreateRequestOptions } from "@fubhy/substreams";
-import { Button, Divider, TextInput, Flex } from "@tremor/react";
+import type { CreateRequestOptions, MapModule } from "@fubhy/substreams";
 import { useForm } from "@tanstack/react-form";
+import { Button, Divider, Flex, TextInput } from "@tremor/react";
 
 export function StreamingForm({
   module,

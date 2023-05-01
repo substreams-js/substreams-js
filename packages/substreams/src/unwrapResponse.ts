@@ -1,4 +1,3 @@
-import type { Any, AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
 import type {
   BlockScopedData,
   InitialSnapshotComplete,
@@ -7,6 +6,7 @@ import type {
   Response,
   SessionInit,
 } from "./generated/sf/substreams/v1/substreams_pb.js";
+import type { Any, AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
 
 export type DataMessage = {
   type: "data";

@@ -1,6 +1,9 @@
 {
   "editor.defaultFormatter": "rome.rome",
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.rome": true
+  },
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.autoImportFileExcludePatterns": ["**/index.ts"],
   "[typescript]": {

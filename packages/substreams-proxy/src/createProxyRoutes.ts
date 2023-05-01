@@ -1,15 +1,15 @@
+import type { Awaitable } from "./types.js";
 import {
   type CallOptions,
   Code,
   ConnectError,
   type ConnectRouter,
-  createPromiseClient,
   type HandlerContext,
   type Transport,
+  createPromiseClient,
 } from "@bufbuild/connect";
 import { createDescriptorSet, createRegistryFromDescriptors } from "@bufbuild/protobuf";
-import { Stream, Request, ProxyService } from "@fubhy/substreams";
-import type { Awaitable } from "./types.js";
+import { ProxyService, Request, Stream } from "@fubhy/substreams";
 
 export function createProxyRoutes(
   upstream: Transport,

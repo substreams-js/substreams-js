@@ -1,6 +1,6 @@
+import { createProxyServer, defaultSubstreamsEndpoint } from "./createProxyServer.js";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { createProxyServer, defaultSubstreamsEndpoint } from "./createProxyServer.js";
 
 async function main() {
   const args = await yargs(hideBin(process.argv))

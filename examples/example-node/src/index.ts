@@ -1,6 +1,6 @@
-import { createGrpcTransport } from "@bufbuild/connect-node";
 import { createPromiseClient } from "@bufbuild/connect";
-import { Stream, createRegistry, createSubstream, createRequest } from "@fubhy/substreams";
+import { createGrpcTransport } from "@bufbuild/connect-node";
+import { Stream, createRegistry, createRequest, createSubstream } from "@fubhy/substreams";
 
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
 const SUBSTREAM =

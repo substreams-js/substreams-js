@@ -1,7 +1,7 @@
+import { createProxyRoutes } from "./createProxyRoutes.js";
 import type { Transport } from "@bufbuild/connect";
 import { connectNodeAdapter } from "@bufbuild/connect-node";
 import type { IncomingMessage, OutgoingHttpHeaders, ServerResponse } from "node:http";
-import { createProxyRoutes } from "./createProxyRoutes.js";
 
 export const defaultCorsAllowHeaders = [
   "Authorization",

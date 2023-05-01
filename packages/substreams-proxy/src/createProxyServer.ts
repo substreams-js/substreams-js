@@ -1,7 +1,7 @@
-import { createAuthInterceptor } from "@fubhy/substreams";
-import { createGrpcTransport } from "@bufbuild/connect-node";
 import { createProxyHandler } from "./createProxyHandler.js";
-import { createServer, IncomingMessage, type OutgoingHttpHeaders } from "node:http";
+import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createAuthInterceptor } from "@fubhy/substreams";
+import { IncomingMessage, type OutgoingHttpHeaders, createServer } from "node:http";
 
 export const defaultSubstreamsEndpoint = "https://mainnet.eth.streamingfast.io";
 

@@ -1,8 +1,8 @@
 import { type Package, createSubstream } from "@fubhy/substreams";
+import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import { Callout, Card, Title } from "@tremor/react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 
 export function UploadDropzone({
   setUploaded,

@@ -1,6 +1,6 @@
 import type { Package } from "./generated/sf/substreams/v1/package_pb.js";
-import { isMapModule, type MapModule } from "./isMapModule.js";
-import { isStoreModule, type StoreModule } from "./isStoreModule.js";
+import { type MapModule, isMapModule } from "./isMapModule.js";
+import { type StoreModule, isStoreModule } from "./isStoreModule.js";
 
 export type ModuleKind = "map" | "store";
 export type ModuleKindOrBoth = ModuleKind | "both";

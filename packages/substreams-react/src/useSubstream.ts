@@ -1,17 +1,17 @@
-import { createConnectTransport } from "@bufbuild/connect-web";
 import { createCallbackClient } from "@bufbuild/connect";
+import { createConnectTransport } from "@bufbuild/connect-web";
 import type { AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
 import {
-  ProxyService,
-  createRegistry,
-  createAuthInterceptor,
-  unwrapResponse,
-  type Package,
-  type Response,
-  type CreateRequestOptions,
-  type ModulesProgress,
   type BlockScopedData,
+  type CreateRequestOptions,
   type MapModule,
+  type ModulesProgress,
+  type Package,
+  ProxyService,
+  type Response,
+  createAuthInterceptor,
+  createRegistry,
+  unwrapResponse,
 } from "@fubhy/substreams";
 import { createProxyRequest } from "@fubhy/substreams-proxy/client";
 import { useCallback, useEffect, useRef, useState } from "react";

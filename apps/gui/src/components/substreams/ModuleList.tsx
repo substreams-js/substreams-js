@@ -1,7 +1,7 @@
+import { type MapModule, type ModuleKindOrBoth, type Package, type StoreModule, getModules } from "@fubhy/substreams";
+import { CircleStackIcon, MapIcon, SparklesIcon, ViewfinderCircleIcon } from "@heroicons/react/20/solid";
+import { Badge, Button, Card, Divider, Flex, List, ListItem, Text, Toggle, ToggleItem } from "@tremor/react";
 import { useMemo, useState } from "react";
-import { getModules, type MapModule, type StoreModule, type Package, type ModuleKindOrBoth } from "@fubhy/substreams";
-import { Text, Badge, Button, Card, Flex, List, ListItem, Toggle, ToggleItem, Divider } from "@tremor/react";
-import { MapIcon, CircleStackIcon, SparklesIcon, ViewfinderCircleIcon } from "@heroicons/react/20/solid";
 
 export function ModuleList({ pkg, select }: { pkg: Package; select: (module: MapModule) => void }) {
   const [filter, setFilter] = useState<ModuleKindOrBoth>("both");

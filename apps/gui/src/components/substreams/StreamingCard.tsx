@@ -1,12 +1,12 @@
+import { StreamingForm } from "./StreamingForm.js";
+import type { JsonValue } from "@bufbuild/protobuf";
+import type { Clock, MapModule, Package } from "@fubhy/substreams";
+import { useSubstream } from "@fubhy/substreams-react";
+import { JsonViewer } from "@textea/json-viewer";
+import { Badge, Card, Divider, Flex, List, ListItem, Title, Toggle, ToggleItem } from "@tremor/react";
 import { useEffect, useState } from "react";
 import { useThrottle } from "react-use";
-import type { MapModule, Package, Clock } from "@fubhy/substreams";
-import { useSubstream } from "@fubhy/substreams-react";
-import type { JsonValue } from "@bufbuild/protobuf";
 import { create } from "zustand";
-import { Card, Divider, Title, Flex, Badge, List, ListItem, Toggle, ToggleItem } from "@tremor/react";
-import { JsonViewer } from "@textea/json-viewer";
-import { StreamingForm } from "./StreamingForm.js";
 
 type State = {
   state: "streaming" | "finished" | "error" | "idle";
