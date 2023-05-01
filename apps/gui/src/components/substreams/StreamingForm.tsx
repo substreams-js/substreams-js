@@ -13,28 +13,18 @@ export function StreamingForm({
     defaultValues: {
       startBlock: module.initialBlock.toString(),
       stopBlock: (module.initialBlock + 1000n).toString(),
-      productionMode: true,
     },
     onSubmit: (values) => {
       start({
         startBlockNum: BigInt(values.startBlock),
         stopBlockNum: BigInt(values.stopBlock),
-        productionMode: false,
+        productionMode: true,
       });
     },
   });
 
   return (
     <form.Form>
-      <form.Field
-        name="productionMode"
-        children={(field) => (
-          <>
-            <label htmlFor={field.name}>Production modue</label>
-            <TextInput name={field.name} {...field.getInputProps()} />
-          </>
-        )}
-      />
       <form.Field
         name="startBlock"
         children={(field) => (
