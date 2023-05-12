@@ -1,6 +1,6 @@
 {
   "name": "@fubhy/substreams",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "codegen": "buf generate buf.build/streamingfast/substreams",
     "clean": "rm -rf dist",
@@ -33,10 +33,17 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": ["./dist/types/generated/*.d.ts"]
+      "proto/*": [
+        "./dist/types/generated/*.d.ts"
+      ]
     }
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/protobuf": "^1.1.0"
