@@ -2,7 +2,7 @@
   "name": "@fubhy/substreams",
   "version": "0.0.1",
   "scripts": {
-    "codegen": "buf generate buf.build/streamingfast/substreams && buf generate proto",
+    "codegen": "buf generate buf.build/streamingfast/substreams",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
@@ -24,14 +24,19 @@
       "import": "./dist/esm/index.js",
       "default": "./dist/cjs/index.js"
     },
+    "./proto/*.js": {
+      "types": "./dist/types/generated/*.d.ts",
+      "import": "./dist/esm/generated/*.js",
+      "default": "./dist/cjs/generated/*.js"
+    },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "typesVersions": {
+    "*": {
+      "proto/*": ["./dist/types/generated/*.d.ts"]
+    }
+  },
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/protobuf": "^1.1.0"

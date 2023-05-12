@@ -10,8 +10,11 @@
       "@fubhy/substreams-proxy": [
         "../../packages/substreams-proxy/src/index.js"
       ],
+      "@fubhy/substreams-proxy/server": [
+        "../../packages/substreams-proxy/src/server/index.js"
+      ],
       "@fubhy/substreams-proxy/client": [
-        "../../packages/substreams-proxy/src/client.js"
+        "../../packages/substreams-proxy/src/client/index.js"
       ]
     }
   }

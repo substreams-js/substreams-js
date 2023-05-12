@@ -7,13 +7,12 @@ import {
   type MapModule,
   type ModulesProgress,
   type Package,
-  ProxyService,
   type Response,
   createAuthInterceptor,
   createRegistry,
   unwrapResponse,
 } from "@fubhy/substreams";
-import { createProxyRequest } from "@fubhy/substreams-proxy/client";
+import { ProxyService, createProxyRequest } from "@fubhy/substreams-proxy/client";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type SubstreamContext = {

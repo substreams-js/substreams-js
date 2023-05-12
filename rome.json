@@ -1,6 +1,6 @@
 {
   "files": {
-    "ignore": ["dist", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
+    "ignore": ["dist", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json", "*.typegen.ts"]
   },
   "formatter": {
     "indentStyle": "space",

@@ -1,4 +1,4 @@
-import type { Module } from "./generated/sf/substreams/v1/modules_pb.js";
+import type { Module } from "../generated/sf/substreams/v1/modules_pb.js";
 
 export type MapModule = Module & { kind: { case: "kindMap" } };
 

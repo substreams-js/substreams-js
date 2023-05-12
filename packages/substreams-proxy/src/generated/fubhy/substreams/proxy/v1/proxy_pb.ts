@@ -5,8 +5,8 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { ForkStep } from "../../../../sf/substreams/v1/substreams_pb.js";
-import { Package } from "../../../../sf/substreams/v1/package_pb.js";
+import { ForkStep } from "@fubhy/substreams/proto/sf/substreams/v1/substreams_pb.js";
+import { Package } from "@fubhy/substreams/proto/sf/substreams/v1/package_pb.js";
 
 /**
  * @generated from message fubhy.substreams.proxy.v1.ProxyRequest

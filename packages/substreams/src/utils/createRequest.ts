@@ -1,6 +1,6 @@
-import type { Module } from "./generated/sf/substreams/v1/modules_pb.js";
-import { Package } from "./generated/sf/substreams/v1/package_pb.js";
-import { ForkStep, Request } from "./generated/sf/substreams/v1/substreams_pb.js";
+import type { Module } from "../generated/sf/substreams/v1/modules_pb.js";
+import { Package } from "../generated/sf/substreams/v1/package_pb.js";
+import { ForkStep, Request } from "../generated/sf/substreams/v1/substreams_pb.js";
 
 export interface CreateRequestOptions {
   startBlockNum?: bigint | undefined;

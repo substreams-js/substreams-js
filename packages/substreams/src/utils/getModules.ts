@@ -1,4 +1,4 @@
-import type { Package } from "./generated/sf/substreams/v1/package_pb.js";
+import type { Package } from "../generated/sf/substreams/v1/package_pb.js";
 import { type MapModule, isMapModule } from "./isMapModule.js";
 import { type StoreModule, isStoreModule } from "./isStoreModule.js";
 
@@ -13,7 +13,7 @@ export type GetModulesReturnType<TKind extends ModuleKindOrBoth = "both"> = TKin
   ? (StoreModule | MapModule)[]
   : never;
 
-export function getModules<TKind extends ModuleKindOrBoth = "both">(substream: Package, kind: TKind) {
+export function getModules<TKind extends ModuleKindOrBoth = "both">(substream: Package, kind: TKind = "both" as TKind) {
   const modules = substream.modules?.modules ?? [];
   if (kind === "both") {
     return modules.filter((module) => isMapModule(module) || isStoreModule(module)) as GetModulesReturnType<TKind>;

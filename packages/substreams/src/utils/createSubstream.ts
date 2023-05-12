@@ -1,4 +1,4 @@
-import { Package } from "./generated/sf/substreams/v1/package_pb.js";
+import { Package } from "../generated/sf/substreams/v1/package_pb.js";
 
 export function createSubstream(value: Uint8Array | ArrayBuffer) {
   if (value instanceof ArrayBuffer) {

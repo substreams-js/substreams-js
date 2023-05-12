@@ -5,7 +5,7 @@ import type {
   ModulesProgress,
   Response,
   SessionInit,
-} from "./generated/sf/substreams/v1/substreams_pb.js";
+} from "../generated/sf/substreams/v1/substreams_pb.js";
 import type { Any, AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
 
 export type DataMessage = {

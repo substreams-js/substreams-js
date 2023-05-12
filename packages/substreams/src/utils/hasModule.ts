@@ -1,5 +1,5 @@
-import type { Module } from "./generated/sf/substreams/v1/modules_pb.js";
-import type { Package } from "./generated/sf/substreams/v1/package_pb.js";
+import type { Module } from "../generated/sf/substreams/v1/modules_pb.js";
+import type { Package } from "../generated/sf/substreams/v1/package_pb.js";
 
 export type PackageWithModules = Package & { modules: { modules: Module[] } };
 

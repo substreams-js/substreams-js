@@ -1,4 +1,5 @@
-import { type CreateRequestOptions, ForkStep, Module, type Package, ProxyRequest } from "@fubhy/substreams";
+import { ProxyRequest } from "../generated/fubhy/substreams/proxy/v1/proxy_pb.js";
+import { type CreateRequestOptions, ForkStep, Module, type Package } from "@fubhy/substreams";
 
 export type CreateProxyRequestOptions = CreateRequestOptions;
 

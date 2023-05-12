@@ -1,11 +1,23 @@
 {
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.defaultFormatter": "rome.rome",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports.rome": true
   },
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.autoImportFileExcludePatterns": ["**/index.ts"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "rome.rome"
   },

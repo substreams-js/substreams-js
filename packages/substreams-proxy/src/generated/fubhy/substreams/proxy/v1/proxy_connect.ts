@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import { ProxyRequest } from "./proxy_pb.js";
-import { Response } from "../../../../sf/substreams/v1/substreams_pb.js";
+import { Response } from "@fubhy/substreams/proto/sf/substreams/v1/substreams_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**

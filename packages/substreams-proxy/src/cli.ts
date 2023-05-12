@@ -1,4 +1,4 @@
-import { createProxyServer, defaultSubstreamsEndpoint } from "./createProxyServer.js";
+import { createProxyServer, defaultSubstreamsEndpoint } from "./server/createProxyServer.js";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
