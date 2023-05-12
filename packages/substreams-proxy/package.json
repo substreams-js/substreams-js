@@ -10,7 +10,7 @@
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.build.json"
+    "typecheck": "tsc --noEmit"
   },
   "bin": {
     "substreams-proxy": "./bin/cli.js"
@@ -37,12 +37,18 @@
       "import": "./dist/esm/client/index.js",
       "default": "./dist/cjs/client/index.js"
     },
+    "./proto/*.js": {
+      "types": "./dist/types/generated/*.d.ts",
+      "import": "./dist/esm/generated/*.js",
+      "default": "./dist/cjs/generated/*.js"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
       "client": ["./dist/types/client/index.d.ts"],
-      "server": ["./dist/types/server/index.d.ts"]
+      "server": ["./dist/types/server/index.d.ts"],
+      "proto/*": ["./dist/types/generated/*.d.ts"]
     }
   },
   "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],

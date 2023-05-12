@@ -9,11 +9,20 @@
     "baseUrl": ".",
     "paths": {
       "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
+      "@fubhy/substreams/proto/*": [
+        "../../packages/substreams/src/generated/*"
+      ],
       "@fubhy/substreams-proxy": [
         "../../packages/substreams-proxy/src/index.js"
       ],
       "@fubhy/substreams-proxy/client": [
-        "../../packages/substreams-proxy/src/client.js"
+        "../../packages/substreams-proxy/src/client/index.js"
+      ],
+      "@fubhy/substreams-proxy/server": [
+        "../../packages/substreams-proxy/src/server/index.js"
+      ],
+      "@fubhy/substreams-proxy/proto/*": [
+        "../../packages/substreams-proxy/src/generated/*"
       ],
       "@fubhy/substreams-react": [
         "../../packages/substreams-react/src/index.js"

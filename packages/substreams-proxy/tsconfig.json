@@ -5,7 +5,8 @@
     "lib": ["DOM"],
     "baseUrl": ".",
     "paths": {
-      "@fubhy/substreams": ["../../packages/substreams/src/index.js"]
+      "@fubhy/substreams": ["../substreams/src/index.js"],
+      "@fubhy/substreams/proto/*": ["../substreams/src/generated/*"]
     }
   }
 }

@@ -6,16 +6,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
-      "@fubhy/substreams-proxy": [
-        "../../packages/substreams-proxy/src/index.js"
+      "@fubhy/substreams": ["../substreams/src/index.js"],
+      "@fubhy/substreams/proto/*": ["../substreams/src/generated/*"],
+      "@fubhy/substreams-proxy": ["../substreams-proxy/src/index.js"],
+      "@fubhy/substreams-proxy/client": [
+        "../substreams-proxy/src/client/index.js"
       ],
       "@fubhy/substreams-proxy/server": [
-        "../../packages/substreams-proxy/src/server/index.js"
+        "../substreams-proxy/src/server/index.js"
       ],
-      "@fubhy/substreams-proxy/client": [
-        "../../packages/substreams-proxy/src/client/index.js"
-      ]
+      "@fubhy/substreams-proxy/proto/*": ["../substreams-proxy/src/generated/*"]
     }
   }
 }

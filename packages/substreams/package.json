@@ -10,7 +10,7 @@
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.build.json"
+    "typecheck": "tsc --noEmit"
   },
   "sideEffects": false,
   "type": "module",
