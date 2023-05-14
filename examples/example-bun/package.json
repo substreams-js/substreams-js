@@ -1,0 +1,24 @@
+{
+  "name": "example-bun",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "codegen": "rm -rf src/proto && buf generate https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg#format=bin --exclude-path=google,sf,entity",
+    "start": "bun src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bufbuild/connect": "^0.8.3",
+    "@bufbuild/connect-web": "^0.8.6",
+    "@bufbuild/protobuf": "^1.1.0",
+    "@fubhy/substreams": "^0.0.3",
+    "@fubhy/substreams-proxy": "^0.0.4"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "1.18.0-1",
+    "@types/node": "^20.1.4",
+    "bun": "^0.5.9",
+    "typescript": "^5.0.4"
+  }
+}

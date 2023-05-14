@@ -9,3 +9,16 @@ export function getProtoType(typeName: string, registry: IMessageTypeRegistry) {
 
   return registry.findMessage(protoTypeName);
 }
+
+export function getProtoTypeOrThrow(
+  typeName: string,
+  registry: IMessageTypeRegistry,
+  message = `Type "${typeName}" not found in registry`,
+) {
+  const type = getProtoType(typeName, registry);
+  if (type === undefined) {
+    throw new Error(message);
+  }
+
+  return type;
+}
