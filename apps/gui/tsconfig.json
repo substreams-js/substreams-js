@@ -9,9 +9,7 @@
     "baseUrl": ".",
     "paths": {
       "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
-      "@fubhy/substreams/proto/*": [
-        "../../packages/substreams/src/generated/*"
-      ],
+      "@fubhy/substreams/proto/*": ["../../packages/substreams/src/proto/*"],
       "@fubhy/substreams-proxy": [
         "../../packages/substreams-proxy/src/index.js"
       ],
@@ -22,7 +20,7 @@
         "../../packages/substreams-proxy/src/server/index.js"
       ],
       "@fubhy/substreams-proxy/proto/*": [
-        "../../packages/substreams-proxy/src/generated/*"
+        "../../packages/substreams-proxy/src/proto/*"
       ],
       "@fubhy/substreams-react": [
         "../../packages/substreams-react/src/index.js"

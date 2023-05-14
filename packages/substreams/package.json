@@ -2,7 +2,7 @@
   "name": "@fubhy/substreams",
   "version": "0.0.2",
   "scripts": {
-    "codegen": "buf generate buf.build/streamingfast/substreams",
+    "codegen": "rm -rf src/proto && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
@@ -24,26 +24,34 @@
       "import": "./dist/esm/index.js",
       "default": "./dist/cjs/index.js"
     },
+    "./sinks/kv": {
+      "types": "./dist/types/sinks/kv.d.ts",
+      "import": "./dist/esm/sinks/kv.js",
+      "default": "./dist/cjs/sinks/kv.js"
+    },
+    "./sinks/database": {
+      "types": "./dist/types/sinks/database.d.ts",
+      "import": "./dist/esm/sinks/database.js",
+      "default": "./dist/cjs/sinks/database.js"
+    },
+    "./sinks/entity": {
+      "types": "./dist/types/sinks/entity.d.ts",
+      "import": "./dist/esm/sinks/entity.js",
+      "default": "./dist/cjs/sinks/entity.js"
+    },
     "./proto/*.js": {
-      "types": "./dist/types/generated/*.d.ts",
-      "import": "./dist/esm/generated/*.js",
-      "default": "./dist/cjs/generated/*.js"
+      "types": "./dist/types/proto/*.d.ts",
+      "import": "./dist/esm/proto/*.js",
+      "default": "./dist/cjs/proto/*.js"
     },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
-      "proto/*": [
-        "./dist/types/generated/*.d.ts"
-      ]
+      "proto/*": ["./dist/types/proto/*.d.ts"]
     }
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/protobuf": "^1.1.0"

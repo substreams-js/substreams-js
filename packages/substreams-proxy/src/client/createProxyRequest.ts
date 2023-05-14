@@ -1,5 +1,5 @@
-import { ProxyRequest } from "../generated/fubhy/substreams/proxy/v1/proxy_pb.js";
-import { type CreateRequestOptions, ForkStep, Module, type Package } from "@fubhy/substreams";
+import { ProxyRequest } from "../proto/fubhy/substreams/proxy/v1/proxy_pb.js";
+import { type CreateRequestOptions, Module, type Package } from "@fubhy/substreams";
 
 export type CreateProxyRequestOptions = CreateRequestOptions;
 
@@ -12,7 +12,6 @@ export function createProxyRequest(pkg: Package, module: Module, options?: Creat
     startBlockNum,
     stopBlockNum,
     productionMode: options?.productionMode ?? false,
-    forkSteps: options?.forkSteps ?? [ForkStep.STEP_IRREVERSIBLE],
     outputModule: module.name,
     ...(options?.startCursor !== undefined
       ? {

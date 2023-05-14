@@ -7,7 +7,7 @@
     "baseUrl": ".",
     "paths": {
       "@fubhy/substreams": ["../substreams/src/index.js"],
-      "@fubhy/substreams/proto/*": ["../substreams/src/generated/*"],
+      "@fubhy/substreams/proto/*": ["../substreams/src/proto/*"],
       "@fubhy/substreams-proxy": ["../substreams-proxy/src/index.js"],
       "@fubhy/substreams-proxy/client": [
         "../substreams-proxy/src/client/index.js"
@@ -15,7 +15,7 @@
       "@fubhy/substreams-proxy/server": [
         "../substreams-proxy/src/server/index.js"
       ],
-      "@fubhy/substreams-proxy/proto/*": ["../substreams-proxy/src/generated/*"]
+      "@fubhy/substreams-proxy/proto/*": ["../substreams-proxy/src/proto/*"]
     }
   }
 }

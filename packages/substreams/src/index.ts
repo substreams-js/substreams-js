@@ -1,8 +1,11 @@
-export * from "./generated/sf/substreams/v1/clock_pb.js";
-export * from "./generated/sf/substreams/v1/modules_pb.js";
-export * from "./generated/sf/substreams/v1/package_pb.js";
-export * from "./generated/sf/substreams/v1/substreams_pb.js";
-export * from "./generated/sf/substreams/v1/substreams_connect.js";
+// Substreams core
+export * from "./proto/sf/substreams/v1/clock_pb.js";
+export * from "./proto/sf/substreams/v1/modules_pb.js";
+export * from "./proto/sf/substreams/v1/package_pb.js";
+
+// Substreams service
+export * from "./proto/sf/substreams/rpc/v2/service_pb.js";
+export * from "./proto/sf/substreams/rpc/v2/service_connect.js";
 
 export { type CreateRequestOptions, createRequest } from "./utils/createRequest.js";
 export { createAuthInterceptor } from "./auth/createAuthInterceptor.js";

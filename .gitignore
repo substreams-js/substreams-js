@@ -20,7 +20,6 @@
 dist/
 build/
 coverage/
-generated/
 
 # Ignore dependencies
 node_modules/

@@ -2,7 +2,7 @@
   "name": "@fubhy/substreams-proxy",
   "version": "0.0.3",
   "scripts": {
-    "codegen": "buf generate proto",
+    "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
@@ -38,32 +38,20 @@
       "default": "./dist/cjs/client/index.js"
     },
     "./proto/*.js": {
-      "types": "./dist/types/generated/*.d.ts",
-      "import": "./dist/esm/generated/*.js",
-      "default": "./dist/cjs/generated/*.js"
+      "types": "./dist/types/proto/*.d.ts",
+      "import": "./dist/esm/proto/*.js",
+      "default": "./dist/cjs/proto/*.js"
     },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
-      "client": [
-        "./dist/types/client/index.d.ts"
-      ],
-      "server": [
-        "./dist/types/server/index.d.ts"
-      ],
-      "proto/*": [
-        "./dist/types/generated/*.d.ts"
-      ]
+      "client": ["./dist/types/client/index.d.ts"],
+      "server": ["./dist/types/server/index.d.ts"],
+      "proto/*": ["./dist/types/proto/*.d.ts"]
     }
   },
-  "files": [
-    "bin/**",
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-node": "^0.8.3",

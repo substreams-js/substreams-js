@@ -5,8 +5,8 @@ managed:
 
 plugins:
   - plugin: buf.build/bufbuild/es
-    out: src/generated
+    out: src/proto
     opt: target=ts
   - plugin: buf.build/bufbuild/connect-es
-    out: src/generated
+    out: src/proto
     opt: target=ts

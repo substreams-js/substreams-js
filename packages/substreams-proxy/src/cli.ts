@@ -35,6 +35,7 @@ async function main() {
 
   server.listen(args["--port"], args["--host"], () => {
     const host = args["--host"] === "::" ? "0.0.0.0" : args["--host"];
+    // rome-ignore lint/nursery/noConsoleLog: this is fine ...
     console.log(`Proxy server listening on http://${host}:${args["--port"]}`);
   });
 

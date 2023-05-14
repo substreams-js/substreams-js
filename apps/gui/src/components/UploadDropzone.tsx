@@ -18,7 +18,7 @@ export function UploadDropzone({
       "application/octet-stream": [".spkg"],
     },
     onDrop: (acceptedFiles) => {
-      acceptedFiles.forEach((file) => {
+      for (const file of acceptedFiles) {
         const reader = new FileReader();
 
         reader.onerror = () => {
@@ -40,7 +40,7 @@ export function UploadDropzone({
         };
 
         reader.readAsArrayBuffer(file);
-      });
+      }
     },
   });
 

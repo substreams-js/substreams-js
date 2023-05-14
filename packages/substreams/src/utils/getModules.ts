@@ -1,4 +1,4 @@
-import type { Package } from "../generated/sf/substreams/v1/package_pb.js";
+import type { Package } from "../proto/sf/substreams/v1/package_pb.js";
 import { type MapModule, isMapModule } from "./isMapModule.js";
 import { type StoreModule, isStoreModule } from "./isStoreModule.js";
 

@@ -2,7 +2,7 @@ version: v1
 name: buf.build/fubhy/substreams
 
 deps:
-  - buf.build/streamingfast/substreams:develop
+  - buf.build/fubhy/substreams
 
 lint:
   use:

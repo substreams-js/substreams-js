@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@fubhy/substreams": ["../substreams/src/index.js"],
-      "@fubhy/substreams/proto/*": ["../substreams/src/generated/*"]
+      "@fubhy/substreams/proto/*": ["../substreams/src/proto/*"]
     }
   }
 }

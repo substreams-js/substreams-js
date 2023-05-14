@@ -5,8 +5,8 @@ import type {
   ModulesProgress,
   Response,
   SessionInit,
-} from "../generated/sf/substreams/v1/substreams_pb.js";
-import type { Any, AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
+} from "../proto/sf/substreams/rpc/v2/service_pb.js";
+import type { AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
 
 export type DataMessage = {
   type: "data";
@@ -45,47 +45,31 @@ export function unwrapResponse(response: Response, registry: IMessageTypeRegistr
   const { case: kind, value } = response.message;
 
   switch (kind) {
-    case "data": {
-      const messages = value.outputs.flatMap<AnyMessage>((item) => {
-        const { case: kind, value } = item.data;
+    case "blockScopedData": {
+      let messages: AnyMessage[] = [];
+      const output = value.output?.mapOutput;
 
-        switch (kind) {
-          case "mapOutput": {
-            if (value.value.byteLength > 0) {
-              const message = (value as Any).unpack(registry);
-              if (message === undefined) {
-                return [];
+      if (output !== undefined && output.value.byteLength > 0) {
+        const message = output.unpack(registry);
+
+        if (message !== undefined) {
+          // Check if the field is just a repeated field of a single type. If so, we
+          // unwrap further. This is usually the case for a map module that returns
+          // multiple messages through a pluralized wrapper.
+          const type = message.getType();
+          const [first, ...rest] = type.fields.list();
+          if (first !== undefined && rest.length === 0) {
+            if (first.repeated && first.kind === "message") {
+              const nested = message[first.name as keyof typeof message] as unknown as AnyMessage[] | undefined;
+              if (nested !== undefined) {
+                messages = nested;
               }
-
-              // Check if the field is just a repeated field of a single type. If so, we
-              // unwrap further. This is usually the case for a map module that returns
-              // multiple messages through a pluralized wrapper.
-              const type = message.getType();
-              const [first, ...rest] = type.fields.list();
-              if (first !== undefined && rest.length === 0) {
-                if (first.repeated && first.kind === "message") {
-                  const nested = message[first.name as keyof typeof message] as unknown as AnyMessage[] | undefined;
-                  if (nested !== undefined) {
-                    return nested;
-                  }
-
-                  return [];
-                }
-              }
-
-              return [message];
             }
-
-            return [];
-          }
-
-          case "debugStoreDeltas": {
-            return [value];
+          } else {
+            messages = [message];
           }
         }
-
-        return [];
-      });
+      }
 
       return {
         type: "data",

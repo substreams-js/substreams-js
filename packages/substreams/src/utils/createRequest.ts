@@ -1,13 +1,13 @@
-import type { Module } from "../generated/sf/substreams/v1/modules_pb.js";
-import { Package } from "../generated/sf/substreams/v1/package_pb.js";
-import { ForkStep, Request } from "../generated/sf/substreams/v1/substreams_pb.js";
+import { Request } from "../proto/sf/substreams/rpc/v2/service_pb.js";
+import type { Module } from "../proto/sf/substreams/v1/modules_pb.js";
+import { Package } from "../proto/sf/substreams/v1/package_pb.js";
 
 export interface CreateRequestOptions {
   startBlockNum?: bigint | undefined;
   stopBlockNum?: bigint | undefined;
   productionMode?: boolean | undefined;
   startCursor?: string | undefined;
-  forkSteps?: [ForkStep, ...ForkStep[]] | undefined;
+  finalBlocksOnly?: boolean | undefined;
 }
 
 export function createRequest(pkg: Package, module: Module, options?: CreateRequestOptions) {
@@ -23,7 +23,7 @@ export function createRequest(pkg: Package, module: Module, options?: CreateRequ
     startBlockNum,
     stopBlockNum,
     productionMode: options?.productionMode ?? false,
-    forkSteps: options?.forkSteps ?? [ForkStep.STEP_IRREVERSIBLE],
+    finalBlocksOnly: options?.finalBlocksOnly ?? false,
     outputModule: module.name,
     ...(options?.startCursor !== undefined
       ? {

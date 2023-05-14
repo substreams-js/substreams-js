@@ -5,8 +5,8 @@ managed:
 
 plugins:
   - plugin: buf.build/bufbuild/es
-    out: src/generated
-    opt: target=ts,rewrite_imports=**/sf/substreams/v1/**/*.js:@fubhy/substreams/proto
+    out: src/proto
+    opt: target=ts,rewrite_imports=**/sf/substreams/**/*.js:@fubhy/substreams/proto
   - plugin: buf.build/bufbuild/connect-es
-    out: src/generated
-    opt: target=ts,rewrite_imports=**/sf/substreams/v1/**/*.js:@fubhy/substreams/proto
+    out: src/proto
+    opt: target=ts,rewrite_imports=**/sf/substreams/**/*.js:@fubhy/substreams/proto

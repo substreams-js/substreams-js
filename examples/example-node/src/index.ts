@@ -2,9 +2,9 @@ import { createPromiseClient } from "@bufbuild/connect";
 import { createGrpcTransport } from "@bufbuild/connect-node";
 import { Stream, createRegistry, createRequest, createSubstream } from "@fubhy/substreams";
 
-const ENDPOINT = "https://mainnet.eth.streamingfast.io";
+const ENDPOINT = "https://api.streamingfast.io";
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";
-const MODULE = "map_block_stats";
+const MODULE = "map_pools_created";
 
 const token = process.env.SUBSTREAMS_API_TOKEN;
 if (token === undefined) {
@@ -46,17 +46,15 @@ for await (const response of stream) {
   const message = response.message;
 
   switch (message.case) {
-    case "data": {
-      const outputs = message.value.outputs;
+    case "blockScopedData": {
+      const output = message.value.output?.mapOutput;
 
-      for (const output of outputs) {
-        if (output.name === MODULE && output.data.case === "mapOutput" && output.data.value.value.byteLength > 0) {
-          const json = output.toJson({
-            typeRegistry: registry,
-          });
+      if (output !== undefined && output.value.byteLength > 0) {
+        const json = output.toJson({
+          typeRegistry: registry,
+        });
 
-          console.dir(json, { depth: 3, colors: true });
-        }
+        console.dir(json, { depth: 3, colors: true });
       }
     }
   }

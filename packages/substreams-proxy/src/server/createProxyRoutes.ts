@@ -1,4 +1,4 @@
-import { ProxyService } from "../generated/fubhy/substreams/proxy/v1/proxy_connect.js";
+import { ProxyService } from "../proto/fubhy/substreams/proxy/v1/proxy_connect.js";
 import type { Awaitable } from "../types.js";
 import {
   type CallOptions,
