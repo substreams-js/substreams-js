@@ -3,7 +3,6 @@ export * from "./generated/sf/substreams/v1/modules_pb.js";
 export * from "./generated/sf/substreams/v1/package_pb.js";
 export * from "./generated/sf/substreams/v1/substreams_pb.js";
 export * from "./generated/sf/substreams/v1/substreams_connect.js";
-export * from "./generated/sf/substreams/v1/substreams_connect.js";
 
 export { type CreateRequestOptions, createRequest } from "./utils/createRequest.js";
 export { createAuthInterceptor } from "./auth/createAuthInterceptor.js";

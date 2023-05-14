@@ -3,8 +3,7 @@ import { createGrpcTransport } from "@bufbuild/connect-node";
 import { Stream, createRegistry, createRequest, createSubstream } from "@fubhy/substreams";
 
 const ENDPOINT = "https://mainnet.eth.streamingfast.io";
-const SUBSTREAM =
-  "https://github.com/pinax-network/subtivity-substreams/releases/download/v0.2.0/subtivity-ethereum-v0.2.0.spkg";
+const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";
 const MODULE = "map_block_stats";
 
 const token = process.env.SUBSTREAMS_API_TOKEN;
