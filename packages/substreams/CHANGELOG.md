@@ -1,5 +1,11 @@
 # @fubhy/substreams
 
+## 0.0.3
+
+### Patch Changes
+
+- [`77c7c76`](https://github.com/fubhy/substreams-es/commit/77c7c76c68510046b1aaeb0d94a3b57972ff904a) Thanks [@fubhy](https://github.com/fubhy)! - Updated to rpc v2.
+
 ## 0.0.2
 
 ### Patch Changes
