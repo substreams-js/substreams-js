@@ -3,10 +3,5 @@ import { defineConfig } from "vite";
 import aliases from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    aliases({
-      root: "../../",
-    }),
-    react(),
-  ],
+  plugins: [aliases(), react()],
 });

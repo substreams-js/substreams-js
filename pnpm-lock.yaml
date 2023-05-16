@@ -227,6 +227,9 @@ importers:
       '@vitest/ui':
         specifier: ^0.31.0
         version: 0.31.0(vitest@0.31.0)
+      tsx:
+        specifier: ^3.12.7
+        version: 3.12.7
       typescript:
         specifier: ^5.0.4
         version: 5.0.4

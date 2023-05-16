@@ -4,6 +4,7 @@
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
+    "start": "tsx src/cli.ts",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
@@ -77,6 +78,7 @@
     "@types/yargs": "^17.0.24",
     "@vitest/coverage-c8": "^0.31.0",
     "@vitest/ui": "^0.31.0",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4",
     "vite": "^4.3.7",
     "vitest": "^0.31.0"
