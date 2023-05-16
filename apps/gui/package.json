@@ -15,7 +15,7 @@
     "@bufbuild/connect-web": "^0.8.6",
     "@bufbuild/protobuf": "^1.2.0",
     "@fubhy/substreams": "^0.0.4",
-    "@fubhy/substreams-proxy": "^0.0.5",
+    "@fubhy/substreams-proxy": "^0.0.6",
     "@fubhy/substreams-react": "workspace:^",
     "@heroicons/react": "^2.0.18",
     "@tanstack/react-form": "^0.0.5",

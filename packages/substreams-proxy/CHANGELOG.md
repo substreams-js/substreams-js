@@ -1,5 +1,11 @@
 # @fubhy/substreams-proxy
 
+## 0.0.6
+
+### Patch Changes
+
+- [`aeef2d5`](https://github.com/fubhy/substreams-es/commit/aeef2d5f1a676d24a352fc337066df7c936e2154) Thanks [@fubhy](https://github.com/fubhy)! - Switched streaming handler to async generator.
+
 ## 0.0.5
 
 ### Patch Changes

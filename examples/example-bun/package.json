@@ -13,7 +13,7 @@
     "@bufbuild/connect-web": "^0.8.6",
     "@bufbuild/protobuf": "^1.1.0",
     "@fubhy/substreams": "^0.0.4",
-    "@fubhy/substreams-proxy": "^0.0.5"
+    "@fubhy/substreams-proxy": "^0.0.6"
   },
   "devDependencies": {
     "@bufbuild/buf": "1.18.0-1",

@@ -1,6 +1,6 @@
 {
   "name": "@fubhy/substreams-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
@@ -36,7 +36,7 @@
     "@bufbuild/connect-web": "^0.8.6",
     "@bufbuild/protobuf": "^1.1.0",
     "@fubhy/substreams": "^0.0.4",
-    "@fubhy/substreams-proxy": "^0.0.5",
+    "@fubhy/substreams-proxy": "^0.0.6",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
