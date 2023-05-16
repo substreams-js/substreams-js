@@ -1,6 +1,6 @@
 {
   "name": "@substreams/proxy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
@@ -46,17 +46,29 @@
   },
   "typesVersions": {
     "*": {
-      "client": ["./dist/types/client/index.d.ts"],
-      "server": ["./dist/types/server/index.d.ts"],
-      "proto/*": ["./dist/types/proto/*.d.ts"]
+      "client": [
+        "./dist/types/client/index.d.ts"
+      ],
+      "server": [
+        "./dist/types/server/index.d.ts"
+      ],
+      "proto/*": [
+        "./dist/types/proto/*.d.ts"
+      ]
     }
   },
-  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "bin/**",
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-node": "^0.8.3",
     "@bufbuild/protobuf": "^1.1.0",
-    "@substreams/core": "^0.0.0",
+    "@substreams/core": "^0.0.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
