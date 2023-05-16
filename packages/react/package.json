@@ -25,7 +25,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-web": "^0.8.6",
@@ -41,7 +46,7 @@
     "@vitest/ui": "^0.31.0",
     "react": "^18.2.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5",
+    "vite": "^4.3.7",
     "vitest": "^0.31.0"
   },
   "peerDependencies": {

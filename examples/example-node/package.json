@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "1.18.0-1",
-    "@types/node": "^20.1.4",
+    "@types/node": "^20.1.6",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   }

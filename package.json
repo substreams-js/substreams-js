@@ -23,7 +23,8 @@
   "pnpm": {
     "overrides": {
       "@substreams/core": "workspace:*",
-      "@substreams/proxy": "workspace:*"
+      "@substreams/proxy": "workspace:*",
+      "@substreams/react": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": ["prop-types"]

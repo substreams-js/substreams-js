@@ -1,4 +1,4 @@
-# Substreams ES
+# Substreams <3 TypeScript
 
 This is a work in progress. Your mileage may vary.
 

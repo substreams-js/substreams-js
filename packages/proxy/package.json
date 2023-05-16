@@ -46,12 +46,24 @@
   },
   "typesVersions": {
     "*": {
-      "client": ["./dist/types/client/index.d.ts"],
-      "server": ["./dist/types/server/index.d.ts"],
-      "proto/*": ["./dist/types/proto/*.d.ts"]
+      "client": [
+        "./dist/types/client/index.d.ts"
+      ],
+      "server": [
+        "./dist/types/server/index.d.ts"
+      ],
+      "proto/*": [
+        "./dist/types/proto/*.d.ts"
+      ]
     }
   },
-  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "bin/**",
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-node": "^0.8.3",
@@ -61,12 +73,12 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "1.18.0-1",
-    "@types/node": "^20.1.4",
+    "@types/node": "^20.1.6",
     "@types/yargs": "^17.0.24",
     "@vitest/coverage-c8": "^0.31.0",
     "@vitest/ui": "^0.31.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.5",
+    "vite": "^4.3.7",
     "vitest": "^0.31.0"
   }
 }
