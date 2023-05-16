@@ -1,7 +1,7 @@
 import { StreamingForm } from "./StreamingForm.js";
 import type { JsonValue } from "@bufbuild/protobuf";
-import { type MapModule, type Package, type State, unpackMapOutput } from "@fubhy/substreams";
-import { useSubstream } from "@fubhy/substreams-react";
+import { type MapModule, type Package, type State, unpackMapOutput } from "@substreams/core";
+import { useSubstream } from "@substreams/react";
 import { JsonViewer } from "@textea/json-viewer";
 import { Badge, Card, Divider, Flex, List, ListItem, Title, Toggle, ToggleItem } from "@tremor/react";
 import { useEffect, useState } from "react";

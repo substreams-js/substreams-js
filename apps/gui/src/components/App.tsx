@@ -1,8 +1,8 @@
 import { UploadDropzone } from "./UploadDropzone.js";
 import { ModuleList } from "./substreams/ModuleList.js";
 import { StreamingCard } from "./substreams/StreamingCard.js";
-import type { MapModule, Package } from "@fubhy/substreams";
-import { useKey } from "@fubhy/substreams-react";
+import type { MapModule, Package } from "@substreams/core";
+import { useKey } from "@substreams/react";
 import { Col, Grid } from "@tremor/react";
 import { useState } from "react";
 

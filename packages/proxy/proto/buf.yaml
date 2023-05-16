@@ -1,0 +1,13 @@
+version: v1
+name: buf.build/fubhy/substreams-proxy
+
+deps:
+  - buf.build/fubhy/substreams
+
+lint:
+  use:
+    - DEFAULT
+
+breaking:
+  use:
+    - FILE

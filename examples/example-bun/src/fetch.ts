@@ -1,4 +1,4 @@
-import { createSubstream } from "@fubhy/substreams";
+import { createSubstream } from "@substreams/core";
 
 export async function fetchSubstream(url: string) {
   const response = await fetch(url);

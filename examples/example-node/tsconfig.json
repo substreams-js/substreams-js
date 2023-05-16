@@ -6,19 +6,19 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@fubhy/substreams": ["../../packages/substreams/src/index.js"],
-      "@fubhy/substreams/proto/*": ["../../packages/substreams/src/proto/*"],
-      "@fubhy/substreams-proxy": [
-        "../../packages/substreams-proxy/src/index.js"
+      "@substreams/core": ["../../packages/core/src/index.js"],
+      "@substreams/core/proto/*": ["../../packages/core/src/proto/*"],
+      "@substreams/proxy": [
+        "../../packages/proxy/src/index.js"
       ],
-      "@fubhy/substreams-proxy/client": [
-        "../../packages/substreams-proxy/src/client/index.js"
+      "@substreams/proxy/client": [
+        "../../packages/proxy/src/client/index.js"
       ],
-      "@fubhy/substreams-proxy/server": [
-        "../../packages/substreams-proxy/src/server/index.js"
+      "@substreams/proxy/server": [
+        "../../packages/proxy/src/server/index.js"
       ],
-      "@fubhy/substreams-proxy/proto/*": [
-        "../../packages/substreams-proxy/src/proto/*"
+      "@substreams/proxy/proto/*": [
+        "../../packages/proxy/src/proto/*"
       ]
     }
   }

@@ -1,5 +1,5 @@
-import type { MapModule } from "@fubhy/substreams";
-import type { UseSubstreamStartOptions } from "@fubhy/substreams-react";
+import type { MapModule } from "@substreams/core";
+import type { UseSubstreamStartOptions } from "@substreams/react";
 import { useForm } from "@tanstack/react-form";
 import { Button, Divider, Flex, TextInput } from "@tremor/react";
 

@@ -1,5 +1,5 @@
-import { type MapModule, type ModuleKindOrBoth, type Package, type StoreModule, getModules } from "@fubhy/substreams";
 import { CircleStackIcon, MapIcon, SparklesIcon, ViewfinderCircleIcon } from "@heroicons/react/20/solid";
+import { type MapModule, type ModuleKindOrBoth, type Package, type StoreModule, getModules } from "@substreams/core";
 import { Badge, Button, Card, Divider, Flex, List, ListItem, Text, Toggle, ToggleItem } from "@tremor/react";
 import { useMemo, useState } from "react";
 

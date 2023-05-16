@@ -1,7 +1,7 @@
 import { fetchSubstream } from "./fetch.js";
 import { token } from "./token.js";
 import { createGrpcTransport } from "@bufbuild/connect-node";
-import { createAuthInterceptor, createRegistry, createRequest, streamBlocks, unpackMapOutput } from "@fubhy/substreams";
+import { createAuthInterceptor, createRegistry, createRequest, streamBlocks, unpackMapOutput } from "@substreams/core";
 
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";
 const MODULE = "map_pools_created";

@@ -22,13 +22,11 @@
   },
   "pnpm": {
     "overrides": {
-      "@fubhy/substreams": "workspace:*",
-      "@fubhy/substreams-proxy": "workspace:*"
+      "@substreams/core": "workspace:*",
+      "@substreams/proxy": "workspace:*"
     },
     "peerDependencyRules": {
-      "ignoreMissing": [
-        "prop-types"
-      ]
+      "ignoreMissing": ["prop-types"]
     }
   }
 }

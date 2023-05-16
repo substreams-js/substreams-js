@@ -1,8 +1,8 @@
 lockfileVersion: '6.0'
 
 overrides:
-  '@fubhy/substreams': workspace:*
-  '@fubhy/substreams-proxy': workspace:*
+  '@substreams/core': workspace:*
+  '@substreams/proxy': workspace:*
 
 importers:
 
@@ -35,13 +35,13 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.2.0
         version: 1.2.0
-      '@fubhy/substreams':
+      '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/substreams
-      '@fubhy/substreams-proxy':
+      '@substreams/proxy':
         specifier: workspace:*
         version: link:../../packages/substreams-proxy
-      '@fubhy/substreams-react':
+      '@substreams/react':
         specifier: workspace:^
         version: link:../../packages/substreams-react
       '@heroicons/react':
@@ -114,10 +114,10 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
-      '@fubhy/substreams':
+      '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/substreams
-      '@fubhy/substreams-proxy':
+      '@substreams/proxy':
         specifier: workspace:*
         version: link:../../packages/substreams-proxy
     devDependencies:
@@ -145,7 +145,7 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
-      '@fubhy/substreams':
+      '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/substreams
     devDependencies:
@@ -204,7 +204,7 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
-      '@fubhy/substreams':
+      '@substreams/core':
         specifier: workspace:*
         version: link:../substreams
       yargs:
@@ -247,10 +247,10 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
-      '@fubhy/substreams':
+      '@substreams/core':
         specifier: workspace:*
         version: link:../substreams
-      '@fubhy/substreams-proxy':
+      '@substreams/proxy':
         specifier: workspace:*
         version: link:../substreams-proxy
       uuid:
