@@ -1,6 +1,6 @@
 {
   "name": "@substreams/react",
-  "version": "0.0.5",
+  "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
@@ -25,18 +25,13 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
     "@bufbuild/connect": "^0.8.3",
     "@bufbuild/connect-web": "^0.8.6",
     "@bufbuild/protobuf": "^1.1.0",
-    "@substreams/core": "^0.0.4",
-    "@substreams/proxy": "^0.0.6",
+    "@substreams/core": "^0.0.0",
+    "@substreams/proxy": "^0.0.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
