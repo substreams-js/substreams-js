@@ -1,5 +1,6 @@
 export {
   type SubstreamContext,
+  type UseSubstreamStartOptions,
   type UseSubstreamOptions,
   useSubstream,
 } from "./useSubstream.js";

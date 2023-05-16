@@ -1,27 +1,24 @@
-import { createCallbackClient } from "@bufbuild/connect";
 import { createConnectTransport } from "@bufbuild/connect-web";
-import type { AnyMessage, IMessageTypeRegistry } from "@bufbuild/protobuf";
+import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
+import type { StatefulResponse } from "@fubhy/substreams";
 import {
-  type BlockScopedData,
   type CreateRequestOptions,
   type MapModule,
-  type ModulesProgress,
   type Package,
-  type Response,
   createAuthInterceptor,
   createRegistry,
-  unwrapResponse,
 } from "@fubhy/substreams";
-import { ProxyService, createProxyRequest } from "@fubhy/substreams-proxy/client";
+import { createRequest, streamBlocks } from "@fubhy/substreams-proxy/client";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type SubstreamContext = {
-  options: CreateRequestOptions;
+  options: UseSubstreamStartOptions;
   substream: Package;
   module: MapModule;
   registry: IMessageTypeRegistry;
 };
 
+export type UseSubstreamStartOptions = Omit<CreateRequestOptions, "substreamPackage" | "outputModule">;
 export type UseSubstreamOptions = {
   substream: Package;
   module: MapModule;
@@ -31,8 +28,7 @@ export type UseSubstreamOptions = {
     onStart?: (ctx: SubstreamContext) => void;
     onFinished?: (ctx: SubstreamContext) => void;
     onError?: (error: Error, ctx: SubstreamContext) => void;
-    onData?: (data: BlockScopedData, messages: AnyMessage[], ctx: SubstreamContext) => void;
-    onProgress?: (progress: ModulesProgress, ctx: SubstreamContext) => void;
+    onResponse?: (response: StatefulResponse, ctx: SubstreamContext) => void;
   };
 };
 
@@ -81,7 +77,7 @@ export function useSubstream(options: UseSubstreamOptions) {
   });
 
   const start = useCallback(
-    (opts: CreateRequestOptions): (() => void) => {
+    (opts: UseSubstreamStartOptions): (() => void) => {
       const {
         current: { registry, substream, module },
       } = immutable;
@@ -106,8 +102,11 @@ export function useSubstream(options: UseSubstreamOptions) {
         },
       });
 
-      const connect = createCallbackClient(ProxyService, transport);
-      const request = createProxyRequest(substream, module, opts);
+      const request = createRequest({
+        substreamPackage: substream,
+        outputModule: module,
+        ...opts,
+      });
 
       const context = {
         options: opts,
@@ -116,34 +115,19 @@ export function useSubstream(options: UseSubstreamOptions) {
         module,
       } as const;
 
-      function handleResponse(response: Response) {
-        const unwrapped = unwrapResponse(response, registry);
-
-        switch (unwrapped.type) {
-          case "progress": {
-            handlers.current.onProgress?.(unwrapped.data, context);
-            break;
+      (async () => {
+        try {
+          for await (const item of streamBlocks(transport, request, { signal })) {
+            handlers.current.onResponse?.(item, context);
           }
-          case "data": {
-            handlers.current.onData?.(unwrapped.data, unwrapped.messages, context);
-            break;
-          }
-        }
-      }
 
-      function handleClose(error?: Error) {
-        if (error) {
-          handlers.current.onError?.(error, context);
-        } else {
           handlers.current.onFinished?.(context);
+        } catch (error) {
+          handlers.current.onError?.(error as Error, context);
         }
-      }
+      })();
 
       handlers.current.onStart?.(context);
-
-      connect.proxy(request, handleResponse, handleClose, {
-        signal,
-      });
 
       return () => abort();
     },

@@ -19,12 +19,6 @@ export { getProtoTypeName } from "./utils/getProtoTypeName.js";
 export { hasModule, type PackageWithModules } from "./utils/hasModule.js";
 export { isMapModule, type MapModule } from "./utils/isMapModule.js";
 export { isStoreModule, type StoreModule } from "./utils/isStoreModule.js";
-export {
-  unwrapResponse,
-  type DataMessage,
-  type DebugSnapshotCompleteMessage,
-  type DebugSnapshotDataMessage,
-  type Message,
-  type ProgressMessage,
-  type SessionMessage,
-} from "./utils/unwrapResponse.js";
+export { createStateTracker, type State, type ModuleState } from "./utils/createStateTracker.js";
+export { streamBlocks, type StatefulResponse } from "./utils/streamBlocks.js";
+export { unpackMapOutput } from "./utils/unpackMapOutput.js";

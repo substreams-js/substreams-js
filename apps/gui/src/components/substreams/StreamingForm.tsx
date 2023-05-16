@@ -1,4 +1,5 @@
-import type { CreateRequestOptions, MapModule } from "@fubhy/substreams";
+import type { MapModule } from "@fubhy/substreams";
+import type { UseSubstreamStartOptions } from "@fubhy/substreams-react";
 import { useForm } from "@tanstack/react-form";
 import { Button, Divider, Flex, TextInput } from "@tremor/react";
 
@@ -7,7 +8,7 @@ export function StreamingForm({
   start,
 }: {
   module: MapModule;
-  start: (options: CreateRequestOptions) => void;
+  start: (options: UseSubstreamStartOptions) => void;
 }) {
   const form = useForm({
     defaultValues: {

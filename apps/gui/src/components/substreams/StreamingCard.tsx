@@ -1,6 +1,6 @@
 import { StreamingForm } from "./StreamingForm.js";
 import type { JsonValue } from "@bufbuild/protobuf";
-import type { Clock, MapModule, Package } from "@fubhy/substreams";
+import { type MapModule, type Package, type State, unpackMapOutput } from "@fubhy/substreams";
 import { useSubstream } from "@fubhy/substreams-react";
 import { JsonViewer } from "@textea/json-viewer";
 import { Badge, Card, Divider, Flex, List, ListItem, Title, Toggle, ToggleItem } from "@tremor/react";
@@ -8,103 +8,54 @@ import { useEffect, useState } from "react";
 import { useThrottle } from "react-use";
 import { create } from "zustand";
 
-type State = {
+type SubstreamState = State & {
   state: "streaming" | "finished" | "error" | "idle";
   messages: JsonValue[];
-  clock: Clock | undefined;
-  cursor: string | undefined;
   error: Error | undefined;
-  progress: {
-    [key: string]: [bigint, bigint][];
-  };
 };
 
-const useStreamData = create<State>(() => ({
+const useStreamData = create<SubstreamState>(() => ({
   state: "idle",
   messages: [],
-  clock: undefined,
-  cursor: undefined,
   error: undefined,
-  progress: {},
+  timestamp: undefined,
+  cursor: undefined,
+  current: 0n,
+  modules: {},
 }));
-
-function merge(ranges: [bigint, bigint][]) {
-  let [previous] = ranges.slice().sort(([a], [b]) => {
-    return a === b ? 0 : a < b ? -1 : 1;
-  });
-
-  if (previous === undefined) {
-    return [];
-  }
-
-  // Ensure we are not modifying the original array.
-  previous = [previous[0], previous[1]];
-  const result = [previous];
-
-  for (const next of ranges) {
-    if (next[0] > previous[1] + 1n) {
-      previous = [next[0], next[1]];
-      result.push(previous);
-      continue;
-    }
-
-    if (next[1] > previous[1]) {
-      previous[1] = next[1];
-    }
-  }
-
-  return result;
-}
 
 export function StreamingCard(options: { endpoint: string; substream: Package; module: MapModule }) {
   const { start, module } = useSubstream({
     ...options,
     handlers: {
-      onData: (data, messages, ctx) => {
-        const current = messages.map((item) =>
-          item.toJson({
-            emitDefaultValues: true,
-            typeRegistry: ctx.registry,
-          }),
-        );
-
-        useStreamData.setState((state) => ({
-          ...state,
-          messages: [...state.messages, ...current].slice(-20),
-          clock: data.clock,
-          cursor: data.cursor,
-        }));
-      },
-      onProgress: (progress, ctx) => {
+      onResponse: (response, ctx) => {
         useStreamData.setState((state) => {
-          for (const module of progress.modules) {
-            const current = state.progress[module.name] || ([] as [bigint, bigint][]);
-            if (module.type.case === "initialState") {
-              const start = ctx.options.startBlockNum ?? ctx.module.initialBlock;
-              const end = module.type.value.availableUpToBlock;
-              const range = [start, end] as [bigint, bigint];
+          const message = unpackMapOutput(response.response, ctx.registry);
+          if (message !== undefined) {
+            const serialized = message.toBinary();
 
-              state.progress[module.name] = merge([...current, range]);
-            } else if (module.type.case === "processedRanges") {
-              const ranges = module.type.value.processedRanges.map(
-                (range) => [range.startBlock, range.endBlock] as [bigint, bigint],
-              );
+            // Ignore empty messages for now.
+            if (serialized.byteLength > 0) {
+              const json = message.toJson({
+                emitDefaultValues: true,
+                typeRegistry: ctx.registry,
+              });
 
-              state.progress[module.name] = merge([...current, ...ranges]);
+              state.messages = [...state.messages, json].slice(-20);
             }
           }
 
-          return state;
-        }, true);
+          return { ...state, ...response.state };
+        });
       },
       onStart: () => {
         useStreamData.setState({
           state: "streaming",
           messages: [],
-          clock: undefined,
+          current: 0n,
           cursor: undefined,
           error: undefined,
-          progress: {},
+          modules: {},
         });
       },
       onFinished: () => {
@@ -140,7 +91,7 @@ export function StreamingCard(options: { endpoint: string; substream: Package; m
 }
 
 function StreamingData() {
-  const [state, setState] = useState<State>(() => useStreamData.getState());
+  const [state, setState] = useState<SubstreamState>(() => useStreamData.getState());
   const [depth, setDepth] = useState(3);
   const debounced = useThrottle(state, 100);
 
@@ -148,18 +99,17 @@ function StreamingData() {
     const unsubscribe = useStreamData.subscribe((state) => setState(state));
     return () => {
       unsubscribe();
+
       useStreamData.setState({
         state: "idle",
         messages: [],
-        clock: undefined,
+        current: 0n,
         cursor: undefined,
         error: undefined,
-        progress: {},
+        modules: {},
       });
     };
   }, []);
-
-  const date = debounced.clock?.timestamp?.toDate();
 
   return (
     <>
@@ -172,30 +122,20 @@ function StreamingData() {
               <span>{debounced.state}</span>
             </ListItem>
           ) : null}
-          {debounced.clock?.number ? (
+          {debounced.current ? (
             <ListItem>
-              <span>Block number</span>
+              <span>Block</span>
               <span>
-                <a href={`https://etherscan.io/block/${debounced.clock.number}`} className="text-indigo-500">
-                  {debounced.clock.number.toString()}
+                <a href={`https://etherscan.io/block/${debounced.current.toString()}`} className="text-indigo-500">
+                  {debounced.current.toString()}
                 </a>
               </span>
             </ListItem>
           ) : null}
-          {debounced.clock?.id ? (
+          {debounced.timestamp ? (
             <ListItem>
-              <span>Block hash</span>
-              <span>
-                <a href={`https://etherscan.io/block/0x${debounced.clock.id}`} className="text-indigo-500">
-                  0x{debounced.clock.id}
-                </a>
-              </span>
-            </ListItem>
-          ) : null}
-          {date ? (
-            <ListItem>
-              <span>Block time</span>
-              <span>{date.toISOString()}</span>
+              <span>Time</span>
+              <span>{debounced.timestamp.toISOString()}</span>
             </ListItem>
           ) : null}
           {debounced.cursor ? (
@@ -222,13 +162,13 @@ function StreamingData() {
           rootName="data"
           value={state.messages.slice(-depth)}
           highlightUpdates={true}
-          defaultInspectDepth={2}
+          defaultInspectDepth={4}
         />
       </Card>
 
       <Card className="mt-6">
         <Title>Module progress</Title>
-        <JsonViewer rootName="progress" value={{ ...state.progress }} highlightUpdates={true} />
+        <JsonViewer rootName="progress" value={{ ...state.modules }} highlightUpdates={true} />
       </Card>
     </>
   );
