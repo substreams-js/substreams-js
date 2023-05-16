@@ -1,5 +1,11 @@
 # @fubhy/substreams
 
+## 0.0.4
+
+### Patch Changes
+
+- [`489217e`](https://github.com/fubhy/substreams-es/commit/489217e6a4ff28b80ba04697200b0cdffb0ae965) Thanks [@fubhy](https://github.com/fubhy)! - Added more utils.
+
 ## 0.0.3
 
 ### Patch Changes
