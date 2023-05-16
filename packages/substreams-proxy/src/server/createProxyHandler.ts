@@ -89,6 +89,7 @@ export function createProxyHandler({
     });
 
     // Abort the substream request when the client disconnects.
+    req.on("close", () => controller.abort());
     req.on("end", () => controller.abort());
 
     return handler(req, res);

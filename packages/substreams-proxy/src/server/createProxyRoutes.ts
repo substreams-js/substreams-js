@@ -19,7 +19,7 @@ export function createProxyRoutes(
   const client = createPromiseClient(Stream, upstream);
 
   return function connectSubstreams(router: ConnectRouter) {
-    router.rpc(ProxyService, ProxyService.methods.proxy, (proxied, context) => {
+    router.rpc(ProxyService, ProxyService.methods.proxy, async function* (proxied, context) {
       if (proxied.package === undefined) {
         throw new ConnectError("Missing package in request", Code.InvalidArgument);
       }
@@ -35,19 +35,13 @@ export function createProxyRoutes(
         modules: proxied.package.modules,
       });
 
-      return {
-        [Symbol.asyncIterator]: async function* () {
-          const opts = typeof options === "function" ? await options(context) : options;
-          const stream = client.blocks(request, opts);
+      const opts = typeof options === "function" ? await options(context) : options;
+      for await (const message of client.blocks(request, opts)) {
+        const originalToJson = message.toJson.bind(message);
+        message.toJson = (options) => originalToJson({ ...options, typeRegistry: registry });
 
-          for await (const message of stream) {
-            const originalToJson = message.toJson.bind(message);
-            message.toJson = (options) => originalToJson({ ...options, typeRegistry: registry });
-
-            yield message;
-          }
-        },
-      };
+        yield message;
+      }
     });
   };
 }
