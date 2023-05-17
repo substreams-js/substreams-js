@@ -35,6 +35,6 @@ const request = createRequest({
 for await (const response of streamBlocks(transport, request)) {
   const output = unpackMapOutput(response.response, registry);
   if (output !== undefined && !isEmptyMessage(output)) {
-    console.dir(output);
+    console.dir(output.toJson({ typeRegistry: registry }));
   }
 }
