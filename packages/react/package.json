@@ -32,8 +32,8 @@
     "!src/**/*.test.ts"
   ],
   "dependencies": {
-    "@bufbuild/connect": "^0.8.3",
-    "@bufbuild/connect-web": "^0.8.6",
+    "@bufbuild/connect": "^0.9.0",
+    "@bufbuild/connect-web": "^0.9.0",
     "@bufbuild/protobuf": "^1.1.0",
     "@substreams/core": "^0.0.1",
     "@substreams/proxy": "^0.0.1",
@@ -42,12 +42,12 @@
   "devDependencies": {
     "@types/react": "^18.2.6",
     "@types/uuid": "^9.0.1",
-    "@vitest/coverage-c8": "^0.31.0",
-    "@vitest/ui": "^0.31.0",
+    "@vitest/coverage-c8": "^0.31.1",
+    "@vitest/ui": "^0.31.1",
     "react": "^18.2.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.7",
-    "vitest": "^0.31.0"
+    "vitest": "^0.31.1"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

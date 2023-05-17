@@ -16,8 +16,8 @@ importers:
         specifier: ^2.26.1
         version: 2.26.1
       rome:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^12.1.1
+        version: 12.1.1
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -25,14 +25,14 @@ importers:
   apps/gui:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/connect-query':
         specifier: ^0.2.1
         version: 0.2.1(@tanstack/react-query@4.29.7)(react-dom@18.2.0)(react@18.2.0)
       '@bufbuild/connect-web':
-        specifier: ^0.8.6
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.2.0
         version: 1.2.0
@@ -53,7 +53,7 @@ importers:
         version: 0.0.5(react-dom@18.2.0)(react@18.2.0)
       '@textea/json-viewer':
         specifier: ^3.0.0
-        version: 3.0.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@mui/material@5.13.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 3.0.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@mui/material@5.13.1)(react-dom@18.2.0)(react@18.2.0)
       '@tremor/react':
         specifier: ^2.6.2
         version: 2.6.2(react-dom@18.2.0)(react@18.2.0)
@@ -78,6 +78,9 @@ importers:
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
+      throttle-debounce:
+        specifier: ^5.0.0
+        version: 5.0.0
       zustand:
         specifier: ^4.3.8
         version: 4.3.8(react@18.2.0)
@@ -88,6 +91,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.4
         version: 18.2.4
+      '@types/throttle-debounce':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@types/web':
         specifier: ^0.0.99
         version: 0.0.99
@@ -99,7 +105,7 @@ importers:
         version: 5.0.4
       vite:
         specifier: ^4.3.7
-        version: 4.3.7(@types/node@20.1.6)
+        version: 4.3.7(@types/node@20.1.7)
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.0.4)(vite@4.3.7)
@@ -107,11 +113,11 @@ importers:
   examples/example-bun:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/connect-web':
-        specifier: ^0.8.6
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
@@ -122,12 +128,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/proxy
     devDependencies:
-      '@bufbuild/buf':
-        specifier: 1.18.0-1
-        version: 1.18.0-1
       '@types/node':
-        specifier: ^20.1.6
-        version: 20.1.6
+        specifier: ^20.1.7
+        version: 20.1.7
       bun:
         specifier: ^0.6.1
         version: 0.6.1
@@ -138,11 +141,11 @@ importers:
   examples/example-node:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/connect-node':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
@@ -150,12 +153,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
     devDependencies:
-      '@bufbuild/buf':
-        specifier: 1.18.0-1
-        version: 1.18.0-1
       '@types/node':
-        specifier: ^20.1.6
-        version: 20.1.6
+        specifier: ^20.1.7
+        version: 20.1.7
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -166,8 +166,8 @@ importers:
   packages/core:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
@@ -176,32 +176,32 @@ importers:
         specifier: 1.18.0-1
         version: 1.18.0-1
       '@types/node':
-        specifier: ^20.1.6
-        version: 20.1.6
+        specifier: ^20.1.7
+        version: 20.1.7
       '@vitest/coverage-c8':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       '@vitest/ui':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
         specifier: ^4.3.7
-        version: 4.3.7(@types/node@20.1.6)
+        version: 4.3.7(@types/node@20.1.7)
       vitest:
-        specifier: ^0.31.0
-        version: 0.31.0(@vitest/ui@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(@vitest/ui@0.31.1)
 
   packages/proxy:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/connect-node':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
@@ -216,17 +216,17 @@ importers:
         specifier: 1.18.0-1
         version: 1.18.0-1
       '@types/node':
-        specifier: ^20.1.6
-        version: 20.1.6
+        specifier: ^20.1.7
+        version: 20.1.7
       '@types/yargs':
         specifier: ^17.0.24
         version: 17.0.24
       '@vitest/coverage-c8':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       '@vitest/ui':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -235,19 +235,19 @@ importers:
         version: 5.0.4
       vite:
         specifier: ^4.3.7
-        version: 4.3.7(@types/node@20.1.6)
+        version: 4.3.7(@types/node@20.1.7)
       vitest:
-        specifier: ^0.31.0
-        version: 0.31.0(@vitest/ui@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(@vitest/ui@0.31.1)
 
   packages/react:
     dependencies:
       '@bufbuild/connect':
-        specifier: ^0.8.3
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/connect-web':
-        specifier: ^0.8.6
-        version: 0.8.6(@bufbuild/protobuf@1.2.0)
+        specifier: ^0.9.0
+        version: 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
@@ -268,11 +268,11 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       '@vitest/coverage-c8':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       '@vitest/ui':
-        specifier: ^0.31.0
-        version: 0.31.0(vitest@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(vitest@0.31.1)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -281,10 +281,10 @@ importers:
         version: 5.0.4
       vite:
         specifier: ^4.3.7
-        version: 4.3.7(@types/node@20.1.6)
+        version: 4.3.7(@types/node@20.1.7)
       vitest:
-        specifier: ^0.31.0
-        version: 0.31.0(@vitest/ui@0.31.0)
+        specifier: ^0.31.1
+        version: 0.31.1(@vitest/ui@0.31.1)
 
 packages:
 
@@ -600,13 +600,13 @@ packages:
       '@bufbuild/buf-win32-x64': 1.18.0-1
     dev: true
 
-  /@bufbuild/connect-node@0.8.6(@bufbuild/protobuf@1.2.0):
-    resolution: {integrity: sha512-KqdLnQG5cTw4rieQdo6aioojY47UjwauhIcDIeQc+6GaeGLsT7Ftc+GWMZgsnEc/Jl5V1/NxBYnE2wN4EJUnGg==}
+  /@bufbuild/connect-node@0.9.0(@bufbuild/protobuf@1.2.0):
+    resolution: {integrity: sha512-16AqFK+6/VMUceRpQPhJLSuFOtGFnynYp+CDoTg5h/36x8K6poUu3EW1N6yQf/s0pA4ks6furZn2l+auKadmzg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@bufbuild/protobuf': ^1.2.0
     dependencies:
-      '@bufbuild/connect': 0.8.6(@bufbuild/protobuf@1.2.0)
+      '@bufbuild/connect': 0.9.0(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf': 1.2.0
       headers-polyfill: 3.1.2
     dev: false
@@ -640,8 +640,25 @@ packages:
       '@bufbuild/protobuf': 1.2.0
     dev: false
 
+  /@bufbuild/connect-web@0.9.0(@bufbuild/protobuf@1.2.0):
+    resolution: {integrity: sha512-WyYWjPRWceUc/1d5n8oA1NcCni2ND6qj8iXd1Hqy6qkCyo2n/FUSSe3oQuoXYZ9KCUI+5qexHz46n2jtzmFDiQ==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.2.0
+    dependencies:
+      '@bufbuild/connect': 0.9.0(@bufbuild/protobuf@1.2.0)
+      '@bufbuild/protobuf': 1.2.0
+    dev: false
+
   /@bufbuild/connect@0.8.6(@bufbuild/protobuf@1.2.0):
     resolution: {integrity: sha512-z9gW4hcQxCz7w0kjt1JyMp7VEQQdm7CYiZHvNq4vZtMbKOje2DC8kSb62XStHHd3AdoDZq1cb1s11F5TMSwZYw==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.2.0
+    dependencies:
+      '@bufbuild/protobuf': 1.2.0
+    dev: false
+
+  /@bufbuild/connect@0.9.0(@bufbuild/protobuf@1.2.0):
+    resolution: {integrity: sha512-UGOapHlbdbXW9Os08plEuR2k3ZwFWni3BnYVSEPITDTjgEqTagbm6lNWurXM53FDPvueSYYTTJF3Rivhp03xbQ==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.2.0
     dependencies:
@@ -1315,8 +1332,8 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@mui/base@5.0.0-beta.0(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ap+juKvt8R8n3cBqd/pGtZydQ4v2I/hgJKnvJRGjpSh3RvsvnDHO4rXov8MHQlH6VqpOekwgilFLGxMZjNTucA==}
+  /@mui/base@5.0.0-beta.1(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-xrkDCeu3JQE+JjJUnJnOrdQJMXwKhbV4AW+FRjMIj5i9cHK3BAuatG/iqbf1M+jklVWLk0KdbgioKwK+03aYbA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
@@ -1329,7 +1346,7 @@ packages:
       '@babel/runtime': 7.21.5
       '@emotion/is-prop-valid': 1.2.1
       '@mui/types': 7.2.4(@types/react@18.2.6)
-      '@mui/utils': 5.12.3(react@18.2.0)
+      '@mui/utils': 5.13.1(react@18.2.0)
       '@popperjs/core': 2.11.7
       '@types/react': 18.2.6
       clsx: 1.2.1
@@ -1339,12 +1356,12 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@mui/core-downloads-tracker@5.13.0:
-    resolution: {integrity: sha512-5nXz2k8Rv2ZjtQY6kXirJVyn2+ODaQuAJmXSJtLDUQDKWp3PFUj6j3bILqR0JGOs9R5ejgwz3crLKsl6GwjwkQ==}
+  /@mui/core-downloads-tracker@5.13.1:
+    resolution: {integrity: sha512-qDHtNDO72NcBQMhaWBt9EZMvNiO+OXjPg5Sdk/6LgRDw6Zr3HdEZ5n2FJ/qtYsaT/okGyCuQavQkcZCOCEVf/g==}
     dev: false
 
-  /@mui/material@5.13.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ckS+9tCpAzpdJdaTF+btF0b6mF9wbXg/EVKtnoAWYi0UKXoXBAVvEUMNpLGA5xdpCdf+A6fPbVUEHs9TsfU+Yw==}
+  /@mui/material@5.13.1(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-qSnbJZer8lIuDYFDv19/t3s0AXYY9SxcOdhCnGvetRSfOG4gy3TkiFXNCdW5OLNveTieiMpOuv46eXUmE3ZA6A==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -1363,11 +1380,11 @@ packages:
       '@babel/runtime': 7.21.5
       '@emotion/react': 11.11.0(@types/react@18.2.6)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.6)(react@18.2.0)
-      '@mui/base': 5.0.0-beta.0(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/core-downloads-tracker': 5.13.0
-      '@mui/system': 5.12.3(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react@18.2.0)
+      '@mui/base': 5.0.0-beta.1(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/core-downloads-tracker': 5.13.1
+      '@mui/system': 5.13.1(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react@18.2.0)
       '@mui/types': 7.2.4(@types/react@18.2.6)
-      '@mui/utils': 5.12.3(react@18.2.0)
+      '@mui/utils': 5.13.1(react@18.2.0)
       '@types/react': 18.2.6
       '@types/react-transition-group': 4.4.6
       clsx: 1.2.1
@@ -1379,8 +1396,8 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /@mui/private-theming@5.12.3(@types/react@18.2.6)(react@18.2.0):
-    resolution: {integrity: sha512-o1e7Z1Bp27n4x2iUHhegV4/Jp6H3T6iBKHJdLivS5GbwsuAE/5l4SnZ+7+K+e5u9TuhwcAKZLkjvqzkDe8zqfA==}
+  /@mui/private-theming@5.13.1(@types/react@18.2.6)(react@18.2.0):
+    resolution: {integrity: sha512-HW4npLUD9BAkVppOUZHeO1FOKUJWAwbpy0VQoGe3McUYTlck1HezGHQCfBQ5S/Nszi7EViqiimECVl9xi+/WjQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
@@ -1390,7 +1407,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.21.5
-      '@mui/utils': 5.12.3(react@18.2.0)
+      '@mui/utils': 5.13.1(react@18.2.0)
       '@types/react': 18.2.6
       prop-types: 15.8.1
       react: 18.2.0
@@ -1418,8 +1435,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@mui/system@5.12.3(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react@18.2.0):
-    resolution: {integrity: sha512-JB/6sypHqeJCqwldWeQ1MKkijH829EcZAKKizxbU2MJdxGG5KSwZvTBa5D9qiJUA1hJFYYupjiuy9ZdJt6rV6w==}
+  /@mui/system@5.13.1(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react@18.2.0):
+    resolution: {integrity: sha512-BsDUjhiO6ZVAvzKhnWBHLZ5AtPJcdT+62VjnRLyA4isboqDKLg4fmYIZXq51yndg/soDK9RkY5lYZwEDku13Ow==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -1437,10 +1454,10 @@ packages:
       '@babel/runtime': 7.21.5
       '@emotion/react': 11.11.0(@types/react@18.2.6)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.6)(react@18.2.0)
-      '@mui/private-theming': 5.12.3(@types/react@18.2.6)(react@18.2.0)
+      '@mui/private-theming': 5.13.1(@types/react@18.2.6)(react@18.2.0)
       '@mui/styled-engine': 5.12.3(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(react@18.2.0)
       '@mui/types': 7.2.4(@types/react@18.2.6)
-      '@mui/utils': 5.12.3(react@18.2.0)
+      '@mui/utils': 5.13.1(react@18.2.0)
       '@types/react': 18.2.6
       clsx: 1.2.1
       csstype: 3.1.2
@@ -1459,15 +1476,15 @@ packages:
       '@types/react': 18.2.6
     dev: false
 
-  /@mui/utils@5.12.3(react@18.2.0):
-    resolution: {integrity: sha512-D/Z4Ub3MRl7HiUccid7sQYclTr24TqUAQFFlxHQF8FR177BrCTQ0JJZom7EqYjZCdXhwnSkOj2ph685MSKNtIA==}
+  /@mui/utils@5.13.1(react@18.2.0):
+    resolution: {integrity: sha512-6lXdWwmlUbEU2jUI8blw38Kt+3ly7xkmV9ljzY4Q20WhsJMWiNry9CX8M+TaP/HbtuyR8XKsdMgQW7h7MM3n3A==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.21.5
       '@types/prop-types': 15.7.5
-      '@types/react-is': 17.0.4
+      '@types/react-is': 18.2.0
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
@@ -1547,48 +1564,48 @@ packages:
     resolution: {integrity: sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==}
     dev: false
 
-  /@rometools/cli-darwin-arm64@12.1.0:
-    resolution: {integrity: sha512-U9trIXqE+WVsPUQRE8vooh97jNcyC1cvhNO91Q31FfWgccfbiJbfiQzPewpQ1+UseyJIdpWFAYLs8VFykhAl3g==}
+  /@rometools/cli-darwin-arm64@12.1.1:
+    resolution: {integrity: sha512-9ohLIjRnZtgvgBizhZPHzJ3hXR+cTI1v9TmBO7hgUyScnyMrmqr3G3INl4FVFdyjgOWf8y6IT9mvkbCOvHNncQ==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-darwin-x64@12.1.0:
-    resolution: {integrity: sha512-ePyRJwprT+POsGue1gdqPYOHojXfDz/OJI18renU0NI2CHeeeMhnquu+MZJaiBGyBd1ezIgWZWiQ4DhLFOaCUg==}
+  /@rometools/cli-darwin-x64@12.1.1:
+    resolution: {integrity: sha512-5H7vWFofuU5qLxgzIaSCHVpc5mcXfs0HCluXhoX9yxeVVxnMEJkwFT6RrXzpud9j82BHiDOFaQmrNUeT1fc+KQ==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-linux-arm64@12.1.0:
-    resolution: {integrity: sha512-j/pF6pF+lKihw7CIvwQZqQG9gpaUy2FyO9+nu5dvCChblXNEaA2zMnpLnDlCue0B7xY0jZkk1EZdF49ztEZZFA==}
+  /@rometools/cli-linux-arm64@12.1.1:
+    resolution: {integrity: sha512-jKJeT6SI1d9bkAlMOYl3dQtzvTi98dsJAzEM91SVXLl5Onjk55Z9QG9f1E4nbS76LK4eZaNMcKqs7F2hSyVedQ==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-linux-x64@12.1.0:
-    resolution: {integrity: sha512-zh6tW0JumP/rQkFDdsg6FEDBv0ZPvPLFirfHqzJA8VDNRBHkOTq27oVCbTJIGyUCGm9VvIzG8sJFVKkYpxkl2g==}
+  /@rometools/cli-linux-x64@12.1.1:
+    resolution: {integrity: sha512-CsLjZYtLQdKoMcroXXKUmZdyFQfgVl7C8oIIDcJNzmHZKdVwRhI1M+nK/0vpiFtVjCt6j+Cw2gDYkoQSihTt0w==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-win32-arm64@12.1.0:
-    resolution: {integrity: sha512-ggug6gUWFnO2QK0KC5XsYRhuZ22jeLksebdHMnkaHzZBtxXnKMC7yXnYwU/Lg2fGAwmMsluIbaqFYgen4+c8RA==}
+  /@rometools/cli-win32-arm64@12.1.1:
+    resolution: {integrity: sha512-HHaBZNTIup5xEZRwgAdH15oMBQVnVWG54BizqGJn4oR6zlXkf8S012MNOfgVdEIWW+KDhyfX6vxAH/SBf1Yp1w==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-win32-x64@12.1.0:
-    resolution: {integrity: sha512-TnurdnlzBwcvRSsgmNz9Gorffnjr5cS8TdHo9w+3pT4GdSsrLZqvd1IV2tj4uRKkNn6OJtSqW3tZ5SiTrf0LuA==}
+  /@rometools/cli-win32-x64@12.1.1:
+    resolution: {integrity: sha512-yPQPEvaBp/uCulnwl5d5xOxWsb/DtccmBPGg5A8TOm0Lfcts4zSUgEaq3yZ9vwXw1KepMS5NHnZ+zuDjzdtV/Q==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
@@ -1659,7 +1676,7 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /@textea/json-viewer@3.0.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@mui/material@5.13.0)(react-dom@18.2.0)(react@18.2.0):
+  /@textea/json-viewer@3.0.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@mui/material@5.13.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-rO/JdEcr4dfki0B+nZNAcEMCVCAjLfi0tGgZhm1/33Md5dlVbQAtxaR4rFU5W+tHom9tBBnsTT7d7T1JHkmjAg==}
     peerDependencies:
       '@emotion/react': ^11
@@ -1670,7 +1687,7 @@ packages:
     dependencies:
       '@emotion/react': 11.11.0(@types/react@18.2.6)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.6)(react@18.2.0)
-      '@mui/material': 5.13.0(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/material': 5.13.1(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
       clsx: 1.2.1
       copy-to-clipboard: 3.3.3
       react: 18.2.0
@@ -1771,8 +1788,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.1.6:
-    resolution: {integrity: sha512-9e//ooaqu7Om75fPaDW8ypEVaF6S2cbkm1enGx0PCqeQsBZ6qL4Id7jZl3GcL7Z/85bE5mi3QtwBgtMlcXV3Kg==}
+  /@types/node@20.1.7:
+    resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -1792,24 +1809,16 @@ packages:
       '@types/react': 18.2.6
     dev: true
 
-  /@types/react-is@17.0.4:
-    resolution: {integrity: sha512-FLzd0K9pnaEvKz4D1vYxK9JmgQPiGk1lu23o1kqGsLeT0iPbRSF7b76+S5T9fD8aRa0B8bY7I/3DebEj+1ysBA==}
+  /@types/react-is@18.2.0:
+    resolution: {integrity: sha512-1vz2yObaQkLL7YFe/pme2cpvDsCwI1WXIfL+5eLz0MI9gFG24Re16RzUsI8t9XZn9ZWvgLNDrJBmrqXJO7GNQQ==}
     dependencies:
-      '@types/react': 17.0.59
+      '@types/react': 18.2.6
     dev: false
 
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
     dependencies:
       '@types/react': 18.2.6
-    dev: false
-
-  /@types/react@17.0.59:
-    resolution: {integrity: sha512-gSON5zWYIGyoBcycCE75E9+r6dCC2dHdsrVkOEiIYNU5+Q28HcBAuqvDuxHcCbMfHBHdeT5Tva/AFn3rnMKE4g==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.3
-      csstype: 3.1.2
     dev: false
 
   /@types/react@18.2.6:
@@ -1824,6 +1833,10 @@ packages:
 
   /@types/semver@6.2.3:
     resolution: {integrity: sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==}
+    dev: true
+
+  /@types/throttle-debounce@5.0.0:
+    resolution: {integrity: sha512-Pb7k35iCGFcGPECoNE4DYp3Oyf2xcTd3FbFQxXUI9hEYKUl6YX+KLf7HrBmgVcD05nl50LIH6i+80js4iYmWbw==}
     dev: true
 
   /@types/uuid@9.0.1:
@@ -1862,13 +1875,13 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.21.5)
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.5)
       react-refresh: 0.14.0
-      vite: 4.3.7(@types/node@20.1.6)
+      vite: 4.3.7(@types/node@20.1.7)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitest/coverage-c8@0.31.0(vitest@0.31.0):
-    resolution: {integrity: sha512-h72qN1D962AO7UefQVulm9JFP5ACS7OfhCdBHioXU8f7ohH/+NTZCgAqmgcfRNHHO/8wLFxx+93YVxhodkEJVA==}
+  /@vitest/coverage-c8@0.31.1(vitest@0.31.1):
+    resolution: {integrity: sha512-6TkjQpmgYez7e3dbAUoYdRXxWN81BojCmUILJwgCy39uZFG33DsQ0rSRSZC9beAEdCZTpxR63nOvd9hxDQcJ0g==}
     peerDependencies:
       vitest: '>=0.30.0 <1'
     dependencies:
@@ -1877,57 +1890,57 @@ packages:
       magic-string: 0.30.0
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.31.0(@vitest/ui@0.31.0)
+      vitest: 0.31.1(@vitest/ui@0.31.1)
     dev: true
 
-  /@vitest/expect@0.31.0:
-    resolution: {integrity: sha512-Jlm8ZTyp6vMY9iz9Ny9a0BHnCG4fqBa8neCF6Pk/c/6vkUk49Ls6UBlgGAU82QnzzoaUs9E/mUhq/eq9uMOv/g==}
+  /@vitest/expect@0.31.1:
+    resolution: {integrity: sha512-BV1LyNvhnX+eNYzJxlHIGPWZpwJFZaCcOIzp2CNG0P+bbetenTupk6EO0LANm4QFt0TTit+yqx7Rxd1qxi/SQA==}
     dependencies:
-      '@vitest/spy': 0.31.0
-      '@vitest/utils': 0.31.0
+      '@vitest/spy': 0.31.1
+      '@vitest/utils': 0.31.1
       chai: 4.3.7
     dev: true
 
-  /@vitest/runner@0.31.0:
-    resolution: {integrity: sha512-H1OE+Ly7JFeBwnpHTrKyCNm/oZgr+16N4qIlzzqSG/YRQDATBYmJb/KUn3GrZaiQQyL7GwpNHVZxSQd6juLCgw==}
+  /@vitest/runner@0.31.1:
+    resolution: {integrity: sha512-imWuc82ngOtxdCUpXwtEzZIuc1KMr+VlQ3Ondph45VhWoQWit5yvG/fFcldbnCi8DUuFi+NmNx5ehMUw/cGLUw==}
     dependencies:
-      '@vitest/utils': 0.31.0
+      '@vitest/utils': 0.31.1
       concordance: 5.0.4
       p-limit: 4.0.0
       pathe: 1.1.0
     dev: true
 
-  /@vitest/snapshot@0.31.0:
-    resolution: {integrity: sha512-5dTXhbHnyUMTMOujZPB0wjFjQ6q5x9c8TvAsSPUNKjp1tVU7i9pbqcKPqntyu2oXtmVxKbuHCqrOd+Ft60r4tg==}
+  /@vitest/snapshot@0.31.1:
+    resolution: {integrity: sha512-L3w5uU9bMe6asrNzJ8WZzN+jUTX4KSgCinEJPXyny0o90fG4FPQMV0OWsq7vrCWfQlAilMjDnOF9nP8lidsJ+g==}
     dependencies:
       magic-string: 0.30.0
       pathe: 1.1.0
       pretty-format: 27.5.1
     dev: true
 
-  /@vitest/spy@0.31.0:
-    resolution: {integrity: sha512-IzCEQ85RN26GqjQNkYahgVLLkULOxOm5H/t364LG0JYb3Apg0PsYCHLBYGA006+SVRMWhQvHlBBCyuByAMFmkg==}
+  /@vitest/spy@0.31.1:
+    resolution: {integrity: sha512-1cTpt2m9mdo3hRLDyCG2hDQvRrePTDgEJBFQQNz1ydHHZy03EiA6EpFxY+7ODaY7vMRCie+WlFZBZ0/dQWyssQ==}
     dependencies:
       tinyspy: 2.1.0
     dev: true
 
-  /@vitest/ui@0.31.0(vitest@0.31.0):
-    resolution: {integrity: sha512-Dy86l6r3/dbJposgm7w+oqb/15UWJ0lDBbEQaS1ived3+0CTaMbT8OMkUf9vNBkSL47kvBHEBnZLa5fw5i9gUQ==}
+  /@vitest/ui@0.31.1(vitest@0.31.1):
+    resolution: {integrity: sha512-+JJ2+rvRPAVxFLNE+WJOMzOjxqYPn7V2hl00uNwid6kquD+UHTa716Z7szfNeZMLnHOHv+fxq1UgLCymvVpE5w==}
     peerDependencies:
       vitest: '>=0.30.1 <1'
     dependencies:
-      '@vitest/utils': 0.31.0
+      '@vitest/utils': 0.31.1
       fast-glob: 3.2.12
       fflate: 0.7.4
       flatted: 3.2.7
       pathe: 1.1.0
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.31.0(@vitest/ui@0.31.0)
+      vitest: 0.31.1(@vitest/ui@0.31.1)
     dev: true
 
-  /@vitest/utils@0.31.0:
-    resolution: {integrity: sha512-kahaRyLX7GS1urekRXN2752X4gIgOGVX4Wo8eDUGUkTWlGpXzf5ZS6N9RUUS+Re3XEE8nVGqNyxkSxF5HXlGhQ==}
+  /@vitest/utils@0.31.1:
+    resolution: {integrity: sha512-yFyRD5ilwojsZfo3E0BnH72pSVSuLg2356cN1tCEe/0RtDzxTPYwOomIC+eQbot7m6DRy4tPZw+09mB7NkbMmA==}
     dependencies:
       concordance: 5.0.4
       loupe: 2.3.6
@@ -4207,18 +4220,18 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rome@12.1.0:
-    resolution: {integrity: sha512-inIBYc2/Das6LDXcw8IQp7yeXth6Rhmj9y8sS/Y/0g5/29Lyzr785SjCmKyiN2No4MNsaP3YJNm2QZAs2UpR2w==}
+  /rome@12.1.1:
+    resolution: {integrity: sha512-pUUAf8KHHzzxYCXja80wIlPNvHeU2TEFmxapKOXLfYr4C5XmAjGj3ial4cJOk1JzBGZmd8fgBU3y/mxP3XqiYA==}
     engines: {node: '>=14.*'}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      '@rometools/cli-darwin-arm64': 12.1.0
-      '@rometools/cli-darwin-x64': 12.1.0
-      '@rometools/cli-linux-arm64': 12.1.0
-      '@rometools/cli-linux-x64': 12.1.0
-      '@rometools/cli-win32-arm64': 12.1.0
-      '@rometools/cli-win32-x64': 12.1.0
+      '@rometools/cli-darwin-arm64': 12.1.1
+      '@rometools/cli-darwin-x64': 12.1.1
+      '@rometools/cli-linux-arm64': 12.1.1
+      '@rometools/cli-linux-x64': 12.1.1
+      '@rometools/cli-win32-arm64': 12.1.1
+      '@rometools/cli-win32-x64': 12.1.1
     dev: true
 
   /rtl-css-js@1.16.1:
@@ -4623,6 +4636,11 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /throttle-debounce@5.0.0:
+    resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
+    engines: {node: '>=12.22'}
+    dev: false
+
   /time-zone@1.0.0:
     resolution: {integrity: sha512-TIsDdtKo6+XrPtiTm1ssmMngN1sAhyKnTO2kunQWqNPWIVvCm15Wmw4SWInwTVgJ5u/Tr04+8Ei9TNcw4x4ONA==}
     engines: {node: '>=4'}
@@ -4847,8 +4865,8 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
-  /vite-node@0.31.0(@types/node@20.1.6):
-    resolution: {integrity: sha512-8x1x1LNuPvE2vIvkSB7c1mApX5oqlgsxzHQesYF7l5n1gKrEmrClIiZuOFbFDQcjLsmcWSwwmrWrcGWm9Fxc/g==}
+  /vite-node@0.31.1(@types/node@20.1.7):
+    resolution: {integrity: sha512-BajE/IsNQ6JyizPzu9zRgHrBwczkAs0erQf/JRpgTIESpKvNj9/Gd0vxX905klLkb0I0SJVCKbdrl5c6FnqYKA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     dependencies:
@@ -4857,7 +4875,7 @@ packages:
       mlly: 1.2.1
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.3.7(@types/node@20.1.6)
+      vite: 4.3.7(@types/node@20.1.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4879,13 +4897,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@5.0.4)
-      vite: 4.3.7(@types/node@20.1.6)
+      vite: 4.3.7(@types/node@20.1.7)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.3.7(@types/node@20.1.6):
+  /vite@4.3.7(@types/node@20.1.7):
     resolution: {integrity: sha512-MTIFpbIm9v7Hh5b0wSBgkcWzSBz7SAa6K/cBTwS4kUiQJfQLFlZZRJRQgqunCVzhTPCk674tW+0Qaqh3Q00dBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4910,7 +4928,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.1.6
+      '@types/node': 20.1.7
       esbuild: 0.17.19
       postcss: 8.4.23
       rollup: 3.21.8
@@ -4918,8 +4936,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.31.0(@vitest/ui@0.31.0):
-    resolution: {integrity: sha512-JwWJS9p3GU9GxkG7eBSmr4Q4x4bvVBSswaCFf1PBNHiPx00obfhHRJfgHcnI0ffn+NMlIh9QGvG75FlaIBdKGA==}
+  /vitest@0.31.1(@vitest/ui@0.31.1):
+    resolution: {integrity: sha512-/dOoOgzoFk/5pTvg1E65WVaobknWREN15+HF+0ucudo3dDG/vCZoXTQrjIfEaWvQXmqScwkRodrTbM/ScMpRcQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     peerDependencies:
@@ -4951,13 +4969,13 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.1.6
-      '@vitest/expect': 0.31.0
-      '@vitest/runner': 0.31.0
-      '@vitest/snapshot': 0.31.0
-      '@vitest/spy': 0.31.0
-      '@vitest/ui': 0.31.0(vitest@0.31.0)
-      '@vitest/utils': 0.31.0
+      '@types/node': 20.1.7
+      '@vitest/expect': 0.31.1
+      '@vitest/runner': 0.31.1
+      '@vitest/snapshot': 0.31.1
+      '@vitest/spy': 0.31.1
+      '@vitest/ui': 0.31.1(vitest@0.31.1)
+      '@vitest/utils': 0.31.1
       acorn: 8.8.2
       acorn-walk: 8.2.0
       cac: 6.7.14
@@ -4972,8 +4990,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.5.0
-      vite: 4.3.7(@types/node@20.1.6)
-      vite-node: 0.31.0(@types/node@20.1.6)
+      vite: 4.3.7(@types/node@20.1.7)
+      vite-node: 0.31.1(@types/node@20.1.7)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

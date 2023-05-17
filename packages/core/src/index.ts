@@ -22,3 +22,4 @@ export { isStoreModule, type StoreModule } from "./utils/isStoreModule.js";
 export { createStateTracker, type State, type ModuleState } from "./utils/createStateTracker.js";
 export { streamBlocks, type StatefulResponse } from "./utils/streamBlocks.js";
 export { unpackMapOutput } from "./utils/unpackMapOutput.js";
+export { mergeProgressRanges, mergeSortedProgressRanges, type ProgressRange } from "./utils/mergeProgressRanges.js";

@@ -17,7 +17,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
-    "rome": "^12.1.0",
+    "rome": "^12.1.1",
     "typescript": "^5.0.4"
   },
   "pnpm": {
@@ -27,7 +27,9 @@
       "@substreams/react": "workspace:*"
     },
     "peerDependencyRules": {
-      "ignoreMissing": ["prop-types"]
+      "ignoreMissing": [
+        "prop-types"
+      ]
     }
   }
 }

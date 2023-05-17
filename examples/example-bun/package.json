@@ -8,14 +8,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.8.3",
-    "@bufbuild/connect-web": "^0.8.6",
+    "@bufbuild/connect": "^0.9.0",
+    "@bufbuild/connect-web": "^0.9.0",
     "@bufbuild/protobuf": "^1.1.0",
     "@substreams/core": "^0.0.1",
     "@substreams/proxy": "^0.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.1.6",
+    "@types/node": "^20.1.7",
     "bun": "^0.6.1",
     "typescript": "^5.0.4"
   }
