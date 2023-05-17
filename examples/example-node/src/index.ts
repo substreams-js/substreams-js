@@ -1,7 +1,14 @@
 import { fetchSubstream } from "./fetch.js";
 import { token } from "./token.js";
 import { createGrpcTransport } from "@bufbuild/connect-node";
-import { createAuthInterceptor, createRegistry, createRequest, streamBlocks, unpackMapOutput } from "@substreams/core";
+import {
+  createAuthInterceptor,
+  createRegistry,
+  createRequest,
+  isEmptyMessage,
+  streamBlocks,
+  unpackMapOutput,
+} from "@substreams/core";
 
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";
 const MODULE = "map_pools_created";
@@ -25,9 +32,9 @@ const request = createRequest({
   stopBlockNum: 17260000n,
 });
 
-for await (const item of streamBlocks(transport, request)) {
-  const message = unpackMapOutput(item.response, registry);
-  if (message !== undefined) {
-    console.dir(message);
+for await (const response of streamBlocks(transport, request)) {
+  const output = unpackMapOutput(response.response, registry);
+  if (output !== undefined && !isEmptyMessage(output)) {
+    console.dir(output);
   }
 }
