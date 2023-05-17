@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "codegen": "rm -rf src/proto && buf generate https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg#format=bin --exclude-path=google,sf,entity",
     "start": "tsx src/index.ts",
     "typecheck": "tsc --noEmit"
   },
@@ -15,7 +14,6 @@
     "@substreams/core": "^0.0.1"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.18.0-1",
     "@types/node": "^20.1.6",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
