@@ -1,6 +1,6 @@
 {
   "name": "@substreams/proxy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
@@ -69,7 +69,7 @@
     "@bufbuild/connect": "^0.9.0",
     "@bufbuild/connect-node": "^0.9.0",
     "@bufbuild/protobuf": "^1.1.0",
-    "@substreams/core": "^0.0.1",
+    "@substreams/core": "^0.1.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
