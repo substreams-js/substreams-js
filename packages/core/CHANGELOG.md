@@ -1,5 +1,15 @@
 # @substreams/core
 
+## 0.1.0
+
+### Minor Changes
+
+- [`14120f8`](https://github.com/substreams-js/substreams-js/commit/14120f8713875b653935cc66252344ec527b5c2f) Thanks [@fubhy](https://github.com/fubhy)! - Bumping versions.
+
+### Patch Changes
+
+- [`a904936`](https://github.com/substreams-js/substreams-js/commit/a90493699f4bab875f86aed3a1dd4c28e6710959) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies and fixed export mappings.
+
 ## 0.0.1
 
 ### Patch Changes
