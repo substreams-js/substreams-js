@@ -1,5 +1,13 @@
 # @substreams/core
 
+## 0.1.2
+
+### Patch Changes
+
+- [`d3a3c3d`](https://github.com/substreams-js/substreams-js/commit/d3a3c3d541412ffc45b4c61ea08dfec3b3612d6f) Thanks [@fubhy](https://github.com/fubhy)! - Allow `stopBlockNum` to be omitted.
+
+- [`167a995`](https://github.com/substreams-js/substreams-js/commit/167a995e9c51b78762e1c79d49399d6c91a84391) Thanks [@fubhy](https://github.com/fubhy)! - Added module hashing.
+
 ## 0.1.1
 
 ### Patch Changes

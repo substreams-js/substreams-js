@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
     "clean": "rm -rf dist",
