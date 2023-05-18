@@ -39,14 +39,14 @@ export type CreateRequestOptions = {
    *
    * Relative offsets are only supported if the given start block number is a positive integer.
    */
-  stopBlockNum: number | bigint | `+${number}` | `+${bigint}`;
+  stopBlockNum?: number | bigint | `+${number}` | `+${bigint}` | undefined;
 };
 
 export function createRequest({
   substreamPackage,
   outputModule,
   startBlockNum,
-  stopBlockNum,
+  stopBlockNum = 0n,
   productionMode,
   startCursor,
   finalBlocksOnly,
