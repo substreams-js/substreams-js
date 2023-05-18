@@ -40,9 +40,8 @@ export type CreateRequestOptions = {
    * Relative offsets are only supported if the given start block number is a positive integer.
    */
   stopBlockNum?: number | bigint | `+${number}` | `+${bigint}` | undefined;
-
   /**
-   * Available only in developer mode
+   * Available only in developer mode.
    */
   debugInitialStoreSnapshotForModules?: string[] | undefined;
 };
@@ -57,6 +56,10 @@ export function createRequest({
   finalBlocksOnly,
   debugInitialStoreSnapshotForModules,
 }: CreateRequestOptions) {
+  if (substreamPackage.modules === undefined) {
+    throw new Error("Substream package does not contain any modules.");
+  }
+
   const resolvedOutputModule = resolveOutputModule(substreamPackage, outputModule);
   const resolvedStartBlockNum = resolveStartBlockNum(resolvedOutputModule, startBlockNum);
   const resolvedStopBlockNum = resolveStopBlockNum(resolvedStartBlockNum, stopBlockNum);
@@ -74,7 +77,15 @@ export function createRequest({
 }
 
 export function resolveOutputModule(substreamPackage: Package, outputModule: Module | string) {
-  return typeof outputModule === "string" ? getModuleOrThrow(substreamPackage, outputModule) : outputModule;
+  if (typeof outputModule === "string") {
+    if (substreamPackage.modules === undefined) {
+      throw new Error("Substream package does not contain any modules.");
+    }
+
+    return getModuleOrThrow(substreamPackage.modules, outputModule);
+  }
+
+  return outputModule;
 }
 
 export function resolveStartBlockNum(

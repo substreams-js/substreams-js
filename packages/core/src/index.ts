@@ -16,7 +16,6 @@ export { getModules, type GetModulesReturnType, type ModuleKind, type ModuleKind
 export { getOutputType } from "./utils/getOutputType.js";
 export { getProtoType, getProtoTypeOrThrow } from "./utils/getProtoType.js";
 export { getProtoTypeName } from "./utils/getProtoTypeName.js";
-export { hasModule, type PackageWithModules } from "./utils/hasModule.js";
 export { isMapModule, type MapModule } from "./utils/isMapModule.js";
 export { isStoreModule, type StoreModule } from "./utils/isStoreModule.js";
 export { createStateTracker, type State, type ModuleState } from "./utils/createStateTracker.js";
@@ -26,4 +25,4 @@ export { isEmptyMessage } from "./utils/isEmptyMessage.js";
 export { mergeProgressRanges, mergeSortedProgressRanges, type ProgressRange } from "./utils/mergeProgressRanges.js";
 export { fetchSubstream } from "./utils/fetchSubstream.js";
 export { authIssue, parseAuthorization } from "./auth/authIssue.js";
-export { createModuleHash, createBinaryHash } from "./utils/createModuleHash.js";
+export { createModuleHash, createBinaryHash, hashModule } from "./utils/createModuleHash.js";
