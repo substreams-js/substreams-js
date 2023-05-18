@@ -26,3 +26,4 @@ export { isEmptyMessage } from "./utils/isEmptyMessage.js";
 export { mergeProgressRanges, mergeSortedProgressRanges, type ProgressRange } from "./utils/mergeProgressRanges.js";
 export { fetchSubstream } from "./utils/fetchSubstream.js";
 export { authIssue, parseAuthorization } from "./auth/authIssue.js";
+export { createModuleHash, createBinaryHash } from "./utils/createModuleHash.js";
