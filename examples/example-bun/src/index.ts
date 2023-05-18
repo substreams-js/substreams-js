@@ -22,7 +22,7 @@ const request = createRequest({
   outputModule: MODULE,
   productionMode: false,
   startBlockNum: 17255000n,
-  stopBlockNum: 17260000n,
+  stopBlockNum: "+10000",
 });
 
 for await (const response of streamBlocks(transport, request)) {
