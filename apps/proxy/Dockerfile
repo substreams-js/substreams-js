@@ -2,7 +2,7 @@
 
 ARG VERSION=0.0.1
 
-FROM node:18-alpine3.17 AS base
+FROM node:20-alpine3.17 AS base
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@8.3.1 --activate

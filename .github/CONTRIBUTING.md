@@ -26,7 +26,7 @@ gh repo clone substreams-js/substreams-js
 
 ## Installing Node.js and pnpm
 
-This project uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple projects. You need to install **Node.js v18 or higher** and **pnpm v7 or higher**.
+This project uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple projects. You need to install **Node.js v20 or higher** and **pnpm v8 or higher**.
 
 You can run the following commands in your terminal to check your local Node.js and pnpm versions:
 
