@@ -40,6 +40,11 @@ export type CreateRequestOptions = {
    * Relative offsets are only supported if the given start block number is a positive integer.
    */
   stopBlockNum?: number | bigint | `+${number}` | `+${bigint}` | undefined;
+
+  /**
+   * Available only in developer mode
+   */
+  debugInitialStoreSnapshotForModules?: string[] | undefined;
 };
 
 export function createRequest({
@@ -50,6 +55,7 @@ export function createRequest({
   productionMode,
   startCursor,
   finalBlocksOnly,
+  debugInitialStoreSnapshotForModules,
 }: CreateRequestOptions) {
   const resolvedOutputModule = resolveOutputModule(substreamPackage, outputModule);
   const resolvedStartBlockNum = resolveStartBlockNum(resolvedOutputModule, startBlockNum);
@@ -61,6 +67,7 @@ export function createRequest({
     outputModule: resolvedOutputModule.name,
     productionMode: productionMode ?? false,
     finalBlocksOnly: finalBlocksOnly ?? false,
+    debugInitialStoreSnapshotForModules: debugInitialStoreSnapshotForModules ?? [],
     ...(substreamPackage.modules !== undefined ? { modules: substreamPackage.modules } : undefined),
     ...(startCursor !== undefined ? { startCursor } : undefined),
   });
