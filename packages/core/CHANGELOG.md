@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.1
+
+### Patch Changes
+
+- [`c7bf4eb`](https://github.com/substreams-js/substreams-js/commit/c7bf4eb23385e04cc7265c42d00b2b261244d60c) Thanks [@fubhy](https://github.com/fubhy)! - Added support for relative stop block number.
+
 ## 0.1.0
 
 ### Minor Changes
