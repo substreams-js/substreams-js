@@ -9,7 +9,7 @@ export async function authIssue(apiKey: string, url = DEFAULT_AUTH) {
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ apiKey }),
+    body: JSON.stringify({ api_key: apiKey }),
   });
   return response.json() as Promise<Token>;
 }
