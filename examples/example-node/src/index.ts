@@ -1,10 +1,10 @@
-import { fetchSubstream } from "./fetch.js";
 import { token } from "./token.js";
 import { createGrpcTransport } from "@bufbuild/connect-node";
 import {
   createAuthInterceptor,
   createRegistry,
   createRequest,
+  fetchSubstream,
   isEmptyMessage,
   streamBlocks,
   unpackMapOutput,

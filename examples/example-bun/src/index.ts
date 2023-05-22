@@ -1,7 +1,12 @@
-import { fetchSubstream } from "./fetch.js";
 import { token } from "./token.js";
 import { createConnectTransport } from "@bufbuild/connect-web";
-import { createAuthInterceptor, createRegistry, isEmptyMessage, unpackMapOutput } from "@substreams/core";
+import {
+  createAuthInterceptor,
+  createRegistry,
+  fetchSubstream,
+  isEmptyMessage,
+  unpackMapOutput,
+} from "@substreams/core";
 import { createRequest, streamBlocks } from "@substreams/proxy/client";
 
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";

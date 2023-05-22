@@ -2,5 +2,8 @@
   "extends": "./tsconfig.build.json",
   "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": [],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "noEmit": true
+  }
 }

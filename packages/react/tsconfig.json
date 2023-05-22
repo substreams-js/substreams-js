@@ -4,6 +4,7 @@
   "exclude": [],
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@substreams/core": ["../core/src/index.js"],

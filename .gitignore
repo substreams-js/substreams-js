@@ -19,10 +19,14 @@
 # Ignore various outputs
 dist/
 build/
+out/
 coverage/
 
 # Ignore dependencies
 node_modules/
 
-# Vercel
+# Ignore vercel
 .vercel
+
+# Ignore example output
+examples/example-sea/example
