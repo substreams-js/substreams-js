@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-ARG VERSION=0.0.1
+ARG VERSION=0.1.1
 
 FROM node:20-alpine3.17 AS base
 WORKDIR /app
