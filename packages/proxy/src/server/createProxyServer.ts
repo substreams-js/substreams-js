@@ -3,7 +3,7 @@ import { createGrpcTransport } from "@bufbuild/connect-node";
 import { createAuthInterceptor } from "@substreams/core";
 import { IncomingMessage, type OutgoingHttpHeaders, createServer } from "node:http";
 
-export const defaultSubstreamsEndpoint = "https://api.streamingfast.io";
+export const defaultSubstreamsEndpoint = "https://mainnet.eth.streamingfast.io";
 
 export type ProxyServerOptions = {
   substreamsToken?: string | undefined;
