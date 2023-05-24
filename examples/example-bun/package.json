@@ -15,8 +15,8 @@
     "@substreams/proxy": "^0.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.1.7",
-    "bun": "^0.6.1",
+    "@types/node": "^20.2.3",
+    "bun": "^0.6.3",
     "typescript": "^5.0.4"
   }
 }
