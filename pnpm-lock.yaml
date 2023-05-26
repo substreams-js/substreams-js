@@ -202,6 +202,9 @@ importers:
       '@bufbuild/protobuf':
         specifier: ^1.1.0
         version: 1.2.0
+      pako:
+        specifier: ^2.1.0
+        version: 2.1.0
     devDependencies:
       '@bufbuild/buf':
         specifier: 1.19.0-1
@@ -209,6 +212,9 @@ importers:
       '@types/node':
         specifier: ^20.2.3
         version: 20.2.3
+      '@types/pako':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@vitest/coverage-c8':
         specifier: ^0.31.1
         version: 0.31.1(vitest@0.31.1)
@@ -1845,6 +1851,10 @@ packages:
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/pako@2.0.0:
+    resolution: {integrity: sha512-10+iaz93qR5WYxTo+PMifD5TSxiOtdRaxBf7INGGXMQgTCu8Z/7GYWYFUOS3q/G0nE5boj1r4FEB+WSy7s5gbA==}
     dev: true
 
   /@types/parse-json@4.0.0:
@@ -3804,6 +3814,10 @@ packages:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
     dev: true
+
+  /pako@2.1.0:
+    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
+    dev: false
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}

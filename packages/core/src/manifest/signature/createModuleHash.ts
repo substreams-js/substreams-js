@@ -1,20 +1,12 @@
-import type { Module, Module_Input, Modules } from "../proto/sf/substreams/v1/modules_pb.js";
+import type { Module, Module_Input, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
+import { createHash } from "../../utils/createHash.js";
+import { createModuleGraph } from "../graph/createModuleGraph.js";
 
-export async function createBinaryHash(array: Uint8Array) {
-  const hash = await globalThis.crypto.subtle.digest("SHA-1", array);
-  return toHex(new Uint8Array(hash));
-}
-
-export async function toHex(array: Uint8Array) {
-  return Array.from(array, (value) => value.toString(16).padStart(2, "0")).join("");
-}
-
-export async function createModuleHash(modules: Modules, module: Module) {
-  const array = await hashModule(modules, module);
-  return createBinaryHash(array);
-}
-
-export async function hashModule(modules: Modules, module: Module) {
+export async function createModuleHash(
+  modules: Modules,
+  module: Module,
+  graph = createModuleGraph(modules.modules ?? []),
+) {
   const encoder = new TextEncoder();
   const chunks: Uint8Array[] = [];
 
@@ -38,13 +30,12 @@ export async function hashModule(modules: Modules, module: Module) {
   }
 
   chunks.push(encoder.encode("ancestors"));
-  // TODO: Implement module graph.
-  // for (const ancestor of getAncestors(modules, module)) {
-  //   chunks.push(await hashModule(modules, ancestor));
-  // }
+  for (const ancestor of graph.ancestorsOf(module.name)) {
+    chunks.push(await createModuleHash(modules, ancestor, graph));
+  }
 
   chunks.push(encoder.encode("entrypoint"));
-  chunks.push(encoder.encode(module.name));
+  chunks.push(encoder.encode(module.binaryEntrypoint));
 
   const length = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
   const array = new Uint8Array(length);
@@ -55,7 +46,7 @@ export async function hashModule(modules: Modules, module: Module) {
     offset += chunk.length;
   }
 
-  return array;
+  return createHash(array);
 }
 
 function encodeInitialBlock(module: Module) {
@@ -73,7 +64,7 @@ function moduleKind(module: Module): string {
       return "store";
 
     default:
-      throw new Error(`invalid module ${module.kind.case}`);
+      throw new Error(`Invalid module ${module.kind.case}`);
   }
 }
 
@@ -92,25 +83,25 @@ function inputType(input: Module_Input): string {
       return "params";
 
     default:
-      throw new Error(`invalid input ${input}`);
+      throw new Error(`Invalid input ${input}`);
   }
 }
 
 function inputValue(input: Module_Input): string {
   switch (input.input.case) {
-    case "store":
-      return input.input.value.moduleName ?? "";
-
     case "source":
-      return input.input.value.type ?? "";
-
-    case "map":
-      return input.input.value.moduleName ?? "";
+      return input.input.value.type;
 
     case "params":
-      return input.input.value.value ?? "";
+      return input.input.value.value;
+
+    case "map":
+      return ""; // This is accounted for in the `ancestorsOf()` tree.
+
+    case "store":
+      return ""; // This is accounted for in the `ancestorsOf()` tree.
 
     default:
-      throw new Error(`invalid input ${input}`);
+      throw new Error(`Invalid input ${input}`);
   }
 }
