@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.4
+
+### Patch Changes
+
+- [`1db9de6`](https://github.com/substreams-js/substreams-js/commit/1db9de65f667ac8826d9e58fb7ade8b69fe847e6) Thanks [@fubhy](https://github.com/fubhy)! - Added module graph & module hashing utils
+
 ## 0.1.3
 
 ### Patch Changes
