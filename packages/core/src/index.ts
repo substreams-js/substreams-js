@@ -29,4 +29,4 @@ export { createModuleGraph, ModuleGraph } from "./manifest/graph/createModuleGra
 export { createModuleHash } from "./manifest/signature/createModuleHash.js";
 export { generateMermaidGraph } from "./manifest/mermaid/generateMermaidGraph.js";
 export { generateMermaidLiveUrl } from "./manifest/mermaid/generateMermaidLiveUrl.js";
-export { applyParams } from './manifest/params/applyParams.js';
+export { applyParams } from "./manifest/params/applyParams.js";

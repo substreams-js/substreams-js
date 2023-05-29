@@ -1,4 +1,4 @@
-import { createSubstream } from "../src/index.js";
+import { createSubstream } from "../src/utils/createSubstream.js";
 import { readFileSync } from "node:fs";
 
 export function createSubstreamFixture(name: string) {

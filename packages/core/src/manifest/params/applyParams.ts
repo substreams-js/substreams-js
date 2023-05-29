@@ -1,5 +1,5 @@
-import { getModuleOrThrow } from "../../index.js";
 import type { Package } from "../../proto/sf/substreams/v1/package_pb.js";
+import { getModuleOrThrow } from "../../utils/getModule.js";
 
 export function applyParams(params: string[], substream: Package) {
   const modules = substream.modules?.modules ?? [];
