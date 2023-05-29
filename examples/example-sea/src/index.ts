@@ -17,7 +17,7 @@ import {
   const substream = await fetchSubstream(SUBSTREAM);
   const registry = createRegistry(substream);
   const transport = createGrpcTransport({
-    baseUrl: "https://api.streamingfast.io",
+    baseUrl: "https://mainnet.eth.streamingfast.io",
     httpVersion: "2",
     interceptors: [createAuthInterceptor(token)],
     jsonOptions: {
