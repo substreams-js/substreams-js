@@ -30,3 +30,7 @@ node_modules/
 
 # Ignore example output
 examples/example-sea/example
+
+# Ignore copied readme files
+README.md
+!/README.md
