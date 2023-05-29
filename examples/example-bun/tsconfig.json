@@ -5,7 +5,6 @@
     "noEmit": true,
     "lib": ["DOM"],
     "types": ["node"],
-    "baseUrl": ".",
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
       "@substreams/core/proto/*": ["../../packages/core/src/proto/*"],

@@ -7,7 +7,6 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["web"],
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
       "@substreams/core/proto/*": ["../../packages/core/src/proto/*"],

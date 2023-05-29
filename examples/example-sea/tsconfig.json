@@ -9,7 +9,6 @@
     "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
       "@substreams/core/proto/*": ["../../packages/core/src/proto/*"],
