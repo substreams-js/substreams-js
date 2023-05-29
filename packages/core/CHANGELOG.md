@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.5
+
+### Patch Changes
+
+- [`afdd14e`](https://github.com/substreams-js/substreams-js/commit/afdd14eb014eae66f45d938b451c55526b10a5c9) Thanks [@fubhy](https://github.com/fubhy)! - Added `applyParams` util
+
 ## 0.1.4
 
 ### Patch Changes
