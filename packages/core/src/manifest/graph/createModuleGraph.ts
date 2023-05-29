@@ -79,14 +79,6 @@ export class ModuleGraph {
     return distances.filter(([, distance]) => distance > 0).map(([node]) => node);
   }
 
-  ancestorStoresOf(name: string): Module[];
-  ancestorStoresOf(module: Module): Module[];
-  ancestorStoresOf(nameOrModule: string | Module): Module[];
-  ancestorStoresOf(nameOrModule: string | Module) {
-    const ancestors = this.ancestorsOf(nameOrModule);
-    return ancestors.filter((node) => node.kind.case === "kindStore");
-  }
-
   parentsOf(name: string): Module[];
   parentsOf(module: Module): Module[];
   parentsOf(nameOrModule: string | Module): Module[];
