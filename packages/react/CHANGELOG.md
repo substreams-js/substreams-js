@@ -1,5 +1,15 @@
 # @substreams/react
 
+## 0.1.2
+
+### Patch Changes
+
+- [`9c0a8d4`](https://github.com/substreams-js/substreams-js/commit/9c0a8d4e65396d3c11eeb87f9b986f41fec71de7) Thanks [@fubhy](https://github.com/fubhy)! - Added readme
+
+- Updated dependencies [[`9c0a8d4`](https://github.com/substreams-js/substreams-js/commit/9c0a8d4e65396d3c11eeb87f9b986f41fec71de7)]:
+  - @substreams/core@0.1.6
+  - @substreams/proxy@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes
