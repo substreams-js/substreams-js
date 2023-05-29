@@ -45,7 +45,7 @@ test("should throw if the graph is not acyclic", () => {
         ],
       }),
     ]),
-  ).toThrowErrorMatchingInlineSnapshot('"Cyclic dependency B -> A"');
+  ).toThrowErrorMatchingInlineSnapshot('"Cyclic dependency A -> B"');
 });
 
 test("should create a module graph for uniswap v3", () => {

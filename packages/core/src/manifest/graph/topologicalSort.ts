@@ -1,25 +1,29 @@
-import type { ModuleNode } from "./createModuleGraph.js";
+import { Module } from "../../proto/sf/substreams/v1/modules_pb.js";
 
-export function topologicalSort(node: ModuleNode) {
-  const visited = new Set<ModuleNode>();
-  const stack = new Set<ModuleNode>();
-  topologicalSortHelper(node, visited, stack);
-
-  return stack;
-}
-
-function topologicalSortHelper(node: ModuleNode, visited: Set<ModuleNode>, stack: Set<ModuleNode>) {
+export function topologicalSort(
+  nodes: Map<Module, Set<Module>>,
+  node: Module,
+  visited = new Set<Module>(),
+  stack = new Set<Module>(),
+) {
   if (visited.has(node)) {
-    return;
+    return stack;
   }
 
   visited.add(node);
 
-  for (const incoming of node.adjacents.values()) {
+  const adjacents = nodes.get(node);
+  if (adjacents === undefined) {
+    throw new Error(`Module ${node.name} not found in graph`);
+  }
+
+  for (const incoming of adjacents.values()) {
     if (!visited.has(incoming)) {
-      topologicalSortHelper(incoming, visited, stack);
+      topologicalSort(nodes, incoming, visited, stack);
     }
   }
 
   stack.add(node);
+
+  return stack;
 }

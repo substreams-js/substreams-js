@@ -30,7 +30,7 @@ export async function createModuleHash(
   }
 
   chunks.push(encoder.encode("ancestors"));
-  for (const ancestor of graph.ancestorsOf(module.name)) {
+  for (const ancestor of graph.ancestorsOf(module)) {
     chunks.push(await createModuleHash(modules, ancestor, graph));
   }
 

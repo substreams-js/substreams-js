@@ -82,7 +82,7 @@ export function resolveOutputModule(substreamPackage: Package, outputModule: Mod
       throw new Error("Substream package does not contain any modules.");
     }
 
-    return getModuleOrThrow(substreamPackage.modules, outputModule);
+    return getModuleOrThrow(substreamPackage.modules?.modules ?? [], outputModule);
   }
 
   return outputModule;

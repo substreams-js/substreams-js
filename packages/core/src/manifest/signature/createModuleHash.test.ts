@@ -96,10 +96,9 @@ test.each([
     expected: "e15e370119c7454f24437c6c15d13f27103aa8e0",
   },
 ])("createModuleHash(modules, $name) === $expected", async ({ name, expected }) => {
-  assert(substream.modules !== undefined);
+  assert(substream.modules);
 
-  const modules = substream.modules;
-  const module = getModuleOrThrow(modules, name);
-  const hash = await createModuleHash(modules, module);
+  const module = getModuleOrThrow(substream.modules.modules, name);
+  const hash = await createModuleHash(substream.modules, module);
   expect(toHex(hash)).toMatch(expected);
 });

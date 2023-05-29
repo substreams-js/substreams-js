@@ -1,20 +1,20 @@
-import type { ModuleNode } from "./createModuleGraph.js";
+import type { Module } from "../../proto/sf/substreams/v1/modules_pb.js";
 
-export function assertAcyclic(node: ModuleNode): string[] | undefined {
-  const visited = new Set<ModuleNode>();
-  const stack = new Set<ModuleNode>();
+export function assertAcyclic(nodes: Map<Module, Set<Module>>) {
+  for (const [node, adjacents] of nodes) {
+    const visited = new Set<Module>([node]);
+    const stack = new Set<Module>([node]);
 
-  for (const adjacent of node.adjacents) {
-    if (isCyclic(adjacent, visited, stack)) {
-      const path = Array.from(stack).map((node) => node.value.name);
-      throw new Error(`Cyclic dependency ${path.join(" -> ")}`);
+    for (const adjacent of adjacents) {
+      if (isCyclic(nodes, adjacent, visited, stack)) {
+        const path = Array.from(stack).map((node) => node.name);
+        throw new Error(`Cyclic dependency ${path.join(" -> ")}`);
+      }
     }
   }
-
-  return undefined;
 }
 
-function isCyclic(node: ModuleNode, visited: Set<ModuleNode>, stack: Set<ModuleNode>) {
+function isCyclic(nodes: Map<Module, Set<Module>>, node: Module, visited: Set<Module>, stack: Set<Module>) {
   if (stack.has(node)) {
     return true;
   }
@@ -26,8 +26,13 @@ function isCyclic(node: ModuleNode, visited: Set<ModuleNode>, stack: Set<ModuleN
   visited.add(node);
   stack.add(node);
 
-  for (const adjacent of node.adjacents) {
-    if (isCyclic(adjacent, visited, stack)) {
+  const adjacents = nodes.get(node);
+  if (adjacents === undefined) {
+    throw new Error(`Module ${node.name} not found in graph`);
+  }
+
+  for (const adjacent of adjacents) {
+    if (isCyclic(nodes, adjacent, visited, stack)) {
       return true;
     }
   }
