@@ -38,7 +38,7 @@ test.each([
 ] as {
   input: ProgressRange[];
   expected: ProgressRange[];
-}[])("mergeProgressRanges($input) === $expected", async ({ input, expected }) => {
+}[])("mergeProgressRanges($input) === $expected", ({ input, expected }) => {
   const merged = mergeProgressRanges(input);
   expect(merged).toMatchObject(expected);
 });
