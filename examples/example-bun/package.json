@@ -11,7 +11,7 @@
     "@bufbuild/connect": "^0.9.0",
     "@bufbuild/connect-web": "^0.9.0",
     "@bufbuild/protobuf": "^1.1.0",
-    "@substreams/core": "^0.1.6",
+    "@substreams/core": "^0.1.7",
     "@substreams/proxy": "^0.1.2"
   },
   "devDependencies": {
