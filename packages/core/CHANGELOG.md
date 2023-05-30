@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.7
+
+### Patch Changes
+
+- [`af39fac`](https://github.com/substreams-js/substreams-js/commit/af39facf86f6239ff7d9dd3daeaea7cee918d559) Thanks [@fubhy](https://github.com/fubhy)! - Added package & module validation
+
 ## 0.1.6
 
 ### Patch Changes
