@@ -1,4 +1,6 @@
 import { Module_Input_Store_Mode, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
+import { isMapModule } from "../../utils/isMapModule.js";
+import { isStoreModule } from "../../utils/isStoreModule.js";
 import { storeModeName } from "../../utils/storeModeName.js";
 import { nameRegExp } from "./validatePackage.js";
 
@@ -44,7 +46,7 @@ export function validateModules(modules: Modules) {
           throw new Error(`Module "${mod.name}": input ${index}: map input named "${seek}" not found`);
         }
 
-        if (target.kind.case !== "kindMap") {
+        if (!isMapModule(target)) {
           throw new Error(`Module "${mod.name}": input ${index}: referenced module "${seek}" not of 'map' kind`);
         }
       } else if (input.input.case === "store") {
@@ -55,7 +57,7 @@ export function validateModules(modules: Modules) {
           throw new Error(`Module "${mod.name}": input ${index}: store input named "${seek}" not found`);
         }
 
-        if (target.kind.case !== "kindMap") {
+        if (!isStoreModule(target)) {
           throw new Error(`Module "${mod.name}": input ${index}: referenced module "${seek}" not of 'store' kind`);
         }
 
