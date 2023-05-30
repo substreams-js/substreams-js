@@ -1,13 +1,14 @@
-import { isMapModule, isStoreModule } from "../../index.js";
 import type { Module_Input } from "../../proto/sf/substreams/v1/modules_pb.js";
 import type { Package } from "../../proto/sf/substreams/v1/package_pb.js";
+import { isMapModule } from "../../utils/isMapModule.js";
+import { isStoreModule } from "../../utils/isStoreModule.js";
 import { storeModeName } from "../../utils/storeModeName.js";
 
 export const nameRegExp = new RegExp("^([a-zA-Z][a-zA-Z0-9_-]{0,63})$");
 
 // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
 export const semverRegExp = new RegExp(
-  "^(?P<major>0|[1-9]d*).(?P<minor>0|[1-9]d*).(?P<patch>0|[1-9]d*)(?:-(?P<prerelease>(?:0|[1-9]d*|d*[a-zA-Z-][0-9a-zA-Z-]*)(?:.(?:0|[1-9]d*|d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:+(?P<buildmetadata>[0-9a-zA-Z-]+(?:.[0-9a-zA-Z-]+)*))?$",
+  "^(0|[1-9]d*).(0|[1-9]d*).(0|[1-9]d*)(?:-((?:0|[1-9]d*|d*[a-zA-Z-][0-9a-zA-Z-]*)(?:.(?:0|[1-9]d*|d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:+([0-9a-zA-Z-]+(?:.[0-9a-zA-Z-]+)*))?$",
 );
 
 export type ValidatePackageOptions = {

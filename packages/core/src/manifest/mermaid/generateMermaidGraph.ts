@@ -1,5 +1,4 @@
-import { Module_Input_Store_Mode } from "../../index.js";
-import { Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
+import { Module_Input_Store_Mode, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
 
 export function generateMermaidGraph(modules: Modules) {
   const chunks: string[] = ["graph TD;"];
