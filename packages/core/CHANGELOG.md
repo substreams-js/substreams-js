@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.8
+
+### Patch Changes
+
+- [`52736a5`](https://github.com/substreams-js/substreams-js/commit/52736a564d8527265bd09b1ab5e9338c5d94b1ee) Thanks [@fubhy](https://github.com/fubhy)! - Fixed semver regex
+
 ## 0.1.7
 
 ### Patch Changes
