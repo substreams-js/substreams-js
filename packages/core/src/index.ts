@@ -25,3 +25,4 @@ export { applyParams } from "./manifest/params/applyParams.js";
 export { semverRegExp, nameRegExp, validatePackage } from "./manifest/validation/validatePackage.js";
 export { validateModules } from "./manifest/validation/validateModules.js";
 export { validatePackageAndModules } from "./manifest/validation/validatePackageAndModules.js";
+export { calculateHeadBlockTimeDrift } from "./utils/calculateHeadBlockTimeDrift.js";
