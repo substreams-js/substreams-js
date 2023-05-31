@@ -1,6 +1,6 @@
 {
   "name": "@substreams/mermaid",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && tsc --project tsconfig.build.json",
@@ -22,9 +22,14 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "dependencies": {
-    "@substreams/core": "^0.1.6",
+    "@substreams/core": "^0.1.9",
     "pako": "^2.1.0"
   },
   "devDependencies": {
