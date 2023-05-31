@@ -23,7 +23,13 @@
       ],
       "@substreams/react": [
         "./packages/react/src/index.js"
-      ]
+      ],
+      "@substreams/mermaid": [
+        "./packages/mermaid/src/index.js"
+      ],
+      "@substreams/manifest": [
+        "./packages/manifest/src/index.js"
+      ],
     }
   }
 }
