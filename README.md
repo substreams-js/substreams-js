@@ -49,6 +49,9 @@ for await (const response of streamBlocks(transport, request)) {
 
 ## Installation
 
+> **Note**
+> This library is pure [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and no longer provides CommonJS (CJS) exports. If your project uses CommonJS, you will have to [convert to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) or use the [dynamic `import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) function. Please don't open issues for questions regarding CommonJS / ESM.
+
 ```bash
 # Using pnpm
 pnpm add @substreams/core
@@ -59,9 +62,6 @@ yarn add @substreams/core
 # Using npm
 npm install @substreams/core
 ```
-
-> **Note**
-> The library is optimized to work with [@bufbuild/connect](https://github.com/bufbuild/connect-es) and [@bufbuild/protobuf](https://github.com/bufbuild/protobuf-es).
 
 ## Packages
 
