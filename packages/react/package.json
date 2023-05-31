@@ -3,9 +3,7 @@
   "version": "0.1.2",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
@@ -13,28 +11,22 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "typings": "./dist/types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/cjs/index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
-    "@bufbuild/connect": "^0.9.0",
-    "@bufbuild/connect-web": "^0.9.0",
-    "@bufbuild/protobuf": "^1.1.0",
+    "@bufbuild/connect": "^0.9.1",
+    "@bufbuild/connect-web": "^0.9.1",
+    "@bufbuild/protobuf": "^1.2.1",
     "@substreams/core": "^0.1.6",
     "@substreams/proxy": "^0.1.2",
     "uuid": "^9.0.0"
@@ -42,12 +34,13 @@
   "devDependencies": {
     "@types/react": "^18.2.7",
     "@types/uuid": "^9.0.1",
-    "@vitest/coverage-c8": "^0.31.1",
-    "@vitest/ui": "^0.31.1",
+    "@vitest/coverage-c8": "^0.31.2",
+    "@vitest/ui": "^0.31.2",
     "react": "^18.2.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
-    "vitest": "^0.31.1"
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.2"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

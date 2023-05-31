@@ -10,7 +10,7 @@ import {
   createPromiseClient,
 } from "@bufbuild/connect";
 import { createDescriptorSet, createRegistryFromDescriptors } from "@bufbuild/protobuf";
-import { Request, Stream } from "@substreams/core";
+import { Request, Stream } from "@substreams/core/proto";
 
 export function createProxyRoutes(
   upstream: Transport,

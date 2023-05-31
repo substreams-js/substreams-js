@@ -1,9 +1,9 @@
-import { Module_Input_Store_Mode, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
+import { Module, Module_Input_Store_Mode } from "@substreams/core/proto";
 
-export function generateMermaidGraph(modules: Modules) {
+export function generateMermaidGraph(modules: Module[]) {
   const chunks: string[] = ["graph TD;"];
 
-  for (const module of modules.modules ?? []) {
+  for (const module of modules ?? []) {
     const moduleName = module.name;
 
     switch (module.kind.case) {

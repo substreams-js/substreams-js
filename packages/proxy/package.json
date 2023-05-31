@@ -5,9 +5,7 @@
     "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
     "start": "tsx src/cli.ts",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
@@ -18,69 +16,54 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "typings": "./dist/types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/cjs/index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./server": {
-      "types": "./dist/types/server/index.d.ts",
-      "import": "./dist/esm/server/index.js",
-      "default": "./dist/cjs/server/index.js"
+      "types": "./dist/server/index.d.ts",
+      "default": "./dist/server/index.js"
     },
     "./client": {
-      "types": "./dist/types/client/index.d.ts",
-      "import": "./dist/esm/client/index.js",
-      "default": "./dist/cjs/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
     "./proto/*.js": {
-      "types": "./dist/types/proto/*.d.ts",
-      "import": "./dist/esm/proto/*.js",
-      "default": "./dist/cjs/proto/*.js"
+      "types": "./dist/proto/*.d.ts",
+      "default": "./dist/proto/*.js"
     },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
-      "client": [
-        "./dist/types/client/index.d.ts"
-      ],
-      "server": [
-        "./dist/types/server/index.d.ts"
-      ],
-      "proto/*": [
-        "./dist/types/proto/*.d.ts"
-      ]
+      "client": ["./dist/client/index.d.ts"],
+      "server": ["./dist/server/index.d.ts"],
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "bin/**",
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
-    "@bufbuild/connect": "^0.9.0",
-    "@bufbuild/connect-node": "^0.9.0",
-    "@bufbuild/protobuf": "^1.1.0",
+    "@bufbuild/connect": "^0.9.1",
+    "@bufbuild/connect-node": "^0.9.1",
+    "@bufbuild/protobuf": "^1.2.1",
     "@substreams/core": "^0.1.6",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.19.0-1",
+    "@bufbuild/buf": "1.20.0-1",
     "@types/node": "^20.2.5",
     "@types/yargs": "^17.0.24",
-    "@vitest/coverage-c8": "^0.31.1",
-    "@vitest/ui": "^0.31.1",
+    "@vitest/coverage-c8": "^0.31.2",
+    "@vitest/ui": "^0.31.2",
     "tsx": "^3.12.7",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
-    "vitest": "^0.31.1"
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.2"
   }
 }

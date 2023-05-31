@@ -1,5 +1,6 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
-import { type Package, createSubstream } from "@substreams/core";
+import { createSubstream } from "@substreams/core";
+import type { Package } from "@substreams/core/proto";
 import { Callout, Card, Title } from "@tremor/react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";

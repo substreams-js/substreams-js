@@ -1,5 +1,5 @@
-import { createSubstreamFixture } from "../../../tests/createSubstreamFixture.js";
 import { validatePackage } from "./validatePackage.js";
+import { createSubstreamFixture } from "@substreams/testutils";
 import { expect, test } from "vitest";
 
 const substream = createSubstreamFixture("uniswap-v3");

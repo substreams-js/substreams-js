@@ -1,0 +1,42 @@
+diff --git a/dist/get-dependents-graph.cjs.dev.js b/dist/get-dependents-graph.cjs.dev.js
+index 9bd1b9dbb2532915f1486a29388aab1273a22ebe..b7d92444ddf6ac1519832ebafb39f2f3eb5b6d25 100644
+--- a/dist/get-dependents-graph.cjs.dev.js
++++ b/dist/get-dependents-graph.cjs.dev.js
+@@ -17,6 +17,9 @@ const getAllDependencies = config => {
+   const allDependencies = new Map();
+ 
+   for (const type of DEPENDENCY_TYPES) {
++    // https://github.com/changesets/changesets/issues/906
++    if (type === "devDependencies") continue;
++
+     const deps = config[type];
+     if (!deps) continue;
+ 
+diff --git a/dist/get-dependents-graph.cjs.prod.js b/dist/get-dependents-graph.cjs.prod.js
+index b4026bb27748c56940c27b2a6bc7c1b7e8311c1e..751e010ec3d5ea7a1c406f35f98095af8c8b377a 100644
+--- a/dist/get-dependents-graph.cjs.prod.js
++++ b/dist/get-dependents-graph.cjs.prod.js
+@@ -17,6 +17,9 @@ var semver__default = _interopDefault(semver), chalk__default = _interopDefault(
+ const DEPENDENCY_TYPES = [ "dependencies", "devDependencies", "peerDependencies", "optionalDependencies" ], getAllDependencies = config => {
+   const allDependencies = new Map;
+   for (const type of DEPENDENCY_TYPES) {
++    // https://github.com/changesets/changesets/issues/906
++    if (type === "devDependencies") continue;
++    
+     const deps = config[type];
+     if (deps) for (const name of Object.keys(deps)) {
+       const depRange = deps[name];
+diff --git a/dist/get-dependents-graph.esm.js b/dist/get-dependents-graph.esm.js
+index b0eaa778de88007e56c13580ae25a88fc6e2b180..5a865370cd7dac95a01dee648935ff1acbd73423 100644
+--- a/dist/get-dependents-graph.esm.js
++++ b/dist/get-dependents-graph.esm.js
+@@ -8,6 +8,9 @@ const getAllDependencies = config => {
+   const allDependencies = new Map();
+ 
+   for (const type of DEPENDENCY_TYPES) {
++    // https://github.com/changesets/changesets/issues/906
++    if (type === "devDependencies") continue;
++
+     const deps = config[type];
+     if (!deps) continue;
+ 

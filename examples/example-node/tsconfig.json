@@ -1,25 +1,9 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.aliased.json",
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "noEmit": true,
     "lib": ["DOM"],
-    "types": ["node"],
-    "paths": {
-      "@substreams/core": ["../../packages/core/src/index.js"],
-      "@substreams/core/proto/*": ["../../packages/core/src/proto/*"],
-      "@substreams/proxy": [
-        "../../packages/proxy/src/index.js"
-      ],
-      "@substreams/proxy/client": [
-        "../../packages/proxy/src/client/index.js"
-      ],
-      "@substreams/proxy/server": [
-        "../../packages/proxy/src/server/index.js"
-      ],
-      "@substreams/proxy/proto/*": [
-        "../../packages/proxy/src/proto/*"
-      ]
-    }
+    "types": ["node"]
   }
 }

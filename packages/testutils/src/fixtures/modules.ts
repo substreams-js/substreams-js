@@ -1,4 +1,4 @@
-import { Module } from "../../src/proto/sf/substreams/v1/modules_pb.js";
+import { Module } from "@substreams/core/proto";
 
 export const SIMPLE_TEST_MODULES = [
   new Module({

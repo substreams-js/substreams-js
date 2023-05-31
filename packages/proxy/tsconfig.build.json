@@ -3,6 +3,10 @@
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
-    "lib": ["DOM"]
+    "lib": ["DOM"],
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "dist",
   }
 }

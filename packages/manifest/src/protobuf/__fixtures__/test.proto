@@ -1,0 +1,8 @@
+// This is just a super dumb test file that is simply used to check whether loading proto files works at all.
+syntax = "proto3";
+
+package test;
+
+message Test {
+ string foo = 1;
+}

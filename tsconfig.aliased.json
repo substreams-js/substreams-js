@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [],
+  "compilerOptions": {
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@substreams/testutils": ["./packages/testutils/src/index.js"],
+      "@substreams/core": ["./packages/core/src/index.js"],
+      "@substreams/core/proto": ["./packages/core/src/proto.js"],
+      "@substreams/core/proto/*": ["./packages/core/src/proto/*"],
+      "@substreams/proxy": [
+        "./packages/proxy/src/index.js"
+      ],
+      "@substreams/proxy/client": [
+        "./packages/proxy/src/client/index.js"
+      ],
+      "@substreams/proxy/server": [
+        "./packages/proxy/src/server/index.js"
+      ],
+      "@substreams/proxy/proto/*": [
+        "./packages/proxy/src/proto/*"
+      ],
+      "@substreams/react": [
+        "./packages/react/src/index.js"
+      ]
+    }
+  }
+}

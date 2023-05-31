@@ -1,8 +1,8 @@
-import type { Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
 import { generateMermaidGraph } from "./generateMermaidGraph.js";
+import type { Module } from "@substreams/core/proto";
 import { deflate } from "pako";
 
-export function generateMermaidLiveUrl(modules: Modules) {
+export function generateMermaidLiveUrl(modules: Module[]) {
   const mermaid = JSON.stringify({
     code: generateMermaidGraph(modules),
     mermaid: `{"theme":"default"}`,

@@ -1,5 +1,6 @@
 import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
-import { type Package, createRegistry } from "@substreams/core";
+import { createRegistry } from "@substreams/core";
+import type { Package } from "@substreams/core/proto";
 import { useRef } from "react";
 import { useEffect } from "react";
 

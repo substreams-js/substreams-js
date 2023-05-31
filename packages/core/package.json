@@ -4,9 +4,7 @@
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
     "clean": "rm -rf dist",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
@@ -14,64 +12,56 @@
   },
   "sideEffects": false,
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "typings": "./dist/types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/cjs/index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./proto": {
+      "types": "./dist/proto.d.ts",
+      "default": "./dist/proto.js"
     },
     "./sinks/kv": {
-      "types": "./dist/types/sinks/kv.d.ts",
-      "import": "./dist/esm/sinks/kv.js",
-      "default": "./dist/cjs/sinks/kv.js"
+      "types": "./dist/sinks/kv.d.ts",
+      "default": "./dist/sinks/kv.js"
     },
     "./sinks/database": {
-      "types": "./dist/types/sinks/database.d.ts",
-      "import": "./dist/esm/sinks/database.js",
-      "default": "./dist/cjs/sinks/database.js"
+      "types": "./dist/sinks/database.d.ts",
+      "default": "./dist/sinks/database.js"
     },
     "./sinks/entity": {
-      "types": "./dist/types/sinks/entity.d.ts",
-      "import": "./dist/esm/sinks/entity.js",
-      "default": "./dist/cjs/sinks/entity.js"
+      "types": "./dist/sinks/entity.d.ts",
+      "default": "./dist/sinks/entity.js"
     },
     "./proto/*.js": {
-      "types": "./dist/types/proto/*.d.ts",
-      "import": "./dist/esm/proto/*.js",
-      "default": "./dist/cjs/proto/*.js"
+      "types": "./dist/proto/*.d.ts",
+      "default": "./dist/proto/*.js"
     },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
-      "proto/*": [
-        "./dist/types/proto/*.d.ts"
-      ]
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "dependencies": {
-    "@bufbuild/connect": "^0.9.0",
-    "@bufbuild/protobuf": "^1.1.0",
-    "pako": "^2.1.0"
+    "@bufbuild/connect": "^0.9.1",
+    "@bufbuild/protobuf": "^1.2.1"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.19.0-1",
+    "@bufbuild/buf": "1.20.0-1",
+    "@substreams/testutils": "^0.0.0",
     "@types/node": "^20.2.5",
-    "@types/pako": "^2.0.0",
-    "@vitest/coverage-c8": "^0.31.1",
-    "@vitest/ui": "^0.31.1",
+    "@vitest/coverage-c8": "^0.31.2",
+    "@vitest/ui": "^0.31.2",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
-    "vitest": "^0.31.1"
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.2"
   }
 }

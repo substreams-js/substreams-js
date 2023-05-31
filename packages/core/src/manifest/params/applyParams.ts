@@ -1,9 +1,7 @@
-import type { Package } from "../../proto/sf/substreams/v1/package_pb.js";
+import type { Module } from "../../proto/sf/substreams/v1/modules_pb.js";
 import { getModuleOrThrow } from "../../utils/getModule.js";
 
-export function applyParams(params: string[], substream: Package) {
-  const modules = substream.modules?.modules ?? [];
-
+export function applyParams(params: string[], modules: Module[]) {
   for (const param of params) {
     const [module, value] = param.split("=", 2);
     if (module === undefined || value === undefined) {

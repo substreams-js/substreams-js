@@ -1,6 +1,5 @@
-import { createSubstreamFixture } from "../../../tests/createSubstreamFixture.js";
-import { TEST_MODULES } from "../../../tests/fixtures/modules.js";
 import { createModuleGraph } from "./createModuleGraph.js";
+import { TEST_MODULES, createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
 
 const uniswap = createSubstreamFixture("uniswap-v3");

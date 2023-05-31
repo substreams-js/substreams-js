@@ -27,6 +27,7 @@ jq '{
   "repository": .repository,
   "keywords": .keywords,
   "bin": .bin,
+  "type": .type,
   "main": .main,
   "module": .module,
   "types": .types,

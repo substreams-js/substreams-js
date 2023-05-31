@@ -1,0 +1,43 @@
+{
+  "name": "@substreams/manifest",
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && tsc --project tsconfig.build.json",
+    "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts", "src/**/*.pb"],
+  "dependencies": {
+    "@bufbuild/buf": "1.20.0-1",
+    "@bufbuild/protobuf": "^1.2.1",
+    "@substreams/core": "^0.1.6",
+    "arktype": "1.0.14-alpha",
+    "yaml": "^2.3.1"
+  },
+  "devDependencies": {
+    "@substreams/testutils": "^0.0.0",
+    "@types/node": "^20.2.5",
+    "@vitest/coverage-c8": "^0.31.2",
+    "@vitest/ui": "^0.31.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.2"
+  }
+}

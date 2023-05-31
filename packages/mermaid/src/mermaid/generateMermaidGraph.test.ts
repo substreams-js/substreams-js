@@ -1,5 +1,5 @@
-import { createSubstreamFixture } from "../../../tests/createSubstreamFixture.js";
 import { generateMermaidGraph } from "./generateMermaidGraph.js";
+import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
 
 const uniswap = createSubstreamFixture("uniswap-v3");
@@ -7,7 +7,7 @@ const uniswap = createSubstreamFixture("uniswap-v3");
 test("should generate a mermaid graph", () => {
   assert(uniswap.modules);
 
-  expect(generateMermaidGraph(uniswap.modules)).toMatchInlineSnapshot(
+  expect(generateMermaidGraph(uniswap.modules.modules)).toMatchInlineSnapshot(
     `
     "graph TD;
       map_pools_created[map: map_pools_created];

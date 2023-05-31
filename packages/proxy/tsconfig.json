@@ -1,12 +1,8 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.aliased.json",
   "include": ["src/**/*.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
-    "noEmit": true,
-    "lib": ["DOM"],
-    "paths": {
-      "@substreams/core": ["../core/src/index.js"],
-      "@substreams/core/proto/*": ["../core/src/proto/*"]
-    }
+    "lib": ["DOM"]
   }
 }

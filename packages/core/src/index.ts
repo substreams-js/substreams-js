@@ -1,12 +1,3 @@
-// Substreams core
-export * from "./proto/sf/substreams/rpc/v2/service_connect.js";
-
-// Substreams service
-export * from "./proto/sf/substreams/rpc/v2/service_pb.js";
-export * from "./proto/sf/substreams/v1/clock_pb.js";
-export * from "./proto/sf/substreams/v1/modules_pb.js";
-export * from "./proto/sf/substreams/v1/package_pb.js";
-
 export { createAuthInterceptor } from "./auth/createAuthInterceptor.js";
 export { createRegistry } from "./utils/createRegistry.js";
 export { createRequest, type CreateRequestOptions } from "./utils/createRequest.js";
@@ -25,12 +16,12 @@ export { isEmptyMessage } from "./utils/isEmptyMessage.js";
 export { mergeProgressRanges, mergeSortedProgressRanges, type ProgressRange } from "./utils/mergeProgressRanges.js";
 export { fetchSubstream } from "./utils/fetchSubstream.js";
 export { storeModeName } from "./utils/storeModeName.js";
+export { toHex } from "./utils/toHex.js";
+export { createHash } from "./utils/createHash.js";
 export { authIssue, parseAuthorization } from "./auth/authIssue.js";
 export { createModuleGraph, ModuleGraph } from "./manifest/graph/createModuleGraph.js";
-export { createModuleHash } from "./manifest/signature/createModuleHash.js";
-export { generateMermaidGraph } from "./manifest/mermaid/generateMermaidGraph.js";
-export { generateMermaidLiveUrl } from "./manifest/mermaid/generateMermaidLiveUrl.js";
+export { createModuleHash, createModuleHashHex } from "./manifest/signature/createModuleHash.js";
 export { applyParams } from "./manifest/params/applyParams.js";
-export { validatePackage } from "./manifest/validation/validatePackage.js";
+export { semverRegExp, nameRegExp, validatePackage } from "./manifest/validation/validatePackage.js";
 export { validateModules } from "./manifest/validation/validateModules.js";
 export { validatePackageAndModules } from "./manifest/validation/validatePackageAndModules.js";

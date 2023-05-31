@@ -1,12 +1,37 @@
 import type { Module, Module_Input, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
 import { createHash } from "../../utils/createHash.js";
-import { createModuleGraph } from "../graph/createModuleGraph.js";
+import { getModuleOrThrow } from "../../utils/getModule.js";
+import { toHex } from "../../utils/toHex.js";
+import { ModuleGraph, createModuleGraph } from "../graph/createModuleGraph.js";
 
-export async function createModuleHash(
+export async function createModuleHashHex(modules: Modules, module: Module, graph?: ModuleGraph): Promise<string>;
+export async function createModuleHashHex(modules: Modules, name: string, graph?: ModuleGraph): Promise<string>;
+export async function createModuleHashHex(
   modules: Modules,
-  module: Module,
+  moduleOrName: Module | string,
+  graph?: ModuleGraph,
+): Promise<string>;
+export async function createModuleHashHex(
+  modules: Modules,
+  moduleOrName: Module | string,
   graph = createModuleGraph(modules.modules ?? []),
 ) {
+  return toHex(await createModuleHash(modules, moduleOrName, graph));
+}
+
+export async function createModuleHash(modules: Modules, module: Module, graph?: ModuleGraph): Promise<Uint8Array>;
+export async function createModuleHash(modules: Modules, name: string, graph?: ModuleGraph): Promise<Uint8Array>;
+export async function createModuleHash(
+  modules: Modules,
+  moduleOrName: Module | string,
+  graph?: ModuleGraph,
+): Promise<Uint8Array>;
+export async function createModuleHash(
+  modules: Modules,
+  moduleOrName: Module | string,
+  graph = createModuleGraph(modules.modules ?? []),
+) {
+  const module = typeof moduleOrName === "string" ? getModuleOrThrow(modules.modules, moduleOrName) : moduleOrName;
   const encoder = new TextEncoder();
   const chunks: Uint8Array[] = [];
 

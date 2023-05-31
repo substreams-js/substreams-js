@@ -1,21 +1,8 @@
 {
-  "extends": "./tsconfig.build.json",
-  "include": ["src/**/*.ts", "tests/**/*.ts"],
-  "exclude": [],
+  "extends": "../../tsconfig.aliased.json",
+  "include": ["src/**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
-    "noEmit": true,
-    "paths": {
-      "@substreams/core": ["../core/src/index.js"],
-      "@substreams/core/proto/*": ["../core/src/proto/*"],
-      "@substreams/proxy": ["../proxy/src/index.js"],
-      "@substreams/proxy/client": [
-        "../proxy/src/client/index.js"
-      ],
-      "@substreams/proxy/server": [
-        "../proxy/src/server/index.js"
-      ],
-      "@substreams/proxy/proto/*": ["../proxy/src/proto/*"]
-    }
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
   }
 }
