@@ -1,6 +1,7 @@
 {
   "name": "@substreams/proxy",
   "version": "0.1.3",
+  "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate proto",
     "clean": "rm -rf dist",
@@ -41,24 +42,17 @@
   },
   "typesVersions": {
     "*": {
-      "client": [
-        "./dist/client/index.d.ts"
-      ],
-      "server": [
-        "./dist/server/index.d.ts"
-      ],
-      "proto/*": [
-        "./dist/proto/*.d.ts"
-      ]
+      "client": ["./dist/client/index.d.ts"],
+      "server": ["./dist/server/index.d.ts"],
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "bin/**",
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/substreams-js/substreams-js.git",
+    "directory": "packages/proxy"
+  },
   "dependencies": {
     "@bufbuild/connect": "^0.9.1",
     "@bufbuild/connect-node": "^0.9.1",
