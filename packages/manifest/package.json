@@ -1,6 +1,6 @@
 {
   "name": "@substreams/manifest",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && tsc --project tsconfig.build.json",
@@ -22,11 +22,17 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts", "src/**/*.pb"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts",
+    "src/**/*.pb"
+  ],
   "dependencies": {
     "@bufbuild/buf": "1.20.0-1",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.6",
+    "@substreams/core": "^0.1.9",
     "arktype": "1.0.14-alpha",
     "yaml": "^2.3.1"
   },
