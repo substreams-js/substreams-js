@@ -67,6 +67,10 @@ npm install @substreams/core
 
 - [@substreams/core](https://www.npmjs.com/package/@substreams/core):
   Provides all core functionality for interacting with substreams packages and consuming substream modules. ([source code](packages/core)).
+- [@substreams/manifest](https://www.npmjs.com/package/@substreams/manifest):
+  Parses and validates `substreams.yaml` manifests and bundles them into substream packages. ([source code](packages/manifest)).
+- [@substreams/mermaid](https://www.npmjs.com/package/@substreams/mermaid):
+  Generates mermaid graph visualizations of substream module graphs. ([source code](packages/mermaid)).
 - [@substreams/react](https://www.npmjs.com/package/@substreams/react):
   Lightweight utilities for building React based user interfaces on top of substreams. ([source code](packages/react)).
 - [@substreams/proxy](https://www.npmjs.com/package/@substreams/proxy):
