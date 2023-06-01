@@ -19,7 +19,10 @@ export { storeModeName } from "./utils/storeModeName.js";
 export { toHex } from "./utils/toHex.js";
 export { createHash } from "./utils/createHash.js";
 export { authIssue, parseAuthorization } from "./auth/authIssue.js";
-export { createModuleGraph, ModuleGraph } from "./manifest/graph/createModuleGraph.js";
+export {
+  createModuleGraph,
+  ModuleGraph,
+} from "./manifest/graph/createModuleGraph.js";
 export { createModuleHash, createModuleHashHex } from "./manifest/signature/createModuleHash.js";
 export { applyParams } from "./manifest/params/applyParams.js";
 export { semverRegExp, nameRegExp, validatePackage } from "./manifest/validation/validatePackage.js";

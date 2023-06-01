@@ -1,10 +1,11 @@
 import { readLocalProtos } from "../protobuf/readLocalProtos.js";
 import { readSystemProtos } from "../protobuf/readSystemProtos.js";
 import { readPackage } from "../reader/readPackage.js";
-import { isReadableLocalFile, isRemotePath, resolveLocalFile, resolveLocalProtoPath } from "../utils/pathUtils.js";
+import { isReadableLocalFile, isRemotePath, resolveLocalFile } from "../utils/pathUtils.js";
 import { createPackageFromManifest } from "./createPackageFromManifest.js";
 import type { Manifest } from "./manifestSchema.js";
 import type { FileDescriptorProto } from "@bufbuild/protobuf";
+import { createModuleGraph } from "@substreams/core";
 import { type Module, Modules, type Package } from "@substreams/core/proto";
 import * as path from "node:path";
 
@@ -30,7 +31,22 @@ export async function converManifestToPackage(manifest: Manifest.Manifest): Prom
     pkg.modules.binaries.push(...imported.modules.binaries);
     pkg.moduleMeta.push(...imported.moduleMeta);
     pkg.packageMeta.push(...imported.packageMeta);
-    pkg.protoFiles.push(...imported.protoFiles);
+
+    // Deduplicate proto files. First wins.
+    for (const file of imported.protoFiles) {
+      // TODO: Verify that this is the same approach used by the go package.
+      if (file.name !== undefined && pkg.protoFiles.findIndex((inner) => inner.name === file.name) !== -1) {
+        continue;
+      }
+
+      pkg.protoFiles.push(file);
+    }
+  }
+
+  const modules = pkg.modules?.modules ?? [];
+  const graph = createModuleGraph(modules);
+  for (const module of modules) {
+    module.initialBlock = graph.startBlockFor(module);
   }
 
   return pkg;
@@ -108,12 +124,21 @@ async function readImportedProtos(manifest: Manifest.Manifest) {
   paths.add(manifest.workDir);
 
   for (const file of manifest.protobuf.files) {
-    const resolved = resolveLocalProtoPath(file, Array.from(paths));
-    if (!isReadableLocalFile(resolved)) {
-      throw new Error(`Proto file ${resolved} does not exist or is not readable`);
+    // Find the first readable file in the import paths.
+    let context: string | undefined = undefined;
+    for (const candidate of paths) {
+      const resolved = path.resolve(candidate, file);
+      if (isReadableLocalFile(resolved)) {
+        context = candidate;
+        break;
+      }
     }
 
-    const descriptor = await readLocalProtos(resolved);
+    if (context === undefined) {
+      throw new Error(`Proto file ${file} does not exist or is not readable`);
+    }
+
+    const descriptor = await readLocalProtos(context, file);
     output.push(...descriptor.file);
   }
 

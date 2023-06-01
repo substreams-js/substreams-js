@@ -1,4 +1,4 @@
-import type { Module_Input } from "../../proto/sf/substreams/v1/modules_pb.js";
+import type { Module_Input, Modules } from "../../proto/sf/substreams/v1/modules_pb.js";
 import type { Package } from "../../proto/sf/substreams/v1/package_pb.js";
 import { isMapModule } from "../../utils/isMapModule.js";
 import { isStoreModule } from "../../utils/isStoreModule.js";
@@ -15,8 +15,15 @@ export type ValidatePackageOptions = {
   skipModuleOutputTypeValidation?: boolean | undefined;
 };
 
-export function validatePackage(pkg: Package, { skipModuleOutputTypeValidation = false }: ValidatePackageOptions = {}) {
-  if (!pkg.modules) {
+export type ValidPackage = Package & {
+  modules: Modules;
+};
+
+export function validatePackage(
+  pkg: Package,
+  { skipModuleOutputTypeValidation = false }: ValidatePackageOptions = {},
+): asserts pkg is ValidPackage {
+  if (pkg.modules === undefined || pkg.modules.modules.length === 0) {
     throw new Error("Package doesn't contain any modules");
   }
 
@@ -79,8 +86,6 @@ export function validatePackage(pkg: Package, { skipModuleOutputTypeValidation =
       throw new Error(`Sink module "${pkg.sinkModule}" not found in package`);
     }
   }
-
-  return null;
 }
 
 function duplicateStringInput(input: Module_Input): string {

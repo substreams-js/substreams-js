@@ -43,14 +43,3 @@ export function resolveLocalFile(file: string, cwd = process.cwd()): string {
 
   return path.resolve(cwd, file);
 }
-
-export function resolveLocalProtoPath(file: string, directories: string[]): string {
-  for (const candidate of directories) {
-    const resolved = path.resolve(candidate, file);
-    if (isReadableLocalFile(resolved)) {
-      return resolved;
-    }
-  }
-
-  throw new Error(`Proto file ${file} does not exist or is not readable`);
-}

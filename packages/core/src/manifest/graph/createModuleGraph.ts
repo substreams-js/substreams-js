@@ -4,6 +4,8 @@ import { assertAcyclic } from "./assertAcyclic.js";
 import { shortestPaths } from "./shortestPaths.js";
 import { topologicalSort } from "./topologicalSort.js";
 
+export const INITIAL_BLOCK_UNSET = 18_446_744_073_709_551_615n;
+
 export class ModuleGraph {
   protected readonly modules: Module[];
   protected readonly nodes: Map<Module, Set<Module>>;
@@ -106,6 +108,32 @@ export class ModuleGraph {
 
   sortedByGraphTopology() {
     return Array.from(this.topologicalSort());
+  }
+
+  // TODO: The go package uses a different algorithm for this but I'm not sure why. This should be fine and much simpler?
+  startBlockFor(name: string): bigint;
+  startBlockFor(module: Module): bigint;
+  startBlockFor(nameOrModule: string | Module): bigint;
+  startBlockFor(nameOrModule: string | Module) {
+    const module = typeof nameOrModule === "string" ? getModuleOrThrow(this.modules, nameOrModule) : nameOrModule;
+    if (module.initialBlock !== INITIAL_BLOCK_UNSET) {
+      return module.initialBlock;
+    }
+
+    const ancestors = this.ancestorsOf(module);
+    const block = ancestors.reduce((carry, current) => {
+      if (current.initialBlock !== INITIAL_BLOCK_UNSET && current.initialBlock < carry) {
+        return current.initialBlock;
+      }
+
+      return carry;
+    }, INITIAL_BLOCK_UNSET);
+
+    if (block === INITIAL_BLOCK_UNSET) {
+      throw new Error(`Couldn't resolve start block for module ${module.name}`);
+    }
+
+    return block;
   }
 }
 
