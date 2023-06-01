@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
@@ -46,10 +46,17 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": ["./dist/proto/*.d.ts"]
+      "proto/*": [
+        "./dist/proto/*.d.ts"
+      ]
     }
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
