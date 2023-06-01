@@ -13,69 +13,59 @@ export function createPackageFromManifest(
   { skipSourceCodeImportValidation = false }: ConvertToPackageOptions = {},
 ) {
   const meta = new PackageMetadata({
-    version: manifest.package.version,
-    url: manifest.package.url,
     name: manifest.package.name,
-    doc: manifest.package.doc,
+    version: manifest.package.version,
+    ...(manifest.package.url !== undefined ? { url: manifest.package.url } : undefined),
+    ...(manifest.package.doc !== undefined ? { doc: manifest.package.doc } : undefined),
   });
 
   const pkg = new Package({
     version: 1n,
     packageMeta: [meta],
     modules: new Modules(),
-    ...(manifest.network && { network: manifest.network }),
+    ...(manifest.network !== undefined ? { network: manifest.network } : undefined),
   });
 
-  // rome-ignore lint/style/noNonNullAssertion: guaranteed
+  // rome-ignore lint/style/noNonNullAssertion: guaranteed to be set above
   const modules = pkg.modules!;
 
   const code = new Map<string, number>();
   for (const module of manifest.modules) {
-    const moduleMeta = new ModuleMetadata({
-      doc: module.doc ?? "",
-      packageIndex: 0n,
-    });
+    pkg.moduleMeta.push(
+      new ModuleMetadata({
+        packageIndex: 0n, // Re-indexing happens later.
+        ...(module.doc !== undefined ? { doc: module.doc } : undefined),
+      }),
+    );
 
     const binaryDefinition = manifest.binaries[module.binary || "default"];
     if (!binaryDefinition) {
-      const binary = module.binary !== "" ? `(implicit) binary "${module.binary}"` : "default binary";
+      const binary = module.binary ? `(implicit) binary "${module.binary}"` : "default binary";
       throw new Error(
         `Module "${module.name}" refers to the ${binary}, which is not defined in the "binaries" section of the manifest`,
       );
     }
 
-    switch (binaryDefinition.type) {
-      case "wasm/rust-v1": {
-        let index = code.get(binaryDefinition.file);
+    let index = code.get(binaryDefinition.file);
+    if (index === undefined) {
+      index = modules.binaries.length;
 
-        if (index === undefined) {
-          index = modules.binaries.length;
-
-          if (skipSourceCodeImportValidation) {
-            modules.binaries.push(new Binary({ type: binaryDefinition.type }));
-          } else {
-            const data = fs.readFileSync(path.join(manifest.workDir, binaryDefinition.file));
-            modules.binaries.push(
-              new Binary({
-                type: binaryDefinition.type,
-                content: new Uint8Array(data),
-              }),
-            );
-          }
-
-          code.set(binaryDefinition.file, index);
-        }
-
-        modules.modules.push(createModuleFromManifest(module, index));
-        break;
+      if (skipSourceCodeImportValidation) {
+        modules.binaries.push(new Binary({ type: binaryDefinition.type }));
+      } else {
+        const data = fs.readFileSync(path.join(manifest.workDir, binaryDefinition.file));
+        modules.binaries.push(
+          new Binary({
+            type: binaryDefinition.type,
+            content: new Uint8Array(data),
+          }),
+        );
       }
 
-      default: {
-        throw new Error(`Module "${module.name}": invalid code type "${binaryDefinition.type}"`);
-      }
+      code.set(binaryDefinition.file, index);
     }
 
-    pkg.moduleMeta.push(moduleMeta);
+    modules.modules.push(createModuleFromManifest(module, index));
   }
 
   if (manifest.params) {

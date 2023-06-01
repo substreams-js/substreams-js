@@ -16,103 +16,19 @@ export function createModuleFromManifest(module: Manifest.Module, index: number)
     name: module.name,
     binaryIndex: index,
     binaryEntrypoint: module.name,
-    initialBlock: BigInt(module.initialBlock ?? MAX_UINT_64),
+    initialBlock: module.initialBlock ?? MAX_UINT_64,
   });
 
-  setOutputToProto(module, out);
-  setKindToProto(module, out);
-  setInputsToProto(module, out);
-
-  return out;
-}
-
-function setInputsToProto(module: Manifest.Module, proto: Module) {
-  for (const [index, input] of module.inputs.entries()) {
-    if (input.source) {
-      proto.inputs.push(
-        new Module_Input({
-          input: {
-            case: "source",
-            value: {
-              type: input.source,
-            },
-          },
-        }),
-      );
-    } else if (input.map) {
-      proto.inputs.push(
-        new Module_Input({
-          input: {
-            case: "map",
-            value: {
-              moduleName: input.map,
-            },
-          },
-        }),
-      );
-    } else if (input.store) {
-      let mode: Module_Input_Store_Mode;
-
-      switch (input.mode) {
-        case "": {
-          mode = Module_Input_Store_Mode.UNSET;
-          break;
-        }
-
-        case "get": {
-          mode = Module_Input_Store_Mode.GET;
-          break;
-        }
-
-        case "deltas": {
-          mode = Module_Input_Store_Mode.DELTAS;
-          break;
-        }
-
-        default: {
-          throw new Error(`Invalid input mode ${input.mode}`);
-        }
-      }
-
-      proto.inputs.push(
-        new Module_Input({
-          input: {
-            case: "store",
-            value: {
-              moduleName: input.store,
-              mode: mode,
-            },
-          },
-        }),
-      );
-    } else if (input.params) {
-      if (index !== 0) {
-        throw new Error("Params must be the first input");
-      }
-
-      proto.inputs.push(
-        new Module_Input({
-          input: {
-            case: "params",
-            value: {
-              value: "",
-            },
-          },
-        }),
-      );
-    } else {
-      throw new Error("Invalid input");
-    }
-  }
-}
-
-function setKindToProto(module: Manifest.Module, proto: Module): void {
   switch (module.kind) {
     case "map": {
-      proto.kind = {
+      out.kind = {
         case: "kindMap",
         value: new Module_KindMap(module.output?.type ? { outputType: module.output.type } : {}),
       };
+
+      out.output = new Module_Output({
+        type: module.output.type,
+      });
 
       break;
     }
@@ -155,7 +71,7 @@ function setKindToProto(module: Manifest.Module, proto: Module): void {
         }
       }
 
-      proto.kind = {
+      out.kind = {
         case: "kindStore",
         value: new Module_KindStore({
           updatePolicy: updatePolicy,
@@ -166,12 +82,93 @@ function setKindToProto(module: Manifest.Module, proto: Module): void {
       break;
     }
   }
-}
 
-function setOutputToProto(module: Manifest.Module, proto: Module): void {
-  if (module.output?.type) {
-    proto.output = new Module_Output({
-      type: module.output.type,
-    });
+  for (const [index, input] of module.inputs.entries()) {
+    if ("source" in input) {
+      out.inputs.push(
+        new Module_Input({
+          input: {
+            case: "source",
+            value: {
+              type: input.source,
+            },
+          },
+        }),
+      );
+
+      continue;
+    }
+
+    if ("map" in input) {
+      out.inputs.push(
+        new Module_Input({
+          input: {
+            case: "map",
+            value: {
+              moduleName: input.map,
+            },
+          },
+        }),
+      );
+
+      continue;
+    }
+
+    if ("store" in input) {
+      let mode: Module_Input_Store_Mode;
+
+      switch (input.mode) {
+        case "get": {
+          mode = Module_Input_Store_Mode.GET;
+          break;
+        }
+
+        case "deltas": {
+          mode = Module_Input_Store_Mode.DELTAS;
+          break;
+        }
+
+        default: {
+          throw new Error(`Invalid input mode ${input.mode}`);
+        }
+      }
+
+      out.inputs.push(
+        new Module_Input({
+          input: {
+            case: "store",
+            value: {
+              moduleName: input.store,
+              mode: mode,
+            },
+          },
+        }),
+      );
+
+      continue;
+    }
+
+    if (input.params) {
+      if (index !== 0) {
+        throw new Error("Params must be the first input");
+      }
+
+      out.inputs.push(
+        new Module_Input({
+          input: {
+            case: "params",
+            value: {
+              value: "",
+            },
+          },
+        }),
+      );
+
+      continue;
+    }
+
+    throw new Error("Invalid input");
   }
+
+  return out;
 }

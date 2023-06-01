@@ -74,7 +74,7 @@ export function validatePackage(pkg: Package, { skipModuleOutputTypeValidation =
     }
   }
 
-  if (pkg.sinkModule !== "") {
+  if (pkg.sinkModule) {
     if (!pkg.modules.modules.some((mod) => mod.name === pkg.sinkModule)) {
       throw new Error(`Sink module "${pkg.sinkModule}" not found in package`);
     }

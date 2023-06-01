@@ -35,7 +35,7 @@ export function validateModules(modules: Modules) {
           throw new Error(`Module "${mod.name}": input ${index}: params must be first input`);
         }
       } else if (input.input.case === "source") {
-        if (input.input.value.type === "") {
+        if (!input.input.value.type) {
           throw new Error(`Module "${mod.name}": input ${index}: source type empty`);
         }
       } else if (input.input.case === "map") {

@@ -1,1 +1,1 @@
-export { readPackage } from "./manifest/read.js";
+export { readPackageFromManifest } from "./reader/readPackage.js";
