@@ -3,11 +3,12 @@ import { createConnectTransport } from "@bufbuild/connect-web";
 import {
   createAuthInterceptor,
   createRegistry,
+  createRequest,
   fetchSubstream,
   isEmptyMessage,
+  streamBlocks,
   unpackMapOutput,
 } from "@substreams/core";
-import { createRequest, streamBlocks } from "@substreams/proxy/client";
 
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
 const MODULE = "map_pools_created";
@@ -17,6 +18,7 @@ const registry = createRegistry(substream);
 const transport = createConnectTransport({
   baseUrl: "https://substreams.fly.dev",
   interceptors: [createAuthInterceptor(token)],
+  useBinaryFormat: true,
   jsonOptions: {
     typeRegistry: registry,
   },
