@@ -1,5 +1,14 @@
 # @substreams/proxy
 
+## 0.1.5
+
+### Patch Changes
+
+- [`a45ae45`](https://github.com/substreams-js/substreams-js/commit/a45ae453acc00157252f9ae5f4676ed7a6736c2c) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies.
+
+- Updated dependencies [[`6e52c58`](https://github.com/substreams-js/substreams-js/commit/6e52c58cc25f6cb7ad2a3763bfcab23c4c84b913), [`a45ae45`](https://github.com/substreams-js/substreams-js/commit/a45ae453acc00157252f9ae5f4676ed7a6736c2c)]:
+  - @substreams/core@0.1.11
+
 ## 0.1.4
 
 ### Patch Changes

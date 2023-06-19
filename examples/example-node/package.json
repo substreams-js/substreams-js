@@ -11,8 +11,8 @@
     "@bufbuild/connect": "^0.10.0",
     "@bufbuild/connect-node": "^0.10.0",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.10",
-    "@substreams/manifest": "^0.0.2"
+    "@substreams/core": "^0.1.11",
+    "@substreams/manifest": "^0.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
