@@ -1,5 +1,6 @@
+import { ModuleGraph, createModuleGraph } from "../manifest/graph/createModuleGraph.js";
 import { Request } from "../proto/sf/substreams/rpc/v2/service_pb.js";
-import type { Module } from "../proto/sf/substreams/v1/modules_pb.js";
+import { Module, Modules } from "../proto/sf/substreams/v1/modules_pb.js";
 import { Package } from "../proto/sf/substreams/v1/package_pb.js";
 import { getModuleOrThrow } from "./getModule.js";
 
@@ -30,7 +31,7 @@ export type CreateRequestOptions = {
    * If a relative offset is provided in the form of a negative integer (e.g. -1000 or -1000n), it is
    * subtracted from the latest block number (chain head) at the time of request creation.
    */
-  startBlockNum?: number | bigint | `-${number}` | `-${bigint}` | undefined;
+  startBlockNum?: number | bigint | undefined;
   /**
    * The relative or absolute block number to stop at.
    *
@@ -39,7 +40,7 @@ export type CreateRequestOptions = {
    *
    * Relative offsets are only supported if the given start block number is a positive integer.
    */
-  stopBlockNum?: number | bigint | `+${number}` | `+${bigint}` | undefined;
+  stopBlockNum?: number | bigint | `+${number}` | undefined;
   /**
    * Available only in developer mode.
    */
@@ -56,27 +57,68 @@ export function createRequest({
   finalBlocksOnly,
   debugInitialStoreSnapshotForModules,
 }: CreateRequestOptions) {
-  if (substreamPackage.modules === undefined) {
+  const resolvedOutputModule = resolveOutputModule(substreamPackage, outputModule);
+  const packageModules = substreamPackage.modules;
+  if (packageModules === undefined) {
     throw new Error("Substream package does not contain any modules.");
   }
 
-  const resolvedOutputModule = resolveOutputModule(substreamPackage, outputModule);
-  const resolvedStartBlockNum = resolveStartBlockNum(resolvedOutputModule, startBlockNum);
+  const moduleGraph = createModuleGraph(packageModules.modules);
+  const requestModules = resolveRequestModules(moduleGraph, packageModules, resolvedOutputModule);
+  const resolvedStartBlockNum = resolveStartBlockNum(moduleGraph, resolvedOutputModule, startBlockNum);
   const resolvedStopBlockNum = resolveStopBlockNum(resolvedStartBlockNum, stopBlockNum);
 
   return new Request({
+    modules: requestModules,
     startBlockNum: resolvedStartBlockNum,
     stopBlockNum: resolvedStopBlockNum,
     outputModule: resolvedOutputModule.name,
     productionMode: productionMode ?? false,
     finalBlocksOnly: finalBlocksOnly ?? false,
     debugInitialStoreSnapshotForModules: debugInitialStoreSnapshotForModules ?? [],
-    ...(substreamPackage.modules !== undefined ? { modules: substreamPackage.modules } : undefined),
     ...(startCursor !== undefined ? { startCursor } : undefined),
   });
 }
 
-export function resolveOutputModule(substreamPackage: Package, outputModule: Module | string) {
+function resolveRequestModules(moduleGraph: ModuleGraph, packageModules: Modules, outputModule: Module) {
+  const requestModules = new Modules();
+  const requiredModules = [outputModule, ...moduleGraph.ancestorsOf(outputModule)];
+  for (const module of requiredModules) {
+    const moduleBinary = packageModules.binaries[module.binaryIndex];
+    if (moduleBinary === undefined) {
+      throw new Error(`Missing ${module.name} module binary at index ${module.binaryIndex}`);
+    }
+
+    let binaryIndex = requestModules.binaries.indexOf(moduleBinary);
+    if (binaryIndex === -1) {
+      binaryIndex = requestModules.binaries.push(moduleBinary) - 1;
+    }
+
+    requestModules.modules.push(new Module({ ...module, binaryIndex }));
+  }
+
+  return requestModules;
+}
+
+function resolveStartBlockNum(moduleGraph: ModuleGraph, outputModule: Module, startBlockNum?: number | bigint) {
+  if (startBlockNum === undefined) {
+    return moduleGraph.startBlockFor(outputModule);
+  }
+
+  const startBlockBi = BigInt(startBlockNum);
+
+  // If the start block is specified & non-relative, make sure it's not before the start block of the output module.
+  if (startBlockBi > 0n) {
+    const moduleStartBlock = moduleGraph.startBlockFor(outputModule);
+    if (moduleStartBlock > startBlockBi) {
+      throw new Error(`Given start block ${startBlockBi} is before the modules initial block (${moduleStartBlock})`);
+    }
+  }
+
+  return startBlockBi;
+}
+
+function resolveOutputModule(substreamPackage: Package, outputModule: Module | string) {
   if (typeof outputModule === "string") {
     if (substreamPackage.modules === undefined) {
       throw new Error("Substream package does not contain any modules.");
@@ -88,21 +130,7 @@ export function resolveOutputModule(substreamPackage: Package, outputModule: Mod
   return outputModule;
 }
 
-export function resolveStartBlockNum(
-  outputModule: Module,
-  startBlockNum?: number | bigint | `-${number}` | `-${bigint}`,
-) {
-  if (startBlockNum === undefined) {
-    return outputModule.initialBlock;
-  }
-
-  return BigInt(startBlockNum);
-}
-
-export function resolveStopBlockNum(
-  startBlockNum: bigint,
-  stopBlockNum: number | bigint | `+${number}` | `+${bigint}`,
-) {
+function resolveStopBlockNum(startBlockNum: bigint, stopBlockNum: number | bigint | `+${number}` | `+${bigint}`) {
   if (typeof stopBlockNum === "string" && stopBlockNum.startsWith("+")) {
     if (startBlockNum < 0n) {
       throw new Error("A relative stop block number is only supported with an absolute start block number.");
