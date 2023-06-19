@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@8.6.2",
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",
