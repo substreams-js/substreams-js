@@ -1,6 +1,6 @@
 {
   "name": "@substreams/proxy",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo",
@@ -27,7 +27,13 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["bin/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "bin/**",
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -37,7 +43,7 @@
     "@bufbuild/connect": "^0.10.0",
     "@bufbuild/connect-node": "^0.10.0",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.10",
+    "@substreams/core": "^0.1.11",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

@@ -1,5 +1,13 @@
 # @substreams/core
 
+## 0.1.11
+
+### Patch Changes
+
+- [`6e52c58`](https://github.com/substreams-js/substreams-js/commit/6e52c58cc25f6cb7ad2a3763bfcab23c4c84b913) Thanks [@fubhy](https://github.com/fubhy)! - Only modules required for the requested output module are sent.
+
+- [`a45ae45`](https://github.com/substreams-js/substreams-js/commit/a45ae453acc00157252f9ae5f4676ed7a6736c2c) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies.
+
 ## 0.1.10
 
 ### Patch Changes
