@@ -3,11 +3,11 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "noEmit": true,
-    "lib": ["DOM"],
     "types": ["node"],
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
     "moduleResolution": "Node",
     "verbatimModuleSyntax": false,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "isolatedModules": true
   }
 }

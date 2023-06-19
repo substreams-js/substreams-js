@@ -17,7 +17,7 @@
     "noUncheckedIndexedAccess": true,
 
     // Modules
-    "module": "ESNext",
+    "module": "ES2020",
     "moduleResolution": "NodeNext",
 
     // JavaScript support
@@ -29,8 +29,8 @@
     "verbatimModuleSyntax": true,
 
     // Language and environment
-    "lib": ["ESNext"],
-    "target": "ESNext",
+    "target": "ES2020",
+    "lib": ["DOM", "ES2020"],
 
     // Sourcemaps
     "sourceMap": true

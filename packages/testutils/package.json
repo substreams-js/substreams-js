@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo",
     "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
@@ -27,12 +27,12 @@
     "@substreams/core": "^0.1.10"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
-    "@vitest/coverage-c8": "^0.31.2",
-    "@vitest/ui": "^0.31.2",
-    "typescript": "^5.0.4",
+    "@types/node": "^20.3.1",
+    "@vitest/coverage-c8": "^0.32.2",
+    "@vitest/ui": "^0.32.2",
+    "typescript": "^5.1.3",
     "vite": "^4.3.9",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.2"
+    "vitest": "^0.32.2"
   }
 }

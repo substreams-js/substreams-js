@@ -8,16 +8,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.9.1",
-    "@bufbuild/connect-node": "^0.9.1",
+    "@bufbuild/connect": "^0.10.0",
+    "@bufbuild/connect-node": "^0.10.0",
     "@bufbuild/protobuf": "^1.2.1",
     "@substreams/core": "^0.1.10"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.1.0",
-    "@types/node": "^20.2.5",
-    "rollup": "^3.23.0",
+    "@types/node": "^20.3.1",
+    "rollup": "^3.25.1",
     "tsx": "^3.12.7",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   }
 }

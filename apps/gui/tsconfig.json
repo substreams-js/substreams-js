@@ -4,8 +4,9 @@
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "noEmit": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "ESNext"],
     "types": ["web"],
     "jsx": "react-jsx",
+    "skipLibCheck": true
   }
 }

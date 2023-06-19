@@ -1,8 +1,5 @@
 {
   "extends": "../../tsconfig.aliased.json",
   "include": ["src/**/*.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "compilerOptions": {
-    "lib": ["DOM"]
-  }
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,9 +1,8 @@
 import { createConnectTransport } from "@bufbuild/connect-web";
 import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
-import type { StatefulResponse } from "@substreams/core";
+import { type StatefulResponse, createRequest, streamBlocks } from "@substreams/core";
 import { type CreateRequestOptions, type MapModule, createAuthInterceptor, createRegistry } from "@substreams/core";
 import type { Package } from "@substreams/core/proto";
-import { createRequest, streamBlocks } from "@substreams/proxy/client";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type SubstreamContext = {

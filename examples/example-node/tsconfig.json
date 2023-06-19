@@ -3,7 +3,8 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "noEmit": true,
-    "lib": ["DOM"],
-    "types": ["node"]
+    "types": ["node"],
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext"
   }
 }

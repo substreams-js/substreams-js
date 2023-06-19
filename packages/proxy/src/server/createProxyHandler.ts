@@ -1,7 +1,7 @@
 import { createProxyRoutes } from "./createProxyRoutes.js";
 import type { Transport } from "@bufbuild/connect";
 import { connectNodeAdapter } from "@bufbuild/connect-node";
-import type { IncomingMessage, OutgoingHttpHeaders, ServerResponse } from "node:http";
+import type { Http2ServerRequest, Http2ServerResponse, OutgoingHttpHeaders } from "node:http2";
 
 export const defaultCorsAllowHeaders = [
   "Authorization",
@@ -39,7 +39,7 @@ export type CreateProxyHandlerOptions = {
   substreamsTransport: Transport;
   substreamsToken?: string | undefined;
   corsEnabled?: boolean | undefined;
-  corsHeaders?: OutgoingHttpHeaders | ((req: IncomingMessage) => OutgoingHttpHeaders) | undefined;
+  corsHeaders?: OutgoingHttpHeaders | ((req: Http2ServerRequest) => OutgoingHttpHeaders) | undefined;
 };
 
 export function createProxyHandler({
@@ -47,7 +47,7 @@ export function createProxyHandler({
   corsHeaders = defaultCorsHeaders,
   corsEnabled = true,
 }: CreateProxyHandlerOptions) {
-  return (req: IncomingMessage, res: ServerResponse) => {
+  return (req: Http2ServerRequest, res: Http2ServerResponse) => {
     if (req.method !== "POST" && req.method !== "OPTIONS") {
       res.writeHead(405).end();
       return;
@@ -66,6 +66,13 @@ export function createProxyHandler({
 
     if (req.method === "OPTIONS") {
       res.writeHead(204).end();
+      return;
+    }
+
+    // Only support binary format.
+    const ctype = req.headers["content-type"];
+    if (ctype === "application/json" || ctype === "application/connect+json" || ctype === "application/grpc-web-text") {
+      res.writeHead(400).end();
       return;
     }
 

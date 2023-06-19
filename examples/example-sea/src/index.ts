@@ -11,7 +11,7 @@ import {
 } from "@substreams/core";
 
 (async () => {
-  const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.1/substreams.spkg";
+  const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
   const MODULE = "map_pools_created";
 
   const substream = await fetchSubstream(SUBSTREAM);
@@ -29,7 +29,6 @@ import {
     substreamPackage: substream,
     outputModule: MODULE,
     productionMode: true,
-    startBlockNum: 17250000n,
     stopBlockNum: "+10000",
   });
 

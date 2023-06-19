@@ -1,8 +1,0 @@
-# proto by buf. DO NOT EDIT.
-version: v1
-deps:
-  - remote: buf.build
-    owner: fubhy
-    repository: substreams
-    commit: 65b19c5832fc4b7792b294ee1b4d9f80
-    digest: shake256:a7a8f949726aa2f1b16537de464a1df047051da0b2882d730c86b90bd5ca3d1ecec77cf31131b4645e23d12e40727f56f477533d95c0f8ae7ae7ce5ed6824303
