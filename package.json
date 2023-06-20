@@ -26,7 +26,6 @@
       "@substreams/core": "workspace:*",
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
-      "@substreams/proxy": "workspace:*",
       "@substreams/react": "workspace:*"
     },
     "peerDependencyRules": {

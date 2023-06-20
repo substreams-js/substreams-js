@@ -16,7 +16,6 @@
     "@bufbuild/protobuf": "^1.2.1",
     "@heroicons/react": "^2.0.18",
     "@substreams/core": "^0.1.11",
-    "@substreams/proxy": "^0.1.5",
     "@substreams/react": "workspace:^",
     "@tanstack/react-form": "^0.0.5",
     "@textea/json-viewer": "^3.0.0",

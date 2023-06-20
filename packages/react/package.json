@@ -23,12 +23,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -39,7 +34,6 @@
     "@bufbuild/connect-web": "^0.10.0",
     "@bufbuild/protobuf": "^1.2.1",
     "@substreams/core": "^0.1.11",
-    "@substreams/proxy": "^0.1.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
