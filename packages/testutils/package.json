@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.11"
+    "@substreams/core": "^0.1.12"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",

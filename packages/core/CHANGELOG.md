@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.12
+
+### Patch Changes
+
+- [`8cf75a4`](https://github.com/substreams-js/substreams-js/commit/8cf75a4a97397fe9e4b61e45d41767c439ed4681) Thanks [@fubhy](https://github.com/fubhy)! - Add `Bearer` prefix to auth interceptor.
+
 ## 0.1.11
 
 ### Patch Changes
