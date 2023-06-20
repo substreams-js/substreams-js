@@ -35,7 +35,6 @@ const request = createRequest({
   substreamPackage: substream,
   outputModule: MODULE,
   productionMode: true,
-  startBlockNum: 17250000n,
   stopBlockNum: "+10000",
 });
 
@@ -73,8 +72,6 @@ npm install @substreams/core
   Generates mermaid graph visualizations of substream module graphs. ([source code](packages/mermaid)).
 - [@substreams/react](https://www.npmjs.com/package/@substreams/react):
   Lightweight utilities for building React based user interfaces on top of substreams. ([source code](packages/react)).
-- [@substreams/proxy](https://www.npmjs.com/package/@substreams/proxy):
-  Proxy server for adding `connect` protocol compatibility for substreams requests. This will be deprecated once the substreams service adds `connect` compatibility. ([source code](packages/proxy)).
 
 ## Authors
 
