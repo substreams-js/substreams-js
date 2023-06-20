@@ -25,9 +25,17 @@ const useStreamData = create<SubstreamState>(() => ({
   modules: {},
 }));
 
-export function StreamingCard(options: { endpoint: string; substream: Package; module: MapModule }) {
+export function StreamingCard(props: {
+  token?: string | undefined;
+  endpoint: string;
+  substream: Package;
+  module: MapModule;
+}) {
   const { start, module } = useSubstream({
-    ...options,
+    token: props.token,
+    endpoint: props.endpoint,
+    substream: props.substream,
+    module: props.module,
     handlers: {
       onResponse: (response, ctx) => {
         useStreamData.setState((state) => {

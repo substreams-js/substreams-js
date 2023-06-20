@@ -5,7 +5,7 @@
   "compilerOptions": {
     "noEmit": true,
     "lib": ["DOM", "ESNext"],
-    "types": ["web"],
+    "types": ["web", "vite/client"],
     "jsx": "react-jsx",
     "skipLibCheck": true
   }

@@ -10,7 +10,7 @@ import {
 } from "@substreams/core";
 
 (async () => {
-  if (import.meta.env.SUBSTREAMS_API_TOKEN === undefined) {
+  if (typeof import.meta.env.SUBSTREAMS_API_TOKEN !== "string") {
     throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
   }
 
