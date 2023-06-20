@@ -1,5 +1,4 @@
-import { token } from "./token.js";
-import { createConnectTransport, createGrpcTransport } from "@bufbuild/connect-node";
+import { createGrpcTransport } from "@bufbuild/connect-node";
 import {
   createAuthInterceptor,
   createRegistry,
@@ -10,48 +9,33 @@ import {
   unpackMapOutput,
 } from "@substreams/core";
 
+if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
+  throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
+}
+
+const TOKEN = process.env.SUBSTREAMS_API_TOKEN;
 const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
 const MODULE = "map_pools_created";
 
 const substream = await fetchSubstream(SUBSTREAM);
 const registry = createRegistry(substream);
-const transport = (() => {
-  switch (process.env.SUBSTREAMS_MODE ?? "connect") {
-    case "grpc": {
-      // It's usually preferable to use the standard `grpc` transport whenever you are in an environment that supports it.
-      return createGrpcTransport({
-        baseUrl: "https://mainnet.eth.streamingfast.io",
-        httpVersion: "2",
-        interceptors: [createAuthInterceptor(token)],
-        jsonOptions: {
-          typeRegistry: registry,
-        },
-      });
-    }
 
-    case "connect": {
-      // The `connect` transport can be used in browser environments or alternative runtimes.
-      return createConnectTransport({
-        baseUrl: "http://0.0.0.0:8080",
-        httpVersion: "2",
-        interceptors: [createAuthInterceptor(token)],
-        jsonOptions: {
-          typeRegistry: registry,
-        },
-      });
-    }
-
-    default: {
-      throw new Error('Invalid transport mode. Must be either "grpc" or "connect".');
-    }
-  }
-})();
+// The `grpc` transport is usually preferable in environments that support it (e.g. Node.js).
+// In browser environments or alternative runtimes, the `connect` transport should be used.
+const transport = createGrpcTransport({
+  baseUrl: "https://mainnet.eth.streamingfast.io",
+  httpVersion: "2",
+  interceptors: [createAuthInterceptor(TOKEN)],
+  jsonOptions: {
+    typeRegistry: registry,
+  },
+});
 
 const request = createRequest({
   substreamPackage: substream,
   outputModule: MODULE,
-  productionMode: true,
-  stopBlockNum: "+10000",
+  productionMode: false, // Set to `true` in production.
+  stopBlockNum: "+10000", // Stream the first 10000 blocks. Will follow chain head if not set.
 });
 
 for await (const response of streamBlocks(transport, request)) {

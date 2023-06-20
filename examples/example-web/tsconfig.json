@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.aliased.json",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["DOM", "ESNext"],
+    "types": ["web", "vite/client"],
+    "jsx": "react-jsx",
+    "skipLibCheck": true
+  }
+}

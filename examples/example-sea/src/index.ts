@@ -1,4 +1,3 @@
-import { token } from "./token.js";
 import { createGrpcTransport } from "@bufbuild/connect-node";
 import {
   createAuthInterceptor,
@@ -11,6 +10,11 @@ import {
 } from "@substreams/core";
 
 (async () => {
+  if (process.env.SUBSTREAMS_API_TOKEN === undefined) {
+    throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
+  }
+
+  const TOKEN = process.env.SUBSTREAMS_API_TOKEN;
   const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
   const MODULE = "map_pools_created";
 
@@ -19,7 +23,7 @@ import {
   const transport = createGrpcTransport({
     baseUrl: "https://mainnet.eth.streamingfast.io",
     httpVersion: "2",
-    interceptors: [createAuthInterceptor(token)],
+    interceptors: [createAuthInterceptor(TOKEN)],
     jsonOptions: {
       typeRegistry: registry,
     },
