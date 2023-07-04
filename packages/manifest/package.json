@@ -23,13 +23,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts",
-    "src/**/*.pb"
-  ],
+  "files": ["system.pb", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts", "src/**/*.pb"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
