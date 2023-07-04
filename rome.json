@@ -1,6 +1,15 @@
 {
   "files": {
-    "ignore": ["dist/", "proto/", "coverage/", "out/", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
+    "ignore": [
+      "dist/",
+      "proto/",
+      "coverage/",
+      "out/",
+      "examples/example-node-manifest/substream",
+      "pnpm-lock.yaml",
+      "tsconfig.json",
+      "tsconfig.*.json"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
