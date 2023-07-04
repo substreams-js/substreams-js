@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.13
+
+### Patch Changes
+
+- [`5be1808`](https://github.com/substreams-js/substreams-js/commit/5be180832efe335d0b4e5964e7a802b9bec0d92f) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies
+
 ## 0.1.12
 
 ### Patch Changes

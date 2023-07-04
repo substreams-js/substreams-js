@@ -1,5 +1,16 @@
 # @substreams/manifest
 
+## 0.0.4
+
+### Patch Changes
+
+- [`c49b848`](https://github.com/substreams-js/substreams-js/commit/c49b8482630aeb18cb1e626096f358f1bfb0b681) Thanks [@fubhy](https://github.com/fubhy)! - Added exports and fixed reading of system protos.
+
+- [`5be1808`](https://github.com/substreams-js/substreams-js/commit/5be180832efe335d0b4e5964e7a802b9bec0d92f) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies
+
+- Updated dependencies [[`5be1808`](https://github.com/substreams-js/substreams-js/commit/5be180832efe335d0b4e5964e7a802b9bec0d92f)]:
+  - @substreams/core@0.1.13
+
 ## 0.0.3
 
 ### Patch Changes
