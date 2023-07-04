@@ -4,8 +4,7 @@
 !.github
 !.gitignore
 !.vscode
-!.node-version
-!.env.tpl
+!.gitmodules
 
 # Ignore log output
 *.log

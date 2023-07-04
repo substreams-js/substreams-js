@@ -1,0 +1,3 @@
+[submodule "examples/example-node-manifest/substream"]
+	path = examples/example-node-manifest/substream
+	url = https://github.com/streamingfast/substreams-uniswap-v3.git

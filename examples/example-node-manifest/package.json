@@ -1,0 +1,23 @@
+{
+  "name": "example-node-manifest",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bufbuild/connect": "^0.10.0",
+    "@bufbuild/connect-node": "^0.10.0",
+    "@bufbuild/connect-web": "^0.10.0",
+    "@bufbuild/protobuf": "^1.2.1",
+    "@substreams/core": "^0.1.12",
+    "@substreams/manifest": "^0.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.3"
+  }
+}
