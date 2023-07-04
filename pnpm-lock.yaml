@@ -135,6 +135,34 @@ importers:
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core
+    devDependencies:
+      '@types/node':
+        specifier: ^20.3.1
+        version: 20.3.1
+      tsx:
+        specifier: ^3.12.7
+        version: 3.12.7
+      typescript:
+        specifier: ^5.1.3
+        version: 5.1.3
+
+  examples/example-node-manifest:
+    dependencies:
+      '@bufbuild/connect':
+        specifier: ^0.10.0
+        version: 0.10.0(@bufbuild/protobuf@1.2.1)
+      '@bufbuild/connect-node':
+        specifier: ^0.10.0
+        version: 0.10.0(@bufbuild/protobuf@1.2.1)
+      '@bufbuild/connect-web':
+        specifier: ^0.10.0
+        version: 0.10.0(@bufbuild/protobuf@1.2.1)
+      '@bufbuild/protobuf':
+        specifier: ^1.2.1
+        version: 1.2.1
+      '@substreams/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@substreams/manifest':
         specifier: workspace:*
         version: link:../../packages/manifest
