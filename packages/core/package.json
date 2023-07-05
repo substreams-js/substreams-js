@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
