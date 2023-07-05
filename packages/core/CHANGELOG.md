@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.14
+
+### Patch Changes
+
+- [`3757265`](https://github.com/substreams-js/substreams-js/commit/375726599e781f40fcd30003001dc9a9ff42c8c0) Thanks [@fubhy](https://github.com/fubhy)! - Fix initial block to fall back to 0 if not set.
+
 ## 0.1.13
 
 ### Patch Changes
