@@ -129,11 +129,7 @@ export class ModuleGraph {
       return carry;
     }, INITIAL_BLOCK_UNSET);
 
-    if (block === INITIAL_BLOCK_UNSET) {
-      throw new Error(`Couldn't resolve start block for module ${module.name}`);
-    }
-
-    return block;
+    return block === INITIAL_BLOCK_UNSET ? 0 : block;
   }
 }
 
