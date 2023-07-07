@@ -3,7 +3,7 @@
   "version": "0.1.14",
   "license": "MIT",
   "scripts": {
-    "codegen": "rm -rf src/proto tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo && buf generate buf.build/fubhy/substreams && buf generate buf.build/fubhy/substreams-sink-kv && buf generate buf.build/fubhy/substreams-sink-database && buf generate buf.build/fubhy/substreams-sink-entity",
+    "codegen": "rm -rf src/proto tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo && buf generate buf.build/streamingfast/substreams",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
@@ -26,18 +26,6 @@
       "types": "./dist/proto.d.ts",
       "default": "./dist/proto.js"
     },
-    "./sinks/kv": {
-      "types": "./dist/sinks/kv.d.ts",
-      "default": "./dist/sinks/kv.js"
-    },
-    "./sinks/database": {
-      "types": "./dist/sinks/database.d.ts",
-      "default": "./dist/sinks/database.js"
-    },
-    "./sinks/entity": {
-      "types": "./dist/sinks/entity.d.ts",
-      "default": "./dist/sinks/entity.js"
-    },
     "./proto/*.js": {
       "types": "./dist/proto/*.d.ts",
       "default": "./dist/proto/*.js"
@@ -46,17 +34,10 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": [
-        "./dist/proto/*.d.ts"
-      ]
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",

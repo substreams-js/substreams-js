@@ -141,6 +141,20 @@ export class Completed extends Message<Completed> {
    */
   allProcessedRanges: BlockRange[] = [];
 
+  /**
+   * TraceId represents the producer's trace id that produced the partial files.
+   * This is present here so that the consumer can use it to identify the
+   * right partial files that needs to be squashed together.
+   *
+   * The TraceId can be empty in which case it should be assumed by the tier1
+   * consuming this message that the tier2 that produced those partial files
+   * is not yet updated to produce a trace id and a such, the tier1 should
+   * generate a legacy partial file name.
+   *
+   * @generated from field: string trace_id = 2;
+   */
+  traceId = "";
+
   constructor(data?: PartialMessage<Completed>) {
     super();
     proto3.util.initPartial(data, this);
@@ -150,6 +164,7 @@ export class Completed extends Message<Completed> {
   static readonly typeName = "sf.substreams.internal.v2.Completed";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "all_processed_ranges", kind: "message", T: BlockRange, repeated: true },
+    { no: 2, name: "trace_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Completed {

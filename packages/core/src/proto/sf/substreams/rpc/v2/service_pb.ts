@@ -323,6 +323,21 @@ export class SessionInit extends Message<SessionInit> {
    */
   traceId = "";
 
+  /**
+   * @generated from field: uint64 resolved_start_block = 2;
+   */
+  resolvedStartBlock = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 linear_handoff_block = 3;
+   */
+  linearHandoffBlock = protoInt64.zero;
+
+  /**
+   * @generated from field: uint64 max_parallel_workers = 4;
+   */
+  maxParallelWorkers = protoInt64.zero;
+
   constructor(data?: PartialMessage<SessionInit>) {
     super();
     proto3.util.initPartial(data, this);
@@ -332,6 +347,9 @@ export class SessionInit extends Message<SessionInit> {
   static readonly typeName = "sf.substreams.rpc.v2.SessionInit";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "trace_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "resolved_start_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "linear_handoff_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "max_parallel_workers", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SessionInit {
