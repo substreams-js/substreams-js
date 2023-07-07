@@ -11,8 +11,8 @@
     "@bufbuild/connect": "^0.11.0",
     "@bufbuild/connect-web": "^0.11.0",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.14",
-    "@substreams/manifest": "^0.0.4"
+    "@substreams/core": "^0.1.15",
+    "@substreams/manifest": "^0.0.5"
   },
   "devDependencies": {
     "@types/web": "^0.0.103",

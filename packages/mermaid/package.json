@@ -1,6 +1,6 @@
 {
   "name": "@substreams/mermaid",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist",
@@ -35,7 +35,7 @@
     "directory": "packages/mermaid"
   },
   "dependencies": {
-    "@substreams/core": "^0.1.13",
+    "@substreams/core": "^0.1.15",
     "pako": "^2.1.0"
   },
   "devDependencies": {
