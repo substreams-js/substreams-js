@@ -1,6 +1,6 @@
 {
   "name": "@substreams/react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo",
@@ -38,7 +38,7 @@
     "@bufbuild/connect": "^0.11.0",
     "@bufbuild/connect-web": "^0.11.0",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.13",
+    "@substreams/core": "^0.1.15",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

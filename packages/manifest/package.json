@@ -1,6 +1,6 @@
 {
   "name": "@substreams/manifest",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@bufbuild/buf": "1.23.1",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.13",
+    "@substreams/core": "^0.1.15",
     "arktype": "1.0.14-alpha",
     "yaml": "^2.3.1"
   },
