@@ -34,27 +34,34 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": ["./dist/proto/*.d.ts"]
+      "proto/*": [
+        "./dist/proto/*.d.ts"
+      ]
     }
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/core"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.10.0",
+    "@bufbuild/connect": "^0.11.0",
     "@bufbuild/protobuf": "^1.2.1"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.21.0-1",
+    "@bufbuild/buf": "1.23.1",
     "@substreams/testutils": "^0.0.0",
-    "@vitest/coverage-c8": "^0.32.2",
-    "@vitest/ui": "^0.32.2",
-    "typescript": "^5.1.3",
-    "vite": "^4.3.9",
+    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/ui": "^0.33.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.1",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.32.2"
+    "vitest": "^0.33.0"
   }
 }
