@@ -12,7 +12,7 @@ if (typeof import.meta.env.SUBSTREAMS_API_TOKEN !== "string") {
 }
 
 const TOKEN = import.meta.env.SUBSTREAMS_API_TOKEN;
-const ENDPOINT = "https:/mainnet.eth.streamingfast.io";
+const ENDPOINT = "https://mainnet.eth.streamingfast.io";
 
 const packages = [
   {
