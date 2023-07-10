@@ -46,19 +46,17 @@ export function UploadDropzone({
   });
 
   return (
-    <>
-      <Card className={className} {...getRootProps()}>
-        <input {...getInputProps()} />
-        <Title className="text-center text-lg p-10">
-          Drag 'n' drop a substream package (.spkg) file here, or click to select one
-        </Title>
+    <Card className={className} {...getRootProps()}>
+      <input {...getInputProps()} />
+      <Title className="text-center text-lg p-10">
+        Drag 'n' drop a substream package (.spkg) file here, or click to select one
+      </Title>
 
-        {error ? (
-          <Callout className="mt-4" title="An error occurred" icon={ExclamationTriangleIcon} color="rose">
-            {error}
-          </Callout>
-        ) : null}
-      </Card>
-    </>
+      {error ? (
+        <Callout className="mt-4" title="An error occurred" icon={ExclamationTriangleIcon} color="rose">
+          {error}
+        </Callout>
+      ) : null}
+    </Card>
   );
 }
