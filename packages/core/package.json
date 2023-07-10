@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo && buf generate buf.build/streamingfast/substreams",
