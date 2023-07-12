@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.16
+
+### Patch Changes
+
+- [`db70b53`](https://github.com/substreams-js/substreams-js/commit/db70b53fc00e3e0d75cc868a38f47f6aebcdb35d) Thanks [@fubhy](https://github.com/fubhy)! - Added error handling when fetching packages
+
 ## 0.1.15
 
 ### Patch Changes
