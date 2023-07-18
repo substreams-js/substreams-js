@@ -1,0 +1,33 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/core/tsconfig.json"
+    },
+    {
+      "path": "./packages/manifest/tsconfig.json"
+    },
+    {
+      "path": "./packages/mermaid/tsconfig.json"
+    },
+    {
+      "path": "./packages/react/tsconfig.json"
+    },
+    {
+      "path": "./examples/example-node/tsconfig.json"
+    },
+    {
+      "path": "./examples/example-node-manifest/tsconfig.json"
+    },
+    {
+      "path": "./examples/example-sea/tsconfig.json"
+    },
+    {
+      "path": "./examples/example-web/tsconfig.json"
+    },
+    {
+      "path": "./apps/gui/tsconfig.json"
+    }
+  ]
+}

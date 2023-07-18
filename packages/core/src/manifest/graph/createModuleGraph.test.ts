@@ -1,11 +1,11 @@
 import { createModuleGraph } from "./createModuleGraph.js";
-import { TEST_MODULES, createSubstreamFixture } from "@substreams/testutils";
+import { STANDARD_TEST_MODULES, createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
 
 const uniswap = createSubstreamFixture("uniswap-v3");
 
 test("should create a module graph", () => {
-  const graph = createModuleGraph(TEST_MODULES);
+  const graph = createModuleGraph(STANDARD_TEST_MODULES);
   const ancestors = graph.ancestorsOf("G");
   const names = Array.from(ancestors).map((node) => node.name);
   expect(names).toMatchInlineSnapshot(`

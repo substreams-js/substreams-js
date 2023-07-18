@@ -1,8 +1,12 @@
 {
-  "include": [],
   "compilerOptions": {
-    // Incremental builds
+    // Project references
+    "composite": true,
     "incremental": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "noEmitOnError": true,
 
     // Type checking
     "strict": true,

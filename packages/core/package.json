@@ -3,9 +3,8 @@
   "version": "0.1.16",
   "license": "MIT",
   "scripts": {
-    "codegen": "rm -rf src/proto tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo && buf generate buf.build/streamingfast/substreams",
-    "clean": "rm -rf dist",
-    "build": "pnpm run clean && tsc --project tsconfig.build.json",
+    "codegen": "rm -rf src/proto && buf generate buf.build/streamingfast/substreams",
+    "build": "rm -rf dist && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
@@ -34,17 +33,10 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": [
-        "./dist/proto/*.d.ts"
-      ]
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -56,7 +48,7 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "1.23.1",
-    "@substreams/testutils": "^0.0.0",
+    "@types/node": "^20.4.0",
     "@vitest/coverage-c8": "^0.33.0",
     "@vitest/ui": "^0.33.0",
     "typescript": "^5.1.6",

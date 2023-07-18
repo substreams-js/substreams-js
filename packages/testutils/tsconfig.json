@@ -1,5 +1,0 @@
-{
-  "extends": "../../tsconfig.aliased.json",
-  "include": ["src/**/*.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-}

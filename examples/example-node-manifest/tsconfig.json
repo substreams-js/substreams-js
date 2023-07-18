@@ -1,10 +1,23 @@
 {
-  "extends": "../../tsconfig.aliased.json",
+  "extends": "../../tsconfig.base.json",
   "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../../packages/core/tsconfig.json"
+    },
+    {
+      "path": "../../packages/manifest/tsconfig.json"
+    }
+  ],
   "compilerOptions": {
-    "noEmit": true,
+    "outDir": "../../.cache/tsc/examples/example-node-manifest",
     "types": ["node"],
     "lib": ["DOM", "ESNext"],
-    "module": "ESNext"
+    "module": "ESNext",
+    "paths": {
+      "@substreams/core": ["../../packages/core/src/index.js"],
+      "@substreams/core/proto": ["../../packages/core/src/proto.js"],
+      "@substreams/manifest": ["../../packages/manifest/src/index.js"]
+    }
   }
 }

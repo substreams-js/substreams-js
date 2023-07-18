@@ -1,12 +1,20 @@
 {
-  "extends": "../../tsconfig.aliased.json",
+  "extends": "../../tsconfig.base.json",
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [
+    {
+      "path": "../../packages/core/tsconfig.json"
+    }
+  ],
   "compilerOptions": {
-    "noEmit": true,
+    "outDir": "../../.cache/tsc/apps/gui",
     "lib": ["DOM", "ESNext"],
     "types": ["web", "vite/client"],
     "jsx": "react-jsx",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@substreams/core": ["../../packages/core/src/index.js"],
+      "@substreams/core/proto": ["../../packages/core/src/proto.js"]
+    }
   }
 }

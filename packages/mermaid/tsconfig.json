@@ -1,5 +1,17 @@
 {
-  "extends": "../../tsconfig.aliased.json",
-  "include": ["src/**/*.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "extends": "../../tsconfig.base.json",
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "references": [
+    {
+      "path": "../core/tsconfig.json"
+    }
+  ],
+  "compilerOptions": {
+    "outDir": "../../.cache/tsc/packages/mermaid",
+    "paths": {
+      "@substreams/testutils": ["../core/tests/index.js"],
+      "@substreams/core": ["../core/src/index.js"],
+      "@substreams/core/proto": ["../core/src/proto.js"]
+    }
+  }
 }

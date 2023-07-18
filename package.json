@@ -9,8 +9,7 @@
     "release": "pnpm changeset version && pnpm run --recursive --filter \"./packages/*\" release && pnpm changeset publish",
     "test": "pnpm run --recursive --filter \"./packages/*\" test --run",
     "test:coverage": "pnpm run --recursive --filter \"./packages/*\" test:coverage",
-    "clean": "pnpm run --recursive --parallel clean",
-    "typecheck": "pnpm run --recursive --parallel typecheck",
+    "typecheck": "pnpm tsc --build",
     "format": "rome format --write . && rome check --apply .",
     "lint": "rome check ."
   },
@@ -22,16 +21,13 @@
   },
   "pnpm": {
     "overrides": {
-      "@substreams/testutils": "workspace:*",
       "@substreams/core": "workspace:*",
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
       "@substreams/react": "workspace:*"
     },
     "peerDependencyRules": {
-      "ignoreMissing": [
-        "prop-types"
-      ]
+      "ignoreMissing": ["prop-types"]
     },
     "patchedDependencies": {
       "@changesets/get-dependents-graph@1.3.5": "patches/@changesets__get-dependents-graph@1.3.5.patch"
