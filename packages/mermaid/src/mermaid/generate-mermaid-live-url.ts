@@ -1,4 +1,4 @@
-import { generateMermaidGraph } from "./generateMermaidGraph.js";
+import { generateMermaidGraph } from "./generate-mermaid-graph.js";
 import type { Module } from "@substreams/core/proto";
 import { deflate } from "pako";
 

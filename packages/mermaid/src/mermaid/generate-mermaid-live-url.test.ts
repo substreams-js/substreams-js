@@ -1,4 +1,4 @@
-import { generateMermaidLiveUrl } from "./generateMermaidLiveUrl.js";
+import { generateMermaidLiveUrl } from "./generate-mermaid-live-url.js";
 import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
 

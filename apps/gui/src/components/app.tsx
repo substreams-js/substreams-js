@@ -1,6 +1,6 @@
-import { UploadDropzone } from "./UploadDropzone.js";
-import { ModuleList } from "./substreams/ModuleList.js";
-import { StreamingCard } from "./substreams/StreamingCard.js";
+import { ModuleList } from "./substreams/module-list.js";
+import { StreamingCard } from "./substreams/streaming-card.js";
+import { UploadDropzone } from "./upload-dropzone.js";
 import { type MapModule, fetchSubstream } from "@substreams/core";
 import type { Package } from "@substreams/core/proto";
 import { useKey } from "@substreams/react";

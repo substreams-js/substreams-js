@@ -1,2 +1,2 @@
-export { generateMermaidGraph } from "./mermaid/generateMermaidGraph.js";
-export { generateMermaidLiveUrl } from "./mermaid/generateMermaidLiveUrl.js";
+export { generateMermaidGraph } from "./mermaid/generate-mermaid-graph.js";
+export { generateMermaidLiveUrl } from "./mermaid/generate-mermaid-live-url.js";

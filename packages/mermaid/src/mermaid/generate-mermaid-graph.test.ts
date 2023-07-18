@@ -1,4 +1,4 @@
-import { generateMermaidGraph } from "./generateMermaidGraph.js";
+import { generateMermaidGraph } from "./generate-mermaid-graph.js";
 import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
 

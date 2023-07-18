@@ -1,4 +1,4 @@
-import { StreamingForm } from "./StreamingForm.js";
+import { StreamingForm } from "./streaming-form.js";
 import type { JsonValue } from "@bufbuild/protobuf";
 import { type MapModule, type State, unpackMapOutput } from "@substreams/core";
 import type { Package } from "@substreams/core/proto";

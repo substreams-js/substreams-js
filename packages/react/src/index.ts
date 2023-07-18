@@ -3,6 +3,6 @@ export {
   type UseSubstreamStartOptions,
   type UseSubstreamOptions,
   useSubstream,
-} from "./useSubstream.js";
-export { useMessageTypeRegistry } from "./useMessageTypeRegistry.js";
-export { useKey } from "./useKey.js";
+} from "./use-substream.js";
+export { useMessageTypeRegistry } from "./use-message-type-registry.js";
+export { useKey } from "./use-key.js";
