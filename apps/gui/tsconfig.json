@@ -4,6 +4,9 @@
   "references": [
     {
       "path": "../../packages/core/tsconfig.json"
+    },
+    {
+      "path": "../../packages/react/tsconfig.json"
     }
   ],
   "compilerOptions": {
@@ -14,7 +17,8 @@
     "skipLibCheck": true,
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
-      "@substreams/core/proto": ["../../packages/core/src/proto.js"]
+      "@substreams/core/proto": ["../../packages/core/src/proto.js"],
+      "@substreams/react": ["../../packages/react/src/index.js"]
     }
   }
 }
