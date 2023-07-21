@@ -31,7 +31,7 @@
   "dependencies": {
     "@bufbuild/buf": "1.23.1",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.15",
+    "@substreams/core": "^0.1.16",
     "arktype": "1.0.14-alpha",
     "yaml": "^2.3.1"
   },

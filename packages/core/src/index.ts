@@ -26,3 +26,4 @@ export { semverRegExp, nameRegExp, validatePackage } from "./manifest/validation
 export { validateModules } from "./manifest/validation/validate-modules.js";
 export { validatePackageAndModules } from "./manifest/validation/validate-package-and-modules.js";
 export { calculateHeadBlockTimeDrift } from "./utils/calculate-head-block-time-drift.js";
+export { generateMermaidGraph } from "./utils/generate-mermaid-graph.js";

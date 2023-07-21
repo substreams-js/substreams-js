@@ -29,7 +29,7 @@
     "directory": "packages/mermaid"
   },
   "dependencies": {
-    "@substreams/core": "^0.1.15",
+    "@substreams/core": "^0.1.16",
     "pako": "^2.1.0"
   },
   "devDependencies": {
