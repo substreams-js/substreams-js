@@ -33,10 +33,11 @@ export function createStateTracker(request: Request) {
       state.timestamp = value.clock?.timestamp?.toDate() ?? undefined;
     } else if (kind === "progress") {
       for (const module of value.modules) {
-        const current: ModuleState = state.modules[module.name] ?? {
-          name: module.name,
-          failed: false,
-          ranges: [],
+        const previous = state.modules[module.name];
+        const current: ModuleState = {
+          name: previous?.name ?? module.name,
+          failed: previous?.failed ?? false,
+          ranges: previous?.ranges ?? [],
         };
 
         const { case: kind, value } = module.type;
@@ -68,6 +69,6 @@ export function createStateTracker(request: Request) {
       }
     }
 
-    return state;
+    return { ...state };
   };
 }
