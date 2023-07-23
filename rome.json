@@ -3,6 +3,7 @@
     "ignore": [
       ".cache/",
       ".vercel/",
+      ".next/",
       "dist/",
       "proto/",
       "coverage/",
@@ -19,7 +20,10 @@
   },
   "linter": {
     "rules": {
-      "all": true
+      "all": true,
+      "suspicious": {
+        "noRedundantUseStrict": "off"
+      }
     }
   },
   "organizeImports": {
