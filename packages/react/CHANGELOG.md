@@ -1,5 +1,14 @@
 # @substreams/react
 
+## 0.1.8
+
+### Patch Changes
+
+- [`f907183`](https://github.com/substreams-js/substreams-js/commit/f9071838dbff3a92ee38bf0d6492bd14fa450699) Thanks [@fubhy](https://github.com/fubhy)! - Fixed mermaid flow charts with the word `end`.
+
+- Updated dependencies [[`5f0a52d`](https://github.com/substreams-js/substreams-js/commit/5f0a52d185f6f44adb9229c775f84e10e029ea5c), [`f907183`](https://github.com/substreams-js/substreams-js/commit/f9071838dbff3a92ee38bf0d6492bd14fa450699)]:
+  - @substreams/core@0.1.17
+
 ## 0.1.7
 
 ### Patch Changes
