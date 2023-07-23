@@ -1,5 +1,13 @@
 # @substreams/core
 
+## 0.1.17
+
+### Patch Changes
+
+- [`5f0a52d`](https://github.com/substreams-js/substreams-js/commit/5f0a52d185f6f44adb9229c775f84e10e029ea5c) Thanks [@fubhy](https://github.com/fubhy)! - Fixed an issue caused by mutability of the state object.
+
+- [`f907183`](https://github.com/substreams-js/substreams-js/commit/f9071838dbff3a92ee38bf0d6492bd14fa450699) Thanks [@fubhy](https://github.com/fubhy)! - Fixed mermaid flow charts with the word `end`.
+
 ## 0.1.16
 
 ### Patch Changes

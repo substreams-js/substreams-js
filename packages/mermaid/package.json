@@ -1,6 +1,6 @@
 {
   "name": "@substreams/mermaid",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
@@ -22,14 +22,19 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/mermaid"
   },
   "dependencies": {
-    "@substreams/core": "^0.1.16",
+    "@substreams/core": "^0.1.17",
     "pako": "^2.1.0"
   },
   "devDependencies": {

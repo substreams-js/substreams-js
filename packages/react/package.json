@@ -1,6 +1,6 @@
 {
   "name": "@substreams/react",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
@@ -22,7 +22,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -32,7 +37,7 @@
     "@bufbuild/connect": "^0.11.0",
     "@bufbuild/connect-web": "^0.11.0",
     "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.16",
+    "@substreams/core": "^0.1.17",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
