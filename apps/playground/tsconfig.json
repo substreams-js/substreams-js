@@ -38,6 +38,9 @@
       ],
       "@substreams/react": [
         "../../packages/react/src/index.js"
+      ],
+      "@substreams/mermaid": [
+        "../../packages/mermaid/src/index.js"
       ]
     }
   },
@@ -47,6 +50,9 @@
     },
     {
       "path": "../../packages/react"
+    },
+    {
+      "path": "../../packages/mermaid"
     }
   ],
 }
