@@ -1,32 +1,20 @@
 "use client";
 
-import { useMemoStable } from "./use-memo-stable";
-import { AnyMessage, Message, MessageType, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { useMemoStable } from "@/hooks/use-memo-stable";
+import { MaybeSerializedMessage, SerializedMessage, deserializeMessage } from "@/lib/utils/message-serde";
+import { Message, MessageType } from "@bufbuild/protobuf";
 
-export type SerializedMessage<TMessage extends Message<TMessage>> =
-  | Uint8Array
-  | TMessage
-  | PlainMessage<TMessage>
-  | PartialMessage<TMessage>;
+export type { SerializedMessage, MaybeSerializedMessage } from "@/lib/utils/message-serde";
 
-export function useRehydrateMessage<TMessage extends Message<TMessage> = AnyMessage>(
+export function useRehydrateMessage<TMessage extends Message<TMessage>>(
   type: MessageType<TMessage>,
-  message: SerializedMessage<TMessage>,
+  message: MaybeSerializedMessage<TMessage>,
 ) {
   return useMemoStable(() => {
     if (message instanceof type) {
       return message;
     }
 
-    if (message instanceof Uint8Array) {
-      return type.fromBinary(message);
-    }
-
-    if (Array.isArray(message)) {
-      return type.fromBinary(Uint8Array.from(message));
-    }
-
-    // rome-ignore lint/suspicious/noExplicitAny: this is fine.
-    return new type(message as any);
+    return deserializeMessage(type, message as SerializedMessage<TMessage>);
   }, [message, type]);
 }

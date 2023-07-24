@@ -1,6 +1,6 @@
 "use client";
 
-import { useFirstMount } from "./use-first-mount";
+import { useFirstMount } from "@/hooks/use-first-mount";
 import { DependencyList, useEffect } from "react";
 
 export function useUpdateEffect(effect: () => void, deps?: DependencyList) {

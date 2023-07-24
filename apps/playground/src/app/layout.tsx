@@ -1,4 +1,5 @@
 import "./globals.css";
+
 import { QueryClientProvider } from "@/components/query-client-provider";
 import { SiteHeader } from "@/components/site-header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";

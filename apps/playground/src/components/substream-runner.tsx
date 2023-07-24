@@ -1,30 +1,33 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Card, CardContent } from "./ui/card";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useMessageKey } from "@/hooks/use-message-key";
 import { useModuleGraph } from "@/hooks/use-module-graph";
 import { useModuleKey } from "@/hooks/use-module-key";
-import { SerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
+import { MaybeSerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
 import { useSubstream } from "@/hooks/use-substream";
 import { transport } from "@/lib/transport";
 import { invariant } from "@/lib/utils";
+import { JsonValue } from "@bufbuild/protobuf";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ModuleGraph, State, StatefulResponse, createRequest, getModuleOrThrow, isMapModule } from "@substreams/core";
 import { Package, Request } from "@substreams/core/proto";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { create } from "zustand";
 
 export function SubstreamRunner({
   pkg: ppkg,
 }: {
-  pkg: SerializedMessage<Package>;
+  pkg: MaybeSerializedMessage<Package>;
 }) {
-  const pkg = useRehydrateMessage(Package, ppkg);
+  const pkg = Package.fromJsonString(useRehydrateMessage(Package, ppkg).toJsonString());
   const graph = useModuleGraph(pkg);
   const options = useMemo(() => {
     const modules = pkg.modules?.modules ?? [];
@@ -40,13 +43,33 @@ export function SubstreamRunner({
   const requestKey = useMessageKey(request);
 
   return (
-    <div>
-      <SelectModule module={module} options={options} setModule={setModule} />
-      <SubstreamRunnerForm key={moduleKey} pkg={pkg} graph={graph} module={module} setRequest={setRequest} />
+    <div className="space-y-4">
+      <Card>
+        <CardContent className="p-4 space-y-2">
+          <SelectModule module={module} options={options} setModule={setModule} />
+          <SubstreamRunnerForm key={moduleKey} pkg={pkg} graph={graph} module={module} setRequest={setRequest} />
+        </CardContent>
+      </Card>
       {request ? <SubstreamRunnerResult key={requestKey} request={request} /> : null}
     </div>
   );
 }
+
+type SubstreamState = State & {
+  state: "streaming" | "finished" | "error" | "idle";
+  messages: JsonValue[];
+  error: Error | undefined;
+};
+
+const _useStreamData = create<SubstreamState>(() => ({
+  state: "idle",
+  messages: [],
+  error: undefined,
+  timestamp: undefined,
+  cursor: undefined,
+  current: 0n,
+  modules: {},
+}));
 
 function SubstreamRunnerResult({
   request,
@@ -59,10 +82,21 @@ function SubstreamRunnerResult({
     transport,
     handlers: {
       onResponse: (response: StatefulResponse) => setState(response.state),
+      onError: (cause) => {
+        console.error(cause);
+      },
     },
   });
 
-  return state?.cursor ?? null;
+  return (
+    <Card>
+      <CardContent className="p-4 space-y-2">
+        <pre className="text-sm text-muted-foreground">Time: {state?.timestamp?.toDateString() ?? null}</pre>
+        <pre className="text-sm text-muted-foreground">Cursor: {state?.cursor ?? null}</pre>
+        <pre className="text-sm text-muted-foreground">Block: {state?.current?.toString() ?? null}</pre>
+      </CardContent>
+    </Card>
+  );
 }
 
 function SelectModule({
@@ -75,7 +109,7 @@ function SelectModule({
   setModule: (module: string) => void;
 }) {
   return (
-    <div>
+    <>
       <Label htmlFor="select-module">Module</Label>
       <Select defaultValue={module} onValueChange={setModule}>
         <SelectTrigger id="select-module">
@@ -90,7 +124,7 @@ function SelectModule({
         </SelectContent>
       </Select>
       <p className="text-sm text-muted-foreground">The map module to be streamed.</p>
-    </div>
+    </>
   );
 }
 
@@ -156,7 +190,7 @@ function SubstreamRunnerForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
         <FormField
           control={form.control}
           name="start"

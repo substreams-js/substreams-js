@@ -1,6 +1,6 @@
 "use client";
 
-import { useUpdateEffect } from "./use-update-effect";
+import { useUpdateEffect } from "@/hooks/use-update-effect";
 import { DependencyList, useRef } from "react";
 
 export function useMemoStable<TValue>(create: () => TValue, deps?: DependencyList) {

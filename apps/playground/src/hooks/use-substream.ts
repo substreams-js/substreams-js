@@ -1,5 +1,5 @@
-import { useLatest } from "./use-latest";
-import { useUnmount } from "./use-unmount";
+import { useLatest } from "@/hooks/use-latest";
+import { useUnmount } from "@/hooks/use-unmount";
 import { Code, ConnectError, Transport } from "@bufbuild/connect";
 import { StatefulResponse, streamBlocks } from "@substreams/core";
 import { Request } from "@substreams/core/proto";
@@ -69,6 +69,7 @@ export function useSubstream({
 
         handlers.current.onFinished?.();
       } catch (error) {
+        console.error(error);
         // rome-ignore lint/suspicious/noExplicitAny: <explanation>
         if ((error as any)?.name === "ConnectError") {
           const cerror = error as ConnectError;

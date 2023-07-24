@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemoStable } from "./use-memo-stable";
+import { useMemoStable } from "@/hooks/use-memo-stable";
 import { createModuleGraph } from "@substreams/core";
 import { Package } from "@substreams/core/proto";
 

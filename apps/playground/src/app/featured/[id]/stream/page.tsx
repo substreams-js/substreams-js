@@ -1,6 +1,7 @@
 import { SubstreamRunner } from "@/components/substream-runner";
 import { featured } from "@/lib/featured";
 import { invariant } from "@/lib/utils";
+import { serializeMessage } from "@/lib/utils/message-serde";
 import { fetchSubstream } from "@substreams/core";
 
 export default async function ({
@@ -14,7 +15,7 @@ export default async function ({
   invariant(info !== undefined);
 
   const pkg = await fetchSubstream(info.spkg);
-  const binary = pkg.toBinary();
+  const serialized = serializeMessage(pkg);
 
-  return <SubstreamRunner pkg={binary} />;
+  return <SubstreamRunner pkg={serialized} />;
 }

@@ -1,5 +1,5 @@
-import { MainNav } from "./main-nav";
 import { GitHub, Twitter } from "@/components/icons";
+import { MainNav } from "@/components/main-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { config } from "@/lib/config";

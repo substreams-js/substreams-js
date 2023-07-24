@@ -1,4 +1,4 @@
-import { invariant } from "./utils";
+import { invariant } from "@/lib/utils";
 import { createConnectTransport } from "@bufbuild/connect-web";
 import { createAuthInterceptor } from "@substreams/core";
 

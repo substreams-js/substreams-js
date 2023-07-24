@@ -1,6 +1,6 @@
 "use client";
 
-import { useMessageKey } from "./use-message-key";
+import { useMessageKey } from "@/hooks/use-message-key";
 import { invariant } from "@/lib/utils";
 import { ModuleGraph, createModuleHashHex } from "@substreams/core";
 import { Module, Package } from "@substreams/core/proto";
