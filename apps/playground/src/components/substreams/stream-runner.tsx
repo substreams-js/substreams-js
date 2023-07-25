@@ -119,7 +119,14 @@ export function StreamRunner({ request, registry }: { request: Request; registry
     <>
       <StreamStats state={state} />
       <ModuleProgressBars progress={state.progress} />
-      <JsonViewer rootName="data" theme="auto" value={messages} highlightUpdates={true} />
+      <JsonViewer
+        rootName="data"
+        theme="auto"
+        value={messages}
+        highlightUpdates={true}
+        maxDisplayLength={3}
+        defaultInspectDepth={3}
+      />
     </>
   );
 }
