@@ -27,7 +27,7 @@
       "path": "./examples/example-web/tsconfig.json"
     },
     {
-      "path": "./apps/gui/tsconfig.json"
+      "path": "./apps/playground/tsconfig.json"
     }
   ]
 }
