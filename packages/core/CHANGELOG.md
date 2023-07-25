@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.1.18
+
+### Patch Changes
+
+- [`545be81`](https://github.com/substreams-js/substreams-js/commit/545be8134dc6c72cf85195b275bedfaa088ff7bd) Thanks [@fubhy](https://github.com/fubhy)! - Refactored state tracking.
+
 ## 0.1.17
 
 ### Patch Changes
