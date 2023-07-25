@@ -23,8 +23,11 @@ export function StreamRequester({
 
   return (
     <div className="space-y-4">
-      <StreamForm pkg={pkg} graph={graph} setRequest={setRequest} />
-      {request ? <StreamRunner key={requestKey} registry={registry} request={request} /> : null}
+      {request ? (
+        <StreamRunner key={requestKey} registry={registry} request={request} reset={() => setRequest(undefined)} />
+      ) : (
+        <StreamForm pkg={pkg} graph={graph} setRequest={setRequest} />
+      )}
     </div>
   );
 }

@@ -1,30 +1,26 @@
-import { StreamStreaming } from "./stream-runner";
+import { Stream } from "./stream-runner";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function StreamStats({
   state,
 }: {
-  state: StreamStreaming;
+  state: Stream;
 }) {
+  const progress = state.progress;
+
   return (
     <Card>
       <CardContent className="p-4 space-y-2">
-        <pre className="text-sm text-muted-foreground">Start block: {state.progress.resolvedStartBlock.toString()}</pre>
-        <pre className="text-sm text-muted-foreground">Stop block: {state.progress.linearHandoffBlock.toString()}</pre>
+        <pre className="text-sm text-muted-foreground">Start block: {progress?.resolvedStartBlock.toString()}</pre>
+        <pre className="text-sm text-muted-foreground">Stop block: {progress?.linearHandoffBlock.toString()}</pre>
         <pre className="text-sm text-muted-foreground">
-          Max parallel workers: {state.progress.maxParallelWorkers.toString()}
+          Max parallel workers: {progress?.maxParallelWorkers.toString()}
         </pre>
+        <pre className="text-sm text-muted-foreground">Data payloads received: {progress?.dataPayloads.toString()}</pre>
+        <pre className="text-sm text-muted-foreground">Updates received: {progress?.progressUpdates.toString()}</pre>
+        <pre className="text-sm text-muted-foreground">Updates per second: {progress?.updatesPerSecond.toString()}</pre>
         <pre className="text-sm text-muted-foreground">
-          Data payloads received: {state.progress.dataPayloads.toString()}
-        </pre>
-        <pre className="text-sm text-muted-foreground">
-          Updates received: {state.progress.progressUpdates.toString()}
-        </pre>
-        <pre className="text-sm text-muted-foreground">
-          Updates per second: {state.progress.updatesPerSecond.toString()}
-        </pre>
-        <pre className="text-sm text-muted-foreground">
-          Updates this second: {state.progress.updatesThisSecond.toString()}
+          Updates this second: {progress?.updatesThisSecond.toString()}
         </pre>
         <pre className="text-sm text-muted-foreground">Clock time: {state.timestamp?.toLocaleString() ?? null}</pre>
         <pre className="text-sm text-muted-foreground">Block number: {state.block?.toString() ?? null}</pre>

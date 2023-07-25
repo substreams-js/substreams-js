@@ -69,7 +69,6 @@ export function useSubstream({
 
         handlers.current.onFinished?.();
       } catch (error) {
-        console.error(error);
         // rome-ignore lint/suspicious/noExplicitAny: <explanation>
         if ((error as any)?.name === "ConnectError") {
           const cerror = error as ConnectError;

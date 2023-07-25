@@ -1,3 +1,5 @@
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import { ModuleProgressBars } from "./module-progress-bars";
 import { StreamStats } from "./stream-stats";
 import { Registry } from "@/hooks/use-message-registry";
@@ -16,21 +18,9 @@ export type Output = {
   message: Any;
 };
 
-export type StreamIdle = {
-  status: "idle";
-};
-
-export type StreamStreaming = {
-  status: "streaming";
-  progress: Progress;
-  messages: Output[];
-  block?: bigint | undefined;
-  cursor?: string | undefined;
-  timestamp?: Date | undefined;
-};
-
-export type StreamFinished = {
-  status: "finished";
+export type Stream = {
+  status: string;
+  error?: unknown;
   progress?: Progress;
   messages?: Output[];
   block?: bigint | undefined;
@@ -38,22 +28,13 @@ export type StreamFinished = {
   timestamp?: Date | undefined;
 };
 
-export type StreamError = {
-  status: "error";
-  error: unknown;
-  progress?: Progress;
-  messages?: Output[];
-  block?: bigint | undefined;
-  cursor?: string | undefined;
-  timestamp?: Date | undefined;
-};
-
-export type Stream = StreamIdle | StreamStreaming | StreamFinished | StreamError;
-
-export function StreamRunner({ request, registry }: { request: Request; registry: Registry }) {
+export function StreamRunner({
+  request,
+  registry,
+  reset,
+}: { request: Request; registry: Registry; reset: () => void }) {
   const [store, state] = useThrottledStore(() => create<Stream>(() => ({ status: "idle" })));
-
-  useSubstream({
+  const cancel = useSubstream({
     request,
     transport,
     handlers: {
@@ -104,29 +85,52 @@ export function StreamRunner({ request, registry }: { request: Request; registry
           error: cause,
         }));
       },
+      onFinished: () => {
+        store.setState((previous) => ({
+          ...previous,
+          status: "finished",
+        }));
+      },
+      onAborted: () => {
+        store.setState((previous) => ({
+          ...previous,
+          status: "aborted",
+        }));
+      },
     },
   });
 
-  if (state.status !== "streaming") {
-    return null;
-  }
-
-  const messages = state.messages.map((message) =>
+  const progress = state.progress;
+  const messages = state.messages?.map((message) =>
     message.message.toJson({ typeRegistry: registry, emitDefaultValues: true }),
   );
 
+  const stopped = state.status === "finished" || state.status === "aborted" || state.status === "error";
+
   return (
     <>
+      <Card>
+        <CardContent className="p-4 space-x-4">
+          <Button disabled={stopped} onClick={() => cancel()}>
+            Stop
+          </Button>
+          <Button disabled={!stopped} onClick={() => reset()}>
+            Reset
+          </Button>
+        </CardContent>
+      </Card>
       <StreamStats state={state} />
-      <ModuleProgressBars progress={state.progress} />
-      <JsonViewer
-        rootName="data"
-        theme="auto"
-        value={messages}
-        highlightUpdates={true}
-        maxDisplayLength={3}
-        defaultInspectDepth={3}
-      />
+      {progress ? <ModuleProgressBars progress={progress} /> : null}
+      {messages ? (
+        <JsonViewer
+          rootName="data"
+          theme="auto"
+          value={messages}
+          highlightUpdates={true}
+          maxDisplayLength={3}
+          defaultInspectDepth={3}
+        />
+      ) : null}
     </>
   );
 }
