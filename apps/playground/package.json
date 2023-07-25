@@ -30,6 +30,7 @@
     "@substreams/react": "^0.1.8",
     "@tanstack/react-query": "5.0.0-alpha.88",
     "@textea/json-viewer": "^3.1.1",
+    "@xstate/react": "3.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.261.0",
@@ -43,6 +44,7 @@
     "react-hook-form": "^7.45.2",
     "react-zoom-pan-pinch": "^3.1.0",
     "tailwind-merge": "^1.14.0",
+    "xstate": "4.38.1",
     "zod": "^3.21.4",
     "zustand": "^4.3.9"
   },

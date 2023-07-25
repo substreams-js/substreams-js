@@ -1,5 +1,4 @@
-import { ModuleGraph } from "@/components/module-graph";
-import { Card } from "@/components/ui/card";
+import { ModuleGraph } from "@/components/substreams/module-graph";
 import { featured } from "@/lib/featured";
 import { invariant } from "@/lib/utils";
 import { serializeMessage } from "@/lib/utils/message-serde";
@@ -18,9 +17,5 @@ export default async function ({
   const pkg = await fetchSubstream(info.spkg);
   const serialized = serializeMessage(pkg);
 
-  return (
-    <Card>
-      <ModuleGraph pkg={serialized} />
-    </Card>
-  );
+  return <ModuleGraph pkg={serialized} />;
 }

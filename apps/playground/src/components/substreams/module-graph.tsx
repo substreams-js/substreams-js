@@ -1,8 +1,12 @@
 "use client";
 
+import { Card } from "../ui/card";
+import { MaybeSerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
+import { generateMermaidGraph } from "@substreams/core";
+import { Package } from "@substreams/core/proto";
 import { useQuery } from "@tanstack/react-query";
 import mermaid from "mermaid";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 mermaid.initialize({
@@ -15,7 +19,33 @@ mermaid.initialize({
   },
 });
 
-export function MermaidGraph({
+export function ModuleGraph({
+  pkg: ppkg,
+}: {
+  pkg: MaybeSerializedMessage<Package>;
+}) {
+  const pkg = useRehydrateMessage(Package, ppkg);
+  const graph = useMemo(() => {
+    const modules = pkg.modules?.modules;
+    if (modules === undefined || modules.length === 0) {
+      return undefined;
+    }
+
+    return generateMermaidGraph(modules);
+  }, [pkg]);
+
+  if (graph === undefined) {
+    return null;
+  }
+
+  return (
+    <Card>
+      <MermaidGraph graph={graph} />
+    </Card>
+  );
+}
+
+function MermaidGraph({
   graph,
 }: {
   graph: string;

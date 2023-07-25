@@ -1,9 +1,8 @@
 import "./globals.css";
 
-import { QueryClientProvider } from "@/components/query-client-provider";
+import { QueryClientProvider } from "@/components/providers/query-client-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SiteHeader } from "@/components/site-header";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { ThemeProvider } from "@/components/theme-provider";
 import { config } from "@/lib/config";
 import { sans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -62,7 +61,6 @@ export default function ({
               <SiteHeader />
               <div className="flex-1">{children}</div>
             </div>
-            <TailwindIndicator />
           </ThemeProvider>
         </QueryClientProvider>
       </body>
