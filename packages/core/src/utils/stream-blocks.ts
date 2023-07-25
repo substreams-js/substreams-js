@@ -1,9 +1,9 @@
 import { type Request, type Response, Stream } from "../proto.js";
-import { type State, createStateTracker } from "./create-state-tracker.js";
+import { type Progress, createStateTracker } from "./create-state-tracker.js";
 import { type CallOptions, type Transport, createPromiseClient } from "@bufbuild/connect";
 
 export type StatefulResponse = {
-  state: State;
+  progress: Progress;
   response: Response;
 };
 
@@ -12,12 +12,13 @@ export async function* streamBlocks(
   request: Request,
   options?: CallOptions | undefined,
 ): AsyncIterable<StatefulResponse> {
-  const track = createStateTracker(request);
+  const progress = createStateTracker();
   const client = createPromiseClient(Stream, transport);
 
   for await (const response of client.blocks(request, options)) {
-    const state = track(response);
-
-    yield { state, response };
+    yield {
+      progress: progress(response),
+      response,
+    };
   }
 }

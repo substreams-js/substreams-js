@@ -1,74 +1,94 @@
-import { Request, Response } from "../proto.js";
+import type { Response } from "../proto.js";
+import { invariant } from "./invariant.js";
 import { type ProgressRange, mergeProgressRanges } from "./merge-progress-ranges.js";
 
-export type ModuleState = {
-  name: string;
-  failed: boolean;
-  ranges: ProgressRange[];
+export type ModuleProgress = {
+  moduleName: string;
+  rangeList: ProgressRange[];
+  totalBlocks: bigint;
 };
 
-export type State = {
-  current: bigint;
-  cursor: string | undefined;
-  timestamp: Date | undefined;
-  modules: {
-    [key: string]: ModuleState;
-  };
+export type Progress = {
+  resolvedStartBlock: bigint;
+  linearHandoffBlock: bigint;
+  progressUpdates: bigint;
+  dataPayloads: bigint;
+  updatedSecond: bigint;
+  updatesPerSecond: bigint;
+  updatesThisSecond: bigint;
+  maxParallelWorkers: bigint;
+  moduleProgress: Map<string, ModuleProgress>;
+  moduleProgressTotalBlocks: bigint;
 };
 
-export function createStateTracker(request: Request) {
-  const state: State = {
-    modules: {},
-    current: request.startBlockNum ?? 0n,
-    cursor: undefined,
-    timestamp: undefined,
+export function createStateTracker() {
+  let initialized = false;
+  const state: Progress = {
+    resolvedStartBlock: 0n,
+    linearHandoffBlock: 0n,
+    progressUpdates: 0n,
+    dataPayloads: 0n,
+    updatedSecond: 0n,
+    updatesPerSecond: 0n,
+    updatesThisSecond: 0n,
+    maxParallelWorkers: 0n,
+    moduleProgress: new Map(),
+    moduleProgressTotalBlocks: 0n,
   };
 
-  return function trackState(response: Response) {
+  return function trackState(response: Response): Readonly<Progress> {
     const { case: kind, value } = response.message;
 
+    if (kind === "session") {
+      initialized = true;
+
+      state.resolvedStartBlock = value.resolvedStartBlock;
+      state.linearHandoffBlock = value.linearHandoffBlock;
+      state.maxParallelWorkers = value.maxParallelWorkers;
+
+      return state;
+    }
+
+    invariant(initialized, "Session wasn't initialized properly");
+
     if (kind === "blockScopedData") {
-      state.cursor = value.cursor;
-      state.current = value.clock?.number ?? 0n;
-      state.timestamp = value.clock?.timestamp?.toDate() ?? undefined;
+      state.dataPayloads += 1n;
     } else if (kind === "progress") {
+      state.progressUpdates += 1n;
+
+      const thisSecond = BigInt(Date.now()) / 1000n;
+      if (state.updatedSecond !== thisSecond) {
+        state.updatesPerSecond = state.updatesThisSecond;
+        state.updatesThisSecond = 0n;
+        state.updatedSecond = thisSecond;
+      }
+
+      state.updatesThisSecond += 1n;
+
       for (const module of value.modules) {
-        const previous = state.modules[module.name];
-        const current: ModuleState = {
-          name: previous?.name ?? module.name,
-          failed: previous?.failed ?? false,
-          ranges: previous?.ranges ?? [],
+        const current: ModuleProgress = state.moduleProgress.get(module.name) ?? {
+          moduleName: module.name,
+          totalBlocks: 0n,
+          rangeList: [],
         };
 
-        const { case: kind, value } = module.type;
+        if (module.type.case === "processedRanges") {
+          const value = module.type.value;
+          const ranges = value.processedRanges.map((range) => [range.startBlock, range.endBlock] as ProgressRange);
+          current.rangeList = mergeProgressRanges([...current.rangeList, ...ranges]);
 
-        switch (kind) {
-          case "failed": {
-            current.failed = true;
-            break;
+          let totalBlocks = 0n;
+          for (const [start, end] of current.rangeList) {
+            totalBlocks += end - start;
           }
 
-          case "initialState": {
-            current.ranges = [[state.current, value.availableUpToBlock]];
-            break;
-          }
-
-          case "processedRanges": {
-            const ranges = value.processedRanges.map((range) => [range.startBlock, range.endBlock] as ProgressRange);
-            current.ranges = mergeProgressRanges([...current.ranges, ...ranges]);
-            break;
-          }
-
-          case "processedBytes": {
-            // TODO: Not implemented.
-            break;
-          }
+          current.totalBlocks = totalBlocks;
         }
 
-        state.modules[module.name] = current;
+        state.moduleProgress.set(module.name, current);
       }
     }
 
-    return { ...state };
+    return state;
   };
 }
