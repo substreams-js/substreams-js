@@ -56,7 +56,7 @@ export default function ({
       <head />
       <body className={cn("min-h-screen bg-background font-sans antialiased", sans.variable)}>
         <QueryClientProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}</div>
