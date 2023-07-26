@@ -1,6 +1,6 @@
 {
   "name": "@substreams/react",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
@@ -22,7 +22,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
