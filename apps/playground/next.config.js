@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   transpilePackages: ["@substreams/core", "@substreams/react", "@substreams/mermaid"],
   webpack: (config) => {
     config.resolve.extensionAlias = {

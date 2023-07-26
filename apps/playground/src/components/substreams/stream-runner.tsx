@@ -1,14 +1,14 @@
-import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
-import { ModuleProgressBars } from "./module-progress-bars";
-import { StreamStats } from "./stream-stats";
-import { Registry } from "@/hooks/use-message-registry";
-import { useSubstream } from "@/hooks/use-substream";
+import { ModuleProgressBars } from "@/components/substreams/module-progress-bars";
+import { StreamStats } from "@/components/substreams/stream-stats";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import type { Registry } from "@/hooks/use-message-registry";
 import { useThrottledStore } from "@/hooks/use-throttled-store";
 import { transport } from "@/lib/transport";
 import { Any } from "@bufbuild/protobuf";
-import { Progress, StatefulResponse } from "@substreams/core";
+import type { Progress, StatefulResponse } from "@substreams/core";
 import { Request } from "@substreams/core/proto";
+import { useSubstream } from "@substreams/react";
 import { JsonViewer } from "@textea/json-viewer";
 import { create } from "zustand";
 
@@ -55,7 +55,6 @@ export function StreamRunner({
             }
           }
 
-          // rome-ignore lint/suspicious/noExplicitAny: <explanation>
           const messages: Output[] = (previous as any).messages ?? [];
           if (message !== undefined) {
             messages.push(message);

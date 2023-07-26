@@ -1,10 +1,8 @@
-"use client";
-
 import { useMessageKey } from "@/hooks/use-message-key";
 import { invariant } from "@/lib/utils";
 import { ModuleGraph, createModuleHashHex } from "@substreams/core";
 import { Module, Package } from "@substreams/core/proto";
-import { UseQueryResult, useQuery } from "@tanstack/react-query";
+import { type UseQueryResult, useQuery } from "@tanstack/react-query";
 
 export function useModuleHash(pkg: Package, module: string | Module, graph?: ModuleGraph): UseQueryResult<string> {
   const key = useMessageKey(pkg);

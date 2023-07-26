@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { featured } from "@/lib/featured";
 import { invariant } from "@/lib/utils";
 import { fetchSubstream } from "@substreams/core";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export async function generateStaticParams() {
   return featured.map(({ id }) => ({ id }));

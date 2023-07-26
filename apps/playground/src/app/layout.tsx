@@ -6,8 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import { config } from "@/lib/config";
 import { sans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { Metadata } from "next";
-import { ReactNode } from "react";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: {

@@ -1,8 +1,8 @@
 import { ModuleList } from "@/components/module-list";
 import { featured } from "@/lib/featured";
 import { invariant } from "@/lib/utils";
-import { serializeMessage } from "@/lib/utils/message-serde";
 import { fetchSubstream } from "@substreams/core";
+import { serializeMessage } from "@substreams/react";
 
 export default async function ({
   params,

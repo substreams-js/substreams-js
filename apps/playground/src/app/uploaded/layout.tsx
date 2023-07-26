@@ -3,7 +3,7 @@
 import { SubstreamNav } from "@/components/substream-nav";
 import { Separator } from "@/components/ui/separator";
 import { useUploadedPackage } from "@/hooks/use-uploaded-package";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export default function ({
   children,

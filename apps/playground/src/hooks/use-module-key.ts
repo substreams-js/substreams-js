@@ -1,5 +1,3 @@
-"use client";
-
 import { useMessageKey } from "@/hooks/use-message-key";
 import { Package } from "@substreams/core/proto";
 

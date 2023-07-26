@@ -1,9 +1,9 @@
 "use client";
 
-import { Card } from "../ui/card";
-import { MaybeSerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
+import { Card } from "@/components/ui/card";
 import { generateMermaidGraph } from "@substreams/core";
 import { Package } from "@substreams/core/proto";
+import { type MaybeSerializedMessage, useRehydrateMessage } from "@substreams/react";
 import { useQuery } from "@tanstack/react-query";
 import mermaid from "mermaid";
 import { useLayoutEffect, useMemo, useRef } from "react";

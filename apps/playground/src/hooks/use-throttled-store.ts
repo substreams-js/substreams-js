@@ -1,8 +1,6 @@
-"use client";
-
 import { throttle } from "@/lib/throttle";
 import { useEffect, useState } from "react";
-import { StoreApi, UseBoundStore } from "zustand";
+import type { StoreApi, UseBoundStore } from "zustand";
 
 type CreateStore<TValue> = (() => UseBoundStore<StoreApi<TValue>>) | UseBoundStore<StoreApi<TValue>>;
 

@@ -1,11 +1,9 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { useMessageRegistry } from "@/hooks/use-message-registry";
+import { type Registry, useMessageRegistry } from "@/hooks/use-message-registry";
 import { useModuleGraph } from "@/hooks/use-module-graph";
 import { useModuleHash } from "@/hooks/use-module-hash";
-import { MaybeSerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
-import { IMessageTypeRegistry } from "@bufbuild/protobuf";
 import {
   type MapModule,
   ModuleGraph,
@@ -16,6 +14,7 @@ import {
   isStoreModule,
 } from "@substreams/core";
 import { Package } from "@substreams/core/proto";
+import { type MaybeSerializedMessage, useRehydrateMessage } from "@substreams/react";
 import { useMemo } from "react";
 
 export function ModuleList({
@@ -80,7 +79,7 @@ function ModuleListMapItem({
   graph,
   pkg,
 }: {
-  registry: IMessageTypeRegistry;
+  registry: Registry;
   module: MapModule;
   graph: ModuleGraph;
   pkg: Package;

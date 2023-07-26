@@ -1,12 +1,12 @@
 "use client";
 
-import { StreamForm } from "./stream-form";
-import { StreamRunner } from "./stream-runner";
+import { StreamForm } from "@/components/substreams/stream-form";
+import { StreamRunner } from "@/components/substreams/stream-runner";
 import { useMessageKey } from "@/hooks/use-message-key";
 import { useMessageRegistry } from "@/hooks/use-message-registry";
 import { useModuleGraph } from "@/hooks/use-module-graph";
-import { MaybeSerializedMessage, useRehydrateMessage } from "@/hooks/use-rehydrate-message";
 import { Package, Request } from "@substreams/core/proto";
+import { type MaybeSerializedMessage, useRehydrateMessage } from "@substreams/react";
 import { useState } from "react";
 
 export function StreamRequester({

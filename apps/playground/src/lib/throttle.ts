@@ -1,8 +1,6 @@
-// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function throttle<TArgs extends any[]>(func: (...args: TArgs) => void, wait: number) {
   let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
 
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   let lastCallContext: any | undefined = undefined;
   let lastCallArgs: TArgs | undefined = undefined;
 
@@ -18,7 +16,6 @@ export function throttle<TArgs extends any[]>(func: (...args: TArgs) => void, wa
     }
   };
 
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   function wrapper(this: any, ...args: TArgs) {
     if (timeout !== undefined) {
       lastCallContext = this;

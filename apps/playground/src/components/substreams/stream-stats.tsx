@@ -1,4 +1,4 @@
-import { Stream } from "./stream-runner";
+import type { Stream } from "@/components/substreams/stream-runner";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function StreamStats({

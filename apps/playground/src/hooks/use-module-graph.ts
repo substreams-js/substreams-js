@@ -1,9 +1,9 @@
-"use client";
-
-import { useMemoStable } from "@/hooks/use-memo-stable";
 import { createModuleGraph } from "@substreams/core";
 import { Package } from "@substreams/core/proto";
+import { useMemo } from "react";
 
 export function useModuleGraph(pkg: Package) {
-  return useMemoStable(() => createModuleGraph(pkg?.modules?.modules ?? []), [pkg]);
+  const graph = useMemo(() => createModuleGraph(pkg?.modules?.modules ?? []), [pkg]);
+
+  return graph;
 }

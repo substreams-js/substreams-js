@@ -1,5 +1,5 @@
-import { Card, CardContent } from "../ui/card";
-import { ModuleProgress, Progress } from "@substreams/core";
+import { Card, CardContent } from "@/components/ui/card";
+import type { ModuleProgress, Progress } from "@substreams/core";
 
 export function ModuleProgressBars({
   progress,
