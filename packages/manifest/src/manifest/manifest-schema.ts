@@ -14,26 +14,22 @@ function partialRecord<K extends string | number, V>(keyType: Type<K>, valueType
     return Object.entries(data).every(([k, v]) => {
       const keyCheck = keyType(k);
       if (keyCheck.problems) {
-        // rome-ignore lint/suspicious/noExplicitAny: <explanation>
         problems.addProblem(keyCheck.problems[0] as any);
         return false;
       }
 
       const valueCheck = valueType(v);
       if (valueCheck.problems) {
-        // rome-ignore lint/suspicious/noExplicitAny: <explanation>
         problems.addProblem(valueCheck.problems[0] as any);
         return false;
       }
 
       if (valueCheck.data !== v) {
-        // rome-ignore lint/suspicious/noExplicitAny: <explanation>
         (data as any)[k] = valueCheck.data;
       }
 
       return true;
     });
-    // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   }) as any;
 }
 

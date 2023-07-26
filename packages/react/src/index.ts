@@ -1,8 +1,8 @@
+export { useSubstream, useSubstreamIterable, type SubstreamIterable } from "./hooks/use-substream.js";
+export { useRehydrateMessage } from "./hooks/use-rehydrate-message.js";
 export {
-  type SubstreamContext,
-  type UseSubstreamStartOptions,
-  type UseSubstreamOptions,
-  useSubstream,
-} from "./use-substream.js";
-export { useMessageTypeRegistry } from "./use-message-type-registry.js";
-export { useKey } from "./use-key.js";
+  type SerializedMessage,
+  type MaybeSerializedMessage,
+  serializeMessage,
+  deserializeMessage,
+} from "./utils/message-serde.js";

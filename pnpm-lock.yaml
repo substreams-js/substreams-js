@@ -424,16 +424,10 @@ importers:
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
-      uuid:
-        specifier: ^9.0.0
-        version: 9.0.0
     devDependencies:
       '@types/react':
         specifier: ^18.2.14
         version: 18.2.14
-      '@types/uuid':
-        specifier: ^9.0.2
-        version: 9.0.2
       '@vitest/coverage-c8':
         specifier: ^0.33.0
         version: 0.33.0(vitest@0.33.0)
@@ -2838,10 +2832,6 @@ packages:
   /@types/unist@2.0.7:
     resolution: {integrity: sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==}
     dev: false
-
-  /@types/uuid@9.0.2:
-    resolution: {integrity: sha512-kNnC1GFBLuhImSnV7w4njQkUiJi0ZXUycu1rUaouPqiKlXkh77JKgdRnTAp1x5eBwcIwbtI+3otwzuIDEuDoxQ==}
-    dev: true
 
   /@types/web@0.0.103:
     resolution: {integrity: sha512-raQBijW6LEI0yErxR/5S39xyOd+jW1qw8xNWvAjxjDwwu+Wt1baSztpAhZIndlKAlPHHrMcL3VRNKVXoH+rmVg==}
