@@ -1,5 +1,11 @@
 # @substreams/manifest
 
+## 0.0.7
+
+### Patch Changes
+
+- [`2a5f917`](https://github.com/substreams-js/substreams-js/commit/2a5f917ea96291ec228af04722570bf25d810c33) Thanks [@fubhy](https://github.com/fubhy)! - Refactored react hooks
+
 ## 0.0.6
 
 ### Patch Changes
