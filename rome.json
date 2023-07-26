@@ -22,6 +22,7 @@
     "rules": {
       "all": true,
       "suspicious": {
+        "noExplicitAny": "off",
         "noRedundantUseStrict": "off"
       }
     }
