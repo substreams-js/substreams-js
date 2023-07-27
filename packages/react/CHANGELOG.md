@@ -1,5 +1,11 @@
 # @substreams/react
 
+## 0.1.10
+
+### Patch Changes
+
+- [`65fbf11`](https://github.com/substreams-js/substreams-js/commit/65fbf11c292a46485643a8f43903a36d2095bed7) Thanks [@fubhy](https://github.com/fubhy)! - Fixed `useSubstream` hook in react strict mode
+
 ## 0.1.9
 
 ### Patch Changes
