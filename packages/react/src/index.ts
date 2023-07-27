@@ -1,4 +1,4 @@
-export { useSubstream, useSubstreamIterable, type SubstreamIterable } from "./hooks/use-substream.js";
+export { useSubstream, type UseSubstreamOptions } from "./hooks/use-substream.js";
 export { useRehydrateMessage } from "./hooks/use-rehydrate-message.js";
 export {
   type SerializedMessage,

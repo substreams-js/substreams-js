@@ -84,13 +84,13 @@ export function StreamRunner({
           error: cause,
         }));
       },
-      onFinished: () => {
+      onFinish: () => {
         store.setState((previous) => ({
           ...previous,
           status: "finished",
         }));
       },
-      onAborted: () => {
+      onAbort: () => {
         store.setState((previous) => ({
           ...previous,
           status: "aborted",

@@ -5,88 +5,76 @@ import { type StatefulResponse, streamBlocks } from "@substreams/core";
 import { Request } from "@substreams/core/proto";
 import { useEffect, useRef } from "react";
 
-export type SubstreamIterable = AsyncIterable<StatefulResponse> & {
-  abort: (reason?: any) => void;
-};
-
-function makeSubstreamIterable(request: Request, transport: Transport): SubstreamIterable {
-  const controller = new AbortController();
-  const stream = streamBlocks(transport, request, {
-    signal: controller.signal,
-  }) as SubstreamIterable;
-
-  stream.abort = (reason?: string) => {
-    if (!controller.signal.aborted) {
-      controller.abort(reason);
-    }
-  };
-
-  return stream;
-}
-
-export function useSubstreamIterable({
-  request,
-  transport,
-}: {
+export interface UseSubstreamOptions {
+  /**
+   * The `sf.substreams.rpc.v2.Request` request to send.
+   */
   request: Request;
-  transport: Transport;
-}): SubstreamIterable {
-  const ref = useRef<SubstreamIterable>();
-  if (ref.current === undefined) {
-    ref.current = makeSubstreamIterable(request, transport);
-  }
-
-  useEffect(() => {
-    if (ref.current !== undefined) {
-      ref.current.abort();
-    }
-
-    ref.current = makeSubstreamIterable(request, transport);
-    return ref.current.abort;
-  }, [request, transport]);
-
-  return ref.current as SubstreamIterable;
-}
-
-export function useSubstream({
-  request,
-  transport,
-  handlers: handlerz,
-}: {
-  request: Request;
+  /**
+   * The transport to use.
+   */
   transport: Transport;
   handlers: {
+    /**
+     * Called when an error occurs.
+     */
     onError?: (cause: unknown) => void;
+    /**
+     * Called when a new response is received.
+     */
     onResponse?: (response: StatefulResponse) => void;
-    onAborted?: (cause: ConnectError) => void;
-    onFinished?: () => void;
+    /**
+     * Called when the stream is aborted.
+     */
+    onAbort?: (cause: ConnectError) => void;
+    /**
+     * Called when the stream is closed after it's finished.
+     */
+    onFinish?: () => void;
+    /**
+     * Called when the stream is closed after it's finished, failed or aborted.
+     */
+    onClose?: () => void;
   };
-}): () => void {
-  const stream = useSubstreamIterable({ request, transport });
-  const handlers = useRef(handlerz);
-  handlers.current = handlerz;
+}
+
+export function useSubstream({ request, transport, handlers }: UseSubstreamOptions) {
+  const abortRef = useRef<(reason?: any) => void>(() => {});
+  const handlersRef = useRef(handlers);
+  handlersRef.current = handlers;
 
   useEffect(() => {
+    const controller = new AbortController();
+    const stream = streamBlocks(transport, request, {
+      signal: controller.signal,
+    });
+
+    abortRef.current = (reason) => controller.abort(reason);
+
     (async () => {
       try {
         for await (const response of stream) {
-          handlers.current.onResponse?.(response);
+          handlersRef.current.onResponse?.(response);
         }
 
-        handlers.current.onFinished?.();
+        handlersRef.current.onFinish?.();
       } catch (error) {
         if ((error as any)?.name === "ConnectError") {
           const cerror = error as ConnectError;
           if (cerror.code === Code.Aborted) {
-            handlers.current.onAborted?.(cerror);
+            handlersRef.current.onAbort?.(cerror);
             return;
           }
         }
 
-        handlers.current?.onError?.(error);
+        handlersRef.current?.onError?.(error);
       }
-    })();
-  }, [stream]);
 
-  return stream.abort;
+      handlersRef.current.onClose?.();
+    })();
+
+    return abortRef.current;
+  }, [request, transport]);
+
+  return () => abortRef.current();
 }
