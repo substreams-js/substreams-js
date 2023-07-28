@@ -1,5 +1,11 @@
 # @substreams/manifest
 
+## 0.0.8
+
+### Patch Changes
+
+- [`bcd9632`](https://github.com/substreams-js/substreams-js/commit/bcd9632913b331112326575b2bb8b0c36f052d96) Thanks [@fubhy](https://github.com/fubhy)! - Refactored manifest validation to `effect`
+
 ## 0.0.7
 
 ### Patch Changes
