@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "typecheck": "tsc --noEmit"
+    "start": "vite"
   },
   "dependencies": {
     "@bufbuild/connect": "^0.11.0",

@@ -11,6 +11,6 @@ export function readPackageFromManifest(file: string): Promise<Package> {
     throw new Error(`Failed to load manifest ${file}`);
   }
 
-  const manifest = parseManifestJson({ ...json, workDir: path.dirname(file) });
-  return convertManifestToPackage(manifest);
+  const manifest = parseManifestJson(json);
+  return convertManifestToPackage(manifest, path.dirname(file));
 }

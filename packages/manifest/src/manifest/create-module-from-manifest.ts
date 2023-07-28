@@ -1,4 +1,4 @@
-import type { Manifest } from "./manifest-schema.js";
+import type { Module as ModuleSchema } from "./manifest-schema.js";
 import {
   Module,
   Module_Input,
@@ -11,7 +11,7 @@ import {
 
 const MAX_UINT_64 = 18_446_744_073_709_551_615n;
 
-export function createModuleFromManifest(module: Manifest.Module, index: number): Module {
+export function createModuleFromManifest(module: ModuleSchema, index: number): Module {
   const out = new Module({
     name: module.name,
     binaryIndex: index,

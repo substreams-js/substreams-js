@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "start": "tsx src/index.ts"
   },
   "dependencies": {
     "@bufbuild/connect": "^0.11.0",

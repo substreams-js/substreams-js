@@ -1,4 +1,4 @@
-import { isManifestFile, isPackageFile, isRemotePath } from "../utils/path-utils.js";
+import { isManifestFile, isPackageFile, isReadableLocalFile, isRemotePath } from "../utils/path-utils.js";
 import { readPackageFromFile } from "./read-package-from-file.js";
 import { readPackageFromManifest } from "./read-package-from-manifest.js";
 import { fetchSubstream } from "@substreams/core";
@@ -11,6 +11,10 @@ export async function readPackage(file: string): Promise<Package> {
     }
 
     return fetchSubstream(file);
+  }
+
+  if (!isReadableLocalFile(file)) {
+    throw new Error("File is not readable");
   }
 
   return isPackageFile(file) ? readPackageFromFile(file) : readPackageFromManifest(file);

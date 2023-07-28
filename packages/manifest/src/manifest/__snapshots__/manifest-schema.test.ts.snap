@@ -1,0 +1,589 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`can validate the ethereum block metadata manifest 1`] = `
+{
+  "binaries": {
+    "default": {
+      "file": "./target/wasm32-unknown-unknown/release/substreams.wasm",
+      "type": "wasm/rust-v1",
+    },
+  },
+  "imports": {
+    "database_change": "https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v1.2.0/substreams-database-change-v1.2.0.spkg",
+    "entities_change": "https://github.com/streamingfast/substreams-sink-entity-changes/releases/download/v1.3.0/substreams-sink-entity-changes-v1.3.0.spkg",
+    "kv_operations": "https://github.com/streamingfast/substreams-sink-kv/releases/download/v2.1.5/substreams-sink-kv-v2.1.5.spkg",
+  },
+  "modules": [
+    {
+      "inputs": [
+        {
+          "source": "sf.ethereum.type.v2.Block",
+        },
+      ],
+      "kind": "store",
+      "name": "store_block_meta_start",
+      "updatePolicy": "set_if_not_exists",
+      "valueType": "proto:eth.block_meta.v1.BlockMeta",
+    },
+    {
+      "inputs": [
+        {
+          "source": "sf.ethereum.type.v2.Block",
+        },
+      ],
+      "kind": "store",
+      "name": "store_block_meta_end",
+      "updatePolicy": "set",
+      "valueType": "proto:eth.block_meta.v1.BlockMeta",
+    },
+    {
+      "inputs": [
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_start",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_end",
+        },
+      ],
+      "kind": "map",
+      "name": "db_out",
+      "output": {
+        "type": "proto:sf.substreams.sink.database.v1.DatabaseChanges",
+      },
+    },
+    {
+      "inputs": [
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_start",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_end",
+        },
+      ],
+      "kind": "map",
+      "name": "kv_out",
+      "output": {
+        "type": "proto:sf.substreams.sink.kv.v1.KVOperations",
+      },
+    },
+    {
+      "inputs": [
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_start",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_block_meta_end",
+        },
+      ],
+      "kind": "map",
+      "name": "graph_out",
+      "output": {
+        "type": "proto:sf.substreams.sink.entity.v1.EntityChanges",
+      },
+    },
+  ],
+  "package": {
+    "name": "substreams_eth_block_meta",
+    "version": "v0.4.3",
+  },
+  "protobuf": {
+    "files": [
+      "block_meta.proto",
+    ],
+    "importPaths": [
+      "./proto",
+    ],
+  },
+  "specVersion": "v0.1.0",
+}
+`;
+
+exports[`can validate the uniswap v3 manifest 1`] = `
+{
+  "binaries": {
+    "default": {
+      "file": "target/wasm32-unknown-unknown/release/substreams_uniswap_v3.wasm",
+      "type": "wasm/rust-v1",
+    },
+  },
+  "imports": {
+    "entity": "https://github.com/streamingfast/substreams-entity-change/releases/download/v1.1.0/substreams-entity-change-v1.1.0.spkg",
+  },
+  "modules": [
+    {
+      "doc": "Dynamic data sources pattern for Uniswap V3 pools. This module will loop over block transactions and detect
+pools created events. Once the pool created events have been detected, we will create \`Pools\` structs.
+
+Try with
+\`\`\`
+substreams gui substreams.yaml map_pools_created -e $SUBSTREAMS_ENDPOINT -t +1000
+\`\`\`
+",
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.ethereum.type.v2.Block",
+        },
+      ],
+      "kind": "map",
+      "name": "map_pools_created",
+      "output": {
+        "type": "proto:uniswap.types.v1.Pools",
+      },
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_pools_created",
+        },
+      ],
+      "kind": "store",
+      "name": "store_pools_created",
+      "updatePolicy": "set",
+      "valueType": "proto:uniswap.types.v1.Pool",
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_pools_created",
+        },
+      ],
+      "kind": "store",
+      "name": "store_tokens",
+      "updatePolicy": "add",
+      "valueType": "int64",
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_pools_created",
+        },
+      ],
+      "kind": "store",
+      "name": "store_pool_count",
+      "updatePolicy": "add",
+      "valueType": "bigint",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "map": "map_pools_created",
+        },
+      ],
+      "kind": "map",
+      "name": "map_tokens_whitelist_pools",
+      "output": {
+        "type": "proto:uniswap.types.v1.ERC20Tokens",
+      },
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_tokens_whitelist_pools",
+        },
+      ],
+      "kind": "store",
+      "name": "store_tokens_whitelist_pools",
+      "updatePolicy": "append",
+      "valueType": "string",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.ethereum.type.v2.Block",
+        },
+        {
+          "mode": "get",
+          "store": "store_pools_created",
+        },
+      ],
+      "kind": "map",
+      "name": "map_extract_data_types",
+      "output": {
+        "type": "proto:uniswap.types.v1.Events",
+      },
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_pool_sqrt_price",
+      "updatePolicy": "set",
+      "valueType": "proto:uniswap.types.v1.Events.PoolSqrtPrice",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+        {
+          "mode": "get",
+          "store": "store_pools_created",
+        },
+      ],
+      "kind": "store",
+      "name": "store_prices",
+      "updatePolicy": "set",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_pool_liquidities",
+      "updatePolicy": "set",
+      "valueType": "bigint",
+    },
+    {
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_total_tx_counts",
+      "updatePolicy": "add",
+      "valueType": "bigint",
+    },
+    {
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+        {
+          "mode": "get",
+          "store": "store_pools_created",
+        },
+        {
+          "mode": "get",
+          "store": "store_total_tx_counts",
+        },
+        {
+          "mode": "get",
+          "store": "store_eth_prices",
+        },
+      ],
+      "kind": "store",
+      "name": "store_swaps_volume",
+      "updatePolicy": "add",
+      "valueType": "bigdecimal",
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_native_amounts",
+      "updatePolicy": "set",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+        {
+          "mode": "get",
+          "store": "store_pools_created",
+        },
+        {
+          "mode": "get",
+          "store": "store_prices",
+        },
+        {
+          "mode": "get",
+          "store": "store_tokens_whitelist_pools",
+        },
+        {
+          "mode": "get",
+          "store": "store_native_amounts",
+        },
+        {
+          "mode": "get",
+          "store": "store_pool_liquidities",
+        },
+      ],
+      "kind": "store",
+      "name": "store_eth_prices",
+      "updatePolicy": "set",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_token_tvl",
+      "updatePolicy": "add",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+        {
+          "mode": "get",
+          "store": "store_token_tvl",
+        },
+        {
+          "mode": "get",
+          "store": "store_pools_created",
+        },
+        {
+          "mode": "get",
+          "store": "store_eth_prices",
+        },
+      ],
+      "kind": "store",
+      "name": "store_derived_tvl",
+      "updatePolicy": "set",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_derived_tvl",
+        },
+      ],
+      "kind": "store",
+      "name": "store_derived_factory_tvl",
+      "updatePolicy": "add",
+      "valueType": "bigdecimal",
+    },
+    {
+      "doc": "### Hello world
+
+This is how you use this:
+
+\`\`\`
+substreams gui blah blah
+\`\`\`
+",
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_ticks_liquidities",
+      "updatePolicy": "add",
+      "valueType": "bigint",
+    },
+    {
+      "inputs": [
+        {
+          "map": "map_extract_data_types",
+        },
+      ],
+      "kind": "store",
+      "name": "store_positions",
+      "updatePolicy": "set",
+      "valueType": "proto:uniswap.types.v1.Events.PositionEvent",
+    },
+    {
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_prices",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_eth_prices",
+        },
+      ],
+      "kind": "store",
+      "name": "store_min_windows",
+      "updatePolicy": "min",
+      "valueType": "bigdecimal",
+    },
+    {
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_prices",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_eth_prices",
+        },
+      ],
+      "kind": "store",
+      "name": "store_max_windows",
+      "updatePolicy": "max",
+      "valueType": "bigdecimal",
+    },
+    {
+      "initialBlock": 12369621n,
+      "inputs": [
+        {
+          "source": "sf.substreams.v1.Clock",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_pool_count",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_total_tx_counts",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_swaps_volume",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_derived_factory_tvl",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_eth_prices",
+        },
+        {
+          "map": "map_extract_data_types",
+        },
+        {
+          "map": "map_pools_created",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_pool_sqrt_price",
+        },
+        {
+          "mode": "get",
+          "store": "store_pool_sqrt_price",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_pool_liquidities",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_token_tvl",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_prices",
+        },
+        {
+          "mode": "get",
+          "store": "store_prices",
+        },
+        {
+          "mode": "get",
+          "store": "store_tokens",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_tokens_whitelist_pools",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_derived_tvl",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_ticks_liquidities",
+        },
+        {
+          "mode": "get",
+          "store": "store_total_tx_counts",
+        },
+        {
+          "mode": "get",
+          "store": "store_eth_prices",
+        },
+        {
+          "mode": "get",
+          "store": "store_positions",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_min_windows",
+        },
+        {
+          "mode": "deltas",
+          "store": "store_max_windows",
+        },
+      ],
+      "kind": "map",
+      "name": "graph_out",
+      "output": {
+        "type": "proto:sf.substreams.entity.v1.EntityChanges",
+      },
+    },
+  ],
+  "package": {
+    "doc": "These substream modules compose all the things to build up the Uniswap v3 substreams.
+See individual modules docs for help.
+",
+    "name": "uniswap_v3",
+    "url": "https://github.com/streamingfast/substreams-uniswap-v3",
+    "version": "v0.2.8",
+  },
+  "protobuf": {
+    "files": [
+      "uniswap/v1/uniswap.proto",
+    ],
+    "importPaths": [
+      "./proto",
+    ],
+  },
+  "specVersion": "v0.1.0",
+}
+`;

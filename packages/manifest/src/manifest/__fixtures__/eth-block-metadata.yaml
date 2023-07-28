@@ -1,0 +1,65 @@
+specVersion: v0.1.0
+package:
+  name: "substreams_eth_block_meta"
+  version: v0.4.3
+
+imports:
+  database_change: https://github.com/streamingfast/substreams-sink-database-changes/releases/download/v1.2.0/substreams-database-change-v1.2.0.spkg
+  entities_change: https://github.com/streamingfast/substreams-sink-entity-changes/releases/download/v1.3.0/substreams-sink-entity-changes-v1.3.0.spkg
+  kv_operations: https://github.com/streamingfast/substreams-sink-kv/releases/download/v2.1.5/substreams-sink-kv-v2.1.5.spkg
+
+protobuf:
+  files:
+    - block_meta.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/substreams.wasm
+
+modules:
+  - name: store_block_meta_start
+    kind: store
+    updatePolicy: set_if_not_exists
+    valueType: proto:eth.block_meta.v1.BlockMeta
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+
+  - name: store_block_meta_end
+    kind: store
+    updatePolicy: set
+    valueType: proto:eth.block_meta.v1.BlockMeta
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+
+  - name: db_out
+    kind: map
+    inputs:
+      - store: store_block_meta_start
+        mode: deltas
+      - store: store_block_meta_end
+        mode: deltas
+    output:
+      type: proto:sf.substreams.sink.database.v1.DatabaseChanges
+
+  - name: kv_out
+    kind: map
+    inputs:
+      - store: store_block_meta_start
+        mode: deltas
+      - store: store_block_meta_end
+        mode: deltas
+    output:
+      type: proto:sf.substreams.sink.kv.v1.KVOperations
+
+  - name: graph_out
+    kind: map
+    inputs:
+      - store: store_block_meta_start
+        mode: deltas
+      - store: store_block_meta_end
+        mode: deltas
+    output:
+      type: proto:sf.substreams.sink.entity.v1.EntityChanges

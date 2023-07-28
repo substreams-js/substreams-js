@@ -6,8 +6,7 @@
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
-    "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit"
+    "test:coverage": "vitest --coverage"
   },
   "sideEffects": false,
   "type": "module",
@@ -38,8 +37,9 @@
   "dependencies": {
     "@bufbuild/buf": "1.23.1",
     "@bufbuild/protobuf": "^1.2.1",
+    "@effect/schema": "^0.31.0",
     "@substreams/core": "^0.1.17",
-    "arktype": "1.0.14-alpha",
+    "effect": "2.0.0-next.21",
     "yaml": "^2.3.1"
   },
   "devDependencies": {

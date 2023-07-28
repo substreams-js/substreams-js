@@ -9,7 +9,8 @@ export type ConvertToPackageOptions = {
 };
 
 export function createPackageFromManifest(
-  manifest: Manifest.Manifest,
+  manifest: Manifest,
+  cwd: string,
   { skipSourceCodeImportValidation = false }: ConvertToPackageOptions = {},
 ) {
   const meta = new PackageMetadata({
@@ -38,7 +39,7 @@ export function createPackageFromManifest(
       }),
     );
 
-    const binaryDefinition = manifest.binaries[module.binary || "default"];
+    const binaryDefinition = manifest.binaries?.[module.binary || "default"];
     if (!binaryDefinition) {
       const binary = module.binary ? `(implicit) binary "${module.binary}"` : "default binary";
       throw new Error(
@@ -53,7 +54,7 @@ export function createPackageFromManifest(
       if (skipSourceCodeImportValidation) {
         modules.binaries.push(new Binary({ type: binaryDefinition.type }));
       } else {
-        const data = fs.readFileSync(path.join(manifest.workDir, binaryDefinition.file));
+        const data = fs.readFileSync(path.join(cwd, binaryDefinition.file));
         modules.binaries.push(
           new Binary({
             type: binaryDefinition.type,

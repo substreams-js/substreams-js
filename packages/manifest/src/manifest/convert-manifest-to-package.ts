@@ -9,13 +9,13 @@ import { createModuleGraph } from "@substreams/core";
 import { type Module, Modules, type Package } from "@substreams/core/proto";
 import * as path from "node:path";
 
-export async function convertManifestToPackage(manifest: Manifest.Manifest): Promise<Package> {
-  const pkg = createPackageFromManifest(manifest);
-  pkg.protoFiles.push(...(await readImportedProtos(manifest)));
+export async function convertManifestToPackage(manifest: Manifest, cwd: string): Promise<Package> {
+  const pkg = createPackageFromManifest(manifest, cwd);
+  pkg.protoFiles.push(...(await readImportedProtos(manifest, cwd)));
 
   // TODO: Should we prevent recursive dependencies? What about duplicates? Should we merge & deduplicate those?
-  for (const [key, value] of Object.entries(manifest.imports)) {
-    const imported = await readImportedPackage(key, resolveImportedPackagePath(value, manifest.workDir));
+  for (const [key, value] of Object.entries(manifest.imports ?? {})) {
+    const imported = await readImportedPackage(key, resolveImportedPackagePath(value, cwd));
     imported.modules = imported.modules ?? new Modules();
     pkg.modules = pkg.modules ?? new Modules();
 
@@ -99,7 +99,7 @@ function prefixImportedModules(modules: Module[], prefix: string) {
   }
 }
 
-async function readImportedProtos(manifest: Manifest.Manifest) {
+async function readImportedProtos(manifest: Manifest, cwd: string) {
   const output: FileDescriptorProto[] = [];
 
   const system = readSystemProtos();
@@ -114,14 +114,14 @@ async function readImportedProtos(manifest: Manifest.Manifest) {
 
   const paths = new Set<string>();
   for (const imp of manifest.protobuf.importPaths) {
-    paths.add(path.resolve(manifest.workDir, imp));
+    paths.add(path.resolve(cwd, imp));
   }
 
   // The manifest's root directory is always added to the list of import paths so that
   // files specified relative to the manifest's directory work properly. It is added last
   // so that if the user-specified import paths contain the file, it's picked from their
   // import paths instead of the implicitly added folder.
-  paths.add(manifest.workDir);
+  paths.add(cwd);
 
   for (const file of manifest.protobuf.files) {
     // Find the first readable file in the import paths.
