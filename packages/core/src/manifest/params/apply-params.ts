@@ -3,10 +3,13 @@ import { getModuleOrThrow } from "../../utils/get-module.js";
 
 export function applyParams(params: string[], modules: Module[]) {
   for (const param of params) {
-    const [module, value] = param.split("=", 2);
-    if (module === undefined || value === undefined) {
+    const index = param.indexOf("=");
+    if (index <= 0) {
       throw new Error(`Invalid param ${param}. Must be in the form of "module=value" or "imported:module=value"`);
     }
+
+    const module = param.slice(0, index);
+    const value = param.slice(index + 1);
 
     const match = getModuleOrThrow(modules, module);
     const [input] = match.inputs;
