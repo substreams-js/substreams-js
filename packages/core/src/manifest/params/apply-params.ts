@@ -3,7 +3,7 @@ import { getModuleOrThrow } from "../../utils/get-module.js";
 
 export function applyParams(params: string[], modules: Module[]) {
   for (const param of params) {
-    const [module, value] = param.split("=", 2);
+    const [module, value] = param.split(/=(.*)/s);
     if (module === undefined || value === undefined) {
       throw new Error(`Invalid param ${param}. Must be in the form of "module=value" or "imported:module=value"`);
     }
