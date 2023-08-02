@@ -1,6 +1,6 @@
 {
   "name": "@substreams/manifest",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
@@ -21,7 +21,14 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["system.pb", "dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts", "src/**/*.pb"],
+  "files": [
+    "system.pb",
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts",
+    "src/**/*.pb"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -31,7 +38,7 @@
     "@bufbuild/buf": "^1.25.0",
     "@bufbuild/protobuf": "^1.2.1",
     "@effect/schema": "^0.32.0",
-    "@substreams/core": "^0.1.17",
+    "@substreams/core": "^0.1.19",
     "yaml": "^2.3.1"
   },
   "devDependencies": {
