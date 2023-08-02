@@ -8,6 +8,6 @@
     "declarationDir": "dist",
     "tsBuildInfoFile": "dist/.tsbuildinfo",
     "emitDeclarationOnly": false,
-    "paths": {}
+    "paths": {},
   }
 }

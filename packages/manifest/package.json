@@ -21,21 +21,14 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "system.pb",
-    "dist/**",
-    "!dist/**/.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts",
-    "src/**/*.pb"
-  ],
+  "files": ["system.pb", "dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts", "src/**/*.pb"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/manifest"
   },
   "dependencies": {
-    "@bufbuild/buf": "1.25.0",
+    "@bufbuild/buf": "^1.25.0",
     "@bufbuild/protobuf": "^1.2.1",
     "@effect/schema": "^0.32.0",
     "@substreams/core": "^0.1.17",

@@ -24,7 +24,7 @@
       "types": "./dist/proto.d.ts",
       "default": "./dist/proto.js"
     },
-    "./proto/*.js": {
+    "./proto/*": {
       "types": "./dist/proto/*.d.ts",
       "default": "./dist/proto/*.js"
     },
@@ -32,17 +32,11 @@
   },
   "typesVersions": {
     "*": {
-      "proto/*": [
-        "./dist/proto/*.d.ts"
-      ]
+      "proto": ["./dist/proto.d.ts"],
+      "proto/*": ["./dist/proto/*.d.ts"]
     }
   },
-  "files": [
-    "dist/**",
-    "!dist/**/.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -53,7 +47,7 @@
     "@bufbuild/protobuf": "^1.2.1"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.25.0",
+    "@bufbuild/buf": "^1.25.0",
     "@types/node": "^20.4.5",
     "@vitest/coverage-c8": "^0.33.0",
     "@vitest/ui": "^0.34.1",

@@ -1,3 +1,4 @@
+import { type Transport, createPromiseClient } from "@bufbuild/connect";
 import * as Data from "@effect/data/Data";
 import * as Duration from "@effect/data/Duration";
 import * as Func from "@effect/data/Function";
@@ -7,8 +8,6 @@ import * as Metric from "@effect/io/Metric";
 import * as Schedule from "@effect/io/Schedule";
 import * as Sink from "@effect/stream/Sink";
 import * as Stream from "@effect/stream/Stream";
-
-import { type Transport, createPromiseClient } from "@bufbuild/connect";
 import { createRequest } from "@substreams/core";
 import { type Module, type Package, type Response, Stream as StreamService } from "@substreams/core/proto";
 
