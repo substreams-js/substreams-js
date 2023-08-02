@@ -15,6 +15,9 @@
       "path": "./packages/react/tsconfig.json"
     },
     {
+      "path": "./packages/sink/tsconfig.json"
+    },
+    {
       "path": "./examples/example-node/tsconfig.json"
     },
     {

@@ -24,8 +24,7 @@
       "@substreams/core": "workspace:*",
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
-      "@substreams/react": "workspace:*",
-      "@bufbuild/protobuf": "1.3.0"
+      "@substreams/react": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": ["prop-types"]

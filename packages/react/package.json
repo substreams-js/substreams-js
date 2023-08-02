@@ -33,13 +33,13 @@
     "directory": "packages/react"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.11.0",
-    "@bufbuild/connect-web": "^0.11.0",
+    "@bufbuild/connect": "^0.12.0",
+    "@bufbuild/connect-web": "^0.12.0",
     "@bufbuild/protobuf": "^1.2.1",
     "@substreams/core": "^0.1.17"
   },
   "devDependencies": {
-    "@types/react": "^18.2.14",
+    "@types/react": "^18.2.17",
     "@vitest/coverage-c8": "^0.33.0",
     "@vitest/ui": "^0.33.0",
     "react": "^18.2.0",
