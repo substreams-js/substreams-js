@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate buf.build/streamingfast/substreams",
@@ -32,11 +32,20 @@
   },
   "typesVersions": {
     "*": {
-      "proto": ["./dist/proto.d.ts"],
-      "proto/*": ["./dist/proto/*.d.ts"]
+      "proto": [
+        "./dist/proto.d.ts"
+      ],
+      "proto/*": [
+        "./dist/proto/*.d.ts"
+      ]
     }
   },
-  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
