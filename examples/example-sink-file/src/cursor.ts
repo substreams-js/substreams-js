@@ -13,7 +13,7 @@ export const CursorStorage = Context.Tag<CursorStorage>();
 export const CursorStorageLive = Effect.gen(function* (_) {
   const path = ".cursor";
   const fs = yield* _(Fs.FileSystem);
-  const db = yield* _(fs.open(path, { flag: "w+" }).pipe(Effect.orDie));
+  const db = yield* _(fs.open(path, { flag: "a+" }).pipe(Effect.orDie));
 
   return Layer.succeed(
     CursorStorage,
@@ -21,6 +21,7 @@ export const CursorStorageLive = Effect.gen(function* (_) {
       read: () => Effect.option(fs.readFileString(path)),
       write: (cursor) => {
         return Option.match(cursor, {
+          // TODO: Use `.seek` instead of `.truncate` to simply override the cursor once https://github.com/Effect-TS/platform/pull/46 is merged.
           onNone: () => db.truncate().pipe(Effect.orDie, Effect.asUnit),
           onSome: (cursor) => {
             const encoded = new TextEncoder().encode(cursor);
