@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../../packages/core/tsconfig.json"
+    },
+    {
+      "path": "../../packages/sink/tsconfig.json"
+    },
+    {
+      "path": "../../packages/manifest/tsconfig.json"
+    }
+  ],
+  "compilerOptions": {
+    "outDir": "../../.cache/tsc/examples/example-sink-file",
+    "types": ["node"],
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "paths": {
+      "@substreams/core": ["../../packages/core/src/index.js"],
+      "@substreams/core/proto": ["../../packages/core/src/proto.js"],
+      "@substreams/sink": ["../../packages/sink/src/index.js"],
+      "@substreams/manifest": ["../../packages/manifest/src/index.js"],
+    }
+  }
+}

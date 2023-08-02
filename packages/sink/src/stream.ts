@@ -14,7 +14,7 @@ import { type Module, type Package, type Response, Stream as StreamService } fro
 
 import * as Metrics from "./metrics.js";
 
-export class SourceStreamError extends Data.TaggedClass("SourceStreamError")<{
+export class StreamError extends Data.TaggedClass("StreamError")<{
   readonly cause: unknown;
   readonly cursor: Option.Option<string>;
 }> {}
@@ -143,7 +143,7 @@ export function createStream({
 
       const controller = new AbortController();
       const stream = Stream.fromAsyncIterable(client.blocks(request, { signal: controller.signal }), (cause) => {
-        return new SourceStreamError({
+        return new StreamError({
           cause,
           cursor: currentCursor,
         });
