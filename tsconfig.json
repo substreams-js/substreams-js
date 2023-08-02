@@ -30,6 +30,9 @@
       "path": "./examples/example-web/tsconfig.json"
     },
     {
+      "path": "./examples/example-sink-file/tsconfig.json"
+    },
+    {
       "path": "./apps/playground/tsconfig.json"
     }
   ]
