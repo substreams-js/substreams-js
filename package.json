@@ -24,7 +24,8 @@
       "@substreams/core": "workspace:*",
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
-      "@substreams/react": "workspace:*"
+      "@substreams/react": "workspace:*",
+      "@substreams/sink": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": ["prop-types"]

@@ -9,6 +9,7 @@ overrides:
   '@substreams/manifest': workspace:*
   '@substreams/mermaid': workspace:*
   '@substreams/react': workspace:*
+  '@substreams/sink': workspace:*
 
 patchedDependencies:
   '@changesets/get-dependents-graph@1.3.5':
@@ -291,7 +292,7 @@ importers:
         specifier: 0.33.0
         version: 0.33.0
       '@substreams/sink':
-        specifier: ^0.0.0
+        specifier: workspace:*
         version: link:../../packages/sink
     devDependencies:
       '@types/node':
