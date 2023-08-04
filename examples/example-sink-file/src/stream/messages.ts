@@ -11,7 +11,7 @@ export const MessageStorage = Context.Tag<MessageStorage>();
 export const MessageStorageLive = Effect.gen(function* (_) {
   const path = ".messages";
   const fs = yield* _(Fs.FileSystem);
-  const db = yield* _(fs.open(path, { flag: "a+" }).pipe(Effect.orDie));
+  const db = yield* _(fs.open(path, { flag: "a" }).pipe(Effect.orDie));
 
   return Layer.succeed(
     MessageStorage,

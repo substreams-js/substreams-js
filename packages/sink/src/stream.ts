@@ -150,14 +150,14 @@ export function createStream({
       });
 
       return {
+        controller,
         stream,
-        abort: () => controller.abort(),
       };
     }),
   );
 
-  const stream = Stream.acquireRelease(aquire, (scope) => Effect.sync(scope.abort)).pipe(
-    Stream.flatMap(({ stream }) => stream),
+  const stream = Stream.acquireRelease(aquire, (scope, exit) => Effect.sync(() => scope.controller.abort(exit))).pipe(
+    Stream.flatMap((scope) => scope.stream),
     Stream.tapSink(metrics),
     Stream.tap((response) =>
       Effect.sync(() => {

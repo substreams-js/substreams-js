@@ -14,7 +14,7 @@
     "@substreams/manifest": "^0.0.9"
   },
   "devDependencies": {
-    "@types/web": "^0.0.111",
+    "@types/web": "^0.0.112",
     "typescript": "^5.1.6",
     "vite": "^4.4.8",
     "vite-tsconfig-paths": "^4.2.0"

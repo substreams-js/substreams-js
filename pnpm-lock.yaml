@@ -92,6 +92,9 @@ importers:
       '@substreams/react':
         specifier: workspace:*
         version: link:../../packages/react
+      '@substreams/sink':
+        specifier: workspace:*
+        version: link:../../packages/sink
       '@tanstack/react-query':
         specifier: 5.0.0-alpha.88
         version: 5.0.0-alpha.88(react-dom@18.2.0)(react@18.2.0)
@@ -99,8 +102,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.3)(@types/react@18.2.18)(react-dom@18.2.0)(react@18.2.0)
       '@xstate/react':
-        specifier: 3.2.2
-        version: 3.2.2(@types/react@18.2.18)(react@18.2.0)(xstate@4.38.2)
+        specifier: 4.0.0-beta.8
+        version: 4.0.0-beta.8(@types/react@18.2.18)(react@18.2.0)(xstate@5.0.0-beta.20)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -141,8 +144,8 @@ importers:
         specifier: ^1.14.0
         version: 1.14.0
       xstate:
-        specifier: 4.38.2
-        version: 4.38.2
+        specifier: 5.0.0-beta.20
+        version: 5.0.0-beta.20
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -154,8 +157,8 @@ importers:
         specifier: ^2.3.2
         version: 2.3.2
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       '@types/react':
         specifier: 18.2.18
         version: 18.2.18
@@ -194,8 +197,8 @@ importers:
         version: link:../../packages/core
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -222,8 +225,8 @@ importers:
         version: link:../../packages/manifest
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -251,16 +254,16 @@ importers:
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^15.1.0
-        version: 15.1.0(rollup@3.27.0)
+        version: 15.1.0(rollup@3.27.1)
       '@rollup/plugin-typescript':
         specifier: ^11.1.2
-        version: 11.1.2(rollup@3.27.0)(tslib@2.6.1)(typescript@5.1.6)
+        version: 11.1.2(rollup@3.27.1)(tslib@2.6.1)(typescript@5.1.6)
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       rollup:
-        specifier: ^3.27.0
-        version: 3.27.0
+        specifier: ^3.27.1
+        version: 3.27.1
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -276,28 +279,37 @@ importers:
       '@bufbuild/connect-node':
         specifier: ^0.12.0
         version: 0.12.0(@bufbuild/protobuf@1.3.0)
+      '@effect/cli':
+        specifier: ^0.10.0
+        version: 0.10.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/typeclass@0.3.0)
       '@effect/data':
         specifier: ^0.17.1
         version: 0.17.1
       '@effect/io':
-        specifier: ^0.37.0
-        version: 0.37.1
+        specifier: ^0.38.0
+        version: 0.38.0(@effect/data@0.17.1)
+      '@effect/match':
+        specifier: ^0.32.0
+        version: 0.32.0(@effect/data@0.17.1)(@effect/schema@0.33.0)
       '@effect/platform':
-        specifier: ^0.10.3
-        version: 0.10.3
+        specifier: ^0.11.0
+        version: 0.11.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/stream@0.34.0)
       '@effect/platform-node':
-        specifier: ^0.10.4
-        version: 0.10.4
+        specifier: ^0.11.0
+        version: 0.11.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/platform@0.11.0)(@effect/stream@0.34.0)
+      '@effect/schema':
+        specifier: ^0.33.0
+        version: 0.33.0(@effect/data@0.17.1)(@effect/io@0.38.0)
       '@effect/stream':
-        specifier: 0.33.0
-        version: 0.33.0
+        specifier: 0.34.0
+        version: 0.34.0(@effect/data@0.17.1)(@effect/io@0.38.0)
       '@substreams/sink':
         specifier: workspace:*
         version: link:../../packages/sink
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
@@ -324,14 +336,14 @@ importers:
         version: link:../../packages/manifest
     devDependencies:
       '@types/web':
-        specifier: ^0.0.111
-        version: 0.0.111
+        specifier: ^0.0.112
+        version: 0.0.112
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -346,11 +358,11 @@ importers:
         version: 1.3.0
     devDependencies:
       '@bufbuild/buf':
-        specifier: ^1.25.0
-        version: 1.25.0
+        specifier: ^1.25.1
+        version: 1.25.1
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       '@vitest/coverage-c8':
         specifier: ^0.33.0
         version: 0.33.0(vitest@0.34.1)
@@ -362,7 +374,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8(@types/node@20.4.7)
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -373,14 +385,14 @@ importers:
   packages/manifest:
     dependencies:
       '@bufbuild/buf':
-        specifier: ^1.25.0
-        version: 1.25.0
+        specifier: ^1.25.1
+        version: 1.25.1
       '@bufbuild/protobuf':
         specifier: ^1.2.1
         version: 1.3.0
       '@effect/schema':
-        specifier: ^0.32.0
-        version: 0.32.0
+        specifier: ^0.33.0
+        version: 0.33.0(@effect/data@0.17.1)(@effect/io@0.38.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
@@ -389,8 +401,8 @@ importers:
         version: 2.3.1
     devDependencies:
       '@types/node':
-        specifier: ^20.4.5
-        version: 20.4.5
+        specifier: ^20.4.7
+        version: 20.4.7
       '@vitest/coverage-c8':
         specifier: ^0.33.0
         version: 0.33.0(vitest@0.34.1)
@@ -402,7 +414,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8(@types/node@20.4.7)
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -433,7 +445,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -473,7 +485,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -486,18 +498,21 @@ importers:
       '@bufbuild/connect':
         specifier: ^0.12.0
         version: 0.12.0(@bufbuild/protobuf@1.3.0)
+      '@bufbuild/protobuf':
+        specifier: ^1.3.0
+        version: 1.3.0
       '@effect/data':
         specifier: ^0.17.1
         version: 0.17.1
       '@effect/io':
-        specifier: ^0.37.1
-        version: 0.37.1
+        specifier: ^0.38.0
+        version: 0.38.0(@effect/data@0.17.1)
       '@effect/match':
-        specifier: ^0.31.0
-        version: 0.31.0
+        specifier: ^0.32.0
+        version: 0.32.0(@effect/data@0.17.1)(@effect/schema@0.33.0)
       '@effect/stream':
-        specifier: ^0.33.0
-        version: 0.33.0
+        specifier: ^0.34.0
+        version: 0.34.0(@effect/data@0.17.1)(@effect/io@0.38.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
@@ -513,7 +528,7 @@ importers:
         version: 5.1.6
       vite:
         specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.5)
+        version: 4.4.8
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0(typescript@5.1.6)(vite@4.4.8)
@@ -596,66 +611,66 @@ packages:
     resolution: {integrity: sha512-g2hMyGSFYOvt0eeY2c2wrG1B6dVWF1be4vGxG9mI1BEHJuQm4Hie2HrooxYHBDRDi8hANIzQ8cuvBgxSVlQOTQ==}
     dev: false
 
-  /@bufbuild/buf-darwin-arm64@1.25.0:
-    resolution: {integrity: sha512-X6rf6s/y9VBHfdhhURNBwyDNFYNecOE4GOvzQcwZVYmGteA4Xor8c51ouTPd5wU2lAq/qLwYX2hZAY41uvbMrA==}
+  /@bufbuild/buf-darwin-arm64@1.25.1:
+    resolution: {integrity: sha512-1EjF4swCjxj8A7snyIFCnl0l81idYyrLLhQurAcGYJXtHl/VdF+qE+zuGI+ehuc4uSTTGp1X2BelprOnW17ZDQ==}
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf-darwin-x64@1.25.0:
-    resolution: {integrity: sha512-H7L8DdPwZsP5WSiOJCScY/E5CT7b0zv49l4WYrbbyg0FDJBMHg8Yn8lEK0Ju/mvlXaAqDZk4pwiwVuCPtt4oBw==}
+  /@bufbuild/buf-darwin-x64@1.25.1:
+    resolution: {integrity: sha512-LSNTqQFF9vrx/CUE2TxNhxb7VwEYmUxA2YXznbElxV6PqWaNt1McrbxCvUF7oYEKXXwps9gPkUi4rzjCOliCsQ==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf-linux-aarch64@1.25.0:
-    resolution: {integrity: sha512-bL0dlBmmJ/AmCtIQXiqJLXIPwHM65O3TT85wFQvurexlwnLs6ajM+zJ2e+Xbj2ccXQ+TI8UKLlVgySHPp7EP0A==}
+  /@bufbuild/buf-linux-aarch64@1.25.1:
+    resolution: {integrity: sha512-Qwy+xos8bnyjCKSCw1l+VG9aIoZHo4CXp3A7bLtYWUZMn18WZ1xtRPFvw/ntdGoZhcoP+yYNbiVi22m4r/zVbQ==}
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf-linux-x64@1.25.0:
-    resolution: {integrity: sha512-PuxDpPqArjfeZ8LPAru0f/u7nZlE+IIXIjJM6IsnnTqAoBS5A4z9ALUog23BfuU2jJNuPerKPaMs92GAmiSaBQ==}
+  /@bufbuild/buf-linux-x64@1.25.1:
+    resolution: {integrity: sha512-i8EGo8dqotGdxO+UayEGqwZ4FUg7ejw0XOTgTlwH79yUV1IEuWb1+zItPeWthJHhrNT6gQEsESie/pygDtmhaA==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf-win32-arm64@1.25.0:
-    resolution: {integrity: sha512-Uw2Bn2pJfPKdh+J6ocqNKMZiYl07eZWYNbAIzl1vXAl1bH7SvgiEA+ujgOM56I+GmNfVSRWNukrxj5ppPvdTQQ==}
+  /@bufbuild/buf-win32-arm64@1.25.1:
+    resolution: {integrity: sha512-ut8hRAy8GQZnNKaPlwiu9cN9bCX0XWvdsPezXFsdMynuYXBgssvJ7dGbzLWDSmOm8evhsJ+ZPmrLYyk+7OD2Ng==}
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf-win32-x64@1.25.0:
-    resolution: {integrity: sha512-mTBCyzFbpxSDnn33yfsH2qDC1K9mcduJlFdBgJnVcXaZXghlJQAgNA58dpGuY2fsmcACpiimMgChqpON+/LZ4A==}
+  /@bufbuild/buf-win32-x64@1.25.1:
+    resolution: {integrity: sha512-g4npaZs7aqXlTETaDhKh7E4LcSTCDEehUGV7Y+xiTB5r4VyCU8gzykuE7sNHxUsQ+X5lV/pFkFGz+449Pf/tww==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     optional: true
 
-  /@bufbuild/buf@1.25.0:
-    resolution: {integrity: sha512-eBlzzVNBSw2cjKtkKZPu7RZK2YLUoB9tVRe+Pf4QVxF0IQtO5zPDdtWCF7/IUjd0V+dOJC25nLSeE5+YeZDqKg==}
+  /@bufbuild/buf@1.25.1:
+    resolution: {integrity: sha512-Of9mH1xzhi/8EnndGx3uOV/umjGkCSnBnN01pm5O6xUD2aAdqDPjxWrFY09oR0NIHmePpgGQn6az7Ku42mlFPQ==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      '@bufbuild/buf-darwin-arm64': 1.25.0
-      '@bufbuild/buf-darwin-x64': 1.25.0
-      '@bufbuild/buf-linux-aarch64': 1.25.0
-      '@bufbuild/buf-linux-x64': 1.25.0
-      '@bufbuild/buf-win32-arm64': 1.25.0
-      '@bufbuild/buf-win32-x64': 1.25.0
+      '@bufbuild/buf-darwin-arm64': 1.25.1
+      '@bufbuild/buf-darwin-x64': 1.25.1
+      '@bufbuild/buf-linux-aarch64': 1.25.1
+      '@bufbuild/buf-linux-x64': 1.25.1
+      '@bufbuild/buf-win32-arm64': 1.25.1
+      '@bufbuild/buf-win32-x64': 1.25.1
 
   /@bufbuild/connect-node@0.12.0(@bufbuild/protobuf@1.3.0):
     resolution: {integrity: sha512-pg5QM4aal28YQ+CrVe85+VM8Yia3Ds/3QKffQRVHZNYiTXrfNpEY0YqbYY6ZSTSf0+HCIzSnyB3XyouRDfidfA==}
@@ -893,54 +908,120 @@ packages:
       prettier: 2.8.7
     dev: true
 
+  /@effect/cli@0.10.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/typeclass@0.3.0):
+    resolution: {integrity: sha512-01FoqH52UjVGy8yVu/ji1MG6aNQ7fXSZnSN+soGSCVIiknC4QCl5185hbDF4DgJ0XlBjdFljEovR23VfAmPr8g==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
+    dependencies:
+      '@effect/data': 0.17.1
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+      '@effect/printer': 0.13.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/typeclass@0.3.0)
+      '@effect/printer-ansi': 1.0.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/printer@0.13.0)(@effect/typeclass@0.3.0)
+    transitivePeerDependencies:
+      - '@effect/typeclass'
+    dev: false
+
   /@effect/data@0.17.1:
     resolution: {integrity: sha512-QCYkLE5Y5Dm5Yax5R3GmW4ZIgTx7W+kSZ7yq5eqQ/mFWa8i4yxbLuu8cudqzdeZtRtTGZKlhDxfFfgVtMywXJg==}
     dev: false
 
-  /@effect/io@0.37.1:
-    resolution: {integrity: sha512-Ez3GfcG+gDDfAiBXtSjJpSrPU5Guiyw69LsYkMtIukFwyNwpHWLhYaVgfVbVjoQasil8KiFSQJSd5DbJL6nqPg==}
+  /@effect/io@0.38.0(@effect/data@0.17.1):
+    resolution: {integrity: sha512-qlVC9ASxNC+L2NKX5qOV9672CE5wWizfwBSFaX2XLI7CC118WRvohCTIPQ52n50Bj5TmR20+na+U9C7e4VkqzA==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
     dependencies:
       '@effect/data': 0.17.1
     dev: false
 
-  /@effect/match@0.31.0:
-    resolution: {integrity: sha512-QT0HSh19Y6iHAghc51Yt/rYDU9/jhs7O+2kSEQiJqj4xqCLjfJONWsK19xBCNbuV5bt3ZO1NGFqvsWeNR7ZhDg==}
+  /@effect/match@0.32.0(@effect/data@0.17.1)(@effect/schema@0.33.0):
+    resolution: {integrity: sha512-04QfnIgCcMnnNbGxTv2xa9/7q1c5kgpsBodqTUZ8eX86A/EdE8Czz+JkVarG00/xE+nYhQLXOXCN9Zj+dtqVkQ==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/schema': ^0.33.0
     dependencies:
       '@effect/data': 0.17.1
-      '@effect/schema': 0.32.0
+      '@effect/schema': 0.33.0(@effect/data@0.17.1)(@effect/io@0.38.0)
     dev: false
 
-  /@effect/platform-node@0.10.4:
-    resolution: {integrity: sha512-miiW/xvYUHDJJanbtL+qVjvqdWfjgYVgZwu3xf0nxP0ADY4wKpKpRVCC6w6BrlLXqTUdJjRm8C9fo09O3dihfg==}
+  /@effect/platform-node@0.11.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/platform@0.11.0)(@effect/stream@0.34.0):
+    resolution: {integrity: sha512-8BDs54FuthP5iiTnoU5OTYoOkenBZyzhHSmYrH32hNgvGA8MDuKeocH3nTtcqlY+yMICpQA1a3tubD7idKEvfg==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
+      '@effect/platform': ^0.11.0
+      '@effect/stream': ^0.34.0
     dependencies:
       '@effect/data': 0.17.1
-      '@effect/io': 0.37.1
-      '@effect/platform': 0.10.3
-      '@effect/stream': 0.33.0
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+      '@effect/platform': 0.11.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/stream@0.34.0)
+      '@effect/stream': 0.34.0(@effect/data@0.17.1)(@effect/io@0.38.0)
     dev: false
 
-  /@effect/platform@0.10.3:
-    resolution: {integrity: sha512-FUnXxyYD2TOg//J6hBsR7bOlCUSLs4bMVk8we2zV+rfDirUDwKEkF5LXBnLPJ+1dQtsK8PdVV5udEw2keTPwGA==}
+  /@effect/platform@0.11.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/stream@0.34.0):
+    resolution: {integrity: sha512-x5oVPihEcfmcyo/efvG/Ei/zRFkJqF96a/70MLrYfaPg2IiT/QvA99nNITuI4uc5j0Oz2wJ76FQcVOVAjKNc5Q==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
+      '@effect/stream': ^0.34.0
     dependencies:
       '@effect/data': 0.17.1
-      '@effect/io': 0.37.1
-      '@effect/stream': 0.33.0
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+      '@effect/stream': 0.34.0(@effect/data@0.17.1)(@effect/io@0.38.0)
       path-browserify: 1.0.1
     dev: false
 
-  /@effect/schema@0.32.0:
-    resolution: {integrity: sha512-4HJK/cFkVPdIjYICy0eRsL7JuuLJ6mE3aJC5rX9OuUIei/qfctFEEX2NaARjtGX7hACBrRcuJCNwiq+54TTjFw==}
+  /@effect/printer-ansi@1.0.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/printer@0.13.0)(@effect/typeclass@0.3.0):
+    resolution: {integrity: sha512-Q0yZRboN14HjfZPbdVLBMCggRLmpvRsr2Vn/vmURvgaNkNl4N+bv2JGQWhDOW4VmaLLBJl56ImR6N9tFjYzYfQ==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
+      '@effect/printer': ^0.13.0
+      '@effect/typeclass': ^0.3.0
     dependencies:
       '@effect/data': 0.17.1
-      '@effect/io': 0.37.1
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+      '@effect/printer': 0.13.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/typeclass@0.3.0)
+      '@effect/typeclass': 0.3.0
+    dev: false
+
+  /@effect/printer@0.13.0(@effect/data@0.17.1)(@effect/io@0.38.0)(@effect/typeclass@0.3.0):
+    resolution: {integrity: sha512-vqKilbg36AEHZJNj9fiV6qUALojR2kVePKbuJJAkaGQao9Duc6rL3QSbaGEaEzar6v68j6TGTOndg/inI2bQFA==}
+    peerDependencies:
+      '@effect/data': ~0.17.1
+      '@effect/io': ~0.38.0
+      '@effect/typeclass': ~0.3.0
+    dependencies:
+      '@effect/data': 0.17.1
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+      '@effect/typeclass': 0.3.0
+    dev: false
+
+  /@effect/schema@0.33.0(@effect/data@0.17.1)(@effect/io@0.38.0):
+    resolution: {integrity: sha512-K/IDp8aZpqqy2IBydnRtjNF7Sg/qZjiR5t+OANDZ2yOmTHRgtvWM4fwYV5kGYzEBZaBZEqUGjzj4KOqbsQhCEw==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
+    dependencies:
+      '@effect/data': 0.17.1
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
       fast-check: 3.12.0
     dev: false
 
-  /@effect/stream@0.33.0:
-    resolution: {integrity: sha512-4RjcsLOFc2w6zo243qNMGHDhpIZf3lgPALqvOLt1fvWqIaQdeQ4PF6lfFCTHfzfnRSiW3Hm5K8KDiGwwY/azfA==}
+  /@effect/stream@0.34.0(@effect/data@0.17.1)(@effect/io@0.38.0):
+    resolution: {integrity: sha512-8eDDQ0JG+ctsstLH/Qo4ojBkcEIFtqpEsWZS6leAwY9gXVmEG54PMWXZiX6dTchgQXKmSnLkEh36leAq4piawQ==}
+    peerDependencies:
+      '@effect/data': ^0.17.1
+      '@effect/io': ^0.38.0
     dependencies:
       '@effect/data': 0.17.1
-      '@effect/io': 0.37.1
+      '@effect/io': 0.38.0(@effect/data@0.17.1)
+    dev: false
+
+  /@effect/typeclass@0.3.0:
+    resolution: {integrity: sha512-eg91Dfpx8FqXIoq4DDVuY/wl+92K89HEgtwVcScRu7QAsp64QzkFpmNgHKPyA3tzT7ku+cV16NdoDId58sJgiQ==}
+    dependencies:
+      '@effect/data': 0.17.1
     dev: false
 
   /@emotion/babel-plugin@11.11.0:
@@ -2682,7 +2763,7 @@ packages:
       '@babel/runtime': 7.22.6
     dev: false
 
-  /@rollup/plugin-node-resolve@15.1.0(rollup@3.27.0):
+  /@rollup/plugin-node-resolve@15.1.0(rollup@3.27.1):
     resolution: {integrity: sha512-xeZHCgsiZ9pzYVgAo9580eCGqwh/XCEUM9q6iQfGNocjgkufHAqC3exA+45URvhiYV8sBF9RlBai650eNs7AsA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2691,16 +2772,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.1)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.2
-      rollup: 3.27.0
+      rollup: 3.27.1
     dev: true
 
-  /@rollup/plugin-typescript@11.1.2(rollup@3.27.0)(tslib@2.6.1)(typescript@5.1.6):
+  /@rollup/plugin-typescript@11.1.2(rollup@3.27.1)(tslib@2.6.1)(typescript@5.1.6):
     resolution: {integrity: sha512-0ghSOCMcA7fl1JM+0gYRf+Q/HWyg+zg7/gDSc+fRLmlJWcW5K1I+CLRzaRhXf4Y3DRyPnnDo4M2ktw+a6JcDEg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2713,14 +2794,14 @@ packages:
       tslib:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.1)
       resolve: 1.22.2
-      rollup: 3.27.0
+      rollup: 3.27.1
       tslib: 2.6.1
       typescript: 5.1.6
     dev: true
 
-  /@rollup/pluginutils@5.0.2(rollup@3.27.0):
+  /@rollup/pluginutils@5.0.2(rollup@3.27.1):
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2732,7 +2813,7 @@ packages:
       '@types/estree': 1.0.1
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.27.0
+      rollup: 3.27.1
     dev: true
 
   /@rometools/cli-darwin-arm64@12.1.3:
@@ -2903,8 +2984,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.4.5:
-    resolution: {integrity: sha512-rt40Nk13II9JwQBdeYqmbn2Q6IVTA5uPhvSO+JVqdXw/6/4glI6oR9ezty/A9Hg5u7JH4OmYmuQ+XvjKm0Datg==}
+  /@types/node@20.4.7:
+    resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -2961,8 +3042,8 @@ packages:
     resolution: {integrity: sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==}
     dev: false
 
-  /@types/web@0.0.111:
-    resolution: {integrity: sha512-OnLWZBNMXlvTsAalsPcVyVkxW76yG2QQsRPbRijMQxCG791IH9sAIAsg1tcDDK8p5JwHW0GV3/uYOg+RRqGrOw==}
+  /@types/web@0.0.112:
+    resolution: {integrity: sha512-IAsSIAwlo7vru2yrEOFTUZNbSwhZKTVeVs8fD4zk/wk8WtYX6Z5ZnpkoWv/nop6Bz9ghrYL9fX6alO2uxEvOgw==}
     dev: true
 
   /@vitest/coverage-c8@0.33.0(vitest@0.34.1):
@@ -3032,12 +3113,12 @@ packages:
       pretty-format: 29.6.2
     dev: true
 
-  /@xstate/react@3.2.2(@types/react@18.2.18)(react@18.2.0)(xstate@4.38.2):
-    resolution: {integrity: sha512-feghXWLedyq8JeL13yda3XnHPZKwYDN5HPBLykpLeuNpr9178tQd2/3d0NrH6gSd0sG5mLuLeuD+ck830fgzLQ==}
+  /@xstate/react@4.0.0-beta.8(@types/react@18.2.18)(react@18.2.0)(xstate@5.0.0-beta.20):
+    resolution: {integrity: sha512-27L6LJP/7hWyEY5vtvfD/N3wgVgVTyTrbL9n25iT1OV3Shg3lpfA2hA/mJppttLNhkR/7V3WoFC4fmKu1BwVSA==}
     peerDependencies:
-      '@xstate/fsm': ^2.0.0
+      '@xstate/fsm': ^3.0.0-beta.3
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      xstate: ^4.37.2
+      xstate: ^5.0.0-beta.18
     peerDependenciesMeta:
       '@xstate/fsm':
         optional: true
@@ -3047,7 +3128,7 @@ packages:
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.18)(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
-      xstate: 4.38.2
+      xstate: 5.0.0-beta.20
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -5876,6 +5957,14 @@ packages:
       fsevents: 2.3.2
     dev: true
 
+  /rollup@3.27.1:
+    resolution: {integrity: sha512-tXNDFwOkN6C2w5Blj1g6ForKeFw6c1mDu5jxoeDO3/pmYjgt+8yvIFjKzH5FQUq70OKZBkOt0zzv0THXL7vwzQ==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /rome@12.1.3:
     resolution: {integrity: sha512-e+ff72hxDpe/t5/Us7YRBVw3PBET7SeczTQNn6tvrWdrCaAw3qOukQQ+tDCkyFtS4yGsnhjrJbm43ctNbz27Yg==}
     engines: {node: '>=14.*'}
@@ -6524,7 +6613,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@0.34.1(@types/node@20.4.5):
+  /vite-node@0.34.1(@types/node@20.4.7):
     resolution: {integrity: sha512-odAZAL9xFMuAg8aWd7nSPT+hU8u2r9gU3LRm9QKjxBEF2rRdWpMuqkrkjvyVQEdNFiBctqr2Gg4uJYizm5Le6w==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -6534,7 +6623,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.8(@types/node@20.4.5)
+      vite: 4.4.8(@types/node@20.4.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6557,13 +6646,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@5.1.6)
-      vite: 4.4.8(@types/node@20.4.5)
+      vite: 4.4.8(@types/node@20.4.7)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.4.8(@types/node@20.4.5):
+  /vite@4.4.8:
     resolution: {integrity: sha512-LONawOUUjxQridNWGQlNizfKH89qPigK36XhMI7COMGztz8KNY0JHim7/xDd71CZwGT4HtSRgI7Hy+RlhG0Gvg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -6591,10 +6680,45 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.4.5
       esbuild: 0.18.17
       postcss: 8.4.27
       rollup: 3.27.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite@4.4.8(@types/node@20.4.7):
+    resolution: {integrity: sha512-LONawOUUjxQridNWGQlNizfKH89qPigK36XhMI7COMGztz8KNY0JHim7/xDd71CZwGT4HtSRgI7Hy+RlhG0Gvg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': 20.4.7
+      esbuild: 0.18.17
+      postcss: 8.4.27
+      rollup: 3.27.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -6632,7 +6756,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.4.5
+      '@types/node': 20.4.7
       '@vitest/expect': 0.34.1
       '@vitest/runner': 0.34.1
       '@vitest/snapshot': 0.34.1
@@ -6652,8 +6776,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.4.8(@types/node@20.4.5)
-      vite-node: 0.34.1(@types/node@20.4.5)
+      vite: 4.4.8(@types/node@20.4.7)
+      vite-node: 0.34.1(@types/node@20.4.7)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
@@ -6774,8 +6898,8 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  /xstate@4.38.2:
-    resolution: {integrity: sha512-Fba/DwEPDLneHT3tbJ9F3zafbQXszOlyCJyQqqdzmtlY/cwE2th462KK48yaANf98jHlP6lJvxfNtN0LFKXPQg==}
+  /xstate@5.0.0-beta.20:
+    resolution: {integrity: sha512-jPQq/T+I16L5q8SkaNyUKO48K8hn8SJZGfvt4ZoAUw6B4HyN4TwK/vSkntb1HvBMxR/5lQrO7yoT6IzL9I3ZoA==}
     dev: false
 
   /y18n@4.0.3:

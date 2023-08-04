@@ -13,6 +13,8 @@
     }
   ],
   "compilerOptions": {
+    // TODO: Can we set to `NodeNext` once https://github.com/microsoft/TypeScript/issues/55021 is resolved.
+    "moduleResolution": "Node",
     "outDir": "../../.cache/tsc/examples/example-sink-file",
     "types": ["node"],
     "lib": ["DOM", "ESNext"],

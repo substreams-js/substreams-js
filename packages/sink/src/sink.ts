@@ -1,20 +1,22 @@
+import { type PlainMessage, toPlainMessage } from "@bufbuild/protobuf";
 import * as Data from "@effect/data/Data";
-import * as Func from "@effect/data/Function";
-import * as Cause from "@effect/io/Cause";
 import * as Effect from "@effect/io/Effect";
-import * as Match from "@effect/match";
 import * as Sink from "@effect/stream/Sink";
 
 import type { BlockScopedData, BlockUndoSignal, Response } from "@substreams/core/proto";
 
-export class BlockScopedDataSinkError extends Data.TaggedClass("BlockScopedDataSinkError")<{
-  readonly cause: Cause.Cause<unknown>;
-  readonly message: BlockScopedData;
+export class SinkError extends Data.TaggedClass("SinkError")<{
+  readonly cause: BlockScopedDataSinkError | BlockUndoSignalSinkError;
 }> {}
 
-export class BlockUndoSignalSinkError extends Data.TaggedClass("BlockUndoSignalSinkError")<{
-  readonly cause: Cause.Cause<unknown>;
-  readonly message: BlockUndoSignal;
+export class BlockScopedDataSinkError extends Data.TaggedClass("SinkError")<{
+  readonly cause: unknown;
+  readonly message: PlainMessage<BlockScopedData>;
+}> {}
+
+export class BlockUndoSignalSinkError extends Data.TaggedClass("SinkError")<{
+  readonly cause: unknown;
+  readonly message: PlainMessage<BlockUndoSignal>;
 }> {}
 
 export type CreateSinkOptions<R1, R2> = {
@@ -24,20 +26,41 @@ export type CreateSinkOptions<R1, R2> = {
 
 export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSignal }: CreateSinkOptions<R1, R2>) {
   // rome-ignore lint/nursery/noForEach: this is not even an array ...
-  return Sink.forEach((response: Response) => {
-    return Func.pipe(
-      Match.value(response.message),
-      Match.discriminator("case")("blockScopedData", (message) =>
-        handleBlockScopedData(message.value).pipe(
-          Effect.catchAllCause((cause) => Effect.die(new BlockScopedDataSinkError({ cause, message: message.value }))),
-        ),
-      ),
-      Match.discriminator("case")("blockUndoSignal", (message) =>
-        handleBlockUndoSignal(message.value).pipe(
-          Effect.catchAllCause((cause) => Effect.die(new BlockUndoSignalSinkError({ cause, message: message.value }))),
-        ),
-      ),
-      Match.orElse(() => Effect.unit),
-    );
+  return Sink.forEach((response: Response): Effect.Effect<R1 | R2, SinkError, void> => {
+    const { value: message, case: kind } = response.message;
+
+    switch (kind) {
+      case "blockScopedData": {
+        return handleBlockScopedData(message).pipe(
+          Effect.catchAll((cause) =>
+            Effect.fail(
+              new SinkError({
+                cause: new BlockScopedDataSinkError({
+                  cause,
+                  message: toPlainMessage(message),
+                }),
+              }),
+            ),
+          ),
+        );
+      }
+
+      case "blockUndoSignal": {
+        return handleBlockUndoSignal(message).pipe(
+          Effect.catchAll((cause) =>
+            Effect.fail(
+              new SinkError({
+                cause: new BlockUndoSignalSinkError({
+                  cause,
+                  message: toPlainMessage(message),
+                }),
+              }),
+            ),
+          ),
+        );
+      }
+    }
+
+    return Effect.unit;
   });
 }
