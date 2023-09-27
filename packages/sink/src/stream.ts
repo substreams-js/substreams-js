@@ -8,7 +8,7 @@ import * as Schedule from "@effect/io/Schedule";
 import * as Sink from "@effect/stream/Sink";
 import * as Stream from "@effect/stream/Stream";
 
-import { type Transport, createPromiseClient } from "@bufbuild/connect";
+import { type Transport, createPromiseClient } from "@connectrpc/connect";
 import { createRequest } from "@substreams/core";
 import { type Module, type Package, type Response, Stream as StreamService } from "@substreams/core/proto";
 

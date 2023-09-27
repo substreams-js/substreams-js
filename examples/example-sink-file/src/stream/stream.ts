@@ -4,7 +4,7 @@ import * as Effect from "@effect/io/Effect";
 import * as Layer from "@effect/io/Layer";
 import * as Stream from "@effect/stream/Stream";
 
-import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createGrpcTransport } from "@connectrpc/connect-node";
 import { createAuthInterceptor, createRegistry } from "@substreams/core";
 import { readPackage } from "@substreams/manifest";
 import { createSink, createStream } from "@substreams/sink";

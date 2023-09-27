@@ -7,8 +7,6 @@
     }
   ],
   "compilerOptions": {
-    // TODO: Can we set to `NodeNext` once https://github.com/microsoft/TypeScript/issues/55021 is resolved.
-    "moduleResolution": "Node",
     "outDir": "../../.cache/tsc/packages/sink",
     "paths": {
       "@substreams/testutils": ["../core/tests/index.js"],

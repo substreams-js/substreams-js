@@ -37,7 +37,7 @@ export class RunCommand extends Data.TaggedClass("RunCommand")<{
   readonly finalBlocksOnly: boolean;
   readonly developmentMode: boolean;
   readonly maxRetryDuration: Duration.Duration;
-  readonly params: Schema.To<typeof Params>;
+  readonly params: Schema.Schema.To<typeof Params>;
 }> {}
 
 export const command: Command.Command<RunCommand> = Command.make("run", {
@@ -98,5 +98,5 @@ export function handle(command: RunCommand) {
     outputModule: command.outputModule,
   });
 
-  return Effect.provideLayer(program, Stream.layer);
+  return Effect.provide(program, Stream.layer);
 }

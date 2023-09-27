@@ -1,4 +1,4 @@
-import type { Interceptor } from "@bufbuild/connect";
+import type { Interceptor } from "@connectrpc/connect";
 
 export function createAuthInterceptor(token: string): Interceptor {
   return (next) => async (req) => {

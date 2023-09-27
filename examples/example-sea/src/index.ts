@@ -1,4 +1,4 @@
-import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createGrpcTransport } from "@connectrpc/connect-node";
 import {
   createAuthInterceptor,
   createRegistry,
@@ -37,7 +37,7 @@ import {
   });
 
   for await (const response of streamBlocks(transport, request)) {
-    const output = unpackMapOutput(response.response, registry);
+    const output = unpackMapOutput(response, registry);
     if (output !== undefined && !isEmptyMessage(output)) {
       console.dir(output.toJson({ typeRegistry: registry }));
     }

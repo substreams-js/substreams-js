@@ -1,20 +1,20 @@
-import { expandEnv } from "../utils/expand-env.js";
 import * as Schema from "@effect/schema/Schema";
 import { nameRegExp, semverRegExp } from "@substreams/core";
+import { expandEnv } from "../utils/expand-env.js";
 
 const expandEnvTransform = Schema.transform(Schema.string, Schema.string, expandEnv, (value) => value);
 
 export const BinaryTypeSchema = Schema.literal("wasm/rust-v1");
-export type BinaryType = Schema.To<typeof BinaryTypeSchema>;
+export type BinaryType = Schema.Schema.To<typeof BinaryTypeSchema>;
 
 export const ManifestSpecVersionSchema = Schema.literal("v0.1.0");
-export type ManifestSpecVersion = Schema.To<typeof ManifestSpecVersionSchema>;
+export type ManifestSpecVersion = Schema.Schema.To<typeof ManifestSpecVersionSchema>;
 
 export const ProtobufSchema = Schema.struct({
   files: Schema.array(Schema.string.pipe(Schema.pattern(/\.proto$/))),
   importPaths: Schema.array(expandEnvTransform),
 });
-export type Protobuf = Schema.To<typeof ProtobufSchema>;
+export type Protobuf = Schema.Schema.To<typeof ProtobufSchema>;
 
 export const PackageSchema = Schema.struct({
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
@@ -22,7 +22,7 @@ export const PackageSchema = Schema.struct({
   url: Schema.optional(Schema.string),
   doc: Schema.optional(Schema.string),
 });
-export type Package = Schema.To<typeof PackageSchema>;
+export type Package = Schema.Schema.To<typeof PackageSchema>;
 
 export const InputSchema = Schema.union(
   Schema.struct({
@@ -39,19 +39,21 @@ export const InputSchema = Schema.union(
     mode: Schema.optional(Schema.literal("get", "deltas")).withDefault(() => "get"),
   }),
 );
-export type Input = Schema.To<typeof InputSchema>;
+export type Input = Schema.Schema.To<typeof InputSchema>;
 
 export const InitialBlockSchema = Schema.union(
-  Schema.bigint.pipe(Schema.nonNegativeBigint()),
-  Schema.number.pipe(Schema.nonNegative()).pipe(
-    Schema.transform(
-      Schema.bigint,
-      (value) => BigInt(value),
-      (value) => Number(value),
-    ),
+  Schema.NonNegativeBigintFromSelf,
+  Schema.NonNegativeBigint,
+  Schema.NonNegative,
+).pipe(
+  Schema.transform(
+    Schema.bigintFromSelf,
+    (_) => BigInt(_),
+    (_) => String(_),
   ),
 );
-export type InitialBlock = Schema.To<typeof InitialBlockSchema>;
+
+export type InitialBlock = Schema.Schema.To<typeof InitialBlockSchema>;
 
 export const StoreModuleSchema = Schema.struct({
   kind: Schema.literal("store"),
@@ -108,7 +110,7 @@ export const StoreModuleSchema = Schema.struct({
     return combinations.includes(combination);
   }),
 );
-export type StoreModule = Schema.To<typeof StoreModuleSchema>;
+export type StoreModule = Schema.Schema.To<typeof StoreModuleSchema>;
 
 export const MapModuleSchema = Schema.struct({
   kind: Schema.literal("map"),
@@ -121,10 +123,10 @@ export const MapModuleSchema = Schema.struct({
     type: Schema.string,
   }),
 });
-export type MapModule = Schema.To<typeof MapModuleSchema>;
+export type MapModule = Schema.Schema.To<typeof MapModuleSchema>;
 
 export const ModuleSchema = Schema.union(StoreModuleSchema, MapModuleSchema);
-export type Module = Schema.To<typeof ModuleSchema>;
+export type Module = Schema.Schema.To<typeof ModuleSchema>;
 
 export const BinarySchema = Schema.struct({
   file: Schema.string,
@@ -134,14 +136,14 @@ export const BinarySchema = Schema.struct({
   entrypoint: Schema.optional(Schema.string),
   protoPackageMapping: Schema.optional(Schema.record(Schema.string, Schema.string)),
 });
-export type Binary = Schema.To<typeof BinarySchema>;
+export type Binary = Schema.Schema.To<typeof BinarySchema>;
 
 export const SinkSchema = Schema.struct({
   type: Schema.string,
   module: Schema.string,
   config: Schema.any,
 });
-export type Sink = Schema.To<typeof SinkSchema>;
+export type Sink = Schema.Schema.To<typeof SinkSchema>;
 
 export const ManifestSchema = Schema.struct({
   network: Schema.optional(Schema.string),
@@ -161,7 +163,7 @@ export const ManifestSchema = Schema.struct({
   params: Schema.optional(Schema.record(Schema.string, Schema.string)),
   sink: Schema.optional(Schema.lazy(() => SinkSchema)),
 });
-export type Manifest = Schema.To<typeof ManifestSchema>;
+export type Manifest = Schema.Schema.To<typeof ManifestSchema>;
 
 export function parseManifestJson(input: unknown): Manifest {
   const parse = Schema.parseSync(ManifestSchema);

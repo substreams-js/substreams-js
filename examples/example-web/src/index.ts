@@ -1,4 +1,4 @@
-import { createConnectTransport } from "@bufbuild/connect-web";
+import { createConnectTransport } from "@connectrpc/connect-web";
 import {
   createAuthInterceptor,
   createRegistry,
@@ -51,7 +51,7 @@ import {
 
   element.textContent = "";
   for await (const response of streamBlocks(transport, request)) {
-    const output = unpackMapOutput(response.response, registry);
+    const output = unpackMapOutput(response, registry);
     if (output !== undefined && !isEmptyMessage(output)) {
       element.textContent += `${output.toJsonString({ typeRegistry: registry })}\n`;
     }

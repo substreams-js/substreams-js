@@ -7,16 +7,16 @@
     "start": "vite"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.12.0",
-    "@bufbuild/connect-web": "^0.12.0",
-    "@bufbuild/protobuf": "^1.2.1",
-    "@substreams/core": "^0.1.19",
-    "@substreams/manifest": "^0.0.9"
+    "@bufbuild/protobuf": "^1.3.1",
+    "@connectrpc/connect": "^0.13.2",
+    "@connectrpc/connect-web": "^0.13.2",
+    "@substreams/core": "workspace:*",
+    "@substreams/manifest": "workspace:*"
   },
   "devDependencies": {
-    "@types/web": "^0.0.112",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.8",
-    "vite-tsconfig-paths": "^4.2.0"
+    "@types/web": "^0.0.115",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.1"
   }
 }

@@ -6,7 +6,7 @@
 TypeScript library for consuming [Substreams](https://substreams.streamingfast.io/) suitable for web browsers, Node.js and alternative runtimes.
 
 ```typescript
-import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createGrpcTransport } from "@connectrpc/connect-node";
 import {
   createAuthInterceptor,
   createRegistry,

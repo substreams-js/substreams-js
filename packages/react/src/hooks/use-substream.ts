@@ -1,8 +1,8 @@
 "use client";
 
-import { Code, ConnectError, type Transport } from "@bufbuild/connect";
-import { type StatefulResponse, streamBlocks } from "@substreams/core";
-import { Request } from "@substreams/core/proto";
+import { Code, ConnectError, type Transport } from "@connectrpc/connect";
+import { streamBlocks } from "@substreams/core";
+import { Request, Response } from "@substreams/core/proto";
 import { useEffect, useRef } from "react";
 
 export interface UseSubstreamOptions {
@@ -22,7 +22,7 @@ export interface UseSubstreamOptions {
     /**
      * Called when a new response is received.
      */
-    onResponse?: (response: StatefulResponse) => void;
+    onResponse?: (response: Response) => void;
     /**
      * Called when the stream is aborted.
      */

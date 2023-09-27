@@ -21,7 +21,7 @@
     "noUncheckedIndexedAccess": true,
 
     // Modules
-    "module": "ES2020",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
 
     // JavaScript support

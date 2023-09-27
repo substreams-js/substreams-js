@@ -13,7 +13,6 @@
     "outDir": "../../.cache/tsc/examples/example-node-manifest",
     "types": ["node"],
     "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
       "@substreams/core/proto": ["../../packages/core/src/proto.js"],

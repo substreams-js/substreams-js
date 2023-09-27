@@ -1,4 +1,3 @@
-import { ModuleProgressBars } from "@/components/substreams/module-progress-bars";
 import { StreamStats } from "@/components/substreams/stream-stats";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,7 +5,6 @@ import type { Registry } from "@/hooks/use-message-registry";
 import { useThrottledStore } from "@/hooks/use-throttled-store";
 import { transport } from "@/lib/transport";
 import { Any } from "@bufbuild/protobuf";
-import type { Progress, StatefulResponse } from "@substreams/core";
 import { Request } from "@substreams/core/proto";
 import { useSubstream } from "@substreams/react";
 import { JsonViewer } from "@textea/json-viewer";
@@ -21,7 +19,6 @@ export type Output = {
 export type Stream = {
   status: string;
   error?: unknown;
-  progress?: Progress;
   messages?: Output[];
   block?: bigint | undefined;
   cursor?: string | undefined;
@@ -38,7 +35,7 @@ export function StreamRunner({
     request,
     transport,
     handlers: {
-      onResponse: ({ response, progress }: StatefulResponse) => {
+      onResponse: (response) => {
         store.setState((previous) => {
           // const message = extractMessage(response.response, registry);
           let message: Output | undefined = undefined;
@@ -62,7 +59,6 @@ export function StreamRunner({
 
           const next: Stream & { status: "streaming" } = {
             ...previous,
-            progress,
             status: "streaming",
             messages: messages.slice(-10),
           };
@@ -99,7 +95,6 @@ export function StreamRunner({
     },
   });
 
-  const progress = state.progress;
   const messages = state.messages?.map((message) =>
     message.message.toJson({ typeRegistry: registry, emitDefaultValues: true }),
   );
@@ -119,7 +114,6 @@ export function StreamRunner({
         </CardContent>
       </Card>
       <StreamStats state={state} />
-      {progress ? <ModuleProgressBars progress={progress} /> : null}
       {messages ? (
         <JsonViewer
           rootName="data"

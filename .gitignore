@@ -5,6 +5,7 @@
 !.gitignore
 !.vscode
 !.gitmodules
+!.envrc
 
 # Ignore log output
 *.log

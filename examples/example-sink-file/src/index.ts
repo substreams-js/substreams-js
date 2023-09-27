@@ -1,5 +1,4 @@
 import * as App from "@effect/cli/CliApp";
-import * as Console from "@effect/cli/Console";
 import * as Span from "@effect/cli/HelpDoc/Span";
 import * as Func from "@effect/data/Function";
 import * as Effect from "@effect/io/Effect";
@@ -16,7 +15,6 @@ const cli = App.make({
 Func.pipe(
   Effect.sync(() => process.argv.slice(2)),
   Effect.flatMap((args) => App.run(cli, args, RootCommand.handle)),
-  Effect.provideLayer(Console.layer),
   Effect.runPromise,
 );
 

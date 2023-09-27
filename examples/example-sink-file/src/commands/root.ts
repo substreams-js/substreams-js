@@ -6,8 +6,8 @@ import * as Data from "@effect/data/Data";
 import * as Either from "@effect/data/Either";
 import * as Option from "@effect/data/Option";
 import * as Effect from "@effect/io/Effect";
+import * as LogLevel from "@effect/io/LogLevel";
 import * as Logger from "@effect/io/Logger";
-import * as LogLevel from "@effect/io/Logger/Level";
 import * as Match from "@effect/match";
 
 import * as RunCommand from "./run";
@@ -58,5 +58,5 @@ export function handle(command: RootCommand) {
     );
   });
 
-  return Effect.provideLayer(program, layer);
+  return Effect.provide(program, layer);
 }
