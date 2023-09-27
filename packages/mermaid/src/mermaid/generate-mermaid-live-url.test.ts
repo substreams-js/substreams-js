@@ -1,6 +1,6 @@
-import { generateMermaidLiveUrl } from "./generate-mermaid-live-url.js";
 import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
+import { generateMermaidLiveUrl } from "./generate-mermaid-live-url.js";
 
 const uniswap = createSubstreamFixture("uniswap-v3");
 

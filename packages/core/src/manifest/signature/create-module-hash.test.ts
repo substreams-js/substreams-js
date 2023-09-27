@@ -1,8 +1,8 @@
+import { createSubstreamFixture } from "@substreams/testutils";
+import { assert, expect, test } from "vitest";
 import { getModuleOrThrow } from "../../utils/get-module.js";
 import { toHex } from "../../utils/to-hex.js";
 import { createModuleHash } from "./create-module-hash.js";
-import { createSubstreamFixture } from "@substreams/testutils";
-import { assert, expect, test } from "vitest";
 
 const substream = createSubstreamFixture("uniswap-v3");
 

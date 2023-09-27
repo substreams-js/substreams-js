@@ -1,6 +1,6 @@
+import { assert, test } from "vitest";
 import { Module, Module_Input, type Module_Input_Params } from "../../proto.js";
 import { applyParams } from "./apply-params.js";
-import { assert, test } from "vitest";
 
 test("correctly injects parameters into a module", async () => {
   const input = new Module_Input({

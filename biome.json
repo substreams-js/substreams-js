@@ -1,6 +1,7 @@
 {
   "files": {
     "ignore": [
+      ".direnv/",
       ".cache/",
       ".vercel/",
       ".next/",
@@ -24,6 +25,15 @@
       "suspicious": {
         "noExplicitAny": "off",
         "noRedundantUseStrict": "off"
+      },
+      "nursery": {
+        "useImportRestrictions": "off"
+      },
+      "style": {
+        "useNamingConvention": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
       }
     }
   },

@@ -31,7 +31,9 @@ export function SubstreamNav({ parent }: { parent: string }) {
         <NavigationMenuItem>
           <Link href={parent} legacyBehavior={true} passHref={true}>
             <NavigationMenuLink
-              className={navigationMenuTriggerStyle({ className: { "bg-transparent": path === "inspect" } })}
+              className={navigationMenuTriggerStyle({
+                className: { "bg-transparent": path === "inspect" },
+              })}
             >
               Inspect
             </NavigationMenuLink>
@@ -40,7 +42,9 @@ export function SubstreamNav({ parent }: { parent: string }) {
         <NavigationMenuItem>
           <Link href={`${parent}/stream`} legacyBehavior={true} passHref={true}>
             <NavigationMenuLink
-              className={navigationMenuTriggerStyle({ className: { "bg-transparent": path === "stream" } })}
+              className={navigationMenuTriggerStyle({
+                className: { "bg-transparent": path === "stream" },
+              })}
             >
               Stream
             </NavigationMenuLink>
@@ -49,7 +53,9 @@ export function SubstreamNav({ parent }: { parent: string }) {
         <NavigationMenuItem>
           <Link href={`${parent}/graph`} legacyBehavior={true} passHref={true}>
             <NavigationMenuLink
-              className={navigationMenuTriggerStyle({ className: { "bg-transparent": path === "graph" } })}
+              className={navigationMenuTriggerStyle({
+                className: { "bg-transparent": path === "graph" },
+              })}
             >
               Flowchart
             </NavigationMenuLink>

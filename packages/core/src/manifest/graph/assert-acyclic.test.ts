@@ -1,7 +1,7 @@
-import { Module } from "../../proto.js";
-import { createModuleGraph } from "./create-module-graph.js";
 import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
+import { Module } from "../../proto.js";
+import { createModuleGraph } from "./create-module-graph.js";
 
 const uniswap = createSubstreamFixture("uniswap-v3");
 

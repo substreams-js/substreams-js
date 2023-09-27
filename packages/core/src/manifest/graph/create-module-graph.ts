@@ -146,7 +146,7 @@ export function createModuleNodes(modules: Module[]) {
   }
 
   for (const module of modules) {
-    // rome-ignore lint/style/noNonNullAssertion: guarenteed at this point.
+    // biome-ignore lint/style/noNonNullAssertion: guarenteed at this point.
     const adjacents = nodes.get(module)!;
     for (const input of module.inputs) {
       if (input.input.case === "map" || input.input.case === "store") {

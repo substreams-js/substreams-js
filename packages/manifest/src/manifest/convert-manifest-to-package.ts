@@ -1,13 +1,13 @@
+import * as path from "node:path";
+import type { FileDescriptorProto } from "@bufbuild/protobuf";
+import { createModuleGraph } from "@substreams/core";
+import { type Module, Modules, type Package } from "@substreams/core/proto";
 import { readLocalProtos } from "../protobuf/read-local-protos.js";
 import { readSystemProtos } from "../protobuf/read-system-protos.js";
 import { readPackage } from "../reader/read-package.js";
 import { isReadableLocalFile, isRemotePath, resolveLocalFile } from "../utils/path-utils.js";
 import { createPackageFromManifest } from "./create-package-from-manifest.js";
 import type { Manifest } from "./manifest-schema.js";
-import type { FileDescriptorProto } from "@bufbuild/protobuf";
-import { createModuleGraph } from "@substreams/core";
-import { type Module, Modules, type Package } from "@substreams/core/proto";
-import * as path from "node:path";
 
 export async function convertManifestToPackage(manifest: Manifest, cwd: string): Promise<Package> {
   const pkg = createPackageFromManifest(manifest, cwd);

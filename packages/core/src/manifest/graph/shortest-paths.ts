@@ -6,7 +6,7 @@ export function shortestPaths(stack: Set<Module>, nodes: Map<Module, Set<Module>
 
   const array = Array.from(stack);
   while (array.length > 0) {
-    // rome-ignore lint/style/noNonNullAssertion: guarenteed at this point.
+    // biome-ignore lint/style/noNonNullAssertion: guarenteed at this point.
     const current = array.pop()!;
     const a = distances.get(current) ?? -1;
 

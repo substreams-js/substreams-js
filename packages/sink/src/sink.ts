@@ -25,7 +25,6 @@ export type CreateSinkOptions<R1, R2> = {
 };
 
 export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSignal }: CreateSinkOptions<R1, R2>) {
-  // rome-ignore lint/nursery/noForEach: this is not even an array ...
   return Sink.forEach((response: Response): Effect.Effect<R1 | R2, SinkError, void> => {
     const { value: message, case: kind } = response.message;
 

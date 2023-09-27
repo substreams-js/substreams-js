@@ -3,210 +3,292 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import type {
+	BinaryReadOptions,
+	FieldList,
+	JsonReadOptions,
+	JsonValue,
+	PartialMessage,
+	PlainMessage,
+} from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 
 /**
  * @generated from message sf.substreams.internal.v2.StoreDeltas
  */
 export class StoreDeltas extends Message<StoreDeltas> {
-  /**
-   * @generated from field: repeated sf.substreams.internal.v2.StoreDelta store_deltas = 1;
-   */
-  storeDeltas: StoreDelta[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.internal.v2.StoreDelta store_deltas = 1;
+	 */
+	storeDeltas: StoreDelta[] = [];
 
-  constructor(data?: PartialMessage<StoreDeltas>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<StoreDeltas>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.internal.v2.StoreDeltas";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "store_deltas", kind: "message", T: StoreDelta, repeated: true },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.internal.v2.StoreDeltas";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "store_deltas",
+			kind: "message",
+			T: StoreDelta,
+			repeated: true,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StoreDeltas {
-    return new StoreDeltas().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): StoreDeltas {
+		return new StoreDeltas().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StoreDeltas {
-    return new StoreDeltas().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): StoreDeltas {
+		return new StoreDeltas().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StoreDeltas {
-    return new StoreDeltas().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): StoreDeltas {
+		return new StoreDeltas().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: StoreDeltas | PlainMessage<StoreDeltas> | undefined, b: StoreDeltas | PlainMessage<StoreDeltas> | undefined): boolean {
-    return proto3.util.equals(StoreDeltas, a, b);
-  }
+	static equals(
+		a: StoreDeltas | PlainMessage<StoreDeltas> | undefined,
+		b: StoreDeltas | PlainMessage<StoreDeltas> | undefined,
+	): boolean {
+		return proto3.util.equals(StoreDeltas, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.internal.v2.StoreDelta
  */
 export class StoreDelta extends Message<StoreDelta> {
-  /**
-   * @generated from field: sf.substreams.internal.v2.StoreDelta.Operation operation = 1;
-   */
-  operation = StoreDelta_Operation.UNSET;
+	/**
+	 * @generated from field: sf.substreams.internal.v2.StoreDelta.Operation operation = 1;
+	 */
+	operation = StoreDelta_Operation.UNSET;
 
-  /**
-   * @generated from field: uint64 ordinal = 2;
-   */
-  ordinal = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 ordinal = 2;
+	 */
+	ordinal = protoInt64.zero;
 
-  /**
-   * @generated from field: string key = 3;
-   */
-  key = "";
+	/**
+	 * @generated from field: string key = 3;
+	 */
+	key = "";
 
-  /**
-   * @generated from field: bytes old_value = 4;
-   */
-  oldValue = new Uint8Array(0);
+	/**
+	 * @generated from field: bytes old_value = 4;
+	 */
+	oldValue = new Uint8Array(0);
 
-  /**
-   * @generated from field: bytes new_value = 5;
-   */
-  newValue = new Uint8Array(0);
+	/**
+	 * @generated from field: bytes new_value = 5;
+	 */
+	newValue = new Uint8Array(0);
 
-  constructor(data?: PartialMessage<StoreDelta>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<StoreDelta>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.internal.v2.StoreDelta";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "operation", kind: "enum", T: proto3.getEnumType(StoreDelta_Operation) },
-    { no: 2, name: "ordinal", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "old_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 5, name: "new_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.internal.v2.StoreDelta";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "operation",
+			kind: "enum",
+			T: proto3.getEnumType(StoreDelta_Operation),
+		},
+		{ no: 2, name: "ordinal", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+		{ no: 3, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{ no: 4, name: "old_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+		{ no: 5, name: "new_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StoreDelta {
-    return new StoreDelta().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StoreDelta {
-    return new StoreDelta().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StoreDelta {
-    return new StoreDelta().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: StoreDelta | PlainMessage<StoreDelta> | undefined, b: StoreDelta | PlainMessage<StoreDelta> | undefined): boolean {
-    return proto3.util.equals(StoreDelta, a, b);
-  }
+	static equals(
+		a: StoreDelta | PlainMessage<StoreDelta> | undefined,
+		b: StoreDelta | PlainMessage<StoreDelta> | undefined,
+	): boolean {
+		return proto3.util.equals(StoreDelta, a, b);
+	}
 }
 
 /**
  * @generated from enum sf.substreams.internal.v2.StoreDelta.Operation
  */
 export enum StoreDelta_Operation {
-  /**
-   * @generated from enum value: UNSET = 0;
-   */
-  UNSET = 0,
+	/**
+	 * @generated from enum value: UNSET = 0;
+	 */
+	UNSET = 0,
 
-  /**
-   * @generated from enum value: CREATE = 1;
-   */
-  CREATE = 1,
+	/**
+	 * @generated from enum value: CREATE = 1;
+	 */
+	CREATE = 1,
 
-  /**
-   * @generated from enum value: UPDATE = 2;
-   */
-  UPDATE = 2,
+	/**
+	 * @generated from enum value: UPDATE = 2;
+	 */
+	UPDATE = 2,
 
-  /**
-   * @generated from enum value: DELETE = 3;
-   */
-  DELETE = 3,
+	/**
+	 * @generated from enum value: DELETE = 3;
+	 */
+	DELETE = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StoreDelta_Operation)
-proto3.util.setEnumType(StoreDelta_Operation, "sf.substreams.internal.v2.StoreDelta.Operation", [
-  { no: 0, name: "UNSET" },
-  { no: 1, name: "CREATE" },
-  { no: 2, name: "UPDATE" },
-  { no: 3, name: "DELETE" },
-]);
+proto3.util.setEnumType(
+	StoreDelta_Operation,
+	"sf.substreams.internal.v2.StoreDelta.Operation",
+	[
+		{ no: 0, name: "UNSET" },
+		{ no: 1, name: "CREATE" },
+		{ no: 2, name: "UPDATE" },
+		{ no: 3, name: "DELETE" },
+	],
+);
 
 /**
  * @generated from message sf.substreams.internal.v2.ModuleOutput
  */
 export class ModuleOutput extends Message<ModuleOutput> {
-  /**
-   * @generated from field: string module_name = 1;
-   */
-  moduleName = "";
+	/**
+	 * @generated from field: string module_name = 1;
+	 */
+	moduleName = "";
 
-  /**
-   * @generated from oneof sf.substreams.internal.v2.ModuleOutput.data
-   */
-  data: {
-    /**
-     * @generated from field: google.protobuf.Any map_output = 2;
-     */
-    value: Any;
-    case: "mapOutput";
-  } | {
-    /**
-     * @generated from field: sf.substreams.internal.v2.StoreDeltas store_deltas = 3;
-     */
-    value: StoreDeltas;
-    case: "storeDeltas";
-  } | { case: undefined; value?: undefined } = { case: undefined };
+	/**
+	 * @generated from oneof sf.substreams.internal.v2.ModuleOutput.data
+	 */
+	data:
+		| {
+				/**
+				 * @generated from field: google.protobuf.Any map_output = 2;
+				 */
+				value: Any;
+				case: "mapOutput";
+		  }
+		| {
+				/**
+				 * @generated from field: sf.substreams.internal.v2.StoreDeltas store_deltas = 3;
+				 */
+				value: StoreDeltas;
+				case: "storeDeltas";
+		  }
+		| { case: undefined; value?: undefined } = { case: undefined };
 
-  /**
-   * @generated from field: repeated string logs = 4;
-   */
-  logs: string[] = [];
+	/**
+	 * @generated from field: repeated string logs = 4;
+	 */
+	logs: string[] = [];
 
-  /**
-   * @generated from field: bool debug_logs_truncated = 5;
-   */
-  debugLogsTruncated = false;
+	/**
+	 * @generated from field: bool debug_logs_truncated = 5;
+	 */
+	debugLogsTruncated = false;
 
-  /**
-   * @generated from field: bool cached = 6;
-   */
-  cached = false;
+	/**
+	 * @generated from field: bool cached = 6;
+	 */
+	cached = false;
 
-  constructor(data?: PartialMessage<ModuleOutput>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<ModuleOutput>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.internal.v2.ModuleOutput";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "module_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "map_output", kind: "message", T: Any, oneof: "data" },
-    { no: 3, name: "store_deltas", kind: "message", T: StoreDeltas, oneof: "data" },
-    { no: 4, name: "logs", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 5, name: "debug_logs_truncated", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "cached", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.internal.v2.ModuleOutput";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "module_name",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+		},
+		{ no: 2, name: "map_output", kind: "message", T: Any, oneof: "data" },
+		{
+			no: 3,
+			name: "store_deltas",
+			kind: "message",
+			T: StoreDeltas,
+			oneof: "data",
+		},
+		{
+			no: 4,
+			name: "logs",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+			repeated: true,
+		},
+		{
+			no: 5,
+			name: "debug_logs_truncated",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+		{ no: 6, name: "cached", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ModuleOutput {
-    return new ModuleOutput().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): ModuleOutput {
+		return new ModuleOutput().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ModuleOutput {
-    return new ModuleOutput().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): ModuleOutput {
+		return new ModuleOutput().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ModuleOutput {
-    return new ModuleOutput().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): ModuleOutput {
+		return new ModuleOutput().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: ModuleOutput | PlainMessage<ModuleOutput> | undefined, b: ModuleOutput | PlainMessage<ModuleOutput> | undefined): boolean {
-    return proto3.util.equals(ModuleOutput, a, b);
-  }
+	static equals(
+		a: ModuleOutput | PlainMessage<ModuleOutput> | undefined,
+		b: ModuleOutput | PlainMessage<ModuleOutput> | undefined,
+	): boolean {
+		return proto3.util.equals(ModuleOutput, a, b);
+	}
 }
-

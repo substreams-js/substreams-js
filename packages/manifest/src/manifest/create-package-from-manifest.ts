@@ -1,8 +1,8 @@
-import { createModuleFromManifest } from "./create-module-from-manifest.js";
-import type { Manifest } from "./manifest-schema.js";
-import { Binary, ModuleMetadata, Modules, Package, PackageMetadata } from "@substreams/core/proto";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { Binary, ModuleMetadata, Modules, Package, PackageMetadata } from "@substreams/core/proto";
+import { createModuleFromManifest } from "./create-module-from-manifest.js";
+import type { Manifest } from "./manifest-schema.js";
 
 export type ConvertToPackageOptions = {
   skipSourceCodeImportValidation?: boolean;
@@ -27,7 +27,7 @@ export function createPackageFromManifest(
     ...(manifest.network !== undefined ? { network: manifest.network } : undefined),
   });
 
-  // rome-ignore lint/style/noNonNullAssertion: guaranteed to be set above
+  // biome-ignore lint/style/noNonNullAssertion: guaranteed to be set above
   const modules = pkg.modules!;
 
   const code = new Map<string, number>();

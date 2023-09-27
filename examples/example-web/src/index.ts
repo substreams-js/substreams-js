@@ -14,9 +14,9 @@ import {
     throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
   }
 
-  const TOKEN = import.meta.env.SUBSTREAMS_API_TOKEN;
+  const token = import.meta.env.SUBSTREAMS_API_TOKEN;
   const SUBSTREAM = "streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
-  const MODULE = "map_pools_created";
+  const module = "map_pools_created";
 
   // NOTE: We are proxying requests to github.com to circumvent CORS. See `vite.config.ts` for details.
   const substream = await fetchSubstream(`${window.location.origin}/proxy/${SUBSTREAM}`);
@@ -30,7 +30,7 @@ import {
   const transport = createConnectTransport({
     // NOTE: Support for the `connect` protocol is currently still work in progress.
     baseUrl: "https://api.streamingfast.io",
-    interceptors: [createAuthInterceptor(TOKEN)],
+    interceptors: [createAuthInterceptor(token)],
     useBinaryFormat: true,
     jsonOptions: {
       typeRegistry: registry,
@@ -39,7 +39,7 @@ import {
 
   const request = createRequest({
     substreamPackage: substream,
-    outputModule: MODULE,
+    outputModule: module,
     productionMode: false, // Set to `true` in production.
     stopBlockNum: "+10000", // Stream the first 10000 blocks. Will follow chain head if not set.
   });
@@ -53,7 +53,9 @@ import {
   for await (const response of streamBlocks(transport, request)) {
     const output = unpackMapOutput(response, registry);
     if (output !== undefined && !isEmptyMessage(output)) {
-      element.textContent += `${output.toJsonString({ typeRegistry: registry })}\n`;
+      element.textContent += `${output.toJsonString({
+        typeRegistry: registry,
+      })}\n`;
     }
   }
 })();

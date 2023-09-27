@@ -1,5 +1,5 @@
-import { expandEnv } from "./expand-env.js";
 import { expect, test } from "vitest";
+import { expandEnv } from "./expand-env.js";
 
 test("replaces environment variables", () => {
   expect(expandEnv("$BAR", { BAR: "bar" })).toBe("bar");

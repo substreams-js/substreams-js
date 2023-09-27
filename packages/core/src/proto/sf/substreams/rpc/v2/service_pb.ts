@@ -3,7 +3,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import type {
+	BinaryReadOptions,
+	FieldList,
+	JsonReadOptions,
+	JsonValue,
+	PartialMessage,
+	PlainMessage,
+} from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Modules } from "../../v1/modules_pb.js";
 import { BlockRef, Clock } from "../../v1/clock_pb.js";
@@ -12,197 +19,301 @@ import { BlockRef, Clock } from "../../v1/clock_pb.js";
  * @generated from message sf.substreams.rpc.v2.Request
  */
 export class Request extends Message<Request> {
-  /**
-   * @generated from field: int64 start_block_num = 1;
-   */
-  startBlockNum = protoInt64.zero;
+	/**
+	 * @generated from field: int64 start_block_num = 1;
+	 */
+	startBlockNum = protoInt64.zero;
 
-  /**
-   * @generated from field: string start_cursor = 2;
-   */
-  startCursor = "";
+	/**
+	 * @generated from field: string start_cursor = 2;
+	 */
+	startCursor = "";
 
-  /**
-   * @generated from field: uint64 stop_block_num = 3;
-   */
-  stopBlockNum = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 stop_block_num = 3;
+	 */
+	stopBlockNum = protoInt64.zero;
 
-  /**
-   * With final_block_only, you only receive blocks that are irreversible:
-   * 'final_block_height' will be equal to current block and no 'undo_signal' will ever be sent
-   *
-   * @generated from field: bool final_blocks_only = 4;
-   */
-  finalBlocksOnly = false;
+	/**
+	 * With final_block_only, you only receive blocks that are irreversible:
+	 * 'final_block_height' will be equal to current block and no 'undo_signal' will ever be sent
+	 *
+	 * @generated from field: bool final_blocks_only = 4;
+	 */
+	finalBlocksOnly = false;
 
-  /**
-   * Substreams has two mode when executing your module(s) either development mode or production
-   * mode. Development and production modes impact the execution of Substreams, important aspects
-   * of execution include:
-   * * The time required to reach the first byte.
-   * * The speed that large ranges get executed.
-   * * The module logs and outputs sent back to the client.
-   *
-   * By default, the engine runs in developer mode, with richer and deeper output. Differences
-   * between production and development modes include:
-   * * Forward parallel execution is enabled in production mode and disabled in development mode
-   * * The time required to reach the first byte in development mode is faster than in production mode.
-   *
-   * Specific attributes of development mode include:
-   * * The client will receive all of the executed module's logs.
-   * * It's possible to request specific store snapshots in the execution tree (via `debug_initial_store_snapshot_for_modules`).
-   * * Multiple module's output is possible.
-   *
-   * With production mode`, however, you trade off functionality for high speed enabling forward
-   * parallel execution of module ahead of time.
-   *
-   * @generated from field: bool production_mode = 5;
-   */
-  productionMode = false;
+	/**
+	 * Substreams has two mode when executing your module(s) either development mode or production
+	 * mode. Development and production modes impact the execution of Substreams, important aspects
+	 * of execution include:
+	 * * The time required to reach the first byte.
+	 * * The speed that large ranges get executed.
+	 * * The module logs and outputs sent back to the client.
+	 *
+	 * By default, the engine runs in developer mode, with richer and deeper output. Differences
+	 * between production and development modes include:
+	 * * Forward parallel execution is enabled in production mode and disabled in development mode
+	 * * The time required to reach the first byte in development mode is faster than in production mode.
+	 *
+	 * Specific attributes of development mode include:
+	 * * The client will receive all of the executed module's logs.
+	 * * It's possible to request specific store snapshots in the execution tree (via `debug_initial_store_snapshot_for_modules`).
+	 * * Multiple module's output is possible.
+	 *
+	 * With production mode`, however, you trade off functionality for high speed enabling forward
+	 * parallel execution of module ahead of time.
+	 *
+	 * @generated from field: bool production_mode = 5;
+	 */
+	productionMode = false;
 
-  /**
-   * @generated from field: string output_module = 6;
-   */
-  outputModule = "";
+	/**
+	 * @generated from field: string output_module = 6;
+	 */
+	outputModule = "";
 
-  /**
-   * @generated from field: sf.substreams.v1.Modules modules = 7;
-   */
-  modules?: Modules;
+	/**
+	 * @generated from field: sf.substreams.v1.Modules modules = 7;
+	 */
+	modules?: Modules;
 
-  /**
-   * Available only in developer mode
-   *
-   * @generated from field: repeated string debug_initial_store_snapshot_for_modules = 10;
-   */
-  debugInitialStoreSnapshotForModules: string[] = [];
+	/**
+	 * Available only in developer mode
+	 *
+	 * @generated from field: repeated string debug_initial_store_snapshot_for_modules = 10;
+	 */
+	debugInitialStoreSnapshotForModules: string[] = [];
 
-  constructor(data?: PartialMessage<Request>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<Request>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.Request";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "start_block_num", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 2, name: "start_cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "stop_block_num", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "final_blocks_only", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 5, name: "production_mode", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "output_module", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "modules", kind: "message", T: Modules },
-    { no: 10, name: "debug_initial_store_snapshot_for_modules", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.Request";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "start_block_num",
+			kind: "scalar",
+			T: 3 /* ScalarType.INT64 */,
+		},
+		{
+			no: 2,
+			name: "start_cursor",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+		},
+		{
+			no: 3,
+			name: "stop_block_num",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 4,
+			name: "final_blocks_only",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+		{
+			no: 5,
+			name: "production_mode",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+		{
+			no: 6,
+			name: "output_module",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+		},
+		{ no: 7, name: "modules", kind: "message", T: Modules },
+		{
+			no: 10,
+			name: "debug_initial_store_snapshot_for_modules",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+			repeated: true,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Request {
-    return new Request().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): Request {
+		return new Request().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Request {
-    return new Request().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): Request {
+		return new Request().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Request {
-    return new Request().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): Request {
+		return new Request().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: Request | PlainMessage<Request> | undefined, b: Request | PlainMessage<Request> | undefined): boolean {
-    return proto3.util.equals(Request, a, b);
-  }
+	static equals(
+		a: Request | PlainMessage<Request> | undefined,
+		b: Request | PlainMessage<Request> | undefined,
+	): boolean {
+		return proto3.util.equals(Request, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.Response
  */
 export class Response extends Message<Response> {
-  /**
-   * @generated from oneof sf.substreams.rpc.v2.Response.message
-   */
-  message: {
-    /**
-     * Always sent first
-     *
-     * @generated from field: sf.substreams.rpc.v2.SessionInit session = 1;
-     */
-    value: SessionInit;
-    case: "session";
-  } | {
-    /**
-     * Progress of data preparation, before sending in the stream of `data` events.
-     *
-     * @generated from field: sf.substreams.rpc.v2.ModulesProgress progress = 2;
-     */
-    value: ModulesProgress;
-    case: "progress";
-  } | {
-    /**
-     * @generated from field: sf.substreams.rpc.v2.BlockScopedData block_scoped_data = 3;
-     */
-    value: BlockScopedData;
-    case: "blockScopedData";
-  } | {
-    /**
-     * @generated from field: sf.substreams.rpc.v2.BlockUndoSignal block_undo_signal = 4;
-     */
-    value: BlockUndoSignal;
-    case: "blockUndoSignal";
-  } | {
-    /**
-     * @generated from field: sf.substreams.rpc.v2.Error fatal_error = 5;
-     */
-    value: Error;
-    case: "fatalError";
-  } | {
-    /**
-     * Available only in developer mode, and only if `debug_initial_store_snapshot_for_modules` is set.
-     *
-     * @generated from field: sf.substreams.rpc.v2.InitialSnapshotData debug_snapshot_data = 10;
-     */
-    value: InitialSnapshotData;
-    case: "debugSnapshotData";
-  } | {
-    /**
-     * Available only in developer mode, and only if `debug_initial_store_snapshot_for_modules` is set.
-     *
-     * @generated from field: sf.substreams.rpc.v2.InitialSnapshotComplete debug_snapshot_complete = 11;
-     */
-    value: InitialSnapshotComplete;
-    case: "debugSnapshotComplete";
-  } | { case: undefined; value?: undefined } = { case: undefined };
+	/**
+	 * @generated from oneof sf.substreams.rpc.v2.Response.message
+	 */
+	message:
+		| {
+				/**
+				 * Always sent first
+				 *
+				 * @generated from field: sf.substreams.rpc.v2.SessionInit session = 1;
+				 */
+				value: SessionInit;
+				case: "session";
+		  }
+		| {
+				/**
+				 * Progress of data preparation, before sending in the stream of `data` events.
+				 *
+				 * @generated from field: sf.substreams.rpc.v2.ModulesProgress progress = 2;
+				 */
+				value: ModulesProgress;
+				case: "progress";
+		  }
+		| {
+				/**
+				 * @generated from field: sf.substreams.rpc.v2.BlockScopedData block_scoped_data = 3;
+				 */
+				value: BlockScopedData;
+				case: "blockScopedData";
+		  }
+		| {
+				/**
+				 * @generated from field: sf.substreams.rpc.v2.BlockUndoSignal block_undo_signal = 4;
+				 */
+				value: BlockUndoSignal;
+				case: "blockUndoSignal";
+		  }
+		| {
+				/**
+				 * @generated from field: sf.substreams.rpc.v2.Error fatal_error = 5;
+				 */
+				value: Error;
+				case: "fatalError";
+		  }
+		| {
+				/**
+				 * Available only in developer mode, and only if `debug_initial_store_snapshot_for_modules` is set.
+				 *
+				 * @generated from field: sf.substreams.rpc.v2.InitialSnapshotData debug_snapshot_data = 10;
+				 */
+				value: InitialSnapshotData;
+				case: "debugSnapshotData";
+		  }
+		| {
+				/**
+				 * Available only in developer mode, and only if `debug_initial_store_snapshot_for_modules` is set.
+				 *
+				 * @generated from field: sf.substreams.rpc.v2.InitialSnapshotComplete debug_snapshot_complete = 11;
+				 */
+				value: InitialSnapshotComplete;
+				case: "debugSnapshotComplete";
+		  }
+		| { case: undefined; value?: undefined } = { case: undefined };
 
-  constructor(data?: PartialMessage<Response>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<Response>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.Response";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "session", kind: "message", T: SessionInit, oneof: "message" },
-    { no: 2, name: "progress", kind: "message", T: ModulesProgress, oneof: "message" },
-    { no: 3, name: "block_scoped_data", kind: "message", T: BlockScopedData, oneof: "message" },
-    { no: 4, name: "block_undo_signal", kind: "message", T: BlockUndoSignal, oneof: "message" },
-    { no: 5, name: "fatal_error", kind: "message", T: Error, oneof: "message" },
-    { no: 10, name: "debug_snapshot_data", kind: "message", T: InitialSnapshotData, oneof: "message" },
-    { no: 11, name: "debug_snapshot_complete", kind: "message", T: InitialSnapshotComplete, oneof: "message" },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.Response";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "session",
+			kind: "message",
+			T: SessionInit,
+			oneof: "message",
+		},
+		{
+			no: 2,
+			name: "progress",
+			kind: "message",
+			T: ModulesProgress,
+			oneof: "message",
+		},
+		{
+			no: 3,
+			name: "block_scoped_data",
+			kind: "message",
+			T: BlockScopedData,
+			oneof: "message",
+		},
+		{
+			no: 4,
+			name: "block_undo_signal",
+			kind: "message",
+			T: BlockUndoSignal,
+			oneof: "message",
+		},
+		{ no: 5, name: "fatal_error", kind: "message", T: Error, oneof: "message" },
+		{
+			no: 10,
+			name: "debug_snapshot_data",
+			kind: "message",
+			T: InitialSnapshotData,
+			oneof: "message",
+		},
+		{
+			no: 11,
+			name: "debug_snapshot_complete",
+			kind: "message",
+			T: InitialSnapshotComplete,
+			oneof: "message",
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Response {
-    return new Response().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): Response {
+		return new Response().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Response {
-    return new Response().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): Response {
+		return new Response().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Response {
-    return new Response().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): Response {
+		return new Response().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: Response | PlainMessage<Response> | undefined, b: Response | PlainMessage<Response> | undefined): boolean {
-    return proto3.util.equals(Response, a, b);
-  }
+	static equals(
+		a: Response | PlainMessage<Response> | undefined,
+		b: Response | PlainMessage<Response> | undefined,
+	): boolean {
+		return proto3.util.equals(Response, a, b);
+	}
 }
 
 /**
@@ -213,310 +324,430 @@ export class Response extends Message<Response> {
  * @generated from message sf.substreams.rpc.v2.BlockUndoSignal
  */
 export class BlockUndoSignal extends Message<BlockUndoSignal> {
-  /**
-   * @generated from field: sf.substreams.v1.BlockRef last_valid_block = 1;
-   */
-  lastValidBlock?: BlockRef;
+	/**
+	 * @generated from field: sf.substreams.v1.BlockRef last_valid_block = 1;
+	 */
+	lastValidBlock?: BlockRef;
 
-  /**
-   * @generated from field: string last_valid_cursor = 2;
-   */
-  lastValidCursor = "";
+	/**
+	 * @generated from field: string last_valid_cursor = 2;
+	 */
+	lastValidCursor = "";
 
-  constructor(data?: PartialMessage<BlockUndoSignal>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<BlockUndoSignal>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.BlockUndoSignal";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "last_valid_block", kind: "message", T: BlockRef },
-    { no: 2, name: "last_valid_cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.BlockUndoSignal";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "last_valid_block", kind: "message", T: BlockRef },
+		{
+			no: 2,
+			name: "last_valid_cursor",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BlockUndoSignal {
-    return new BlockUndoSignal().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): BlockUndoSignal {
+		return new BlockUndoSignal().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BlockUndoSignal {
-    return new BlockUndoSignal().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): BlockUndoSignal {
+		return new BlockUndoSignal().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BlockUndoSignal {
-    return new BlockUndoSignal().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): BlockUndoSignal {
+		return new BlockUndoSignal().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: BlockUndoSignal | PlainMessage<BlockUndoSignal> | undefined, b: BlockUndoSignal | PlainMessage<BlockUndoSignal> | undefined): boolean {
-    return proto3.util.equals(BlockUndoSignal, a, b);
-  }
+	static equals(
+		a: BlockUndoSignal | PlainMessage<BlockUndoSignal> | undefined,
+		b: BlockUndoSignal | PlainMessage<BlockUndoSignal> | undefined,
+	): boolean {
+		return proto3.util.equals(BlockUndoSignal, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.BlockScopedData
  */
 export class BlockScopedData extends Message<BlockScopedData> {
-  /**
-   * @generated from field: sf.substreams.rpc.v2.MapModuleOutput output = 1;
-   */
-  output?: MapModuleOutput;
+	/**
+	 * @generated from field: sf.substreams.rpc.v2.MapModuleOutput output = 1;
+	 */
+	output?: MapModuleOutput;
 
-  /**
-   * @generated from field: sf.substreams.v1.Clock clock = 2;
-   */
-  clock?: Clock;
+	/**
+	 * @generated from field: sf.substreams.v1.Clock clock = 2;
+	 */
+	clock?: Clock;
 
-  /**
-   * @generated from field: string cursor = 3;
-   */
-  cursor = "";
+	/**
+	 * @generated from field: string cursor = 3;
+	 */
+	cursor = "";
 
-  /**
-   * Non-deterministic, allows substreams-sink to let go of their undo data.
-   *
-   * @generated from field: uint64 final_block_height = 4;
-   */
-  finalBlockHeight = protoInt64.zero;
+	/**
+	 * Non-deterministic, allows substreams-sink to let go of their undo data.
+	 *
+	 * @generated from field: uint64 final_block_height = 4;
+	 */
+	finalBlockHeight = protoInt64.zero;
 
-  /**
-   * @generated from field: repeated sf.substreams.rpc.v2.MapModuleOutput debug_map_outputs = 10;
-   */
-  debugMapOutputs: MapModuleOutput[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.rpc.v2.MapModuleOutput debug_map_outputs = 10;
+	 */
+	debugMapOutputs: MapModuleOutput[] = [];
 
-  /**
-   * @generated from field: repeated sf.substreams.rpc.v2.StoreModuleOutput debug_store_outputs = 11;
-   */
-  debugStoreOutputs: StoreModuleOutput[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.rpc.v2.StoreModuleOutput debug_store_outputs = 11;
+	 */
+	debugStoreOutputs: StoreModuleOutput[] = [];
 
-  constructor(data?: PartialMessage<BlockScopedData>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<BlockScopedData>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.BlockScopedData";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "output", kind: "message", T: MapModuleOutput },
-    { no: 2, name: "clock", kind: "message", T: Clock },
-    { no: 3, name: "cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "final_block_height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 10, name: "debug_map_outputs", kind: "message", T: MapModuleOutput, repeated: true },
-    { no: 11, name: "debug_store_outputs", kind: "message", T: StoreModuleOutput, repeated: true },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.BlockScopedData";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "output", kind: "message", T: MapModuleOutput },
+		{ no: 2, name: "clock", kind: "message", T: Clock },
+		{ no: 3, name: "cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{
+			no: 4,
+			name: "final_block_height",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 10,
+			name: "debug_map_outputs",
+			kind: "message",
+			T: MapModuleOutput,
+			repeated: true,
+		},
+		{
+			no: 11,
+			name: "debug_store_outputs",
+			kind: "message",
+			T: StoreModuleOutput,
+			repeated: true,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BlockScopedData {
-    return new BlockScopedData().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): BlockScopedData {
+		return new BlockScopedData().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BlockScopedData {
-    return new BlockScopedData().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): BlockScopedData {
+		return new BlockScopedData().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BlockScopedData {
-    return new BlockScopedData().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): BlockScopedData {
+		return new BlockScopedData().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: BlockScopedData | PlainMessage<BlockScopedData> | undefined, b: BlockScopedData | PlainMessage<BlockScopedData> | undefined): boolean {
-    return proto3.util.equals(BlockScopedData, a, b);
-  }
+	static equals(
+		a: BlockScopedData | PlainMessage<BlockScopedData> | undefined,
+		b: BlockScopedData | PlainMessage<BlockScopedData> | undefined,
+	): boolean {
+		return proto3.util.equals(BlockScopedData, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.SessionInit
  */
 export class SessionInit extends Message<SessionInit> {
-  /**
-   * @generated from field: string trace_id = 1;
-   */
-  traceId = "";
+	/**
+	 * @generated from field: string trace_id = 1;
+	 */
+	traceId = "";
 
-  /**
-   * @generated from field: uint64 resolved_start_block = 2;
-   */
-  resolvedStartBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 resolved_start_block = 2;
+	 */
+	resolvedStartBlock = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 linear_handoff_block = 3;
-   */
-  linearHandoffBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 linear_handoff_block = 3;
+	 */
+	linearHandoffBlock = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 max_parallel_workers = 4;
-   */
-  maxParallelWorkers = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 max_parallel_workers = 4;
+	 */
+	maxParallelWorkers = protoInt64.zero;
 
-  constructor(data?: PartialMessage<SessionInit>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<SessionInit>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.SessionInit";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "trace_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "resolved_start_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "linear_handoff_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "max_parallel_workers", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.SessionInit";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "trace_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{
+			no: 2,
+			name: "resolved_start_block",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 3,
+			name: "linear_handoff_block",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 4,
+			name: "max_parallel_workers",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SessionInit {
-    return new SessionInit().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): SessionInit {
+		return new SessionInit().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SessionInit {
-    return new SessionInit().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): SessionInit {
+		return new SessionInit().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SessionInit {
-    return new SessionInit().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): SessionInit {
+		return new SessionInit().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: SessionInit | PlainMessage<SessionInit> | undefined, b: SessionInit | PlainMessage<SessionInit> | undefined): boolean {
-    return proto3.util.equals(SessionInit, a, b);
-  }
+	static equals(
+		a: SessionInit | PlainMessage<SessionInit> | undefined,
+		b: SessionInit | PlainMessage<SessionInit> | undefined,
+	): boolean {
+		return proto3.util.equals(SessionInit, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.InitialSnapshotComplete
  */
 export class InitialSnapshotComplete extends Message<InitialSnapshotComplete> {
-  /**
-   * @generated from field: string cursor = 1;
-   */
-  cursor = "";
+	/**
+	 * @generated from field: string cursor = 1;
+	 */
+	cursor = "";
 
-  constructor(data?: PartialMessage<InitialSnapshotComplete>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<InitialSnapshotComplete>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.InitialSnapshotComplete";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.InitialSnapshotComplete";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "cursor", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): InitialSnapshotComplete {
-    return new InitialSnapshotComplete().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): InitialSnapshotComplete {
+		return new InitialSnapshotComplete().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): InitialSnapshotComplete {
-    return new InitialSnapshotComplete().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): InitialSnapshotComplete {
+		return new InitialSnapshotComplete().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): InitialSnapshotComplete {
-    return new InitialSnapshotComplete().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): InitialSnapshotComplete {
+		return new InitialSnapshotComplete().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: InitialSnapshotComplete | PlainMessage<InitialSnapshotComplete> | undefined, b: InitialSnapshotComplete | PlainMessage<InitialSnapshotComplete> | undefined): boolean {
-    return proto3.util.equals(InitialSnapshotComplete, a, b);
-  }
+	static equals(
+		a:
+			| InitialSnapshotComplete
+			| PlainMessage<InitialSnapshotComplete>
+			| undefined,
+		b:
+			| InitialSnapshotComplete
+			| PlainMessage<InitialSnapshotComplete>
+			| undefined,
+	): boolean {
+		return proto3.util.equals(InitialSnapshotComplete, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.InitialSnapshotData
  */
 export class InitialSnapshotData extends Message<InitialSnapshotData> {
-  /**
-   * @generated from field: string module_name = 1;
-   */
-  moduleName = "";
+	/**
+	 * @generated from field: string module_name = 1;
+	 */
+	moduleName = "";
 
-  /**
-   * @generated from field: repeated sf.substreams.rpc.v2.StoreDelta deltas = 2;
-   */
-  deltas: StoreDelta[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.rpc.v2.StoreDelta deltas = 2;
+	 */
+	deltas: StoreDelta[] = [];
 
-  /**
-   * @generated from field: uint64 sent_keys = 4;
-   */
-  sentKeys = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 sent_keys = 4;
+	 */
+	sentKeys = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 total_keys = 3;
-   */
-  totalKeys = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 total_keys = 3;
+	 */
+	totalKeys = protoInt64.zero;
 
-  constructor(data?: PartialMessage<InitialSnapshotData>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<InitialSnapshotData>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.InitialSnapshotData";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "module_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "deltas", kind: "message", T: StoreDelta, repeated: true },
-    { no: 4, name: "sent_keys", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "total_keys", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.InitialSnapshotData";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "module_name",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+		},
+		{ no: 2, name: "deltas", kind: "message", T: StoreDelta, repeated: true },
+		{ no: 4, name: "sent_keys", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+		{ no: 3, name: "total_keys", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): InitialSnapshotData {
-    return new InitialSnapshotData().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): InitialSnapshotData {
+		return new InitialSnapshotData().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): InitialSnapshotData {
-    return new InitialSnapshotData().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): InitialSnapshotData {
+		return new InitialSnapshotData().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): InitialSnapshotData {
-    return new InitialSnapshotData().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): InitialSnapshotData {
+		return new InitialSnapshotData().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: InitialSnapshotData | PlainMessage<InitialSnapshotData> | undefined, b: InitialSnapshotData | PlainMessage<InitialSnapshotData> | undefined): boolean {
-    return proto3.util.equals(InitialSnapshotData, a, b);
-  }
+	static equals(
+		a: InitialSnapshotData | PlainMessage<InitialSnapshotData> | undefined,
+		b: InitialSnapshotData | PlainMessage<InitialSnapshotData> | undefined,
+	): boolean {
+		return proto3.util.equals(InitialSnapshotData, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.MapModuleOutput
  */
 export class MapModuleOutput extends Message<MapModuleOutput> {
-  /**
-   * @generated from field: string name = 1;
-   */
-  name = "";
+	/**
+	 * @generated from field: string name = 1;
+	 */
+	name = "";
 
-  /**
-   * @generated from field: google.protobuf.Any map_output = 2;
-   */
-  mapOutput?: Any;
+	/**
+	 * @generated from field: google.protobuf.Any map_output = 2;
+	 */
+	mapOutput?: Any;
 
-  /**
-   * DebugOutputInfo is available in non-production mode only
-   *
-   * @generated from field: sf.substreams.rpc.v2.OutputDebugInfo debug_info = 10;
-   */
-  debugInfo?: OutputDebugInfo;
+	/**
+	 * DebugOutputInfo is available in non-production mode only
+	 *
+	 * @generated from field: sf.substreams.rpc.v2.OutputDebugInfo debug_info = 10;
+	 */
+	debugInfo?: OutputDebugInfo;
 
-  constructor(data?: PartialMessage<MapModuleOutput>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<MapModuleOutput>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.MapModuleOutput";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "map_output", kind: "message", T: Any },
-    { no: 10, name: "debug_info", kind: "message", T: OutputDebugInfo },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.MapModuleOutput";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{ no: 2, name: "map_output", kind: "message", T: Any },
+		{ no: 10, name: "debug_info", kind: "message", T: OutputDebugInfo },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MapModuleOutput {
-    return new MapModuleOutput().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): MapModuleOutput {
+		return new MapModuleOutput().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): MapModuleOutput {
-    return new MapModuleOutput().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): MapModuleOutput {
+		return new MapModuleOutput().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): MapModuleOutput {
-    return new MapModuleOutput().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): MapModuleOutput {
+		return new MapModuleOutput().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: MapModuleOutput | PlainMessage<MapModuleOutput> | undefined, b: MapModuleOutput | PlainMessage<MapModuleOutput> | undefined): boolean {
-    return proto3.util.equals(MapModuleOutput, a, b);
-  }
+	static equals(
+		a: MapModuleOutput | PlainMessage<MapModuleOutput> | undefined,
+		b: MapModuleOutput | PlainMessage<MapModuleOutput> | undefined,
+	): boolean {
+		return proto3.util.equals(MapModuleOutput, a, b);
+	}
 }
 
 /**
@@ -528,101 +759,142 @@ export class MapModuleOutput extends Message<MapModuleOutput> {
  * @generated from message sf.substreams.rpc.v2.StoreModuleOutput
  */
 export class StoreModuleOutput extends Message<StoreModuleOutput> {
-  /**
-   * @generated from field: string name = 1;
-   */
-  name = "";
+	/**
+	 * @generated from field: string name = 1;
+	 */
+	name = "";
 
-  /**
-   * @generated from field: repeated sf.substreams.rpc.v2.StoreDelta debug_store_deltas = 2;
-   */
-  debugStoreDeltas: StoreDelta[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.rpc.v2.StoreDelta debug_store_deltas = 2;
+	 */
+	debugStoreDeltas: StoreDelta[] = [];
 
-  /**
-   * @generated from field: sf.substreams.rpc.v2.OutputDebugInfo debug_info = 10;
-   */
-  debugInfo?: OutputDebugInfo;
+	/**
+	 * @generated from field: sf.substreams.rpc.v2.OutputDebugInfo debug_info = 10;
+	 */
+	debugInfo?: OutputDebugInfo;
 
-  constructor(data?: PartialMessage<StoreModuleOutput>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<StoreModuleOutput>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.StoreModuleOutput";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "debug_store_deltas", kind: "message", T: StoreDelta, repeated: true },
-    { no: 10, name: "debug_info", kind: "message", T: OutputDebugInfo },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.StoreModuleOutput";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{
+			no: 2,
+			name: "debug_store_deltas",
+			kind: "message",
+			T: StoreDelta,
+			repeated: true,
+		},
+		{ no: 10, name: "debug_info", kind: "message", T: OutputDebugInfo },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StoreModuleOutput {
-    return new StoreModuleOutput().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): StoreModuleOutput {
+		return new StoreModuleOutput().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StoreModuleOutput {
-    return new StoreModuleOutput().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): StoreModuleOutput {
+		return new StoreModuleOutput().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StoreModuleOutput {
-    return new StoreModuleOutput().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): StoreModuleOutput {
+		return new StoreModuleOutput().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: StoreModuleOutput | PlainMessage<StoreModuleOutput> | undefined, b: StoreModuleOutput | PlainMessage<StoreModuleOutput> | undefined): boolean {
-    return proto3.util.equals(StoreModuleOutput, a, b);
-  }
+	static equals(
+		a: StoreModuleOutput | PlainMessage<StoreModuleOutput> | undefined,
+		b: StoreModuleOutput | PlainMessage<StoreModuleOutput> | undefined,
+	): boolean {
+		return proto3.util.equals(StoreModuleOutput, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.OutputDebugInfo
  */
 export class OutputDebugInfo extends Message<OutputDebugInfo> {
-  /**
-   * @generated from field: repeated string logs = 1;
-   */
-  logs: string[] = [];
+	/**
+	 * @generated from field: repeated string logs = 1;
+	 */
+	logs: string[] = [];
 
-  /**
-   * LogsTruncated is a flag that tells you if you received all the logs or if they
-   * were truncated because you logged too much (fixed limit currently is set to 128 KiB).
-   *
-   * @generated from field: bool logs_truncated = 2;
-   */
-  logsTruncated = false;
+	/**
+	 * LogsTruncated is a flag that tells you if you received all the logs or if they
+	 * were truncated because you logged too much (fixed limit currently is set to 128 KiB).
+	 *
+	 * @generated from field: bool logs_truncated = 2;
+	 */
+	logsTruncated = false;
 
-  /**
-   * @generated from field: bool cached = 3;
-   */
-  cached = false;
+	/**
+	 * @generated from field: bool cached = 3;
+	 */
+	cached = false;
 
-  constructor(data?: PartialMessage<OutputDebugInfo>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<OutputDebugInfo>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.OutputDebugInfo";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "logs", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 2, name: "logs_truncated", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 3, name: "cached", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.OutputDebugInfo";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "logs",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+			repeated: true,
+		},
+		{
+			no: 2,
+			name: "logs_truncated",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+		{ no: 3, name: "cached", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): OutputDebugInfo {
-    return new OutputDebugInfo().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): OutputDebugInfo {
+		return new OutputDebugInfo().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): OutputDebugInfo {
-    return new OutputDebugInfo().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): OutputDebugInfo {
+		return new OutputDebugInfo().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): OutputDebugInfo {
-    return new OutputDebugInfo().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): OutputDebugInfo {
+		return new OutputDebugInfo().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: OutputDebugInfo | PlainMessage<OutputDebugInfo> | undefined, b: OutputDebugInfo | PlainMessage<OutputDebugInfo> | undefined): boolean {
-    return proto3.util.equals(OutputDebugInfo, a, b);
-  }
+	static equals(
+		a: OutputDebugInfo | PlainMessage<OutputDebugInfo> | undefined,
+		b: OutputDebugInfo | PlainMessage<OutputDebugInfo> | undefined,
+	): boolean {
+		return proto3.util.equals(OutputDebugInfo, a, b);
+	}
 }
 
 /**
@@ -631,266 +903,380 @@ export class OutputDebugInfo extends Message<OutputDebugInfo> {
  * @generated from message sf.substreams.rpc.v2.ModulesProgress
  */
 export class ModulesProgress extends Message<ModulesProgress> {
-  /**
-   * List of jobs running on tier2 servers
-   *
-   * @generated from field: repeated sf.substreams.rpc.v2.Job running_jobs = 2;
-   */
-  runningJobs: Job[] = [];
+	/**
+	 * List of jobs running on tier2 servers
+	 *
+	 * @generated from field: repeated sf.substreams.rpc.v2.Job running_jobs = 2;
+	 */
+	runningJobs: Job[] = [];
 
-  /**
-   * Execution statistics for each module
-   *
-   * @generated from field: repeated sf.substreams.rpc.v2.ModuleStats modules_stats = 3;
-   */
-  modulesStats: ModuleStats[] = [];
+	/**
+	 * Execution statistics for each module
+	 *
+	 * @generated from field: repeated sf.substreams.rpc.v2.ModuleStats modules_stats = 3;
+	 */
+	modulesStats: ModuleStats[] = [];
 
-  /**
-   * Stages definition and completed block ranges
-   *
-   * @generated from field: repeated sf.substreams.rpc.v2.Stage stages = 4;
-   */
-  stages: Stage[] = [];
+	/**
+	 * Stages definition and completed block ranges
+	 *
+	 * @generated from field: repeated sf.substreams.rpc.v2.Stage stages = 4;
+	 */
+	stages: Stage[] = [];
 
-  /**
-   * @generated from field: sf.substreams.rpc.v2.ProcessedBytes processed_bytes = 5;
-   */
-  processedBytes?: ProcessedBytes;
+	/**
+	 * @generated from field: sf.substreams.rpc.v2.ProcessedBytes processed_bytes = 5;
+	 */
+	processedBytes?: ProcessedBytes;
 
-  constructor(data?: PartialMessage<ModulesProgress>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<ModulesProgress>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.ModulesProgress";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 2, name: "running_jobs", kind: "message", T: Job, repeated: true },
-    { no: 3, name: "modules_stats", kind: "message", T: ModuleStats, repeated: true },
-    { no: 4, name: "stages", kind: "message", T: Stage, repeated: true },
-    { no: 5, name: "processed_bytes", kind: "message", T: ProcessedBytes },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.ModulesProgress";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 2, name: "running_jobs", kind: "message", T: Job, repeated: true },
+		{
+			no: 3,
+			name: "modules_stats",
+			kind: "message",
+			T: ModuleStats,
+			repeated: true,
+		},
+		{ no: 4, name: "stages", kind: "message", T: Stage, repeated: true },
+		{ no: 5, name: "processed_bytes", kind: "message", T: ProcessedBytes },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ModulesProgress {
-    return new ModulesProgress().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): ModulesProgress {
+		return new ModulesProgress().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ModulesProgress {
-    return new ModulesProgress().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): ModulesProgress {
+		return new ModulesProgress().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ModulesProgress {
-    return new ModulesProgress().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): ModulesProgress {
+		return new ModulesProgress().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: ModulesProgress | PlainMessage<ModulesProgress> | undefined, b: ModulesProgress | PlainMessage<ModulesProgress> | undefined): boolean {
-    return proto3.util.equals(ModulesProgress, a, b);
-  }
+	static equals(
+		a: ModulesProgress | PlainMessage<ModulesProgress> | undefined,
+		b: ModulesProgress | PlainMessage<ModulesProgress> | undefined,
+	): boolean {
+		return proto3.util.equals(ModulesProgress, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.ProcessedBytes
  */
 export class ProcessedBytes extends Message<ProcessedBytes> {
-  /**
-   * @generated from field: uint64 total_bytes_read = 1;
-   */
-  totalBytesRead = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 total_bytes_read = 1;
+	 */
+	totalBytesRead = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 total_bytes_written = 2;
-   */
-  totalBytesWritten = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 total_bytes_written = 2;
+	 */
+	totalBytesWritten = protoInt64.zero;
 
-  constructor(data?: PartialMessage<ProcessedBytes>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<ProcessedBytes>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.ProcessedBytes";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "total_bytes_read", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 2, name: "total_bytes_written", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.ProcessedBytes";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "total_bytes_read",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 2,
+			name: "total_bytes_written",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ProcessedBytes {
-    return new ProcessedBytes().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): ProcessedBytes {
+		return new ProcessedBytes().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ProcessedBytes {
-    return new ProcessedBytes().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): ProcessedBytes {
+		return new ProcessedBytes().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ProcessedBytes {
-    return new ProcessedBytes().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): ProcessedBytes {
+		return new ProcessedBytes().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: ProcessedBytes | PlainMessage<ProcessedBytes> | undefined, b: ProcessedBytes | PlainMessage<ProcessedBytes> | undefined): boolean {
-    return proto3.util.equals(ProcessedBytes, a, b);
-  }
+	static equals(
+		a: ProcessedBytes | PlainMessage<ProcessedBytes> | undefined,
+		b: ProcessedBytes | PlainMessage<ProcessedBytes> | undefined,
+	): boolean {
+		return proto3.util.equals(ProcessedBytes, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.Error
  */
 export class Error extends Message<Error> {
-  /**
-   * @generated from field: string module = 1;
-   */
-  module = "";
+	/**
+	 * @generated from field: string module = 1;
+	 */
+	module = "";
 
-  /**
-   * @generated from field: string reason = 2;
-   */
-  reason = "";
+	/**
+	 * @generated from field: string reason = 2;
+	 */
+	reason = "";
 
-  /**
-   * @generated from field: repeated string logs = 3;
-   */
-  logs: string[] = [];
+	/**
+	 * @generated from field: repeated string logs = 3;
+	 */
+	logs: string[] = [];
 
-  /**
-   * FailureLogsTruncated is a flag that tells you if you received all the logs or if they
-   * were truncated because you logged too much (fixed limit currently is set to 128 KiB).
-   *
-   * @generated from field: bool logs_truncated = 4;
-   */
-  logsTruncated = false;
+	/**
+	 * FailureLogsTruncated is a flag that tells you if you received all the logs or if they
+	 * were truncated because you logged too much (fixed limit currently is set to 128 KiB).
+	 *
+	 * @generated from field: bool logs_truncated = 4;
+	 */
+	logsTruncated = false;
 
-  constructor(data?: PartialMessage<Error>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<Error>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.Error";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "module", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "logs", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 4, name: "logs_truncated", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.Error";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "module", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{ no: 2, name: "reason", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{
+			no: 3,
+			name: "logs",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+			repeated: true,
+		},
+		{
+			no: 4,
+			name: "logs_truncated",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Error {
-    return new Error().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): Error {
+		return new Error().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Error {
-    return new Error().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): Error {
+		return new Error().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Error {
-    return new Error().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): Error {
+		return new Error().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: Error | PlainMessage<Error> | undefined, b: Error | PlainMessage<Error> | undefined): boolean {
-    return proto3.util.equals(Error, a, b);
-  }
+	static equals(
+		a: Error | PlainMessage<Error> | undefined,
+		b: Error | PlainMessage<Error> | undefined,
+	): boolean {
+		return proto3.util.equals(Error, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.Job
  */
 export class Job extends Message<Job> {
-  /**
-   * @generated from field: uint32 stage = 1;
-   */
-  stage = 0;
+	/**
+	 * @generated from field: uint32 stage = 1;
+	 */
+	stage = 0;
 
-  /**
-   * @generated from field: uint64 start_block = 2;
-   */
-  startBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 start_block = 2;
+	 */
+	startBlock = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 stop_block = 3;
-   */
-  stopBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 stop_block = 3;
+	 */
+	stopBlock = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 processed_blocks = 4;
-   */
-  processedBlocks = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 processed_blocks = 4;
+	 */
+	processedBlocks = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 duration_ms = 5;
-   */
-  durationMs = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 duration_ms = 5;
+	 */
+	durationMs = protoInt64.zero;
 
-  constructor(data?: PartialMessage<Job>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<Job>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.Job";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "stage", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 2, name: "start_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "stop_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "processed_blocks", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 5, name: "duration_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.Job";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "stage", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+		{
+			no: 2,
+			name: "start_block",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{ no: 3, name: "stop_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+		{
+			no: 4,
+			name: "processed_blocks",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 5,
+			name: "duration_ms",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Job {
-    return new Job().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): Job {
+		return new Job().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Job {
-    return new Job().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): Job {
+		return new Job().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Job {
-    return new Job().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): Job {
+		return new Job().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: Job | PlainMessage<Job> | undefined, b: Job | PlainMessage<Job> | undefined): boolean {
-    return proto3.util.equals(Job, a, b);
-  }
+	static equals(
+		a: Job | PlainMessage<Job> | undefined,
+		b: Job | PlainMessage<Job> | undefined,
+	): boolean {
+		return proto3.util.equals(Job, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.Stage
  */
 export class Stage extends Message<Stage> {
-  /**
-   * @generated from field: repeated string modules = 1;
-   */
-  modules: string[] = [];
+	/**
+	 * @generated from field: repeated string modules = 1;
+	 */
+	modules: string[] = [];
 
-  /**
-   * @generated from field: repeated sf.substreams.rpc.v2.BlockRange completed_ranges = 2;
-   */
-  completedRanges: BlockRange[] = [];
+	/**
+	 * @generated from field: repeated sf.substreams.rpc.v2.BlockRange completed_ranges = 2;
+	 */
+	completedRanges: BlockRange[] = [];
 
-  constructor(data?: PartialMessage<Stage>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<Stage>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.Stage";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "modules", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 2, name: "completed_ranges", kind: "message", T: BlockRange, repeated: true },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.Stage";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "modules",
+			kind: "scalar",
+			T: 9 /* ScalarType.STRING */,
+			repeated: true,
+		},
+		{
+			no: 2,
+			name: "completed_ranges",
+			kind: "message",
+			T: BlockRange,
+			repeated: true,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Stage {
-    return new Stage().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): Stage {
+		return new Stage().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Stage {
-    return new Stage().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): Stage {
+		return new Stage().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Stage {
-    return new Stage().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): Stage {
+		return new Stage().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: Stage | PlainMessage<Stage> | undefined, b: Stage | PlainMessage<Stage> | undefined): boolean {
-    return proto3.util.equals(Stage, a, b);
-  }
+	static equals(
+		a: Stage | PlainMessage<Stage> | undefined,
+		b: Stage | PlainMessage<Stage> | undefined,
+	): boolean {
+		return proto3.util.equals(Stage, a, b);
+	}
 }
 
 /**
@@ -900,312 +1286,429 @@ export class Stage extends Message<Stage> {
  * @generated from message sf.substreams.rpc.v2.ModuleStats
  */
 export class ModuleStats extends Message<ModuleStats> {
-  /**
-   * name of the module
-   *
-   * @generated from field: string name = 1;
-   */
-  name = "";
+	/**
+	 * name of the module
+	 *
+	 * @generated from field: string name = 1;
+	 */
+	name = "";
 
-  /**
-   * total_processed_blocks is the sum of blocks sent to that module code
-   *
-   * @generated from field: uint64 total_processed_block_count = 2;
-   */
-  totalProcessedBlockCount = protoInt64.zero;
+	/**
+	 * total_processed_blocks is the sum of blocks sent to that module code
+	 *
+	 * @generated from field: uint64 total_processed_block_count = 2;
+	 */
+	totalProcessedBlockCount = protoInt64.zero;
 
-  /**
-   * total_processing_time_ms is the sum of all time spent running that module code
-   *
-   * @generated from field: uint64 total_processing_time_ms = 3;
-   */
-  totalProcessingTimeMs = protoInt64.zero;
+	/**
+	 * total_processing_time_ms is the sum of all time spent running that module code
+	 *
+	 * @generated from field: uint64 total_processing_time_ms = 3;
+	 */
+	totalProcessingTimeMs = protoInt64.zero;
 
-  /**
-   * // external_calls are chain-specific intrinsics, like "Ethereum RPC calls".
-   *
-   * @generated from field: repeated sf.substreams.rpc.v2.ExternalCallMetric external_call_metrics = 4;
-   */
-  externalCallMetrics: ExternalCallMetric[] = [];
+	/**
+	 * // external_calls are chain-specific intrinsics, like "Ethereum RPC calls".
+	 *
+	 * @generated from field: repeated sf.substreams.rpc.v2.ExternalCallMetric external_call_metrics = 4;
+	 */
+	externalCallMetrics: ExternalCallMetric[] = [];
 
-  /**
-   * total_store_operation_time_ms is the sum of all time spent running that module code waiting for a store operation (ex: read, write, delete...)
-   *
-   * @generated from field: uint64 total_store_operation_time_ms = 5;
-   */
-  totalStoreOperationTimeMs = protoInt64.zero;
+	/**
+	 * total_store_operation_time_ms is the sum of all time spent running that module code waiting for a store operation (ex: read, write, delete...)
+	 *
+	 * @generated from field: uint64 total_store_operation_time_ms = 5;
+	 */
+	totalStoreOperationTimeMs = protoInt64.zero;
 
-  /**
-   * total_store_read_count is the sum of all the store Read operations called from that module code
-   *
-   * @generated from field: uint64 total_store_read_count = 6;
-   */
-  totalStoreReadCount = protoInt64.zero;
+	/**
+	 * total_store_read_count is the sum of all the store Read operations called from that module code
+	 *
+	 * @generated from field: uint64 total_store_read_count = 6;
+	 */
+	totalStoreReadCount = protoInt64.zero;
 
-  /**
-   * total_store_write_count is the sum of all store Write operations called from that module code (store-only)
-   *
-   * @generated from field: uint64 total_store_write_count = 10;
-   */
-  totalStoreWriteCount = protoInt64.zero;
+	/**
+	 * total_store_write_count is the sum of all store Write operations called from that module code (store-only)
+	 *
+	 * @generated from field: uint64 total_store_write_count = 10;
+	 */
+	totalStoreWriteCount = protoInt64.zero;
 
-  /**
-   * total_store_deleteprefix_count is the sum of all store DeletePrefix operations called from that module code (store-only)
-   * note that DeletePrefix can be a costly operation on large stores
-   *
-   * @generated from field: uint64 total_store_deleteprefix_count = 11;
-   */
-  totalStoreDeleteprefixCount = protoInt64.zero;
+	/**
+	 * total_store_deleteprefix_count is the sum of all store DeletePrefix operations called from that module code (store-only)
+	 * note that DeletePrefix can be a costly operation on large stores
+	 *
+	 * @generated from field: uint64 total_store_deleteprefix_count = 11;
+	 */
+	totalStoreDeleteprefixCount = protoInt64.zero;
 
-  /**
-   * store_size_bytes is the uncompressed size of the full KV store for that module, from the last 'merge' operation (store-only)
-   *
-   * @generated from field: uint64 store_size_bytes = 12;
-   */
-  storeSizeBytes = protoInt64.zero;
+	/**
+	 * store_size_bytes is the uncompressed size of the full KV store for that module, from the last 'merge' operation (store-only)
+	 *
+	 * @generated from field: uint64 store_size_bytes = 12;
+	 */
+	storeSizeBytes = protoInt64.zero;
 
-  /**
-   * total_store_merging_time_ms is the time spent merging partial stores into a full KV store for that module (store-only)
-   *
-   * @generated from field: uint64 total_store_merging_time_ms = 13;
-   */
-  totalStoreMergingTimeMs = protoInt64.zero;
+	/**
+	 * total_store_merging_time_ms is the time spent merging partial stores into a full KV store for that module (store-only)
+	 *
+	 * @generated from field: uint64 total_store_merging_time_ms = 13;
+	 */
+	totalStoreMergingTimeMs = protoInt64.zero;
 
-  /**
-   * store_currently_merging is true if there is a merging operation (partial store to full KV store) on the way.
-   *
-   * @generated from field: bool store_currently_merging = 14;
-   */
-  storeCurrentlyMerging = false;
+	/**
+	 * store_currently_merging is true if there is a merging operation (partial store to full KV store) on the way.
+	 *
+	 * @generated from field: bool store_currently_merging = 14;
+	 */
+	storeCurrentlyMerging = false;
 
-  /**
-   * highest_contiguous_block is the highest block in the highest merged full KV store of that module (store-only)
-   *
-   * @generated from field: uint64 highest_contiguous_block = 15;
-   */
-  highestContiguousBlock = protoInt64.zero;
+	/**
+	 * highest_contiguous_block is the highest block in the highest merged full KV store of that module (store-only)
+	 *
+	 * @generated from field: uint64 highest_contiguous_block = 15;
+	 */
+	highestContiguousBlock = protoInt64.zero;
 
-  constructor(data?: PartialMessage<ModuleStats>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<ModuleStats>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.ModuleStats";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "total_processed_block_count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "total_processing_time_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 4, name: "external_call_metrics", kind: "message", T: ExternalCallMetric, repeated: true },
-    { no: 5, name: "total_store_operation_time_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 6, name: "total_store_read_count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 10, name: "total_store_write_count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 11, name: "total_store_deleteprefix_count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 12, name: "store_size_bytes", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 13, name: "total_store_merging_time_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 14, name: "store_currently_merging", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 15, name: "highest_contiguous_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.ModuleStats";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{
+			no: 2,
+			name: "total_processed_block_count",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 3,
+			name: "total_processing_time_ms",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 4,
+			name: "external_call_metrics",
+			kind: "message",
+			T: ExternalCallMetric,
+			repeated: true,
+		},
+		{
+			no: 5,
+			name: "total_store_operation_time_ms",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 6,
+			name: "total_store_read_count",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 10,
+			name: "total_store_write_count",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 11,
+			name: "total_store_deleteprefix_count",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 12,
+			name: "store_size_bytes",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 13,
+			name: "total_store_merging_time_ms",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{
+			no: 14,
+			name: "store_currently_merging",
+			kind: "scalar",
+			T: 8 /* ScalarType.BOOL */,
+		},
+		{
+			no: 15,
+			name: "highest_contiguous_block",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ModuleStats {
-    return new ModuleStats().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): ModuleStats {
+		return new ModuleStats().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ModuleStats {
-    return new ModuleStats().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): ModuleStats {
+		return new ModuleStats().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ModuleStats {
-    return new ModuleStats().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): ModuleStats {
+		return new ModuleStats().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: ModuleStats | PlainMessage<ModuleStats> | undefined, b: ModuleStats | PlainMessage<ModuleStats> | undefined): boolean {
-    return proto3.util.equals(ModuleStats, a, b);
-  }
+	static equals(
+		a: ModuleStats | PlainMessage<ModuleStats> | undefined,
+		b: ModuleStats | PlainMessage<ModuleStats> | undefined,
+	): boolean {
+		return proto3.util.equals(ModuleStats, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.ExternalCallMetric
  */
 export class ExternalCallMetric extends Message<ExternalCallMetric> {
-  /**
-   * @generated from field: string name = 1;
-   */
-  name = "";
+	/**
+	 * @generated from field: string name = 1;
+	 */
+	name = "";
 
-  /**
-   * @generated from field: uint64 count = 2;
-   */
-  count = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 count = 2;
+	 */
+	count = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 time_ms = 3;
-   */
-  timeMs = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 time_ms = 3;
+	 */
+	timeMs = protoInt64.zero;
 
-  constructor(data?: PartialMessage<ExternalCallMetric>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<ExternalCallMetric>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.ExternalCallMetric";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "time_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.ExternalCallMetric";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{ no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{ no: 2, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+		{ no: 3, name: "time_ms", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExternalCallMetric {
-    return new ExternalCallMetric().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): ExternalCallMetric {
+		return new ExternalCallMetric().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ExternalCallMetric {
-    return new ExternalCallMetric().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): ExternalCallMetric {
+		return new ExternalCallMetric().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ExternalCallMetric {
-    return new ExternalCallMetric().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): ExternalCallMetric {
+		return new ExternalCallMetric().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: ExternalCallMetric | PlainMessage<ExternalCallMetric> | undefined, b: ExternalCallMetric | PlainMessage<ExternalCallMetric> | undefined): boolean {
-    return proto3.util.equals(ExternalCallMetric, a, b);
-  }
+	static equals(
+		a: ExternalCallMetric | PlainMessage<ExternalCallMetric> | undefined,
+		b: ExternalCallMetric | PlainMessage<ExternalCallMetric> | undefined,
+	): boolean {
+		return proto3.util.equals(ExternalCallMetric, a, b);
+	}
 }
 
 /**
  * @generated from message sf.substreams.rpc.v2.StoreDelta
  */
 export class StoreDelta extends Message<StoreDelta> {
-  /**
-   * @generated from field: sf.substreams.rpc.v2.StoreDelta.Operation operation = 1;
-   */
-  operation = StoreDelta_Operation.UNSET;
+	/**
+	 * @generated from field: sf.substreams.rpc.v2.StoreDelta.Operation operation = 1;
+	 */
+	operation = StoreDelta_Operation.UNSET;
 
-  /**
-   * @generated from field: uint64 ordinal = 2;
-   */
-  ordinal = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 ordinal = 2;
+	 */
+	ordinal = protoInt64.zero;
 
-  /**
-   * @generated from field: string key = 3;
-   */
-  key = "";
+	/**
+	 * @generated from field: string key = 3;
+	 */
+	key = "";
 
-  /**
-   * @generated from field: bytes old_value = 4;
-   */
-  oldValue = new Uint8Array(0);
+	/**
+	 * @generated from field: bytes old_value = 4;
+	 */
+	oldValue = new Uint8Array(0);
 
-  /**
-   * @generated from field: bytes new_value = 5;
-   */
-  newValue = new Uint8Array(0);
+	/**
+	 * @generated from field: bytes new_value = 5;
+	 */
+	newValue = new Uint8Array(0);
 
-  constructor(data?: PartialMessage<StoreDelta>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<StoreDelta>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.StoreDelta";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "operation", kind: "enum", T: proto3.getEnumType(StoreDelta_Operation) },
-    { no: 2, name: "ordinal", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "old_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 5, name: "new_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.StoreDelta";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 1,
+			name: "operation",
+			kind: "enum",
+			T: proto3.getEnumType(StoreDelta_Operation),
+		},
+		{ no: 2, name: "ordinal", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+		{ no: 3, name: "key", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+		{ no: 4, name: "old_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+		{ no: 5, name: "new_value", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StoreDelta {
-    return new StoreDelta().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StoreDelta {
-    return new StoreDelta().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StoreDelta {
-    return new StoreDelta().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): StoreDelta {
+		return new StoreDelta().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: StoreDelta | PlainMessage<StoreDelta> | undefined, b: StoreDelta | PlainMessage<StoreDelta> | undefined): boolean {
-    return proto3.util.equals(StoreDelta, a, b);
-  }
+	static equals(
+		a: StoreDelta | PlainMessage<StoreDelta> | undefined,
+		b: StoreDelta | PlainMessage<StoreDelta> | undefined,
+	): boolean {
+		return proto3.util.equals(StoreDelta, a, b);
+	}
 }
 
 /**
  * @generated from enum sf.substreams.rpc.v2.StoreDelta.Operation
  */
 export enum StoreDelta_Operation {
-  /**
-   * @generated from enum value: UNSET = 0;
-   */
-  UNSET = 0,
+	/**
+	 * @generated from enum value: UNSET = 0;
+	 */
+	UNSET = 0,
 
-  /**
-   * @generated from enum value: CREATE = 1;
-   */
-  CREATE = 1,
+	/**
+	 * @generated from enum value: CREATE = 1;
+	 */
+	CREATE = 1,
 
-  /**
-   * @generated from enum value: UPDATE = 2;
-   */
-  UPDATE = 2,
+	/**
+	 * @generated from enum value: UPDATE = 2;
+	 */
+	UPDATE = 2,
 
-  /**
-   * @generated from enum value: DELETE = 3;
-   */
-  DELETE = 3,
+	/**
+	 * @generated from enum value: DELETE = 3;
+	 */
+	DELETE = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StoreDelta_Operation)
-proto3.util.setEnumType(StoreDelta_Operation, "sf.substreams.rpc.v2.StoreDelta.Operation", [
-  { no: 0, name: "UNSET" },
-  { no: 1, name: "CREATE" },
-  { no: 2, name: "UPDATE" },
-  { no: 3, name: "DELETE" },
-]);
+proto3.util.setEnumType(
+	StoreDelta_Operation,
+	"sf.substreams.rpc.v2.StoreDelta.Operation",
+	[
+		{ no: 0, name: "UNSET" },
+		{ no: 1, name: "CREATE" },
+		{ no: 2, name: "UPDATE" },
+		{ no: 3, name: "DELETE" },
+	],
+);
 
 /**
  * @generated from message sf.substreams.rpc.v2.BlockRange
  */
 export class BlockRange extends Message<BlockRange> {
-  /**
-   * @generated from field: uint64 start_block = 2;
-   */
-  startBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 start_block = 2;
+	 */
+	startBlock = protoInt64.zero;
 
-  /**
-   * @generated from field: uint64 end_block = 3;
-   */
-  endBlock = protoInt64.zero;
+	/**
+	 * @generated from field: uint64 end_block = 3;
+	 */
+	endBlock = protoInt64.zero;
 
-  constructor(data?: PartialMessage<BlockRange>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+	constructor(data?: PartialMessage<BlockRange>) {
+		super();
+		proto3.util.initPartial(data, this);
+	}
 
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "sf.substreams.rpc.v2.BlockRange";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 2, name: "start_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-    { no: 3, name: "end_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
-  ]);
+	static readonly runtime: typeof proto3 = proto3;
+	static readonly typeName = "sf.substreams.rpc.v2.BlockRange";
+	static readonly fields: FieldList = proto3.util.newFieldList(() => [
+		{
+			no: 2,
+			name: "start_block",
+			kind: "scalar",
+			T: 4 /* ScalarType.UINT64 */,
+		},
+		{ no: 3, name: "end_block", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+	]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BlockRange {
-    return new BlockRange().fromBinary(bytes, options);
-  }
+	static fromBinary(
+		bytes: Uint8Array,
+		options?: Partial<BinaryReadOptions>,
+	): BlockRange {
+		return new BlockRange().fromBinary(bytes, options);
+	}
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BlockRange {
-    return new BlockRange().fromJson(jsonValue, options);
-  }
+	static fromJson(
+		jsonValue: JsonValue,
+		options?: Partial<JsonReadOptions>,
+	): BlockRange {
+		return new BlockRange().fromJson(jsonValue, options);
+	}
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BlockRange {
-    return new BlockRange().fromJsonString(jsonString, options);
-  }
+	static fromJsonString(
+		jsonString: string,
+		options?: Partial<JsonReadOptions>,
+	): BlockRange {
+		return new BlockRange().fromJsonString(jsonString, options);
+	}
 
-  static equals(a: BlockRange | PlainMessage<BlockRange> | undefined, b: BlockRange | PlainMessage<BlockRange> | undefined): boolean {
-    return proto3.util.equals(BlockRange, a, b);
-  }
+	static equals(
+		a: BlockRange | PlainMessage<BlockRange> | undefined,
+		b: BlockRange | PlainMessage<BlockRange> | undefined,
+	): boolean {
+		return proto3.util.equals(BlockRange, a, b);
+	}
 }
-

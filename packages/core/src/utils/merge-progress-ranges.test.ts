@@ -1,5 +1,5 @@
-import { type ProgressRange, mergeProgressRanges } from "./merge-progress-ranges.js";
 import { expect, test } from "vitest";
+import { type ProgressRange, mergeProgressRanges } from "./merge-progress-ranges.js";
 
 test.each([
   {

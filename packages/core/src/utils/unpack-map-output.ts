@@ -1,5 +1,5 @@
-import type { Response } from "../proto.js";
 import type { IMessageTypeRegistry } from "@bufbuild/protobuf";
+import type { Response } from "../proto.js";
 
 export function unpackMapOutput(response: Response, registry: IMessageTypeRegistry) {
   if (response.message.case === "blockScopedData") {

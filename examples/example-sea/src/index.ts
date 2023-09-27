@@ -14,16 +14,16 @@ import {
     throw new Error('Missing "SUBSTREAMS_API_TOKEN" environment variable');
   }
 
-  const TOKEN = process.env.SUBSTREAMS_API_TOKEN;
+  const token = process.env.SUBSTREAMS_API_TOKEN;
   const SUBSTREAM = "https://github.com/streamingfast/substreams-uniswap-v3/releases/download/v0.2.7/substreams.spkg";
-  const MODULE = "map_pools_created";
+  const module = "map_pools_created";
 
   const substream = await fetchSubstream(SUBSTREAM);
   const registry = createRegistry(substream);
   const transport = createGrpcTransport({
     baseUrl: "https://mainnet.eth.streamingfast.io",
     httpVersion: "2",
-    interceptors: [createAuthInterceptor(TOKEN)],
+    interceptors: [createAuthInterceptor(token)],
     jsonOptions: {
       typeRegistry: registry,
     },
@@ -31,7 +31,7 @@ import {
 
   const request = createRequest({
     substreamPackage: substream,
-    outputModule: MODULE,
+    outputModule: module,
     productionMode: true,
     stopBlockNum: "+10000",
   });

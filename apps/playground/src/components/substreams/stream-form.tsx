@@ -95,7 +95,11 @@ export function StreamForm({
                       value={field.value}
                       onValueChange={(module) => {
                         const start = graph.startBlockFor(module);
-                        form.reset({ module, start: start.toString(), stop: "" });
+                        form.reset({
+                          module,
+                          start: start.toString(),
+                          stop: "",
+                        });
                       }}
                     >
                       <SelectTrigger id="select-module">

@@ -1,4 +1,3 @@
-import type { Module as ModuleSchema } from "./manifest-schema.js";
 import {
   Module,
   Module_Input,
@@ -8,6 +7,7 @@ import {
   Module_KindStore_UpdatePolicy,
   Module_Output,
 } from "@substreams/core/proto";
+import type { Module as ModuleSchema } from "./manifest-schema.js";
 
 const MAX_UINT_64 = 18_446_744_073_709_551_615n;
 

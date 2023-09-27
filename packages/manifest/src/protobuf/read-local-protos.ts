@@ -1,6 +1,6 @@
-import { locateBufBinary } from "./locate-buf-binary.js";
-import { FileDescriptorSet } from "@bufbuild/protobuf";
 import { spawn } from "node:child_process";
+import { FileDescriptorSet } from "@bufbuild/protobuf";
+import { locateBufBinary } from "./locate-buf-binary.js";
 
 export async function readLocalProtos(context: string, file: string) {
   const buf = await locateBufBinary();

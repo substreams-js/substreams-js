@@ -1,9 +1,9 @@
-import { parseManifestJson } from "./manifest-schema.js";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as url from "node:url";
 import { expect, test } from "vitest";
 import { parse as parseYaml } from "yaml";
+import { parseManifestJson } from "./manifest-schema.js";
 
 function readManifest(name: string): unknown {
   const file = url.fileURLToPath(new URL(`./__fixtures__/${name}.yaml`, import.meta.url));

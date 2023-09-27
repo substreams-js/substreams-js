@@ -1,5 +1,5 @@
-import { readSystemProtos } from "./read-system-protos.js";
 import { expect, test } from "vitest";
+import { readSystemProtos } from "./read-system-protos.js";
 
 test("can read system protobufs", () => {
   expect(() => readSystemProtos()).not.toThrow();

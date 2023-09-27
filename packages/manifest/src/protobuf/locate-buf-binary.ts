@@ -29,7 +29,7 @@ function memoize<TResult>(fn: () => TResult) {
   const unused = Symbol("UNUSED");
   let memoized: TResult | typeof unused = unused;
 
-  return function (): TResult {
+  return (): TResult => {
     if (memoized === unused) {
       memoized = fn();
     }

@@ -69,7 +69,7 @@ function MermaidGraph({
   return (
     <TransformWrapper minScale={0.1} limitToBounds={false}>
       <TransformComponent wrapperStyle={{ height: 800, width: "100%" }}>
-        {/* rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
         <div ref={ref} dangerouslySetInnerHTML={{ __html: data.svg }} />
       </TransformComponent>
     </TransformWrapper>

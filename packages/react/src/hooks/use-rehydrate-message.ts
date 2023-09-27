@@ -1,6 +1,6 @@
-import { type MaybeSerializedMessage, type SerializedMessage, deserializeMessage } from "../utils/message-serde.js";
 import { Message, type MessageType } from "@bufbuild/protobuf";
 import { useMemo } from "react";
+import { type MaybeSerializedMessage, type SerializedMessage, deserializeMessage } from "../utils/message-serde.js";
 
 export function useRehydrateMessage<TMessage extends Message<TMessage>>(
   type: MessageType<TMessage>,

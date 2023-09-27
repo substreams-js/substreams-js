@@ -1,6 +1,8 @@
 import { Message, type MessageType, protoBase64 } from "@bufbuild/protobuf";
 
-export type SerializedMessage<TMessage extends Message<TMessage>> = string & { __type: TMessage };
+export type SerializedMessage<TMessage extends Message<TMessage>> = string & {
+  __type: TMessage;
+};
 
 export type MaybeSerializedMessage<TMessage extends Message<TMessage>> = TMessage | SerializedMessage<TMessage>;
 

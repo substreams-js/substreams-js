@@ -1,6 +1,6 @@
-import { generateMermaidGraph } from "./generate-mermaid-graph.js";
 import { createSubstreamFixture } from "@substreams/testutils";
 import { assert, expect, test } from "vitest";
+import { generateMermaidGraph } from "./generate-mermaid-graph.js";
 
 const uniswap = createSubstreamFixture("uniswap-v3");
 

@@ -10,17 +10,16 @@ import { MethodKind } from "@bufbuild/protobuf";
  * @generated from service sf.substreams.internal.v2.Substreams
  */
 export const Substreams = {
-  typeName: "sf.substreams.internal.v2.Substreams",
-  methods: {
-    /**
-     * @generated from rpc sf.substreams.internal.v2.Substreams.ProcessRange
-     */
-    processRange: {
-      name: "ProcessRange",
-      I: ProcessRangeRequest,
-      O: ProcessRangeResponse,
-      kind: MethodKind.ServerStreaming,
-    },
-  }
+	typeName: "sf.substreams.internal.v2.Substreams",
+	methods: {
+		/**
+		 * @generated from rpc sf.substreams.internal.v2.Substreams.ProcessRange
+		 */
+		processRange: {
+			name: "ProcessRange",
+			I: ProcessRangeRequest,
+			O: ProcessRangeResponse,
+			kind: MethodKind.ServerStreaming,
+		},
+	},
 } as const;
-

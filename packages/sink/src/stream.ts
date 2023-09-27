@@ -76,7 +76,6 @@ export function createStream({
 }: CreateStreamOptions) {
   let currentCursor: Option.Option<string> = startCursor ? Option.some(startCursor) : Option.none();
 
-  // rome-ignore lint/nursery/noForEach: <explanation>
   const metrics = Sink.forEach((response: Response) =>
     Effect.gen(function* (_) {
       const size = response.toBinary().byteLength;

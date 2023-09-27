@@ -4,7 +4,7 @@
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports.rome": true
+    "source.organizeImports.biome": true
   },
   "files.associations": {
     "*.css": "tailwindcss"
@@ -13,35 +13,35 @@
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports.rome": true
+      "source.organizeImports.biome": true
     }
   },
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports.rome": true
+      "source.organizeImports.biome": true
     }
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports.rome": true
+      "source.organizeImports.biome": true
     }
   },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports.rome": true
+      "source.organizeImports.biome": true
     }
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports.rome": true
+      "source.organizeImports.biome": true
     }
   }
 }
