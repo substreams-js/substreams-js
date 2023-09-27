@@ -1,5 +1,5 @@
-import { Context, Effect, Layer } from "effect";
 import * as Fs from "@effect/platform-node/FileSystem";
+import { Context, Effect, Layer } from "effect";
 
 export interface MessageStorage {
   readonly append: (message: string) => Effect.Effect<never, never, void>;

@@ -1,5 +1,5 @@
-import { Option, Context, Effect, Layer } from "effect";
 import * as Fs from "@effect/platform-node/FileSystem";
+import { Context, Effect, Layer, Option } from "effect";
 
 export interface CursorStorage {
   readonly read: () => Effect.Effect<never, never, Option.Option<string>>;

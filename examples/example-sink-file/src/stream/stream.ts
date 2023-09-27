@@ -1,4 +1,4 @@
-import { Option, Config, Effect, Layer, Stream } from "effect";
+import { Config, Effect, Layer, Option, Stream } from "effect";
 
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import { createAuthInterceptor, createRegistry } from "@substreams/core";

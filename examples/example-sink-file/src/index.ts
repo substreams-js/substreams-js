@@ -1,7 +1,7 @@
-import { Effect } from "effect";
 import * as App from "@effect/cli/CliApp";
 import * as Span from "@effect/cli/HelpDoc/Span";
 import * as ValidationError from "@effect/cli/ValidationError";
+import { Effect } from "effect";
 
 import * as RootCommand from "./commands/root";
 
