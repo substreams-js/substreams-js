@@ -1,7 +1,7 @@
+import { Effect } from "effect";
 import * as App from "@effect/cli/CliApp";
 import * as Span from "@effect/cli/HelpDoc/Span";
-import * as Func from "@effect/data/Function";
-import * as Effect from "@effect/io/Effect";
+import * as ValidationError from "@effect/cli/ValidationError";
 
 import * as RootCommand from "./commands/root";
 
@@ -12,9 +12,12 @@ const cli = App.make({
   summary: Span.text("A simple file sink for substreams"),
 });
 
-Func.pipe(
-  Effect.sync(() => process.argv.slice(2)),
-  Effect.flatMap((args) => App.run(cli, args, RootCommand.handle)),
+Effect.sync(() => process.argv.slice(2)).pipe(
+  Effect.flatMap((_) => App.run(cli, _, RootCommand.handle)),
+  // Command validation errors are handled by `@effect/cli` and logged to stderr already.
+  Effect.catchIf(ValidationError.isValidationError, () => Effect.unit),
+  // Log all other errors to stderr.
+  Effect.catchAllCause((_) => Effect.logError(_)),
   Effect.runPromise,
 );
 

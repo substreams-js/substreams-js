@@ -1,6 +1,6 @@
+import { Either } from "effect";
 import * as HelpDoc from "@effect/cli/HelpDoc";
 import * as ValidationError from "@effect/cli/ValidationError";
-import * as Either from "@effect/data/Either";
 import * as Schema from "@effect/schema/Schema";
 import * as TreeFormatter from "@effect/schema/TreeFormatter";
 

@@ -1,6 +1,4 @@
-import * as Context from "@effect/data/Context";
-import * as Effect from "@effect/io/Effect";
-import * as Layer from "@effect/io/Layer";
+import { Context, Effect, Layer } from "effect";
 import * as Fs from "@effect/platform-node/FileSystem";
 
 export interface MessageStorage {

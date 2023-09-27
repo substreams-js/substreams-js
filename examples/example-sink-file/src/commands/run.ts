@@ -1,11 +1,7 @@
+import { Option, Data, Duration, Chunk, Effect } from "effect";
 import * as Args from "@effect/cli/Args";
 import * as Command from "@effect/cli/Command";
 import * as Options from "@effect/cli/Options";
-import * as Chunk from "@effect/data/Chunk";
-import * as Data from "@effect/data/Data";
-import * as Duration from "@effect/data/Duration";
-import * as Option from "@effect/data/Option";
-import * as Effect from "@effect/io/Effect";
 import * as Schema from "@effect/schema/Schema";
 
 import * as Stream from "../stream/stream.js";

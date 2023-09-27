@@ -1,14 +1,8 @@
+import { Option, Data, Either, Logger, Match, LogLevel, Effect } from "effect";
 import * as Command from "@effect/cli/Command";
 import * as HelpDoc from "@effect/cli/HelpDoc";
 import * as Options from "@effect/cli/Options";
 import * as ValidationError from "@effect/cli/ValidationError";
-import * as Data from "@effect/data/Data";
-import * as Either from "@effect/data/Either";
-import * as Option from "@effect/data/Option";
-import * as Effect from "@effect/io/Effect";
-import * as LogLevel from "@effect/io/LogLevel";
-import * as Logger from "@effect/io/Logger";
-import * as Match from "@effect/match";
 
 import * as RunCommand from "./run";
 
@@ -48,15 +42,11 @@ export const command: Command.Command<RootCommand> = Command.make("root", {
 
 export function handle(command: RootCommand) {
   const layer = Logger.minimumLogLevel(command.logLevel);
-  const program = Effect.gen(function* (_) {
-    return yield* _(
-      Match.value(command.subcommand).pipe(
-        Match.tagsExhaustive({
-          RunCommand: RunCommand.handle,
-        }),
-      ),
-    );
-  });
+  const program = Match.value(command.subcommand).pipe(
+    Match.tagsExhaustive({
+      RunCommand: RunCommand.handle,
+    }),
+  );
 
   return Effect.provide(program, layer);
 }

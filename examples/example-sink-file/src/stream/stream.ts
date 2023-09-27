@@ -1,8 +1,4 @@
-import * as Option from "@effect/data/Option";
-import * as Config from "@effect/io/Config";
-import * as Effect from "@effect/io/Effect";
-import * as Layer from "@effect/io/Layer";
-import * as Stream from "@effect/stream/Stream";
+import { Option, Config, Effect, Layer, Stream } from "effect";
 
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import { createAuthInterceptor, createRegistry } from "@substreams/core";

@@ -1,7 +1,4 @@
-import * as Context from "@effect/data/Context";
-import * as Option from "@effect/data/Option";
-import * as Effect from "@effect/io/Effect";
-import * as Layer from "@effect/io/Layer";
+import { Option, Context, Effect, Layer } from "effect";
 import * as Fs from "@effect/platform-node/FileSystem";
 
 export interface CursorStorage {
