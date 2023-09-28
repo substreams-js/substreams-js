@@ -1,4 +1,4 @@
-import { Config, Effect, Layer, Option, Stream } from "effect";
+import { Config, Data, Effect, Layer, Option, Stream } from "effect";
 
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import { createAuthInterceptor, createRegistry } from "@substreams/core";
@@ -7,6 +7,11 @@ import { createSink, createStream } from "@substreams/sink";
 
 import * as CursorStorage from "./cursor.js";
 import * as MessageStorage from "./messages.js";
+
+export class InvalidPackageError extends Data.TaggedClass("InvalidPackageError")<{
+  readonly cause: unknown;
+  readonly message: string;
+}> {}
 
 export function runStream({
   packagePath,
@@ -18,7 +23,16 @@ export function runStream({
   const program = Effect.gen(function* (_) {
     const db = yield* _(MessageStorage.MessageStorage);
     const cursor = yield* _(CursorStorage.CursorStorage);
-    const pkg = yield* _(Effect.promise(() => readPackage(packagePath)));
+    const pkg = yield* _(
+      Effect.tryPromise({
+        try: () => readPackage(packagePath),
+        catch: (cause) =>
+          new InvalidPackageError({
+            cause,
+            message: `Could not read package at path ${packagePath}`,
+          }),
+      }),
+    );
 
     const token = yield* _(Effect.config(Config.string("SUBSTREAMS_API_TOKEN")));
     const transport = createGrpcTransport({

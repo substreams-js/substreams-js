@@ -7,7 +7,9 @@ export {
 } from "./sink.js";
 export {
   createStream,
-  StreamError,
+  FatalStreamError,
+  RetryableStreamError,
+  type StreamError,
   type CreateStreamOptions,
 } from "./stream.js";
 

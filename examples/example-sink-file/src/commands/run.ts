@@ -2,7 +2,7 @@ import * as Args from "@effect/cli/Args";
 import * as Command from "@effect/cli/Command";
 import * as Options from "@effect/cli/Options";
 import * as Schema from "@effect/schema/Schema";
-import { Chunk, Data, Duration, Effect, Option } from "effect";
+import { Data, Duration, Effect, Option } from "effect";
 
 import * as Stream from "../stream/stream.js";
 import { parseSchema } from "../utils/parse-schema.js";
@@ -40,7 +40,7 @@ export const command: Command.Command<RunCommand> = Command.make("run", {
   args: Args.text({ name: "substream" }).pipe(
     Args.addDescription("The path to a substream package (.spkg) or substreams.yaml file"),
     Args.between(0, 1),
-    Args.map((value) => Option.getOrElse(Chunk.get(value, 0), () => "./substreams.yaml")),
+    Args.map((_) => Option.getOrElse(Option.fromIterable(_), () => "./substreams.yaml")),
   ),
   options: Options.all({
     outputModule: Options.text("output-module").pipe(Options.alias("o"), Options.withDescription("Output module name")),
