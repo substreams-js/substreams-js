@@ -9,7 +9,6 @@
   "compilerOptions": {
     "outDir": "../../.cache/tsc/examples/example-node",
     "types": ["node"],
-    "lib": ["DOM", "ESNext"],
     "paths": {
       "@substreams/core": ["../../packages/core/src/index.js"],
       "@substreams/core/proto": ["../../packages/core/src/proto.js"]

@@ -1,9 +1,8 @@
-import { Config, Data, Effect, Layer, Option, Stream } from "effect";
-
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import { createAuthInterceptor, createRegistry } from "@substreams/core";
 import { readPackage } from "@substreams/manifest";
 import { createSink, createStream } from "@substreams/sink";
+import { Config, Data, Effect, Layer, Option, Stream } from "effect";
 
 import * as CursorStorage from "./cursor.js";
 import * as MessageStorage from "./messages.js";

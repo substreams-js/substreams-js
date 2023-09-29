@@ -5,7 +5,7 @@ import * as Options from "@effect/cli/Options";
 import * as ValidationError from "@effect/cli/ValidationError";
 import { Data, Effect, Either, LogLevel, Logger, Option } from "effect";
 
-import * as RunCommand from "./run";
+import * as RunCommand from "./run.js";
 
 export type RootSubcommand = RunCommand.RunCommand;
 

@@ -3,7 +3,7 @@ import * as Span from "@effect/cli/HelpDoc/Span";
 import * as ValidationError from "@effect/cli/ValidationError";
 import { Effect } from "effect";
 
-import * as RootCommand from "./commands/root";
+import * as RootCommand from "./commands/root.js";
 
 const cli = App.make({
   name: "Substreams File Sink",
