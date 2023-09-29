@@ -12,11 +12,9 @@
     "@effect/cli": "^0.15.1",
     "@effect/match": "^0.36.1",
     "@effect/platform-node": "^0.19.1",
-    "@effect/printer": "0.17.1",
-    "@effect/printer-ansi": "0.17.1",
     "@effect/schema": "^0.39.1",
     "@substreams/sink": "workspace:*",
-    "effect": "2.0.0-next.39"
+    "effect": "^2.0.0-next.39"
   },
   "devDependencies": {
     "@types/node": "^20.7.1",
