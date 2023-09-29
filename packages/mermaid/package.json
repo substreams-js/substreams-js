@@ -1,6 +1,6 @@
 {
   "name": "@substreams/mermaid",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
