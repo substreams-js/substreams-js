@@ -26,9 +26,6 @@
       "@substreams/mermaid": "workspace:*",
       "@substreams/react": "workspace:*",
       "@substreams/sink": "workspace:*"
-    },
-    "peerDependencyRules": {
-      "ignoreMissing": ["prop-types"]
     }
   }
 }
