@@ -1,17 +1,7 @@
-import * as Data from "@effect/data/Data";
-import * as Duration from "@effect/data/Duration";
-import * as Option from "@effect/data/Option";
-import * as Predicate from "@effect/data/Predicate";
-import * as Effect from "@effect/io/Effect";
-import * as Metric from "@effect/io/Metric";
-import * as Ref from "@effect/io/Ref";
-import * as Schedule from "@effect/io/Schedule";
-import * as Sink from "@effect/stream/Sink";
-import * as Stream from "@effect/stream/Stream";
-
 import { Code, ConnectError, type Transport, createPromiseClient } from "@connectrpc/connect";
 import { createRequest } from "@substreams/core";
 import { type Module, type Package, type Response, Stream as StreamService } from "@substreams/core/proto";
+import { Data, Duration, Effect, Metric, Option, Predicate, Ref, Schedule, Sink, Stream } from "effect";
 
 import * as Metrics from "./metrics.js";
 

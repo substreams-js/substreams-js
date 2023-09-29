@@ -10,15 +10,16 @@ overrides:
   '@substreams/mermaid': workspace:*
   '@substreams/react': workspace:*
   '@substreams/sink': workspace:*
+  '@effect/printer': 0.17.0
+  '@effect/printer-ansi': 0.17.0
 
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@biomejs/biome':
         specifier: ^1.2.2
         version: 1.2.2
-    devDependencies:
       '@changesets/changelog-github':
         specifier: ^0.4.8
         version: 0.4.8
@@ -35,11 +36,11 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-web':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@hookform/resolvers':
         specifier: ^3.3.1
         version: 3.3.1(react-hook-form@7.46.2)
@@ -153,8 +154,8 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       '@types/react':
         specifier: 18.2.23
         version: 18.2.23
@@ -163,10 +164,10 @@ importers:
         version: 18.2.8
       autoprefixer:
         specifier: ^10.4.16
-        version: 10.4.16(postcss@8.4.30)
+        version: 10.4.16(postcss@8.4.31)
       postcss:
-        specifier: ^8.4.30
-        version: 8.4.30
+        specifier: ^8.4.31
+        version: 8.4.31
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -174,7 +175,7 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.3)
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.2.1
         version: 5.2.2
 
   examples/example-node:
@@ -183,18 +184,18 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-node':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core
     devDependencies:
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       tsx:
         specifier: ^3.13.0
         version: 3.13.0
@@ -208,11 +209,11 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-node':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -221,8 +222,8 @@ importers:
         version: link:../../packages/manifest
     devDependencies:
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       tsx:
         specifier: ^3.13.0
         version: 3.13.0
@@ -236,11 +237,11 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-node':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -250,16 +251,16 @@ importers:
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^15.2.1
-        version: 15.2.1(rollup@3.29.3)
+        version: 15.2.1(rollup@3.29.4)
       '@rollup/plugin-typescript':
         specifier: ^11.1.4
-        version: 11.1.4(rollup@3.29.3)(tslib@2.6.2)(typescript@5.2.2)
+        version: 11.1.4(rollup@3.29.4)(tslib@2.6.2)(typescript@5.2.2)
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       rollup:
-        specifier: ^3.29.3
-        version: 3.29.3
+        specifier: ^3.29.4
+        version: 3.29.4
       tsx:
         specifier: ^3.13.0
         version: 3.13.0
@@ -270,30 +271,39 @@ importers:
   examples/example-sink-file:
     dependencies:
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-node':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@effect/cli':
-        specifier: ^0.14.0
-        version: 0.14.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/printer-ansi@0.16.0)(@effect/printer@0.16.0)
+        specifier: ^0.15.1
+        version: 0.15.1(@effect/printer-ansi@0.17.1)(@effect/printer@0.17.1)(effect@2.0.0-next.39)
+      '@effect/match':
+        specifier: ^0.36.1
+        version: 0.36.1(effect@2.0.0-next.39)
       '@effect/platform-node':
-        specifier: ^0.18.1
-        version: 0.18.1(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/schema@0.37.1)(@effect/stream@0.37.0)
+        specifier: ^0.19.1
+        version: 0.19.1(@effect/schema@0.39.1)(effect@2.0.0-next.39)
+      '@effect/printer':
+        specifier: 0.17.1
+        version: 0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39)
+      '@effect/printer-ansi':
+        specifier: 0.17.1
+        version: 0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39)
       '@effect/schema':
-        specifier: ^0.37.1
-        version: 0.37.1(@effect/data@0.18.6)(@effect/io@0.41.1)
+        specifier: ^0.39.1
+        version: 0.39.1(effect@2.0.0-next.39)
       '@substreams/sink':
         specifier: workspace:*
         version: link:../../packages/sink
       effect:
-        specifier: 2.0.0-next.36
-        version: 2.0.0-next.36(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/match@0.35.2)(@effect/stm@0.25.0)(@effect/stream@0.37.0)
+        specifier: 2.0.0-next.39
+        version: 2.0.0-next.39
     devDependencies:
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       tsx:
         specifier: ^3.13.0
         version: 3.13.0
@@ -307,11 +317,11 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@connectrpc/connect-web':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -327,47 +337,51 @@ importers:
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
 
   packages/core:
     dependencies:
-      '@bufbuild/protobuf':
-        specifier: ^1.3.1
-        version: 1.3.1
       '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
     devDependencies:
       '@bufbuild/buf':
         specifier: ^1.26.1
         version: 1.26.1
+      '@bufbuild/protobuf':
+        specifier: ^1.3.1
+        version: 1.3.1
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       '@vitest/coverage-c8':
         specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.5)
+        version: 0.33.0(vitest@0.34.6)
       '@vitest/ui':
-        specifier: ^0.34.5
-        version: 0.34.5(vitest@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(vitest@0.34.6)
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
       vitest:
-        specifier: ^0.34.5
-        version: 0.34.5(@vitest/ui@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(@vitest/ui@0.34.6)
 
   packages/manifest:
     dependencies:
+      '@substreams/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
       '@bufbuild/buf':
         specifier: ^1.26.1
         version: 1.26.1
@@ -375,92 +389,88 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       '@effect/schema':
-        specifier: ^0.37.1
-        version: 0.37.1(@effect/data@0.18.6)(@effect/io@0.41.1)
-      '@substreams/core':
-        specifier: workspace:*
-        version: link:../core
-      yaml:
-        specifier: ^2.3.2
-        version: 2.3.2
-    devDependencies:
+        specifier: ^0.39.1
+        version: 0.39.1(effect@2.0.0-next.38)
       '@types/node':
-        specifier: ^20.7.0
-        version: 20.7.0
+        specifier: ^20.7.1
+        version: 20.7.1
       '@vitest/coverage-c8':
         specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.5)
+        version: 0.33.0(vitest@0.34.6)
       '@vitest/ui':
-        specifier: ^0.34.5
-        version: 0.34.5(vitest@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(vitest@0.34.6)
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
       vitest:
-        specifier: ^0.34.5
-        version: 0.34.5(@vitest/ui@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(@vitest/ui@0.34.6)
+      yaml:
+        specifier: ^2.3.2
+        version: 2.3.2
 
   packages/mermaid:
     dependencies:
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
-      pako:
-        specifier: ^2.1.0
-        version: 2.1.0
     devDependencies:
       '@types/pako':
         specifier: ^2.0.1
         version: 2.0.1
       '@vitest/coverage-c8':
         specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.5)
+        version: 0.33.0(vitest@0.34.6)
       '@vitest/ui':
-        specifier: ^0.34.5
-        version: 0.34.5(vitest@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(vitest@0.34.6)
+      pako:
+        specifier: ^2.1.0
+        version: 2.1.0
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
       vitest:
-        specifier: ^0.34.5
-        version: 0.34.5(@vitest/ui@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(@vitest/ui@0.34.6)
 
   packages/react:
     dependencies:
-      '@bufbuild/protobuf':
-        specifier: ^1.3.1
-        version: 1.3.1
-      '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
-      '@connectrpc/connect-web':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
+      '@bufbuild/protobuf':
+        specifier: ^1.3.1
+        version: 1.3.1
+      '@connectrpc/connect':
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
+      '@connectrpc/connect-web':
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0)
       '@types/react':
         specifier: ^18.2.23
         version: 18.2.23
       '@vitest/coverage-c8':
         specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.5)
+        version: 0.33.0(vitest@0.34.6)
       '@vitest/ui':
-        specifier: ^0.34.5
-        version: 0.34.5(vitest@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(vitest@0.34.6)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -469,56 +479,47 @@ importers:
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
       vitest:
-        specifier: ^0.34.5
-        version: 0.34.5(@vitest/ui@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(@vitest/ui@0.34.6)
 
   packages/sink:
     dependencies:
-      '@bufbuild/protobuf':
-        specifier: ^1.3.1
-        version: 1.3.1
-      '@connectrpc/connect':
-        specifier: ^0.13.2
-        version: 0.13.2(@bufbuild/protobuf@1.3.1)
-      '@effect/data':
-        specifier: ^0.18.6
-        version: 0.18.6
-      '@effect/io':
-        specifier: ^0.41.1
-        version: 0.41.1(@effect/data@0.18.6)
-      '@effect/match':
-        specifier: ^0.35.2
-        version: 0.35.2(@effect/data@0.18.6)
-      '@effect/stream':
-        specifier: ^0.37.0
-        version: 0.37.0(@effect/data@0.18.6)(@effect/io@0.41.1)
       '@substreams/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
+      '@bufbuild/protobuf':
+        specifier: ^1.3.1
+        version: 1.3.1
+      '@connectrpc/connect':
+        specifier: ^1.0.0
+        version: 1.0.0(@bufbuild/protobuf@1.3.1)
       '@vitest/coverage-c8':
         specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.5)
+        version: 0.33.0(vitest@0.34.6)
       '@vitest/ui':
-        specifier: ^0.34.5
-        version: 0.34.5(vitest@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(vitest@0.34.6)
+      effect:
+        specifier: 2.0.0-next.39
+        version: 2.0.0-next.39
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
       vite:
         specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.7.0)
+        version: 4.4.9(@types/node@20.7.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.2.1(typescript@5.2.2)(vite@4.4.9)
       vitest:
-        specifier: ^0.34.5
-        version: 0.34.5(@vitest/ui@0.34.5)
+        specifier: ^0.34.6
+        version: 0.34.6(@vitest/ui@0.34.6)
 
 packages:
 
@@ -597,7 +598,7 @@ packages:
       '@biomejs/cli-linux-x64': 1.2.2
       '@biomejs/cli-win32-arm64': 1.2.2
       '@biomejs/cli-win32-x64': 1.2.2
-    dev: false
+    dev: true
 
   /@biomejs/cli-darwin-arm64@1.2.2:
     resolution: {integrity: sha512-Fx1IURKhoqH6wPawtKLT6wcfMSjRRcNK8+VWau0iDOjXvNtjJpSmICbU89B7Vt/gZRwPqkfDMBkFwm6V5vFTSQ==}
@@ -605,7 +606,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-darwin-x64@1.2.2:
@@ -614,7 +615,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-arm64@1.2.2:
@@ -623,7 +624,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-x64@1.2.2:
@@ -632,7 +633,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-win32-arm64@1.2.2:
@@ -641,7 +642,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-win32-x64@1.2.2:
@@ -650,7 +651,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@braintree/sanitize-url@6.0.4:
@@ -663,6 +664,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf-darwin-x64@1.26.1:
@@ -671,6 +673,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf-linux-aarch64@1.26.1:
@@ -679,6 +682,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf-linux-x64@1.26.1:
@@ -687,6 +691,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf-win32-arm64@1.26.1:
@@ -695,6 +700,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf-win32-x64@1.26.1:
@@ -703,6 +709,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@bufbuild/buf@1.26.1:
@@ -717,10 +724,10 @@ packages:
       '@bufbuild/buf-linux-x64': 1.26.1
       '@bufbuild/buf-win32-arm64': 1.26.1
       '@bufbuild/buf-win32-x64': 1.26.1
+    dev: true
 
   /@bufbuild/protobuf@1.3.1:
     resolution: {integrity: sha512-BUyJWutgP2S8K/1NphOJokuwDckXS4qI2T1pGZAlkFdZchWae3jm6fCdkcGbLlM1QLOcNFFePd+7Feo4BYGrJQ==}
-    dev: false
 
   /@changesets/apply-release-plan@6.1.4:
     resolution: {integrity: sha512-FMpKF1fRlJyCZVYHr3CbinpZZ+6MwvOtWUuO8uo+svcATEoc1zRDcj23pAurJ2TZ/uVz1wFHH6K3NlACy0PLew==}
@@ -925,163 +932,134 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@connectrpc/connect-node@0.13.2(@bufbuild/protobuf@1.3.1):
-    resolution: {integrity: sha512-dAoBuQ+fYFw22KYgZXPw1t19i6TRwNmk6c6XsOYLhBl1Y5vzXoMfMX2jm7lmkmLQFIcM9Xc2EYoUKtjNXH5bjw==}
+  /@connectrpc/connect-node@1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0):
+    resolution: {integrity: sha512-jYxPSH0k6nHZee1yOnbJXDpSeFuV7ev2IDWamEvs/aOoAqK0DDDAFcywBTWi7+e5anqRY6Fv4siu4+UXxfGmLQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@bufbuild/protobuf': ^1.2.1
+      '@connectrpc/connect': 1.0.0
     dependencies:
       '@bufbuild/protobuf': 1.3.1
-      '@connectrpc/connect': 0.13.2(@bufbuild/protobuf@1.3.1)
+      '@connectrpc/connect': 1.0.0(@bufbuild/protobuf@1.3.1)
       undici: 5.25.2
     dev: false
 
-  /@connectrpc/connect-web@0.13.2(@bufbuild/protobuf@1.3.1):
-    resolution: {integrity: sha512-WkI2MbdWpzRCZf612bOa0JEuOx2Hebv7BW0FcfgDgHwFGBOuAFF7BF7XtNw196nmYoli2kXmtIjCZW01jvzDnw==}
+  /@connectrpc/connect-web@1.0.0(@bufbuild/protobuf@1.3.1)(@connectrpc/connect@1.0.0):
+    resolution: {integrity: sha512-QMoq/KoZG2ZUAJptXqQtFVoZY9avX+11JDFrb+2P7rVOzHifupBPNTp4LJjTPciuUhpNwMCNnNXdddAh/+N2aw==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^1.2.1
+      '@connectrpc/connect': 1.0.0
+    dependencies:
+      '@bufbuild/protobuf': 1.3.1
+      '@connectrpc/connect': 1.0.0(@bufbuild/protobuf@1.3.1)
+
+  /@connectrpc/connect@1.0.0(@bufbuild/protobuf@1.3.1):
+    resolution: {integrity: sha512-eqrCpSoAK8OHlKN3t3BbMGAzLT3rbl8XEgyazDokm5lyhYc68UcxN8ChfWjFzVpXOCMYaEAR/0NV64UOAEko9w==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.2.1
     dependencies:
       '@bufbuild/protobuf': 1.3.1
-      '@connectrpc/connect': 0.13.2(@bufbuild/protobuf@1.3.1)
-    dev: false
 
-  /@connectrpc/connect@0.13.2(@bufbuild/protobuf@1.3.1):
-    resolution: {integrity: sha512-KZg6EH8gYnQZm/d2IXXMVB2mom/A1dCD8+7JScm2tKN9OQyQSeCJOLqtv/M4M5XVS0Y9JM2/VCbiUwfhl9Rqmg==}
+  /@effect/cli@0.15.1(@effect/printer-ansi@0.17.1)(@effect/printer@0.17.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-5HZjMBCRNriUBXZ49QcEmyvrUkRAvz0G9Scl1KV2z0w6J9g9IurO0HcDOzHbYme6GAax+5JTh2mhI0m477bajw==}
     peerDependencies:
-      '@bufbuild/protobuf': ^1.2.1
+      '@effect/printer': ^0.17.1
+      '@effect/printer-ansi': ^0.17.1
+      effect: 2.0.0-next.38
     dependencies:
-      '@bufbuild/protobuf': 1.3.1
+      '@effect/printer': 0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39)
+      '@effect/printer-ansi': 0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39)
+      effect: 2.0.0-next.39
     dev: false
 
-  /@effect/cli@0.14.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/printer-ansi@0.16.0)(@effect/printer@0.16.0):
-    resolution: {integrity: sha512-ShXF7oYD7DhmLji2BBVhdcJZzIdGnfn5/Jb5x/PlBE/8KrsQbB87x21dREk22MhA7jF5zvZoXvNcHrRCu8516A==}
+  /@effect/match@0.36.1(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-2FYIy2x+m+s2n0fKPHzqe9y72sriBDX373IK46sIAVEtNpXoG6qKr5LtgqxXdikaFwMdnLUsZNyDcRERRq5hnQ==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/printer': ^0.16.0
-      '@effect/printer-ansi': ^0.16.0
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/printer': 0.16.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/typeclass@0.5.0)
-      '@effect/printer-ansi': 0.16.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/typeclass@0.5.0)
+      effect: 2.0.0-next.39
     dev: false
 
-  /@effect/data@0.18.6:
-    resolution: {integrity: sha512-gfjorojxEJ0KKxwluZLoAsPv1kkHi7MV1vQDlibClfdtC9iY9JqkJo+BjWTKsU0zV4mW2inmTZQCF72KKbn2tQ==}
-    dev: false
-
-  /@effect/io@0.41.1(@effect/data@0.18.6):
-    resolution: {integrity: sha512-gJ9fdN7GKkC1sryroy/bsFYugVFyjY2mhY/hwVQwLHxYluje0b5tRr7kpUnbG0ntSvuPS0JVe1604ppGUmym0g==}
+  /@effect/platform-node@0.19.1(@effect/schema@0.39.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-0rFfhi8CzZ6SGiB5s3hgGLxhaO2GpCJGSRlf53Py+BEuxLo6T61yzE5e/7N6g2dRRPm0At5apJnq704z38Ud7A==}
     peerDependencies:
-      '@effect/data': ^0.18.5
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-    dev: false
-
-  /@effect/match@0.35.2(@effect/data@0.18.6):
-    resolution: {integrity: sha512-2zZhWIdejX3xqbjormykBveHZTB/DBr/u/XBj5Ln6u2ShbMvoUykgVEscQLN3CsQeHDS14Vvr1DOvH0qeMILZQ==}
-    peerDependencies:
-      '@effect/data': ^0.18.3
-    dependencies:
-      '@effect/data': 0.18.6
-    dev: false
-
-  /@effect/platform-node@0.18.1(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/schema@0.37.1)(@effect/stream@0.37.0):
-    resolution: {integrity: sha512-mCiKIvOljKIW7NxxYFe8Gd+805ENRtKSYOr9Kw+9B3jslJVCSlCf+1juQjdGHc3wisMSEOl9VK9RJ+02hkF26g==}
-    peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/stream': ^0.37.0
-    dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/platform': 0.17.1(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/schema@0.37.1)(@effect/stream@0.37.0)
-      '@effect/stream': 0.37.0(@effect/data@0.18.6)(@effect/io@0.41.1)
+      '@effect/platform': 0.18.1(@effect/schema@0.39.1)(effect@2.0.0-next.39)
       busboy: 1.6.0
+      effect: 2.0.0-next.39
       mime: 3.0.0
     transitivePeerDependencies:
       - '@effect/schema'
     dev: false
 
-  /@effect/platform@0.17.1(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/schema@0.37.1)(@effect/stream@0.37.0):
-    resolution: {integrity: sha512-GkUUmj7U+Oy0r9scXNdnUF7CMQAOUwE3Xwb1bnuSbkBGsxc1Pt4YE5jA4sMv/wCJ5lJVaFFHaZwWfsWqAtKFqw==}
+  /@effect/platform@0.18.1(@effect/schema@0.39.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-gAJkUmlTumtJHlNTFXIOaLcZAoNglmCfbmQM6+WvXtbjHzs/I7UBSS4z6t1Y7zJAi7t8os7QDBppMcSegFFIVw==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/schema': ^0.37.0
-      '@effect/stream': ^0.37.0
+      '@effect/schema': ^0.37.1
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/schema': 0.37.1(@effect/data@0.18.6)(@effect/io@0.41.1)
-      '@effect/stream': 0.37.0(@effect/data@0.18.6)(@effect/io@0.41.1)
+      '@effect/schema': 0.39.1(effect@2.0.0-next.39)
+      effect: 2.0.0-next.39
       find-my-way: 7.6.2
       path-browserify: 1.0.1
     dev: false
 
-  /@effect/printer-ansi@0.16.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/typeclass@0.5.0):
-    resolution: {integrity: sha512-KCQSLFt5/IW8sGRYo1VFJ2wxuLcM23C6MOzUu7MTa4F1IyWnJcARs5UF3S135xQcvC6PkrLqm7/MDy7irMnOkA==}
+  /@effect/printer-ansi@0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-o7rsrtmohAjPThopJKyEZJE1/4T9OGQGuXgKpe7S9dK3mnjO2+cxxj+KCZvz9M4cLwNmRfRV7rZgTGegRUHPXQ==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/typeclass': ^0.5.0
+      '@effect/typeclass': ^0.6.0
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/printer': 0.16.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/typeclass@0.5.0)
-      '@effect/typeclass': 0.5.0(@effect/data@0.18.6)
+      '@effect/printer': 0.17.0(@effect/typeclass@0.6.1)(effect@2.0.0-next.39)
+      '@effect/typeclass': 0.6.1(effect@2.0.0-next.39)
+      effect: 2.0.0-next.39
     dev: false
 
-  /@effect/printer@0.16.0(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/typeclass@0.5.0):
-    resolution: {integrity: sha512-M8wj9BgcICmE6DMa0O4yYv8eAN5RrH1SobQbTgUSzZ3g/8g5uR3WlfPbxruyT0fOjm61SMHmquUoLtMQfrDsMQ==}
+  /@effect/printer@0.17.0(@effect/typeclass@0.6.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-JA8ZSeRTB4AAEHu7NGUPohzVsf4BD8hUWEQvRaxxzQisuKYAoG9K5QIAQ+Jtlq6kcjnotx/X510GpvvvDxvzSw==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/typeclass': ^0.5.0
+      '@effect/typeclass': ^0.6.0
+      effect: 2.0.0-next.37
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/typeclass': 0.5.0(@effect/data@0.18.6)
+      '@effect/typeclass': 0.6.1(effect@2.0.0-next.39)
+      effect: 2.0.0-next.39
     dev: false
 
-  /@effect/schema@0.37.1(@effect/data@0.18.6)(@effect/io@0.41.1):
-    resolution: {integrity: sha512-kt1gU8D0to6NOidCEJAlgYA84ET3AcFIViBTY3yNtdNWh9ehy8Nh+S91H7783w3GcSntcY83bgCdI3ffq9Ki2w==}
+  /@effect/printer@0.17.1(@effect/typeclass@0.6.1)(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-3o5r7Wx5roJkP+4klaaG8i3LIRAus6MmbiGLtURmjMuToxJsbBv+i1UTvabybhZyjQtUwIMFtUxxQ1DwjpaBeA==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.1
+      '@effect/typeclass': ^0.6.0
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
+      '@effect/typeclass': 0.6.1(effect@2.0.0-next.39)
+      effect: 2.0.0-next.39
+    dev: false
+
+  /@effect/schema@0.39.1(effect@2.0.0-next.38):
+    resolution: {integrity: sha512-O/BO7I4q7A1edmqs0+UrkHpqX7bzWfzAEdEm5u42FJkJFQBjUEMJpz8qaVDrY/WI2dKFWKZRS6Z5oP2qJtILTQ==}
+    peerDependencies:
+      effect: 2.0.0-next.38
+    dependencies:
+      effect: 2.0.0-next.38
+      fast-check: 3.13.1
+    dev: true
+
+  /@effect/schema@0.39.1(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-O/BO7I4q7A1edmqs0+UrkHpqX7bzWfzAEdEm5u42FJkJFQBjUEMJpz8qaVDrY/WI2dKFWKZRS6Z5oP2qJtILTQ==}
+    peerDependencies:
+      effect: 2.0.0-next.38
+    dependencies:
+      effect: 2.0.0-next.39
       fast-check: 3.13.1
     dev: false
 
-  /@effect/stm@0.25.0(@effect/data@0.18.6)(@effect/io@0.41.1):
-    resolution: {integrity: sha512-iHq/nRIH0wNxCpxm46ALxRTAJJO6YaA29sYrqtYdClEYVy66+zn79BgSVc8IgX1MdOjoEf73Ayp6wOinsKB7RQ==}
+  /@effect/typeclass@0.6.1(effect@2.0.0-next.39):
+    resolution: {integrity: sha512-0KheJAgQdLQpui70l73Fxv1t9Ye9iFZeLSvZ6Bac0PDQ3hA4bXe/YLMtqe0vpqL4na489xnJQ5tZfs0yESzwjQ==}
     peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
+      effect: 2.0.0-next.38
     dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-    dev: false
-
-  /@effect/stream@0.37.0(@effect/data@0.18.6)(@effect/io@0.41.1):
-    resolution: {integrity: sha512-fa5OeBCta/nmllMl3CZhgTUJseAlUsFFojMrEjIOW3HJrnz7VbJV1mceJuWSgNkrM2lhIXmWEVBBrZPjH63kEA==}
-    peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-    dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-    dev: false
-
-  /@effect/typeclass@0.5.0(@effect/data@0.18.6):
-    resolution: {integrity: sha512-bhZg69c6yZcZChFtyTAsyn6Bzmbw4s1Vq/LBU8kVTtwFXz5J2kZSkI+e8LWW1xvtBOeGpNcPqPwfbItVYXe23A==}
-    peerDependencies:
-      '@effect/data': ^0.18.3
-    dependencies:
-      '@effect/data': 0.18.6
+      effect: 2.0.0-next.39
     dev: false
 
   /@emotion/babel-plugin@11.11.0:
@@ -2610,7 +2588,7 @@ packages:
       '@babel/runtime': 7.23.1
     dev: false
 
-  /@rollup/plugin-node-resolve@15.2.1(rollup@3.29.3):
+  /@rollup/plugin-node-resolve@15.2.1(rollup@3.29.4):
     resolution: {integrity: sha512-nsbUg588+GDSu8/NS8T4UAshO6xeaOfINNuXeVHcKV02LJtoRaM1SiOacClw4kws1SFiNhdLGxlbMY9ga/zs/w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2619,16 +2597,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.4(rollup@3.29.3)
+      '@rollup/pluginutils': 5.0.4(rollup@3.29.4)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.6
-      rollup: 3.29.3
+      rollup: 3.29.4
     dev: true
 
-  /@rollup/plugin-typescript@11.1.4(rollup@3.29.3)(tslib@2.6.2)(typescript@5.2.2):
+  /@rollup/plugin-typescript@11.1.4(rollup@3.29.4)(tslib@2.6.2)(typescript@5.2.2):
     resolution: {integrity: sha512-WZRh5LBVLQXdKFICUId5J3eIpmjGURaBqntfg3GSZACgeOAFS+lOSMGTwfzDkELTaZVp/lWdMVNU3UkwCUBg/Q==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2641,14 +2619,14 @@ packages:
       tslib:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.4(rollup@3.29.3)
+      '@rollup/pluginutils': 5.0.4(rollup@3.29.4)
       resolve: 1.22.6
-      rollup: 3.29.3
+      rollup: 3.29.4
       tslib: 2.6.2
       typescript: 5.2.2
     dev: true
 
-  /@rollup/pluginutils@5.0.4(rollup@3.29.3):
+  /@rollup/pluginutils@5.0.4(rollup@3.29.4):
     resolution: {integrity: sha512-0KJnIoRI8A+a1dqOYLxH8vBf8bphDmty5QvIm2hqm7oFCFYKCAZWWd2hXgMibaPsNDhI0AtpYfQZJG47pt/k4g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2660,7 +2638,7 @@ packages:
       '@types/estree': 1.0.2
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.29.3
+      rollup: 3.29.4
     dev: true
 
   /@sinclair/typebox@0.27.8:
@@ -2783,8 +2761,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.7.0:
-    resolution: {integrity: sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==}
+  /@types/node@20.7.1:
+    resolution: {integrity: sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==}
     dev: true
 
   /@types/normalize-package-data@2.4.2:
@@ -2839,7 +2817,7 @@ packages:
     resolution: {integrity: sha512-IBtUgtxnITC7WTCg4tv6kCnSP0T+fM+3PzQPIzLzJY1DDlhBFKM/9+uMURw14YweWPDiFNIZ94Gc1bJtwow97g==}
     dev: true
 
-  /@vitest/coverage-c8@0.33.0(vitest@0.34.5):
+  /@vitest/coverage-c8@0.33.0(vitest@0.34.6):
     resolution: {integrity: sha512-DaF1zJz4dcOZS4k/neiQJokmOWqsGXwhthfmUdPGorXIQHjdPvV6JQSYhQDI41MyI8c+IieQUdIDs5XAMHtDDw==}
     deprecated: v8 coverage is moved to @vitest/coverage-v8 package
     peerDependencies:
@@ -2847,59 +2825,59 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.1
       c8: 7.14.0
-      magic-string: 0.30.3
+      magic-string: 0.30.4
       picocolors: 1.0.0
       std-env: 3.4.3
-      vitest: 0.34.5(@vitest/ui@0.34.5)
+      vitest: 0.34.6(@vitest/ui@0.34.6)
     dev: true
 
-  /@vitest/expect@0.34.5:
-    resolution: {integrity: sha512-/3RBIV9XEH+nRpRMqDJBufKIOQaYUH2X6bt0rKSCW0MfKhXFLYsR5ivHifeajRSTsln0FwJbitxLKHSQz/Xwkw==}
+  /@vitest/expect@0.34.6:
+    resolution: {integrity: sha512-QUzKpUQRc1qC7qdGo7rMK3AkETI7w18gTCUrsNnyjjJKYiuUB9+TQK3QnR1unhCnWRC0AbKv2omLGQDF/mIjOw==}
     dependencies:
-      '@vitest/spy': 0.34.5
-      '@vitest/utils': 0.34.5
-      chai: 4.3.9
+      '@vitest/spy': 0.34.6
+      '@vitest/utils': 0.34.6
+      chai: 4.3.10
     dev: true
 
-  /@vitest/runner@0.34.5:
-    resolution: {integrity: sha512-RDEE3ViVvl7jFSCbnBRyYuu23XxmvRTSZWW6W4M7eC5dOsK75d5LIf6uhE5Fqf809DQ1+9ICZZNxhIolWHU4og==}
+  /@vitest/runner@0.34.6:
+    resolution: {integrity: sha512-1CUQgtJSLF47NnhN+F9X2ycxUP0kLHQ/JWvNHbeBfwW8CzEGgeskzNnHDyv1ieKTltuR6sdIHV+nmR6kPxQqzQ==}
     dependencies:
-      '@vitest/utils': 0.34.5
+      '@vitest/utils': 0.34.6
       p-limit: 4.0.0
       pathe: 1.1.1
     dev: true
 
-  /@vitest/snapshot@0.34.5:
-    resolution: {integrity: sha512-+ikwSbhu6z2yOdtKmk/aeoDZ9QPm2g/ZO5rXT58RR9Vmu/kB2MamyDSx77dctqdZfP3Diqv4mbc/yw2kPT8rmA==}
+  /@vitest/snapshot@0.34.6:
+    resolution: {integrity: sha512-B3OZqYn6k4VaN011D+ve+AA4whM4QkcwcrwaKwAbyyvS/NB1hCWjFIBQxAQQSQir9/RtyAAGuq+4RJmbn2dH4w==}
     dependencies:
-      magic-string: 0.30.3
+      magic-string: 0.30.4
       pathe: 1.1.1
       pretty-format: 29.7.0
     dev: true
 
-  /@vitest/spy@0.34.5:
-    resolution: {integrity: sha512-epsicsfhvBjRjCMOC/3k00mP/TBGQy8/P0DxOFiWyLt55gnZ99dqCfCiAsKO17BWVjn4eZRIjKvcqNmSz8gvmg==}
+  /@vitest/spy@0.34.6:
+    resolution: {integrity: sha512-xaCvneSaeBw/cz8ySmF7ZwGvL0lBjfvqc1LpQ/vcdHEvpLn3Ff1vAvjw+CoGn0802l++5L/pxb7whwcWAw+DUQ==}
     dependencies:
       tinyspy: 2.1.1
     dev: true
 
-  /@vitest/ui@0.34.5(vitest@0.34.5):
-    resolution: {integrity: sha512-nK3Ny7fQgoTJMCGXLzYL0oo1ePtruRM9eYT1Y8esQx8fHj05davqVgqWv4Kd+Yy8PfzyrduTx1EYBdSMIbQh8A==}
+  /@vitest/ui@0.34.6(vitest@0.34.6):
+    resolution: {integrity: sha512-/fxnCwGC0Txmr3tF3BwAbo3v6U2SkBTGR9UB8zo0Ztlx0BTOXHucE0gDHY7SjwEktCOHatiGmli9kZD6gYSoWQ==}
     peerDependencies:
       vitest: '>=0.30.1 <1'
     dependencies:
-      '@vitest/utils': 0.34.5
+      '@vitest/utils': 0.34.6
       fast-glob: 3.3.1
       fflate: 0.8.1
       flatted: 3.2.9
       pathe: 1.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vitest: 0.34.5(@vitest/ui@0.34.5)
+      vitest: 0.34.6(@vitest/ui@0.34.6)
     dev: true
 
-  /@vitest/utils@0.34.5:
-    resolution: {integrity: sha512-ur6CmmYQoeHMwmGb0v+qwkwN3yopZuZyf4xt1DBBSGBed8Hf9Gmbm/5dEWqgpLPdRx6Av6jcWXrjcKfkTzg/pw==}
+  /@vitest/utils@0.34.6:
+    resolution: {integrity: sha512-IG5aDD8S6zlvloDsnzHw0Ut5xczlF+kv2BOTo+iXfPr54Yhi5qbVOgGB1hZaVq4iJ4C/MZ2J0y15IlsV/ZcI0A==}
     dependencies:
       diff-sequences: 29.6.3
       loupe: 2.3.6
@@ -3043,7 +3021,7 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /autoprefixer@10.4.16(postcss@8.4.30):
+  /autoprefixer@10.4.16(postcss@8.4.31):
     resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -3055,7 +3033,7 @@ packages:
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.30
+      postcss: 8.4.31
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -3194,8 +3172,8 @@ packages:
   /caniuse-lite@1.0.30001540:
     resolution: {integrity: sha512-9JL38jscuTJBTcuETxm8QLsFr/F6v0CYYTEU6r5+qSM98P2Q0Hmu0eG1dTG5GBUmywU3UlcVOUSIJYY47rdFSw==}
 
-  /chai@4.3.9:
-    resolution: {integrity: sha512-tH8vhfA1CfuYMkALXj+wmZcqiwqOfshU9Gry+NYiiLqIddrobkBhALv6XD4yDz68qapphYI4vSaqhqAdThCAAA==}
+  /chai@4.3.10:
+    resolution: {integrity: sha512-0UXG04VuVbruMUYbJ6JctvH0YnC/4q3/AkT18q4NaITo91CUm0liMS9VqzT9vZhVQ/1eqPanMWjBM+Juhfb/9g==}
     engines: {node: '>=4'}
     dependencies:
       assertion-error: 1.1.0
@@ -3867,21 +3845,12 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /effect@2.0.0-next.36(@effect/data@0.18.6)(@effect/io@0.41.1)(@effect/match@0.35.2)(@effect/stm@0.25.0)(@effect/stream@0.37.0):
-    resolution: {integrity: sha512-RGAFBGwmkhm2/7m71sTF9bILtB/Lj4POQXEEmXaldR61MlsWqRYqaUgPue56ltnSGVQkuwwYhJ1F7FUAloVs/Q==}
-    peerDependencies:
-      '@effect/data': ^0.18.6
-      '@effect/io': ^0.41.0
-      '@effect/match': ^0.35.2
-      '@effect/stm': ^0.25.0
-      '@effect/stream': ^0.37.0
-    dependencies:
-      '@effect/data': 0.18.6
-      '@effect/io': 0.41.1(@effect/data@0.18.6)
-      '@effect/match': 0.35.2(@effect/data@0.18.6)
-      '@effect/stm': 0.25.0(@effect/data@0.18.6)(@effect/io@0.41.1)
-      '@effect/stream': 0.37.0(@effect/data@0.18.6)(@effect/io@0.41.1)
-    dev: false
+  /effect@2.0.0-next.38:
+    resolution: {integrity: sha512-J0e0v0l+1SkxrNFkcm6ubLqbocBQ3cHa+vJ8/bTjmbIX2uF0ZIS8CeRnwUNqbAJ+pzbWH+EfI7pjOYcoW3FNNg==}
+    dev: true
+
+  /effect@2.0.0-next.39:
+    resolution: {integrity: sha512-4i6OI4pI55MeDALupg8wOX3Y6nvdwqJcJRGjwYNK7xqAGK3QXy6jbxAi4jf1FBVkIChtJLn2pQ42CbcrjNjewA==}
 
   /electron-to-chromium@1.4.531:
     resolution: {integrity: sha512-H6gi5E41Rn3/mhKlPaT1aIMg/71hTAqn0gYEllSuw9igNWtvQwu185jiCZoZD29n7Zukgh7GVZ3zGf0XvkhqjQ==}
@@ -4048,8 +4017,7 @@ packages:
     resolution: {integrity: sha512-Xp00tFuWd83i8rbG/4wU54qU+yINjQha7bXH2N4ARNTkyOimzHtUBJ5+htpdXk7RMaCOD/j2jxSjEt9u9ZPNeQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      pure-rand: 6.0.3
-    dev: false
+      pure-rand: 6.0.4
 
   /fast-decode-uri-component@1.0.1:
     resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
@@ -4780,8 +4748,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /magic-string@0.30.3:
-    resolution: {integrity: sha512-B7xGbll2fG/VjP+SWg4sX3JynwIU0mjoTc6MPpKNuIvftk6u6vqhDnk1R80b8C2GBR6ywqy+1DcKBrevBg+bmw==}
+  /magic-string@0.30.4:
+    resolution: {integrity: sha512-Q/TKtsC5BPm0kGqgBIF9oXAs/xEf2vRKiIB4wCRQTJOQIByZ1d+NnUOotvJOvNpi5RNIgVOMC3pOuaP1ZTDlVg==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -5106,7 +5074,7 @@ packages:
       acorn: 8.10.0
       pathe: 1.1.1
       pkg-types: 1.0.3
-      ufo: 1.3.0
+      ufo: 1.3.1
     dev: true
 
   /mri@1.2.0:
@@ -5323,7 +5291,7 @@ packages:
 
   /pako@2.1.0:
     resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
-    dev: false
+    dev: true
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -5413,29 +5381,29 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.30):
+  /postcss-import@15.1.0(postcss@8.4.31):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.4.30
+      postcss: 8.4.31
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.6
     dev: true
 
-  /postcss-js@4.0.1(postcss@8.4.30):
+  /postcss-js@4.0.1(postcss@8.4.31):
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
       postcss: ^8.4.21
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.30
+      postcss: 8.4.31
     dev: true
 
-  /postcss-load-config@4.0.1(postcss@8.4.30):
+  /postcss-load-config@4.0.1(postcss@8.4.31):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -5448,17 +5416,17 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 8.4.30
+      postcss: 8.4.31
       yaml: 2.3.2
     dev: true
 
-  /postcss-nested@6.0.1(postcss@8.4.30):
+  /postcss-nested@6.0.1(postcss@8.4.31):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.30
+      postcss: 8.4.31
       postcss-selector-parser: 6.0.13
     dev: true
 
@@ -5483,8 +5451,8 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-  /postcss@8.4.30:
-    resolution: {integrity: sha512-7ZEao1g4kd68l97aWG/etQKPKq07us0ieSZ2TnFDk11i0ZfDW2AwKHYU8qv4MZKqN2fdBfg+7q0ES06UA73C1g==}
+  /postcss@8.4.31:
+    resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -5529,9 +5497,8 @@ packages:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
     dev: true
 
-  /pure-rand@6.0.3:
-    resolution: {integrity: sha512-KddyFewCsO0j3+np81IQ+SweXLDnDQTs5s67BOnrYmYe/yNmUhttQyGsYzy8yUnoljGAQ9sl38YB4vH8ur7Y+w==}
-    dev: false
+  /pure-rand@6.0.4:
+    resolution: {integrity: sha512-LA0Y9kxMYv47GIPJy6MI84fqTd2HmYZI83W/kM/SkKfDlajnZYfmXFTxkbY+xSBPkLJxltMa9hIkmdc29eguMA==}
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -5777,8 +5744,8 @@ packages:
     resolution: {integrity: sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==}
     dev: false
 
-  /rollup@3.29.3:
-    resolution: {integrity: sha512-T7du6Hum8jOkSWetjRgbwpM6Sy0nECYrYRSmZjayFcOddtKJWU4d17AC3HNUk7HRuqy4p+G7aEZclSHytqUmEg==}
+  /rollup@3.29.4:
+    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -6147,11 +6114,11 @@ packages:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.30
-      postcss-import: 15.1.0(postcss@8.4.30)
-      postcss-js: 4.0.1(postcss@8.4.30)
-      postcss-load-config: 4.0.1(postcss@8.4.30)
-      postcss-nested: 6.0.1(postcss@8.4.30)
+      postcss: 8.4.31
+      postcss-import: 15.1.0(postcss@8.4.31)
+      postcss-js: 4.0.1(postcss@8.4.31)
+      postcss-load-config: 4.0.1(postcss@8.4.31)
+      postcss-nested: 6.0.1(postcss@8.4.31)
       postcss-selector-parser: 6.0.13
       resolve: 1.22.6
       sucrase: 3.34.0
@@ -6351,8 +6318,8 @@ packages:
     hasBin: true
     dev: true
 
-  /ufo@1.3.0:
-    resolution: {integrity: sha512-bRn3CsoojyNStCZe0BG0Mt4Nr/4KF+rhFlnNXybgqt5pXHNFRlqinSoQaTrGyzE4X8aHplSb+TorH+COin9Yxw==}
+  /ufo@1.3.1:
+    resolution: {integrity: sha512-uY/99gMLIOlJPwATcMVYfqDSxUR9//AUcgZMzwfSTJPDKzA1S8mX4VLqa+fiAtveraQUBCz4FFcwVZBGbwBXIw==}
     dev: true
 
   /unbox-primitive@1.0.2:
@@ -6481,8 +6448,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-node@0.34.5(@types/node@20.7.0):
-    resolution: {integrity: sha512-RNZ+DwbCvDoI5CbCSQSyRyzDTfFvFauvMs6Yq4ObJROKlIKuat1KgSX/Ako5rlDMfVCyMcpMRMTkJBxd6z8YRA==}
+  /vite-node@0.34.6(@types/node@20.7.1):
+    resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     dependencies:
@@ -6491,7 +6458,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.9(@types/node@20.7.0)
+      vite: 4.4.9(@types/node@20.7.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6514,13 +6481,13 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.2.2)
-      vite: 4.4.9(@types/node@20.7.0)
+      vite: 4.4.9(@types/node@20.7.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.4.9(@types/node@20.7.0):
+  /vite@4.4.9(@types/node@20.7.1):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -6548,16 +6515,16 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.7.0
+      '@types/node': 20.7.1
       esbuild: 0.18.20
-      postcss: 8.4.30
-      rollup: 3.29.3
+      postcss: 8.4.31
+      rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@0.34.5(@vitest/ui@0.34.5):
-    resolution: {integrity: sha512-CPI68mmnr2DThSB3frSuE5RLm9wo5wU4fbDrDwWQQB1CWgq9jQVoQwnQSzYAjdoBOPoH2UtXpOgHVge/uScfZg==}
+  /vitest@0.34.6(@vitest/ui@0.34.6):
+    resolution: {integrity: sha512-+5CALsOvbNKnS+ZHMXtuUC7nL8/7F1F2DnHGjSsszX8zCjWSSviphCb/NuS9Nzf4Q03KyyDRBAXhF/8lffME4Q==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     peerDependencies:
@@ -6589,28 +6556,28 @@ packages:
     dependencies:
       '@types/chai': 4.3.6
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.7.0
-      '@vitest/expect': 0.34.5
-      '@vitest/runner': 0.34.5
-      '@vitest/snapshot': 0.34.5
-      '@vitest/spy': 0.34.5
-      '@vitest/ui': 0.34.5(vitest@0.34.5)
-      '@vitest/utils': 0.34.5
+      '@types/node': 20.7.1
+      '@vitest/expect': 0.34.6
+      '@vitest/runner': 0.34.6
+      '@vitest/snapshot': 0.34.6
+      '@vitest/spy': 0.34.6
+      '@vitest/ui': 0.34.6(vitest@0.34.6)
+      '@vitest/utils': 0.34.6
       acorn: 8.10.0
       acorn-walk: 8.2.0
       cac: 6.7.14
-      chai: 4.3.9
+      chai: 4.3.10
       debug: 4.3.4
       local-pkg: 0.4.3
-      magic-string: 0.30.3
+      magic-string: 0.30.4
       pathe: 1.1.1
       picocolors: 1.0.0
       std-env: 3.4.3
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.7.0
-      vite: 4.4.9(@types/node@20.7.0)
-      vite-node: 0.34.5(@types/node@20.7.0)
+      vite: 4.4.9(@types/node@20.7.1)
+      vite-node: 0.34.6(@types/node@20.7.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
@@ -6759,6 +6726,7 @@ packages:
   /yaml@2.3.2:
     resolution: {integrity: sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==}
     engines: {node: '>= 14'}
+    dev: true
 
   /yargs-parser@18.1.3:
     resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}

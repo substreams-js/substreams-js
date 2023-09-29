@@ -1,4 +1,4 @@
-import * as Metric from "@effect/io/Metric";
+import { Metric } from "effect";
 
 export const HeadBlockNumber = Metric.gauge("substreams_sink_head_block_number", "The current block number");
 

@@ -21,32 +21,29 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/sink"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^1.3.1",
-    "@connectrpc/connect": "^0.13.2",
-    "@effect/data": "^0.18.6",
-    "@effect/io": "^0.41.1",
-    "@effect/match": "^0.35.2",
-    "@effect/stream": "^0.37.0",
     "@substreams/core": "workspace:*"
   },
+  "peerDependencies": {
+    "@bufbuild/protobuf": "^1.3.1",
+    "@connectrpc/connect": "^1.0.0",
+    "effect": "^2.0.0-next.37"
+  },
   "devDependencies": {
+    "@bufbuild/protobuf": "^1.3.1",
+    "@connectrpc/connect": "^1.0.0",
     "@vitest/coverage-c8": "^0.33.0",
-    "@vitest/ui": "^0.34.5",
+    "@vitest/ui": "^0.34.6",
+    "effect": "2.0.0-next.39",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-tsconfig-paths": "^4.2.1",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.6"
   }
 }

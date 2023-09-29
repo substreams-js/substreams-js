@@ -2,7 +2,8 @@ import * as Command from "@effect/cli/Command";
 import * as HelpDoc from "@effect/cli/HelpDoc";
 import * as Options from "@effect/cli/Options";
 import * as ValidationError from "@effect/cli/ValidationError";
-import { Data, Effect, Either, LogLevel, Logger, Match, Option } from "effect";
+import * as Match from "@effect/Match";
+import { Data, Effect, Either, LogLevel, Logger, Option } from "effect";
 
 import * as RunCommand from "./run";
 

@@ -6,14 +6,15 @@
     "start:node": "pnpm run --recursive --filter example-node start",
     "start:web": "pnpm run --recursive --parallel --filter example-web* start",
     "build": "pnpm run --recursive --filter \"./packages/*\" build",
-    "release": "pnpm changeset version && pnpm run --recursive --filter \"./packages/*\" release && pnpm changeset publish",
+    "release": "changeset version && pnpm run --recursive --filter \"./packages/*\" release && changeset publish",
     "test": "pnpm run --recursive --filter \"./packages/*\" test --run",
     "test:coverage": "pnpm run --recursive --filter \"./packages/*\" test:coverage",
-    "typecheck": "pnpm tsc --build",
+    "typecheck": "tsc --build",
     "format": "biome format --write . && biome check --apply .",
     "lint": "biome check ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.2.2",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
     "typescript": "^5.2.2"
@@ -24,13 +25,12 @@
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
       "@substreams/react": "workspace:*",
-      "@substreams/sink": "workspace:*"
+      "@substreams/sink": "workspace:*",
+      "@effect/printer": "0.17.0",
+      "@effect/printer-ansi": "0.17.0"
     },
     "peerDependencyRules": {
       "ignoreMissing": ["prop-types"]
     }
-  },
-  "dependencies": {
-    "@biomejs/biome": "^1.2.2"
   }
 }

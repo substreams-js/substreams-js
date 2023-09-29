@@ -21,34 +21,32 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/react"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^1.3.1",
-    "@connectrpc/connect": "^0.13.2",
-    "@connectrpc/connect-web": "^0.13.2",
     "@substreams/core": "workspace:*"
   },
   "devDependencies": {
+    "@bufbuild/protobuf": "^1.3.1",
+    "@connectrpc/connect": "^1.0.0",
+    "@connectrpc/connect-web": "^1.0.0",
     "@types/react": "^18.2.23",
     "@vitest/coverage-c8": "^0.33.0",
-    "@vitest/ui": "^0.34.5",
+    "@vitest/ui": "^0.34.6",
     "react": "^18.2.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-tsconfig-paths": "^4.2.1",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.6"
   },
   "peerDependencies": {
+    "@bufbuild/protobuf": "^1.3.1",
+    "@connectrpc/connect": "^1.0.0",
+    "@connectrpc/connect-web": "^1.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "peerDependenciesMeta": {

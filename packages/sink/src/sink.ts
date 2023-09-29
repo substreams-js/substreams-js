@@ -1,7 +1,5 @@
 import { type PlainMessage, toPlainMessage } from "@bufbuild/protobuf";
-import * as Data from "@effect/data/Data";
-import * as Effect from "@effect/io/Effect";
-import * as Sink from "@effect/stream/Sink";
+import { Data, Effect, Sink } from "effect";
 
 import type { BlockScopedData, BlockUndoSignal, Response } from "@substreams/core/proto";
 
