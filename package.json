@@ -25,9 +25,7 @@
       "@substreams/manifest": "workspace:*",
       "@substreams/mermaid": "workspace:*",
       "@substreams/react": "workspace:*",
-      "@substreams/sink": "workspace:*",
-      "@effect/printer": "0.17.0",
-      "@effect/printer-ansi": "0.17.0"
+      "@substreams/sink": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": ["prop-types"]

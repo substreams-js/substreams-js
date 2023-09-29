@@ -21,7 +21,12 @@
     },
     "./package.json": "./package.json"
   },
-  "files": ["dist/**", "!dist/**/.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
@@ -35,7 +40,7 @@
     "@connectrpc/connect": "^1.0.0",
     "@connectrpc/connect-web": "^1.0.0",
     "@types/react": "^18.2.23",
-    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.6",
     "react": "^18.2.0",
     "typescript": "^5.2.2",
