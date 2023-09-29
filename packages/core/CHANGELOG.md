@@ -1,5 +1,13 @@
 # @substreams/core
 
+## 0.2.0
+
+### Minor Changes
+
+- [`f7b8aed`](https://github.com/substreams-js/substreams-js/commit/f7b8aed31721b7cbd4a497745a858136d78cf616) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
+- [`83943e3`](https://github.com/substreams-js/substreams-js/commit/83943e38a382fec08e93788a9c86aab7738a426d) Thanks [@fubhy](https://github.com/fubhy)! - Use `effect` meta package and update all other dependencies
+
 ## 0.1.19
 
 ### Patch Changes
