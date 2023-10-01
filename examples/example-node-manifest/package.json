@@ -14,7 +14,7 @@
     "@substreams/manifest": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.7.1",
+    "@types/node": "^20.8.0",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   }

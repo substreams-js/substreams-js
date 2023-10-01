@@ -11,13 +11,13 @@
     "@connectrpc/connect-node": "^1.0.0",
     "@effect/cli": "^0.15.1",
     "@effect/match": "^0.36.1",
-    "@effect/platform-node": "^0.19.1",
-    "@effect/schema": "^0.39.1",
+    "@effect/platform-node": "^0.19.2",
+    "@effect/schema": "^0.39.2",
     "@substreams/sink": "workspace:*",
     "effect": "^2.0.0-next.39"
   },
   "devDependencies": {
-    "@types/node": "^20.7.1",
+    "@types/node": "^20.8.0",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   }
