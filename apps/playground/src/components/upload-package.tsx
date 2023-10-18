@@ -13,7 +13,9 @@ export function UploadPackage() {
   const mutation = useMutation({
     // TODO: Upload to a server somewhere.
     mutationFn: async (pkg: Package) => pkg,
-    onMutate: (pkg) => client.setQueryData(["substream", "uploaded"], () => pkg),
+    onMutate: (pkg) => {
+      client.setQueryData(["substream", "uploaded"], () => pkg);
+    },
   });
 
   const { getRootProps, getInputProps } = useDropzone({
