@@ -2,7 +2,12 @@ import * as Schema from "@effect/schema/Schema";
 import { nameRegExp, semverRegExp } from "@substreams/core";
 import { expandEnv } from "../utils/expand-env.js";
 
-const expandEnvTransform = Schema.transform(Schema.string, Schema.string, expandEnv, (value) => value);
+const expandEnvTransform = Schema.transform(
+  Schema.string,
+  Schema.string,
+  (_) => expandEnv(_),
+  (value) => value,
+);
 
 export const BinaryTypeSchema = Schema.literal("wasm/rust-v1");
 export type BinaryType = Schema.Schema.To<typeof BinaryTypeSchema>;

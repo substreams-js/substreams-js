@@ -264,15 +264,12 @@ export function createStream({
 
         return Effect.unit;
       }),
-      Stream.tapError((error) => {
-        if (Predicate.isTagged("RetryableStreamError")) {
-          return Effect.logWarning(`Encountered a retryable error while streaming: ${error.message}}`);
-        } else if (Predicate.isTagged("FatalStreamError")) {
-          return Effect.logWarning(`Encountered a fatal error while streaming: ${error.message}}`);
-        }
-
-        return Effect.unit;
-      }),
+      Stream.tapError((error) =>
+        Effect.all([
+          Metric.increment(Metrics.SubstreamsErrorCount),
+          Effect.logWarning(`Encountered an error while streaming: ${String(error)}}`),
+        ]),
+      ),
     );
 
     return stream.pipe(
@@ -289,7 +286,7 @@ export function createStream({
           // Retry only on retryable errors.
           Schedule.whileInput(Predicate.isTagged("RetryableStreamError")),
           // TODO: There seems to be a bug with type inference here for the `Schedule` input.
-          Schedule.tapInput(() => Effect.logWarning("Retrying after stream error")),
+          Schedule.tapInput(() => Effect.logWarning("Retrying after retryable stream error")),
         ),
       ),
     );

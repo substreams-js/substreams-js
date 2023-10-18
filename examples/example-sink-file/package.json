@@ -7,18 +7,18 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@connectrpc/connect": "^1.0.0",
-    "@connectrpc/connect-node": "^1.0.0",
-    "@effect/cli": "^0.15.1",
-    "@effect/match": "^0.36.1",
-    "@effect/platform-node": "^0.19.2",
-    "@effect/schema": "^0.39.2",
+    "@connectrpc/connect": "^1.1.2",
+    "@connectrpc/connect-node": "^1.1.2",
+    "@effect/cli": "^0.17.0",
+    "@effect/match": "^0.40.0",
+    "@effect/platform-node": "^0.24.0",
+    "@effect/schema": "^0.44.0",
     "@substreams/sink": "workspace:*",
-    "effect": "^2.0.0-next.39"
+    "effect": "2.0.0-next.49"
   },
   "devDependencies": {
-    "@types/node": "^20.8.0",
-    "tsx": "^3.13.0",
+    "@types/node": "^20.8.7",
+    "tsx": "^3.14.0",
     "typescript": "^5.2.2"
   }
 }
