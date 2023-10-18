@@ -1,5 +1,16 @@
 # @substreams/sink
 
+## 0.2.0
+
+### Minor Changes
+
+- [`5ebdd6c`](https://github.com/substreams-js/substreams-js/commit/5ebdd6c3fd07fdaa252b0a41762c28fac4daeafb) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`5ebdd6c`](https://github.com/substreams-js/substreams-js/commit/5ebdd6c3fd07fdaa252b0a41762c28fac4daeafb)]:
+  - @substreams/core@0.3.0
+
 ## 0.1.0
 
 ### Minor Changes
