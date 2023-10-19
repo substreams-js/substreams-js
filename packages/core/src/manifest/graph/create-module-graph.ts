@@ -129,7 +129,7 @@ export class ModuleGraph {
       return carry;
     }, INITIAL_BLOCK_UNSET);
 
-    return block === INITIAL_BLOCK_UNSET ? 0 : block;
+    return block === INITIAL_BLOCK_UNSET ? 0n : block;
   }
 }
 
