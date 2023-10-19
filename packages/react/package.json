@@ -1,6 +1,6 @@
 {
   "name": "@substreams/react",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",

@@ -1,5 +1,12 @@
 # @substreams/react
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`c563781`](https://github.com/substreams-js/substreams-js/commit/c563781dfd31f1b357e61e7bf3f5d489cb7d62a7)]:
+  - @substreams/core@0.5.0
+
 ## 0.4.0
 
 ### Minor Changes
