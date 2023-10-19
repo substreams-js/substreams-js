@@ -1,6 +1,6 @@
 {
   "name": "@substreams/manifest",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.build.json",
