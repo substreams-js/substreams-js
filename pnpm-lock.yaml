@@ -277,9 +277,6 @@ importers:
       '@effect/cli':
         specifier: ^0.18.0
         version: 0.18.0(@effect/printer-ansi@0.20.0)(@effect/printer@0.20.0)(@effect/schema@0.45.7)(effect@2.0.0-next.50)
-      '@effect/match':
-        specifier: ^0.40.0
-        version: 0.40.0(effect@2.0.0-next.50)
       '@effect/platform-node':
         specifier: ^0.25.0
         version: 0.25.0(@effect/schema@0.45.7)(effect@2.0.0-next.50)
@@ -392,7 +389,7 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6(vitest@0.34.6)
       effect:
-        specifier: 2.0.0-next.50
+        specifier: ^2.0.0-next.50
         version: 2.0.0-next.50
       typescript:
         specifier: ^5.2.2
@@ -500,7 +497,7 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6(vitest@0.34.6)
       effect:
-        specifier: 2.0.0-next.50
+        specifier: ^2.0.0-next.50
         version: 2.0.0-next.50
       typescript:
         specifier: ^5.2.2
@@ -972,14 +969,6 @@ packages:
       '@effect/printer': 0.20.0(@effect/typeclass@0.12.0)(effect@2.0.0-next.50)
       '@effect/printer-ansi': 0.20.0(@effect/typeclass@0.12.0)(effect@2.0.0-next.50)
       '@effect/schema': 0.45.7(effect@2.0.0-next.50)(fast-check@3.13.2)
-      effect: 2.0.0-next.50
-    dev: false
-
-  /@effect/match@0.40.0(effect@2.0.0-next.50):
-    resolution: {integrity: sha512-1v2UpVxbUybx6zmN0R1uraRkCju15xLmHquoNQxPFGrQABq2dRI0nSsVM+/yibggUnQ9QAEx2MxQ6xdrQR+8hg==}
-    peerDependencies:
-      effect: 2.0.0-next.47
-    dependencies:
       effect: 2.0.0-next.50
     dev: false
 
