@@ -80,7 +80,7 @@ export function createStream({
   maxRetrySeconds = 300,
 }: CreateStreamOptions): Stream.Stream<never, StreamError, Response> {
   const create = Effect.gen(function* (_) {
-    const requestActiveStartBlock = yield* _(Ref.make(0n));
+    const requestActiveStartBlock = yield* _(Ref.make(BigInt(0)));
     const currentCursor = yield* _(Ref.make(startCursor ? Option.some<string>(startCursor) : Option.none<string>()));
 
     const metrics = Sink.forEach((response: Response) =>
@@ -116,7 +116,7 @@ export function createStream({
             yield* _(Metric.increment(Metrics.ProgressMessageCount));
             yield* _(Metric.incrementBy(Metrics.ProgressMessageSizeBytes, size));
 
-            let totalProcessedBlocks = 0n;
+            let totalProcessedBlocks = BigInt(0);
             const latestEndBlockPerStage = new Map<number, bigint>();
             const jobsPerStage = new Map<number, bigint>();
 
@@ -124,12 +124,12 @@ export function createStream({
               totalProcessedBlocks += job.processedBlocks;
 
               const jobEndBlock = job.startBlock + job.processedBlocks;
-              const prevEndBlock = latestEndBlockPerStage.get(job.stage) ?? 0n;
+              const prevEndBlock = latestEndBlockPerStage.get(job.stage) ?? BigInt(0);
               if (jobEndBlock > prevEndBlock) {
                 latestEndBlockPerStage.set(job.stage, jobEndBlock);
               }
 
-              jobsPerStage.set(job.stage, (jobsPerStage.get(job.stage) ?? 0n) + 1n);
+              jobsPerStage.set(job.stage, (jobsPerStage.get(job.stage) ?? BigInt(0)) + BigInt(1n));
             }
 
             for (const [i, block] of latestEndBlockPerStage) {

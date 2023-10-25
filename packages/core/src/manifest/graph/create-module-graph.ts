@@ -4,7 +4,7 @@ import { assertAcyclic } from "./assert-acyclic.js";
 import { shortestPaths } from "./shortest-paths.js";
 import { topologicalSort } from "./topological-sort.js";
 
-export const INITIAL_BLOCK_UNSET = 18_446_744_073_709_551_615n;
+export const INITIAL_BLOCK_UNSET = BigInt("18446744073709551615");
 
 export class ModuleGraph {
   protected readonly modules: Module[];
@@ -129,7 +129,7 @@ export class ModuleGraph {
       return carry;
     }, INITIAL_BLOCK_UNSET);
 
-    return block === INITIAL_BLOCK_UNSET ? 0n : block;
+    return block === INITIAL_BLOCK_UNSET ? BigInt(0) : block;
   }
 }
 

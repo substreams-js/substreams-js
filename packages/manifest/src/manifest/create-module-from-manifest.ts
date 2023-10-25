@@ -9,7 +9,7 @@ import {
 } from "@substreams/core/proto";
 import type { Module as ModuleSchema } from "./manifest-schema.js";
 
-const MAX_UINT_64 = 18_446_744_073_709_551_615n;
+const MAX_UINT_64 = BigInt("18446744073709551615");
 
 export function createModuleFromManifest(module: ModuleSchema, index: number): Module {
   const out = new Module({

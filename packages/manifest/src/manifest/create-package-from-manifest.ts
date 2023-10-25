@@ -21,7 +21,7 @@ export function createPackageFromManifest(
   });
 
   const pkg = new Package({
-    version: 1n,
+    version: BigInt(1),
     packageMeta: [meta],
     modules: new Modules(),
     ...(manifest.network !== undefined ? { network: manifest.network } : undefined),
@@ -34,7 +34,7 @@ export function createPackageFromManifest(
   for (const module of manifest.modules) {
     pkg.moduleMeta.push(
       new ModuleMetadata({
-        packageIndex: 0n, // Re-indexing happens later.
+        packageIndex: BigInt(0), // Re-indexing happens later.
         ...(module.doc !== undefined ? { doc: module.doc } : undefined),
       }),
     );

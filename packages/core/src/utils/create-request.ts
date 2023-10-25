@@ -49,7 +49,7 @@ export function createRequest({
   substreamPackage,
   outputModule,
   startBlockNum,
-  stopBlockNum = 0n,
+  stopBlockNum = BigInt(0),
   productionMode,
   startCursor,
   finalBlocksOnly,
@@ -106,7 +106,7 @@ function resolveStartBlockNum(moduleGraph: ModuleGraph, outputModule: Module, st
   const startBlockBi = BigInt(startBlockNum);
 
   // If the start block is specified & non-relative, make sure it's not before the start block of the output module.
-  if (startBlockBi > 0n) {
+  if (startBlockBi > BigInt(0)) {
     const moduleStartBlock = moduleGraph.startBlockFor(outputModule);
     if (moduleStartBlock > startBlockBi) {
       throw new Error(`Given start block ${startBlockBi} is before the modules initial block (${moduleStartBlock})`);
@@ -130,7 +130,7 @@ function resolveOutputModule(substreamPackage: Package, outputModule: Module | s
 
 function resolveStopBlockNum(startBlockNum: bigint, stopBlockNum: number | bigint | `+${number}` | `+${bigint}`) {
   if (typeof stopBlockNum === "string" && stopBlockNum.startsWith("+")) {
-    if (startBlockNum < 0n) {
+    if (startBlockNum < BigInt(0)) {
       throw new Error("A relative stop block number is only supported with an absolute start block number.");
     }
 

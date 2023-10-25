@@ -22,8 +22,10 @@ const bigintish = z
 const schema = z
   .object({
     module: z.string(),
-    start: bigintish.pipe(z.bigint().min(0n, { message: "Must be greater than or equal to 0." })),
-    stop: bigintish.pipe(z.bigint().min(0n, { message: "Must be greater than or equal to 0." }).optional()).optional(),
+    start: bigintish.pipe(z.bigint().min(BigInt(0), { message: "Must be greater than or equal to 0." })),
+    stop: bigintish
+      .pipe(z.bigint().min(BigInt(0), { message: "Must be greater than or equal to 0." }).optional())
+      .optional(),
   })
   .refine((data) => data.stop === undefined || data.start < data.stop, {
     path: ["stop"],

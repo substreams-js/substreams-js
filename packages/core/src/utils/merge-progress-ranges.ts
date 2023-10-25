@@ -31,7 +31,7 @@ export function mergeSortedProgressRanges(ranges: ProgressRange[]) {
   const result = [previous];
 
   for (const next of ranges) {
-    if (next[0] > previous[1] + 1n) {
+    if (next[0] > previous[1] + BigInt(1)) {
       previous = [next[0], next[1]];
       result.push(previous);
       continue;
