@@ -46,16 +46,9 @@ export const InputSchema = Schema.union(
 );
 export type Input = Schema.Schema.To<typeof InputSchema>;
 
-export const InitialBlockSchema = Schema.union(
+export const InitialBlockSchema = Schema.compose(
+  Schema.union(Schema.bigint, Schema.bigintFromSelf, Schema.BigintFromNumber),
   Schema.NonNegativeBigintFromSelf,
-  Schema.NonNegativeBigint,
-  Schema.NonNegative,
-).pipe(
-  Schema.transform(
-    Schema.bigintFromSelf,
-    (_) => BigInt(_),
-    (_) => String(_),
-  ),
 );
 
 export type InitialBlock = Schema.Schema.To<typeof InitialBlockSchema>;
