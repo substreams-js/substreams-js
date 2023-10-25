@@ -9,15 +9,15 @@
   "dependencies": {
     "@connectrpc/connect": "^1.1.2",
     "@connectrpc/connect-node": "^1.1.2",
-    "@effect/cli": "^0.17.0",
+    "@effect/cli": "^0.18.0",
     "@effect/match": "^0.40.0",
-    "@effect/platform-node": "^0.24.0",
-    "@effect/schema": "^0.44.0",
+    "@effect/platform-node": "^0.25.0",
+    "@effect/schema": "^0.45.7",
     "@substreams/sink": "workspace:*",
-    "effect": "2.0.0-next.49"
+    "effect": "2.0.0-next.50"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.8.8",
     "tsx": "^3.14.0",
     "typescript": "^5.2.2"
   }
