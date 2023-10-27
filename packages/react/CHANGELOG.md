@@ -1,5 +1,16 @@
 # @substreams/react
 
+## 0.5.0
+
+### Minor Changes
+
+- [`8156c6f`](https://github.com/substreams-js/substreams-js/commit/8156c6f853c8a0367f44039bbc286563b7996609) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`8156c6f`](https://github.com/substreams-js/substreams-js/commit/8156c6f853c8a0367f44039bbc286563b7996609)]:
+  - @substreams/core@0.6.0
+
 ## 0.4.1
 
 ### Patch Changes
