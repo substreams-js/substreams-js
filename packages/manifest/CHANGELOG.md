@@ -1,5 +1,18 @@
 # @substreams/manifest
 
+## 0.5.0
+
+### Minor Changes
+
+- [`a061703`](https://github.com/substreams-js/substreams-js/commit/a06170328364c9aad8137b4712da40e7f319e4ce) Thanks [@fubhy](https://github.com/fubhy)! - Fix peer dep version of `@effect/schema`
+
+### Patch Changes
+
+- [`e9b9bfd`](https://github.com/substreams-js/substreams-js/commit/e9b9bfd9846dc3ffbaaa5410ea8a816789ac5ccd) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies and removed `expandEnv` transform
+
+- Updated dependencies [[`e9b9bfd`](https://github.com/substreams-js/substreams-js/commit/e9b9bfd9846dc3ffbaaa5410ea8a816789ac5ccd)]:
+  - @substreams/core@0.6.1
+
 ## 0.4.0
 
 ### Minor Changes

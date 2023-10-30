@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.6.1
+
+### Patch Changes
+
+- [`e9b9bfd`](https://github.com/substreams-js/substreams-js/commit/e9b9bfd9846dc3ffbaaa5410ea8a816789ac5ccd) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies and removed `expandEnv` transform
+
 ## 0.6.0
 
 ### Minor Changes
