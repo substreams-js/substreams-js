@@ -7,16 +7,16 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@connectrpc/connect": "^1.1.2",
-    "@connectrpc/connect-node": "^1.1.2",
-    "@effect/cli": "^0.18.0",
-    "@effect/platform-node": "^0.25.0",
-    "@effect/schema": "^0.45.7",
+    "@connectrpc/connect": "^1.1.3",
+    "@connectrpc/connect-node": "^1.1.3",
+    "@effect/cli": "^0.19.0",
+    "@effect/platform-node": "^0.27.4",
+    "@effect/schema": "^0.46.3",
     "@substreams/sink": "workspace:*",
-    "effect": "2.0.0-next.50"
+    "effect": "2.0.0-next.52"
   },
   "devDependencies": {
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.9",
     "tsx": "^3.14.0",
     "typescript": "^5.2.2"
   }
