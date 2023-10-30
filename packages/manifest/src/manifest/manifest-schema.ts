@@ -1,13 +1,5 @@
 import * as Schema from "@effect/schema/Schema";
 import { nameRegExp, semverRegExp } from "@substreams/core";
-import { expandEnv } from "../utils/expand-env.js";
-
-const expandEnvTransform = Schema.transform(
-  Schema.string,
-  Schema.string,
-  (_) => expandEnv(_),
-  (value) => value,
-);
 
 export const BinaryTypeSchema = Schema.literal("wasm/rust-v1");
 export type BinaryType = Schema.Schema.To<typeof BinaryTypeSchema>;
@@ -17,7 +9,7 @@ export type ManifestSpecVersion = Schema.Schema.To<typeof ManifestSpecVersionSch
 
 export const ProtobufSchema = Schema.struct({
   files: Schema.array(Schema.string.pipe(Schema.pattern(/\.proto$/))),
-  importPaths: Schema.array(expandEnvTransform),
+  importPaths: Schema.array(Schema.string),
 });
 export type Protobuf = Schema.Schema.To<typeof ProtobufSchema>;
 
@@ -153,7 +145,7 @@ export const ManifestSchema = Schema.struct({
     ),
   ),
   imports: Schema.optional(
-    Schema.record(Schema.string.pipe(Schema.pattern(/^[A-Za-z_][A-Za-z0-9_-]*$/)), expandEnvTransform),
+    Schema.record(Schema.string.pipe(Schema.pattern(/^[A-Za-z_][A-Za-z0-9_-]*$/)), Schema.string),
   ),
   modules: Schema.array(Schema.lazy(() => ModuleSchema)).pipe(Schema.minItems(1)),
   package: Schema.lazy(() => PackageSchema),
