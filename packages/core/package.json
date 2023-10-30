@@ -1,6 +1,6 @@
 {
   "name": "@substreams/core",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "license": "MIT",
   "scripts": {
     "codegen": "rm -rf src/proto && buf generate buf.build/streamingfast/substreams",

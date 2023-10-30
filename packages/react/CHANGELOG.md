@@ -1,5 +1,14 @@
 # @substreams/react
 
+## 0.5.2
+
+### Patch Changes
+
+- [`29f9340`](https://github.com/substreams-js/substreams-js/commit/29f9340178bf9ba0e5fd343306564fc99fb3ba47) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies and removed `expandEnv` transform
+
+- Updated dependencies [[`29f9340`](https://github.com/substreams-js/substreams-js/commit/29f9340178bf9ba0e5fd343306564fc99fb3ba47)]:
+  - @substreams/core@0.6.2
+
 ## 0.5.1
 
 ### Patch Changes
