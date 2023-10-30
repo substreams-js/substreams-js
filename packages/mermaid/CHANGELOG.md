@@ -1,5 +1,14 @@
 # @substreams/mermaid
 
+## 0.3.1
+
+### Patch Changes
+
+- [`e9b9bfd`](https://github.com/substreams-js/substreams-js/commit/e9b9bfd9846dc3ffbaaa5410ea8a816789ac5ccd) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies and removed `expandEnv` transform
+
+- Updated dependencies [[`e9b9bfd`](https://github.com/substreams-js/substreams-js/commit/e9b9bfd9846dc3ffbaaa5410ea8a816789ac5ccd)]:
+  - @substreams/core@0.6.1
+
 ## 0.3.0
 
 ### Minor Changes
