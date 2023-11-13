@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
-      - name: Run build
-        run: pnpm run build
-
       - name: Check types
         run: pnpm run typecheck
 
@@ -47,9 +44,6 @@ jobs:
 
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
-
-      - name: Run build
-        run: pnpm run build
 
       - name: Run tests
         run: pnpm run test

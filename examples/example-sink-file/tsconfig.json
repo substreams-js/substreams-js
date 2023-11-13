@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src"],
   "references": [
     {
       "path": "../../packages/core/tsconfig.json"
@@ -13,13 +13,8 @@
     }
   ],
   "compilerOptions": {
-    "outDir": "../../.cache/tsc/examples/example-sink-file",
     "types": ["node"],
-    "paths": {
-      "@substreams/core": ["../../packages/core/src/index.js"],
-      "@substreams/core/proto": ["../../packages/core/src/proto.js"],
-      "@substreams/sink": ["../../packages/sink/src/index.js"],
-      "@substreams/manifest": ["../../packages/manifest/src/index.js"],
-    }
+    "rootDir": "src",
+    "outDir": "build"
   }
 }

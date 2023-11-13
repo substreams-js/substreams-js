@@ -1,17 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "test/**/*.ts"],
   "references": [
     {
-      "path": "../core/tsconfig.json"
+      "path": "tsconfig.src.json"
+    },
+    {
+      "path": "tsconfig.test.json"
     }
-  ],
-  "compilerOptions": {
-    "outDir": "../../.cache/tsc/packages/mermaid",
-    "paths": {
-      "@substreams/testutils": ["../core/tests/index.js"],
-      "@substreams/core": ["../core/src/index.js"],
-      "@substreams/core/proto": ["../core/src/proto.js"]
-    }
-  }
+  ]
 }

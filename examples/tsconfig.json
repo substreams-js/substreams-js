@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.base.json",
+  "references": [
+    {
+      "path": "example-node"
+    },
+    {
+      "path": "example-node-manifest"
+    },
+    {
+      "path": "example-sea"
+    },
+    {
+      "path": "example-web"
+    },
+    {
+      "path": "example-sink-file"
+    }
+  ]
+}

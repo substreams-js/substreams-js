@@ -1,17 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "test/**/*.ts"],
   "references": [
     {
-      "path": "../core/tsconfig.json"
+      "path": "tsconfig.src.json"
     }
-  ],
-  "compilerOptions": {
-    "outDir": "../../.cache/tsc/packages/sink",
-    "paths": {
-      "@substreams/testutils": ["../core/tests/index.js"],
-      "@substreams/core": ["../core/src/index.js"],
-      "@substreams/core/proto": ["../core/src/proto.js"]
-    },
-  }
+  ]
 }

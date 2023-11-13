@@ -6,6 +6,7 @@
       ".vercel/",
       ".next/",
       "dist/",
+      "build/",
       "proto/",
       "coverage/",
       "out/",

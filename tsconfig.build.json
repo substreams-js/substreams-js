@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "packages/core/tsconfig.build.json"
+    },
+    {
+      "path": "packages/manifest/tsconfig.build.json"
+    },
+    {
+      "path": "packages/mermaid/tsconfig.build.json"
+    },
+    {
+      "path": "packages/react/tsconfig.build.json"
+    },
+    {
+      "path": "packages/sink/tsconfig.build.json"
+    },
+  ]
+}

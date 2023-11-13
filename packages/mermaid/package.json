@@ -1,36 +1,23 @@
 {
   "name": "@substreams/mermaid",
+  "description": "",
   "version": "0.3.2",
   "license": "MIT",
-  "scripts": {
-    "build": "rm -rf dist && tsc --project tsconfig.build.json",
-    "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage"
-  },
-  "sideEffects": false,
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/substreams-js/substreams-js.git",
     "directory": "packages/mermaid"
+  },
+  "scripts": {
+    "build": "pnpm build-esm && pnpm build-cjs && pnpm build-annotate && build-utils pack-v2",
+    "build-esm": "tsc -b tsconfig.build.json",
+    "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
+    "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "dependencies": {
     "@substreams/core": "workspace:*"
@@ -40,12 +27,6 @@
   },
   "devDependencies": {
     "@types/pako": "^2.0.3",
-    "@vitest/coverage-v8": "^0.34.6",
-    "@vitest/ui": "^0.34.6",
-    "pako": "^2.1.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "vite-tsconfig-paths": "^4.2.1",
-    "vitest": "^0.34.6"
+    "pako": "^2.1.0"
   }
 }

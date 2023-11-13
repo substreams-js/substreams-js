@@ -1,42 +1,83 @@
 {
+  "include": [],
   "compilerOptions": {
-    // Project references
-    "composite": true,
-    "incremental": true,
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "noEmitOnError": true,
-
-    // Type checking
     "strict": true,
+    "moduleDetection": "force",
+    "composite": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": false,
+    "declaration": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true,
+    "emitDecoratorMetadata": true,
     "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "isolatedModules": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "noImplicitReturns": false,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-
-    // Modules
-    "module": "ESNext",
-    "moduleResolution": "Node",
-
-    // JavaScript support
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": false,
+    "noErrorTruncation": false,
     "allowJs": false,
     "checkJs": false,
-
-    // Interop constraints
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-
-    // Language and environment
-    "target": "ES2020",
-    "lib": ["DOM", "ES2020"],
-
-    // Sourcemaps
-    "sourceMap": true
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": false,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "incremental": true,
+    "removeComments": false,
+    "paths": {
+      "@substreams/core": [
+        "./packages/core/src/index.js"
+      ],
+      "@substreams/core/testutils": [
+        "./packages/core/src/testutils/index.js"
+      ],
+      "@substreams/core/*": [
+        "./packages/core/src/*.js"
+      ],
+      "@substreams/mermaid": [
+        "./packages/mermaid/src/index.js"
+      ],
+      "@substreams/mermaid/*": [
+        "./packages/mermaid/src/*.js"
+      ],
+      "@substreams/manifest": [
+        "./packages/manifest/src/index.js"
+      ],
+      "@substreams/manifest/*": [
+        "./packages/manifest/src/*.js"
+      ],
+      "@substreams/sink": [
+        "./packages/sink/src/index.js"
+      ],
+      "@substreams/sink/*": [
+        "./packages/sink/src/*.js"
+      ],
+      "@substreams/react": [
+        "./packages/react/src/index.js"
+      ],
+      "@substreams/react/*": [
+        "./packages/react/src/*.js"
+      ],
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ]
   }
 }

@@ -1,13 +1,14 @@
 {
-	"extends": "./tsconfig.json",
-	"include": ["src/**/*.ts"],
-	"exclude": ["src/**/*.test.ts"],
-	"compilerOptions": {
-		"rootDir": "src",
-		"outDir": "dist",
-		"declarationDir": "dist",
-		"tsBuildInfoFile": "dist/.tsbuildinfo",
-		"emitDeclarationOnly": false,
-		"paths": {}
-	}
+  "extends": "./tsconfig.src.json",
+  "references": [
+    {
+      "path": "../core"
+    }
+  ],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo/build.tsbuildinfo",
+    "outDir": "build/esm",
+    "declarationDir": "build/dts",
+    "stripInternal": true
+  }
 }

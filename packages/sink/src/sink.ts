@@ -1,7 +1,6 @@
 import { type PlainMessage, toPlainMessage } from "@bufbuild/protobuf";
-import { Data, Effect, Sink } from "effect";
-
 import type { BlockScopedData, BlockUndoSignal, Response } from "@substreams/core/proto";
+import { Data, Effect, Sink } from "effect";
 
 export class SinkError extends Data.TaggedClass("SinkError")<{
   readonly cause: BlockScopedDataSinkError | BlockUndoSignalSinkError;
