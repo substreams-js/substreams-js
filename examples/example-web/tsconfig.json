@@ -7,13 +7,9 @@
     }
   ],
   "compilerOptions": {
-    "outDir": "../../.cache/tsc/examples/example-web",
+    "outDir": "build",
     "lib": ["DOM", "ESNext"],
     "types": ["web", "vite/client"],
-    "jsx": "react-jsx",
-    "paths": {
-      "@substreams/core": ["../../packages/core/src/index.js"],
-      "@substreams/core/proto": ["../../packages/core/src/proto.js"]
-    }
+    "jsx": "react-jsx"
   }
 }
