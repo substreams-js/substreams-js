@@ -6,6 +6,7 @@
     "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",
     "start:web": "pnpm run --recursive --parallel --filter example-web* start",
+    "release": "pnpm build && pnpm changeset publish",
     "build": "pnpm tsc --build tsconfig.build.json && pnpm run --recursive --parallel --filter \"./packages/*\" build",
     "test": "pnpm vitest",
     "test:coverage": "pnpm vitest --coverage",
