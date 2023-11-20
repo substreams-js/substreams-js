@@ -1,28 +1,10 @@
-import * as Args from "@effect/cli/Args";
-import * as Command from "@effect/cli/Command";
-import * as Options from "@effect/cli/Options";
-import * as Schema from "@effect/schema/Schema";
-import { Data, Duration, Effect, Option } from "effect";
-
+import { Args, Command, Options } from "@effect/cli";
+import { Path } from "@effect/platform-node";
+import { Schema } from "@effect/schema";
+import { isRemotePath } from "@substreams/manifest/utils/path-utils";
+import { Data, Duration, Effect, HashMap, Option } from "effect";
 import * as Stream from "../stream/stream.js";
 import { parseSchema } from "../utils/parse-schema.js";
-
-const Param = Schema.templateLiteral(Schema.string, Schema.literal("="), Schema.string).pipe(
-  Schema.description("A parameter in the form of `module=value`"),
-  Schema.transform(
-    Schema.tuple(Schema.string, Schema.string),
-    (item) => {
-      const index = item.indexOf("=");
-      const module = item.slice(0, index);
-      const value = item.slice(index + 1);
-      return [module, value] as const;
-    },
-    ([module, value]) => `${module}=${value}` as const,
-  ),
-  Schema.brand("Param"),
-);
-
-const Params = Schema.chunkFromSelf(Param);
 
 const MaxRetryDuration = Schema.NumberFromString;
 
@@ -33,27 +15,28 @@ export class RunCommand extends Data.TaggedClass("RunCommand")<{
   readonly finalBlocksOnly: boolean;
   readonly developmentMode: boolean;
   readonly maxRetryDuration: Duration.Duration;
-  readonly params: Schema.Schema.To<typeof Params>;
+  readonly params: Option.Option<HashMap.HashMap<string, string>>;
 }> {}
 
-export const command: Command.Command<RunCommand> = Command.make("run", {
+export const command: Command.Command<RunCommand> = Command.standard("run", {
   args: Args.text({ name: "substream" }).pipe(
-    Args.addDescription("The path to a substream package (.spkg) or substreams.yaml file"),
-    Args.between(0, 1),
-    Args.map((_) => Option.getOrElse(Option.fromIterable(_), () => "./substreams.yaml")),
+    Args.withDescription("The path to a substream package (.spkg) or substreams.yaml file"),
+    Args.withDefault("substreams.yaml"),
   ),
   options: Options.all({
-    outputModule: Options.text("output-module").pipe(Options.alias("o"), Options.withDescription("Output module name")),
-    params: Options.text("params").pipe(
-      Options.alias("p"),
-      Options.repeat,
+    outputModule: Options.text("output-module").pipe(
+      Options.withAlias("o"),
+      Options.withDescription("Output module name"),
+    ),
+    params: Options.keyValueMap("params").pipe(
+      Options.optional,
+      Options.withAlias("p"),
       Options.withDescription(
         "Set params for parameterizable modules in the form of `-p <module>=<value>`. Can be specified multiple times (e.g. `-p module1=valA -p module2=valX&valY`)",
       ),
-      Options.mapOrFail(parseSchema(Params)),
     ),
     endpoint: Options.text("endpoint").pipe(
-      Options.alias("e"),
+      Options.withAlias("e"),
       Options.withDescription("Endpoint to connect to"),
       Options.withDefault("https://mainnet.eth.streamingfast.io"),
     ),
@@ -89,10 +72,20 @@ export const command: Command.Command<RunCommand> = Command.make("run", {
 );
 
 export function handle(command: RunCommand) {
-  const program = Stream.runStream({
-    packagePath: command.packagePath,
-    outputModule: command.outputModule,
-  });
+  return Effect.gen(function* (_) {
+    let packagePath = command.packagePath;
+    if (!isRemotePath(command.packagePath)) {
+      const path = yield* _(Path.Path);
+      if (!path.isAbsolute(packagePath)) {
+        packagePath = path.join(process.cwd(), packagePath);
+      }
+    }
 
-  return Effect.provide(program, Stream.layer);
+    const stream = Stream.runStream({
+      packagePath,
+      outputModule: command.outputModule,
+    });
+
+    yield* _(Effect.provide(stream, Stream.layer));
+  });
 }

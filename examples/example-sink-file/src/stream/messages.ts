@@ -1,4 +1,4 @@
-import * as Fs from "@effect/platform-node/FileSystem";
+import { FileSystem } from "@effect/platform-node";
 import { Context, Effect, Layer } from "effect";
 
 export interface MessageStorage {
@@ -8,7 +8,7 @@ export interface MessageStorage {
 export const MessageStorage = Context.Tag<MessageStorage>();
 export const MessageStorageLive = Effect.gen(function* (_) {
   const path = ".messages";
-  const fs = yield* _(Fs.FileSystem);
+  const fs = yield* _(FileSystem.FileSystem);
   const db = yield* _(fs.open(path, { flag: "a" }).pipe(Effect.orDie));
 
   return Layer.succeed(
@@ -19,4 +19,4 @@ export const MessageStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(Fs.layer, MessageStorageLive);
+export const layer = Layer.provide(FileSystem.layer, MessageStorageLive);

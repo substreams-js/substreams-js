@@ -13,8 +13,8 @@
     "@substreams/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
-    "tsx": "^4.1.1",
+    "@types/node": "^20.9.2",
+    "tsx": "^4.1.4",
     "typescript": "^5.2.2"
   }
 }

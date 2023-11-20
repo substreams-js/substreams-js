@@ -1,4 +1,4 @@
-import * as Fs from "@effect/platform-node/FileSystem";
+import { FileSystem } from "@effect/platform-node";
 import { Context, Effect, Layer, Option } from "effect";
 
 export interface CursorStorage {
@@ -9,7 +9,7 @@ export interface CursorStorage {
 export const CursorStorage = Context.Tag<CursorStorage>();
 export const CursorStorageLive = Effect.gen(function* (_) {
   const path = ".cursor";
-  const fs = yield* _(Fs.FileSystem);
+  const fs = yield* _(FileSystem.FileSystem);
 
   // Read the current cursor from the file, if any.
   let current = yield* _(fs.readFileString(path), Effect.option, Effect.map(Option.filter((value) => value !== "")));
@@ -32,9 +32,9 @@ export const CursorStorageLive = Effect.gen(function* (_) {
           onSome: (cursor) =>
             Effect.gen(function* (_) {
               const bytes = new TextEncoder().encode(cursor);
-              yield* _(db.seek(Fs.Size(0), "start"));
+              yield* _(db.seek(FileSystem.Size(0), "start"));
               yield* _(db.write(bytes));
-              yield* _(db.truncate(Fs.Size(bytes.byteLength)));
+              yield* _(db.truncate(FileSystem.Size(bytes.byteLength)));
             }).pipe(Effect.orDie),
         });
       },
@@ -42,4 +42,4 @@ export const CursorStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(Fs.layer, CursorStorageLive);
+export const layer = Layer.provide(FileSystem.layer, CursorStorageLive);
