@@ -1,5 +1,12 @@
 # @substreams/mermaid
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`864c55a`](https://github.com/substreams-js/substreams-js/commit/864c55a372754b22d4280fe383ac6f0f3656cb4e)]:
+  - @substreams/core@0.8.0
+
 ## 0.4.0
 
 ### Minor Changes
