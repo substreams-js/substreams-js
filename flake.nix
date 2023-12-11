@@ -17,6 +17,7 @@
       devShells = {
         default = pkgs.mkShell {
           buildInputs = with pkgs; [
+            bashInteractive
             bun
             nodejs_20
             corepack
