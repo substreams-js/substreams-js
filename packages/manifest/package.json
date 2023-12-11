@@ -23,18 +23,18 @@
     "@substreams/core": "workspace:*"
   },
   "peerDependencies": {
-    "@bufbuild/buf": "^1.28.0",
-    "@bufbuild/protobuf": "^1.4.2",
-    "@effect/schema": "^0.48.4",
-    "effect": "2.0.0-next.55",
+    "@bufbuild/buf": "^1.28.1",
+    "@bufbuild/protobuf": "^1.5.1",
+    "@effect/schema": "^0.53.0",
+    "effect": "2.0.0-next.60",
     "yaml": "^2.3.4"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.28.1",
-    "@bufbuild/protobuf": "^1.4.2",
-    "@effect/schema": "^0.48.4",
-    "@types/node": "^20.9.2",
-    "effect": "2.0.0-next.55",
+    "@bufbuild/protobuf": "^1.5.1",
+    "@effect/schema": "^0.53.0",
+    "@types/node": "^20.10.4",
+    "effect": "2.0.0-next.60",
     "yaml": "^2.3.4"
   }
 }

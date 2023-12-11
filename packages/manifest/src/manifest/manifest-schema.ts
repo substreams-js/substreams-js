@@ -49,8 +49,8 @@ export const StoreModuleSchema = Schema.struct({
   kind: Schema.literal("store"),
   doc: Schema.optional(Schema.string),
   binary: Schema.optional(Schema.string),
-  initialBlock: Schema.optional(Schema.lazy(() => InitialBlockSchema)),
-  inputs: Schema.array(Schema.lazy(() => InputSchema)),
+  initialBlock: Schema.optional(Schema.suspend(() => InitialBlockSchema)),
+  inputs: Schema.array(Schema.suspend(() => InputSchema)),
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
   valueType: Schema.union(
     Schema.literal("bytes", "string", "int64", "float64", "bigint", "bigfloat", "bigdecimal"),
@@ -106,8 +106,8 @@ export const MapModuleSchema = Schema.struct({
   kind: Schema.literal("map"),
   doc: Schema.optional(Schema.string),
   binary: Schema.optional(Schema.string),
-  initialBlock: Schema.optional(Schema.lazy(() => InitialBlockSchema)),
-  inputs: Schema.array(Schema.lazy(() => InputSchema)).pipe(Schema.minItems(1)),
+  initialBlock: Schema.optional(Schema.suspend(() => InitialBlockSchema)),
+  inputs: Schema.array(Schema.suspend(() => InputSchema)).pipe(Schema.minItems(1)),
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
   output: Schema.struct({
     type: Schema.string,
@@ -120,7 +120,7 @@ export type Module = Schema.Schema.To<typeof ModuleSchema>;
 
 export const BinarySchema = Schema.struct({
   file: Schema.string,
-  type: Schema.lazy(() => BinaryTypeSchema),
+  type: Schema.suspend(() => BinaryTypeSchema),
   native: Schema.optional(Schema.string),
   content: Schema.optional(Schema.instanceOf(Uint8Array)),
   entrypoint: Schema.optional(Schema.string),
@@ -137,21 +137,21 @@ export type Sink = Schema.Schema.To<typeof SinkSchema>;
 
 export const ManifestSchema = Schema.struct({
   network: Schema.optional(Schema.string),
-  specVersion: Schema.lazy(() => ManifestSpecVersionSchema),
+  specVersion: Schema.suspend(() => ManifestSpecVersionSchema),
   binaries: Schema.optional(
     Schema.record(
       Schema.string,
-      Schema.lazy(() => BinarySchema),
+      Schema.suspend(() => BinarySchema),
     ),
   ),
   imports: Schema.optional(
     Schema.record(Schema.string.pipe(Schema.pattern(/^[A-Za-z_][A-Za-z0-9_-]*$/)), Schema.string),
   ),
-  modules: Schema.array(Schema.lazy(() => ModuleSchema)).pipe(Schema.minItems(1)),
-  package: Schema.lazy(() => PackageSchema),
-  protobuf: Schema.lazy(() => ProtobufSchema),
+  modules: Schema.array(Schema.suspend(() => ModuleSchema)).pipe(Schema.minItems(1)),
+  package: Schema.suspend(() => PackageSchema),
+  protobuf: Schema.suspend(() => ProtobufSchema),
   params: Schema.optional(Schema.record(Schema.string, Schema.string)),
-  sink: Schema.optional(Schema.lazy(() => SinkSchema)),
+  sink: Schema.optional(Schema.suspend(() => SinkSchema)),
 });
 export type Manifest = Schema.Schema.To<typeof ManifestSchema>;
 
