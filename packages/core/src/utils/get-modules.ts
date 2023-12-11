@@ -8,10 +8,10 @@ export type ModuleKindOrBoth = ModuleKind | "both";
 export type GetModulesReturnType<TKind extends ModuleKindOrBoth = "both"> = TKind extends "map"
   ? MapModule[]
   : TKind extends "store"
-  ? StoreModule[]
-  : TKind extends "both"
-  ? (StoreModule | MapModule)[]
-  : never;
+    ? StoreModule[]
+    : TKind extends "both"
+      ? (StoreModule | MapModule)[]
+      : never;
 
 export function getModules<TKind extends ModuleKindOrBoth = "both">(substream: Package, kind: TKind = "both" as TKind) {
   const modules = substream.modules?.modules ?? [];

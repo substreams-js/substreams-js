@@ -69,4 +69,3 @@ export const command = Command.make(
     return Effect.provide(stream, Layer.merge(Stream.layer, Path.layer));
   },
 );
-

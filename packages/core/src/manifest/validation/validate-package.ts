@@ -90,12 +90,18 @@ export function validatePackage(
 function duplicateStringInput(input: Module_Input): string {
   if (input.input.case === "source") {
     return `source: ${input.input.value.type}`;
-  } else if (input.input.case === "map") {
+  }
+
+  if (input.input.case === "map") {
     return `map: ${input.input.value.moduleName}`;
-  } else if (input.input.case === "store") {
+  }
+
+  if (input.input.case === "store") {
     const mode = storeModeName(input.input.value.mode);
     return `store: ${input.input.value.moduleName}, mode: ${mode}`;
-  } else if (input.input.case === "params") {
+  }
+
+  if (input.input.case === "params") {
     return "params";
   }
 

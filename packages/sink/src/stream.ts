@@ -258,7 +258,9 @@ export function createStream({
       Stream.tap((response) => {
         if (response.message.case === "blockScopedData") {
           return Ref.set(currentCursor, Option.some(response.message.value.cursor));
-        } else if (response.message.case === "blockUndoSignal") {
+        }
+
+        if (response.message.case === "blockUndoSignal") {
           return Ref.set(currentCursor, Option.some(response.message.value.lastValidCursor));
         }
 
