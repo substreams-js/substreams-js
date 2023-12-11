@@ -19,4 +19,4 @@ export const MessageStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(FileSystem.layer, MessageStorageLive);
+export const layer = Layer.provide(MessageStorageLive, FileSystem.layer);

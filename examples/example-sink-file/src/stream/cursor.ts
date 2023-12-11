@@ -42,4 +42,4 @@ export const CursorStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(FileSystem.layer, CursorStorageLive);
+export const layer = Layer.provide(CursorStorageLive, FileSystem.layer);

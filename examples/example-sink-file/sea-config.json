@@ -1,0 +1,5 @@
+{
+  "main": "./out/index.cjs",
+  "output": "./out/sea.blob",
+  "disableExperimentalSEAWarning": true
+}
