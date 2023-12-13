@@ -2,7 +2,7 @@
 
 import { Command, Options, Span } from "@effect/cli";
 import { NodeContext, Runtime } from "@effect/platform-node";
-import { Effect, LogLevel } from "effect";
+import { Effect, LogLevel, Logger } from "effect";
 import * as RunCommand from "./commands/run.js";
 
 export const root = Command.make("root", {
@@ -16,7 +16,10 @@ export const root = Command.make("root", {
       ["trace", LogLevel.Trace],
     ]).pipe(Options.withDefault(LogLevel.Info), Options.withAlias("l")),
   }),
-}).pipe(Command.withSubcommands([RunCommand.command]));
+}).pipe(
+  Command.withSubcommands([RunCommand.command]),
+  Command.provide(({ options }) => Logger.minimumLogLevel(options.logLevel)),
+);
 
 const cli = Command.run(root, {
   name: "Substreams File Sink",

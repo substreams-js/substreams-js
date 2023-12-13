@@ -1,13 +1,24 @@
 import { Args, Command, Options } from "@effect/cli";
+import { HelpDoc, ValidationError } from "@effect/cli";
 import { Path } from "@effect/platform-node";
-import { Schema } from "@effect/schema";
+import { Schema, TreeFormatter } from "@effect/schema";
 import { Duration, Effect, Layer } from "effect";
+import { Either } from "effect";
 import * as Stream from "../stream/stream.js";
-import { parseSchema } from "../utils/parse-schema.js";
 
-const MaxRetryDuration = Schema.NumberFromString;
+function parseSchema<From, To>(schema: Schema.Schema<From, To>) {
+  return (value: unknown): Either.Either<ValidationError.ValidationError, To> => {
+    const result = Schema.parseEither(schema)(value, {
+      errors: "all",
+    });
 
-const config = {
+    return Either.mapLeft(result, (error) =>
+      ValidationError.invalidValue(HelpDoc.p(TreeFormatter.formatErrors(error.errors))),
+    );
+  };
+}
+
+export const command = Command.make("run", {
   args: Args.text({ name: "substream" }).pipe(
     Args.withDescription("The path to a substream package (.spkg) or substreams.yaml file"),
     Args.withDefault("substreams.yaml"),
@@ -42,26 +53,27 @@ const config = {
     maxRetryDuration: Options.text("max-retry-duration").pipe(
       Options.withDescription("Maximum duration to retry for in seconds"),
       Options.withDefault("300"),
-      Options.mapOrFail(parseSchema(MaxRetryDuration)),
+      Options.mapOrFail(parseSchema(Schema.NumberFromString)),
       Options.map(Duration.seconds),
     ),
   }),
-};
-
-export const command = Command.make("run", config, ({ options, args: packagePath }) => {
-  return Effect.gen(function* (_) {
-    if (!(packagePath.startsWith("http://") || packagePath.startsWith("https://"))) {
-      const path = yield* _(Path.Path);
-      if (!path.isAbsolute(packagePath)) {
-        packagePath = path.join(process.cwd(), packagePath);
+}).pipe(
+  Command.withDescription("Runs a substream module"),
+  Command.withHandler(({ options, args: packagePath }) => {
+    return Effect.gen(function* (_) {
+      if (!(packagePath.startsWith("http://") || packagePath.startsWith("https://"))) {
+        const path = yield* _(Path.Path);
+        if (!path.isAbsolute(packagePath)) {
+          packagePath = path.join(process.cwd(), packagePath);
+        }
       }
-    }
 
-    const stream = Stream.runStream({
-      packagePath,
-      outputModule: options.outputModule,
+      const stream = Stream.runStream({
+        packagePath,
+        outputModule: options.outputModule,
+      });
+
+      return yield* _(Effect.provide(stream, Layer.merge(Stream.layer, Path.layer)));
     });
-
-    return yield* _(Effect.provide(stream, Layer.merge(Stream.layer, Path.layer)));
-  });
-});
+  }),
+);

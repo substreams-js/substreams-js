@@ -21,12 +21,12 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "peerDependencies": {
-    "@bufbuild/protobuf": "^1.5.1",
+    "@bufbuild/protobuf": "^1.6.0",
     "@connectrpc/connect": "^1.1.4"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.28.1",
-    "@bufbuild/protobuf": "^1.5.1",
+    "@bufbuild/protobuf": "^1.6.0",
     "@connectrpc/connect": "^1.1.4",
     "@types/node": "^20.10.4"
   }

@@ -10,9 +10,10 @@
   "dependencies": {
     "@connectrpc/connect": "^1.1.4",
     "@connectrpc/connect-node": "^1.1.4",
-    "@effect/cli": "^0.25.0",
-    "@effect/platform-node": "^0.35.0",
-    "@effect/schema": "^0.53.0",
+    "@effect/cli": "^0.25.3",
+    "@effect/platform": "^0.36.0",
+    "@effect/platform-node": "^0.36.0",
+    "@effect/schema": "^0.53.1",
     "@substreams/core": "workspace:*",
     "@substreams/manifest": "workspace:*",
     "@substreams/sink": "workspace:*",
@@ -24,7 +25,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.10.4",
-    "rollup": "^4.8.0",
+    "rollup": "^4.9.0",
     "tsx": "^4.6.2",
     "typescript": "^5.3.3"
   }

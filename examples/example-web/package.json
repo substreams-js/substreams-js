@@ -7,7 +7,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^1.5.1",
+    "@bufbuild/protobuf": "^1.6.0",
     "@connectrpc/connect": "^1.1.4",
     "@connectrpc/connect-web": "^1.1.4",
     "@substreams/core": "workspace:*",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "@types/web": "^0.0.127",
     "typescript": "^5.3.3",
-    "vite": "^5.0.7",
+    "vite": "^5.0.8",
     "vite-tsconfig-paths": "^4.2.2"
   }
 }
