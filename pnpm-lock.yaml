@@ -30,8 +30,8 @@ importers:
         specifier: ^2.27.1
         version: 2.27.1
       '@effect/build-utils':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.7.1
+        version: 0.7.1
       '@effect/language-service':
         specifier: ^0.1.0
         version: 0.1.0
@@ -60,11 +60,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-node':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -85,11 +85,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-node':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -113,11 +113,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-node':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -147,23 +147,23 @@ importers:
   examples/example-sink-file:
     dependencies:
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-node':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@effect/cli':
-        specifier: ^0.25.3
-        version: 0.25.3(@effect/platform@0.36.0)(@effect/printer-ansi@0.28.0)(@effect/printer@0.27.0)(@effect/schema@0.53.1)(effect@2.0.0-next.60)
+        specifier: ^0.25.4
+        version: 0.25.4(@effect/platform@0.37.0)(@effect/printer-ansi@0.28.0)(@effect/printer@0.27.0)(@effect/schema@0.53.2)(effect@2.0.0-next.60)
       '@effect/platform':
-        specifier: ^0.36.0
-        version: 0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60)
+        specifier: ^0.37.0
+        version: 0.37.0(@effect/schema@0.53.2)(effect@2.0.0-next.60)
       '@effect/platform-node':
-        specifier: ^0.36.0
-        version: 0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60)
+        specifier: ^0.37.0
+        version: 0.37.0(@effect/platform@0.37.0)(effect@2.0.0-next.60)
       '@effect/schema':
-        specifier: ^0.53.1
-        version: 0.53.1(effect@2.0.0-next.60)(fast-check@3.14.0)
+        specifier: ^0.53.2
+        version: 0.53.2(effect@2.0.0-next.60)(fast-check@3.14.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -208,11 +208,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-web':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -242,8 +242,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@types/node':
         specifier: ^20.10.4
         version: 20.10.4
@@ -262,8 +262,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@effect/schema':
-        specifier: ^0.53.1
-        version: 0.53.1(effect@2.0.0-next.60)(fast-check@3.14.0)
+        specifier: ^0.53.2
+        version: 0.53.2(effect@2.0.0-next.60)(fast-check@3.14.0)
       '@types/node':
         specifier: ^20.10.4
         version: 20.10.4
@@ -299,11 +299,11 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       '@connectrpc/connect-web':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0)
       '@types/react':
         specifier: ^18.2.45
         version: 18.2.45
@@ -322,8 +322,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       '@connectrpc/connect':
-        specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.6.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@bufbuild/protobuf@1.6.0)
       effect:
         specifier: 2.0.0-next.60
         version: 2.0.0-next.60
@@ -953,42 +953,42 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@connectrpc/connect-node@1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4):
-    resolution: {integrity: sha512-1Pv4PSTh7k6+c8kNjVx9wZiWm8dChexsq+hW4EKcYItjSqvyKpmTfLBTl12y6W+RBQ9vCuFCu3xT79outhNY9g==}
+  /@connectrpc/connect-node@1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0):
+    resolution: {integrity: sha512-mt/2qxYnxmdn3Dv9Jsy9nK9sizNsVsg/8TKU8cwO/exUoEgZCjIcCW602xgUqBXfFcbZklCbskvZIB2E94U1Ag==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
-      '@connectrpc/connect': 1.1.4
+      '@connectrpc/connect': 1.2.0
     dependencies:
       '@bufbuild/protobuf': 1.6.0
-      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.6.0)
+      '@connectrpc/connect': 1.2.0(@bufbuild/protobuf@1.6.0)
       undici: 5.28.2
     dev: false
 
-  /@connectrpc/connect-web@1.1.4(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.1.4):
-    resolution: {integrity: sha512-y/CHMipRSpIIR1PCax536PquyuZ03soGTgO1gqQM4pv8lCCgAKE1S+OrirIbpyohJiUszxaRH69PoB8uACiOZA==}
+  /@connectrpc/connect-web@1.2.0(@bufbuild/protobuf@1.6.0)(@connectrpc/connect@1.2.0):
+    resolution: {integrity: sha512-vjFKTP/AzSnC8JvkGKRgpggZIB0v+Lv7U+/Tb/pRNGZI0WSElhGDXWgIn3xfcSNQWi079m45c5MlikszzIRsYg==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
-      '@connectrpc/connect': 1.1.4
+      '@connectrpc/connect': 1.2.0
     dependencies:
       '@bufbuild/protobuf': 1.6.0
-      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.6.0)
+      '@connectrpc/connect': 1.2.0(@bufbuild/protobuf@1.6.0)
 
-  /@connectrpc/connect@1.1.4(@bufbuild/protobuf@1.6.0):
-    resolution: {integrity: sha512-kFiOi3jsEyOuL4gGW55LgNCqQBNA0Z/GLXrfeJO4r6pI/f8L9rqnjrFZTCeyrvzu1TuqEtL51cR+c46KMCposw==}
+  /@connectrpc/connect@1.2.0(@bufbuild/protobuf@1.6.0):
+    resolution: {integrity: sha512-kHF30xAlXF2Y7S1I7XN/D3psKLfjxitgNRmF093KNP+cE9yAnqDAGop6aby3Z5k4XQw2ebjeX4E41db7R3FzaQ==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
     dependencies:
       '@bufbuild/protobuf': 1.6.0
 
-  /@effect/build-utils@0.7.0:
-    resolution: {integrity: sha512-yYM6txQ0QgiQ1keUJwfuAWjoejiq0rB7H+pWyEnWDXNhfK8ZUn24G53jQDOB4btD7kbo4mfgdDBndm/DOIDZNA==}
+  /@effect/build-utils@0.7.1:
+    resolution: {integrity: sha512-xYIALMRjdPR1Wb2cyj4R9y+T9/6x0ragIOsQRn4C2HRVCOvEpYyt3ME8TcrSu5De6M1XHT4PuQ5z5d9E0T6j2w==}
     engines: {node: '>=16.17.1'}
     hasBin: true
     dev: true
 
-  /@effect/cli@0.25.3(@effect/platform@0.36.0)(@effect/printer-ansi@0.28.0)(@effect/printer@0.27.0)(@effect/schema@0.53.1)(effect@2.0.0-next.60):
-    resolution: {integrity: sha512-mtDPodCVSJglQW8ow0wV8SLYi2fO1J84iCKrdHb6iGzQnWW3rxGsZyr0hzvGImfUBScUaz02oW/SkE+iROS6AQ==}
+  /@effect/cli@0.25.4(@effect/platform@0.37.0)(@effect/printer-ansi@0.28.0)(@effect/printer@0.27.0)(@effect/schema@0.53.2)(effect@2.0.0-next.60):
+    resolution: {integrity: sha512-kwGP7JqAKkJktIStPScjdyI/kDTgdxd5z0Kt3sI7nu6+iQQFUOojJ7iJH3nHeFAk9P6QPLUEwHXk5AG+CGW32w==}
     peerDependencies:
       '@effect/platform': ^0.35.0
       '@effect/printer': ^0.27.0
@@ -996,10 +996,10 @@ packages:
       '@effect/schema': ^0.53.0
       effect: 2.0.0-next.60
     dependencies:
-      '@effect/platform': 0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60)
+      '@effect/platform': 0.37.0(@effect/schema@0.53.2)(effect@2.0.0-next.60)
       '@effect/printer': 0.27.0(@effect/typeclass@0.19.1)(effect@2.0.0-next.60)
       '@effect/printer-ansi': 0.28.0(@effect/typeclass@0.19.1)(effect@2.0.0-next.60)
-      '@effect/schema': 0.53.1(effect@2.0.0-next.60)(fast-check@3.14.0)
+      '@effect/schema': 0.53.2(effect@2.0.0-next.60)(fast-check@3.14.0)
       effect: 2.0.0-next.60
     dev: false
 
@@ -1007,28 +1007,27 @@ packages:
     resolution: {integrity: sha512-BnlM8LlaqCAYgdRfxlbR7gXGh/FD1scL1fPgNVJEPoOM08od1jtJz+iKhwfaud8TPnnhZR+TED2h5ynjanLeCQ==}
     dev: true
 
-  /@effect/platform-node@0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60):
-    resolution: {integrity: sha512-5498CAD4IF/VwxYqKwVOd0fs9vuN/EnLCaz2S4R3aDGAavLXqcn7R4o4ngYbiSH8GDc3QrKY2oNRs+DOkJKyTQ==}
+  /@effect/platform-node@0.37.0(@effect/platform@0.37.0)(effect@2.0.0-next.60):
+    resolution: {integrity: sha512-/pXbIf+ZB3YdwoJ5WO9U8MVsvwh3LfSLt3MwRXK3n8xd+v7QHfLpQGUuyKI90fILMJJ+0baccEuUT7IAQhJrqg==}
     peerDependencies:
+      '@effect/platform': 0.37.0
       effect: 2.0.0-next.60
     dependencies:
-      '@effect/platform': 0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60)
+      '@effect/platform': 0.37.0(@effect/schema@0.53.2)(effect@2.0.0-next.60)
       effect: 2.0.0-next.60
       mime: 3.0.0
       multipasta: 0.1.21
-    transitivePeerDependencies:
-      - '@effect/schema'
     dev: false
 
-  /@effect/platform@0.36.0(@effect/schema@0.53.1)(effect@2.0.0-next.60):
-    resolution: {integrity: sha512-gKZdy7Bt1PZRDBLzieWChcqgdcT5c1sb4Abixte7bqlfyz4NNDdOS6XL3tOAizGjS7FiNtC1K9Ih3Cwv5/kRvw==}
+  /@effect/platform@0.37.0(@effect/schema@0.53.2)(effect@2.0.0-next.60):
+    resolution: {integrity: sha512-zYXyL9+3LFhVeNXqIOnwBs+/Ur6f8EWHVMh9DTim5HK1Y+Gxv9U4nomJskiR9u6J3fiwK5+hugfIbrzPXoy4ng==}
     peerDependencies:
       '@effect/schema': ^0.53.1
       effect: 2.0.0-next.60
     dependencies:
-      '@effect/schema': 0.53.1(effect@2.0.0-next.60)(fast-check@3.14.0)
+      '@effect/schema': 0.53.2(effect@2.0.0-next.60)(fast-check@3.14.0)
       effect: 2.0.0-next.60
-      find-my-way: 7.7.0
+      find-my-way-ts: 0.1.0
       multipasta: 0.1.21
       path-browserify: 1.0.1
     dev: false
@@ -1054,8 +1053,8 @@ packages:
       effect: 2.0.0-next.60
     dev: false
 
-  /@effect/schema@0.53.1(effect@2.0.0-next.60)(fast-check@3.14.0):
-    resolution: {integrity: sha512-R3QW8RV/0KiX6xWaS6UpPF3gl07zThdDTpWJQVJ8Oobbu7fKZ7LjmjLBcjdESY0UPdACvLdfGSfLxartqUihyA==}
+  /@effect/schema@0.53.2(effect@2.0.0-next.60)(fast-check@3.14.0):
+    resolution: {integrity: sha512-byk2qHRQSnLSj736pvkGRaa21xAp1TJw3rED8rMiUELGsXW7PjAOKhl4NaMYxRrAxPODSllwCGhRiEaaSDkyuA==}
     peerDependencies:
       effect: 2.0.0-next.60
       fast-check: ^3.13.2
@@ -2769,10 +2768,6 @@ packages:
     resolution: {integrity: sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==}
     dev: false
 
-  /fast-deep-equal@3.1.3:
-    resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
-    dev: false
-
   /fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
     engines: {node: '>=8.6.0'}
@@ -2801,13 +2796,10 @@ packages:
     dependencies:
       to-regex-range: 5.0.1
 
-  /find-my-way@7.7.0:
-    resolution: {integrity: sha512-+SrHpvQ52Q6W9f3wJoJBbAQULJuNEEQwBvlvYwACDhBTLOTMiQ0HYWh4+vC3OivGP2ENcTI1oKlFA2OepJNjhQ==}
-    engines: {node: '>=14'}
+  /find-my-way-ts@0.1.0:
+    resolution: {integrity: sha512-7Zr/qrKyASGZ0Qrr8PiWFnSKVEAjPdipAXOxGczb7d6VfzpoiGc21VrS5cpg1QR5cQH5stxITsV9aB+f2TQ/XQ==}
     dependencies:
-      fast-deep-equal: 3.1.3
       fast-querystring: 1.1.2
-      safe-regex2: 2.0.0
     dev: false
 
   /find-up@4.1.0:
@@ -4058,11 +4050,6 @@ packages:
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
 
-  /ret@0.2.2:
-    resolution: {integrity: sha512-M0b3YWQs7R3Z917WRQy1HHA7Ba7D8hvZg6UE5mLykJxQVE2ju0IXbGlaHPPlkY+WN7wFP+wUMXmBFA0aV6vYGQ==}
-    engines: {node: '>=4'}
-    dev: false
-
   /reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
@@ -4109,12 +4096,6 @@ packages:
       get-intrinsic: 1.2.2
       is-regex: 1.1.4
     dev: true
-
-  /safe-regex2@2.0.0:
-    resolution: {integrity: sha512-PaUSFsUaNNuKwkBijoAPHAK6/eM6VirvyPWlZ7BAQy4D+hCvh4B6lIG+nPdhbFfIbP+gTGBcrdsOaUs0F+ZBOQ==}
-    dependencies:
-      ret: 0.2.2
-    dev: false
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}

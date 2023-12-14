@@ -8,12 +8,12 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@connectrpc/connect": "^1.1.4",
-    "@connectrpc/connect-node": "^1.1.4",
-    "@effect/cli": "^0.25.3",
-    "@effect/platform": "^0.36.0",
-    "@effect/platform-node": "^0.36.0",
-    "@effect/schema": "^0.53.1",
+    "@connectrpc/connect": "^1.2.0",
+    "@connectrpc/connect-node": "^1.2.0",
+    "@effect/cli": "^0.25.4",
+    "@effect/platform": "^0.37.0",
+    "@effect/platform-node": "^0.37.0",
+    "@effect/schema": "^0.53.2",
     "@substreams/core": "workspace:*",
     "@substreams/manifest": "workspace:*",
     "@substreams/sink": "workspace:*",
