@@ -34,7 +34,7 @@ export const InputSchema = Schema.union(
   Schema.struct({
     store: Schema.string,
     mode: Schema.optional(Schema.literal("get", "deltas"), {
-      default: () => "get" as const
+      default: () => "get" as const,
     }),
   }),
 );
