@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.6.0",
-    "@connectrpc/connect": "^1.2.0",
-    "@connectrpc/connect-node": "^1.2.0",
+    "@connectrpc/connect": "^1.2.1",
+    "@connectrpc/connect-node": "^1.2.1",
     "@substreams/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
-    "tsx": "^4.6.2",
+    "@types/node": "^20.10.6",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
 }

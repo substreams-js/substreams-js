@@ -33,7 +33,9 @@ export const InputSchema = Schema.union(
   }),
   Schema.struct({
     store: Schema.string,
-    mode: Schema.optional(Schema.literal("get", "deltas")).withDefault(() => "get"),
+    mode: Schema.optional(Schema.literal("get", "deltas"), {
+      default: () => "get" as const
+    }),
   }),
 );
 export type Input = Schema.Schema.To<typeof InputSchema>;
