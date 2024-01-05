@@ -1,5 +1,13 @@
 # @substreams/core
 
+## 0.11.0
+
+### Minor Changes
+
+- [`5208b86`](https://github.com/substreams-js/substreams-js/commit/5208b86e7fca382fec62e2ef11c70b6950b9ff5e) Thanks [@fubhy](https://github.com/fubhy)! - Update codegen and dependencies
+
+- [`8a7f4f3`](https://github.com/substreams-js/substreams-js/commit/8a7f4f36512640bf1715efef3e40fcfd8b5d899a) Thanks [@fubhy](https://github.com/fubhy)! - Upgrade to `effect` v2.x.x
+
 ## 0.10.0
 
 ### Minor Changes
