@@ -63,6 +63,11 @@ export class Package extends Message<Package> {
    */
   image = new Uint8Array(0);
 
+  /**
+   * @generated from field: map<string, sf.substreams.v1.NetworkParams> networks = 13;
+   */
+  networks: { [key: string]: NetworkParams } = {};
+
   constructor(data?: PartialMessage<Package>) {
     super();
     proto3.util.initPartial(data, this);
@@ -80,6 +85,7 @@ export class Package extends Message<Package> {
     { no: 10, name: "sink_config", kind: "message", T: Any },
     { no: 11, name: "sink_module", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 12, name: "image", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 13, name: "networks", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: NetworkParams} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Package {
@@ -96,6 +102,49 @@ export class Package extends Message<Package> {
 
   static equals(a: Package | PlainMessage<Package> | undefined, b: Package | PlainMessage<Package> | undefined): boolean {
     return proto3.util.equals(Package, a, b);
+  }
+}
+
+/**
+ * @generated from message sf.substreams.v1.NetworkParams
+ */
+export class NetworkParams extends Message<NetworkParams> {
+  /**
+   * @generated from field: map<string, uint64> initialBlocks = 1;
+   */
+  initialBlocks: { [key: string]: bigint } = {};
+
+  /**
+   * @generated from field: map<string, string> params = 2;
+   */
+  params: { [key: string]: string } = {};
+
+  constructor(data?: PartialMessage<NetworkParams>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "sf.substreams.v1.NetworkParams";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "initialBlocks", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 4 /* ScalarType.UINT64 */} },
+    { no: 2, name: "params", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): NetworkParams {
+    return new NetworkParams().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): NetworkParams {
+    return new NetworkParams().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): NetworkParams {
+    return new NetworkParams().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: NetworkParams | PlainMessage<NetworkParams> | undefined, b: NetworkParams | PlainMessage<NetworkParams> | undefined): boolean {
+    return proto3.util.equals(NetworkParams, a, b);
   }
 }
 
