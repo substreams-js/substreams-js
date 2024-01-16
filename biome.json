@@ -1,20 +1,13 @@
 {
+  "$schema": "https://biomejs.dev/schemas/1.5.2/schema.json",
   "files": {
-    "ignore": [
-      ".direnv/",
-      ".cache/",
-      ".vercel/",
-      ".next/",
-      "dist/",
-      "build/",
-      "proto/",
-      "coverage/",
-      "out/",
-      "examples/example-node-manifest/substream",
-      "pnpm-lock.yaml",
-      "tsconfig.json",
-      "tsconfig.*.json"
-    ]
+    "ignoreUnknown": true,
+    "ignore": ["proto/", "examples/example-node-manifest/substream/"]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
   },
   "formatter": {
     "indentStyle": "space",
@@ -24,8 +17,7 @@
     "rules": {
       "all": true,
       "suspicious": {
-        "noExplicitAny": "off",
-        "noRedundantUseStrict": "off"
+        "noExplicitAny": "off"
       },
       "nursery": {
         "useImportRestrictions": "off"

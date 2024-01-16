@@ -1,4 +1,4 @@
-import { Module, Module_Input_Store_Mode } from "../proto.js";
+import { type Module, Module_Input_Store_Mode } from "../proto.js";
 
 export function generateMermaidGraph(modules: Module[]) {
   const chunks: string[] = ["graph TD;"];

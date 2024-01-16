@@ -2,7 +2,7 @@ import type { Module, Module_Input, Modules } from "../../proto.js";
 import { createHash } from "../../utils/create-hash.js";
 import { getModuleOrThrow } from "../../utils/get-module.js";
 import { toHex } from "../../utils/to-hex.js";
-import { ModuleGraph, createModuleGraph } from "../graph/create-module-graph.js";
+import { type ModuleGraph, createModuleGraph } from "../graph/create-module-graph.js";
 
 export async function createModuleHashHex(modules: Modules, module: Module, graph?: ModuleGraph): Promise<string>;
 export async function createModuleHashHex(modules: Modules, name: string, graph?: ModuleGraph): Promise<string>;

@@ -1,8 +1,8 @@
 "use client";
 
-import { Code, ConnectError, type Transport } from "@connectrpc/connect";
+import { Code, type ConnectError, type Transport } from "@connectrpc/connect";
 import { streamBlocks } from "@substreams/core";
-import { Request, Response } from "@substreams/core/proto";
+import type { Request, Response } from "@substreams/core/proto";
 import { useEffect, useRef } from "react";
 
 export interface UseSubstreamOptions {

@@ -1,4 +1,4 @@
-import { Module_Input_Store_Mode, Modules } from "../../proto.js";
+import { Module_Input_Store_Mode, type Modules } from "../../proto.js";
 import { isMapModule } from "../../utils/is-map-module.js";
 import { isStoreModule } from "../../utils/is-store-module.js";
 import { storeModeName } from "../../utils/store-mode-name.js";

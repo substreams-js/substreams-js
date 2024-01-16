@@ -1,4 +1,4 @@
-import { Module } from "../../proto.js";
+import type { Module } from "../../proto.js";
 
 export function topologicalSort(
   nodes: Map<Module, Set<Module>>,

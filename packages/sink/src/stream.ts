@@ -156,11 +156,9 @@ export function createStream({
                     const metric = Metric.tagged(Metrics.ProgressMessageLastContiguousBlock, "stage", `stage-${i}`);
                     yield* _(Metric.set(metric, Number(range.endBlock)));
                   }
-                } else {
-                  if (j === 0) {
-                    const metric = Metric.tagged(Metrics.ProgressMessageLastContiguousBlock, "stage", `stage-${i}`);
-                    yield* _(Metric.set(metric, Number(range.endBlock)));
-                  }
+                } else if (j === 0) {
+                  const metric = Metric.tagged(Metrics.ProgressMessageLastContiguousBlock, "stage", `stage-${i}`);
+                  yield* _(Metric.set(metric, Number(range.endBlock)));
                 }
 
                 totalProcessedBlocks += range.endBlock - range.startBlock;

@@ -13,11 +13,7 @@
     "exactOptionalPropertyTypes": true,
     "experimentalDecorators": true,
     "moduleResolution": "NodeNext",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "isolatedModules": true,
     "sourceMap": true,
     "declarationMap": true,
@@ -40,39 +36,17 @@
     "incremental": true,
     "removeComments": false,
     "paths": {
-      "@substreams/core": [
-        "./packages/core/src/index.js"
-      ],
-      "@substreams/core/testutils": [
-        "./packages/core/src/testutils/index.js"
-      ],
-      "@substreams/core/*": [
-        "./packages/core/src/*.js"
-      ],
-      "@substreams/mermaid": [
-        "./packages/mermaid/src/index.js"
-      ],
-      "@substreams/mermaid/*": [
-        "./packages/mermaid/src/*.js"
-      ],
-      "@substreams/manifest": [
-        "./packages/manifest/src/index.js"
-      ],
-      "@substreams/manifest/*": [
-        "./packages/manifest/src/*.js"
-      ],
-      "@substreams/sink": [
-        "./packages/sink/src/index.js"
-      ],
-      "@substreams/sink/*": [
-        "./packages/sink/src/*.js"
-      ],
-      "@substreams/react": [
-        "./packages/react/src/index.js"
-      ],
-      "@substreams/react/*": [
-        "./packages/react/src/*.js"
-      ],
+      "@substreams/core": ["./packages/core/src/index.js"],
+      "@substreams/core/testutils": ["./packages/core/src/testutils/index.js"],
+      "@substreams/core/*": ["./packages/core/src/*.js"],
+      "@substreams/mermaid": ["./packages/mermaid/src/index.js"],
+      "@substreams/mermaid/*": ["./packages/mermaid/src/*.js"],
+      "@substreams/manifest": ["./packages/manifest/src/index.js"],
+      "@substreams/manifest/*": ["./packages/manifest/src/*.js"],
+      "@substreams/sink": ["./packages/sink/src/index.js"],
+      "@substreams/sink/*": ["./packages/sink/src/*.js"],
+      "@substreams/react": ["./packages/react/src/index.js"],
+      "@substreams/react/*": ["./packages/react/src/*.js"]
     },
     "plugins": [
       {

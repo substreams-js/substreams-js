@@ -1,4 +1,4 @@
-import { Message, type MessageType } from "@bufbuild/protobuf";
+import type { Message, MessageType } from "@bufbuild/protobuf";
 import { useMemo } from "react";
 import { type MaybeSerializedMessage, type SerializedMessage, deserializeMessage } from "../utils/message-serde.js";
 

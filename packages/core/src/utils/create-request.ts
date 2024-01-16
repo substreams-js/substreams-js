@@ -1,5 +1,5 @@
-import { ModuleGraph, createModuleGraph } from "../manifest/graph/create-module-graph.js";
-import { Module, Modules, Package, Request } from "../proto.js";
+import { type ModuleGraph, createModuleGraph } from "../manifest/graph/create-module-graph.js";
+import { Module, Modules, type Package, Request } from "../proto.js";
 import { getModuleOrThrow } from "./get-module.js";
 
 export type CreateRequestOptions = {

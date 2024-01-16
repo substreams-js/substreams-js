@@ -2,7 +2,7 @@ import { applyParams } from "@substreams/core";
 import { Module, Module_Input, type Module_Input_Params } from "@substreams/core/proto";
 import { assert, test } from "vitest";
 
-test("correctly injects parameters into a module", async () => {
+test("correctly injects parameters into a module", () => {
   const input = new Module_Input({
     input: {
       case: "params",
@@ -21,7 +21,7 @@ test("correctly injects parameters into a module", async () => {
   assert.equal((input.input.value as Module_Input_Params).value, "foo");
 });
 
-test("correctly handle '=' in parameters value", async () => {
+test("correctly handle '=' in parameters value", () => {
   const input = new Module_Input({
     input: {
       case: "params",
@@ -41,7 +41,7 @@ test("correctly handle '=' in parameters value", async () => {
   assert.equal((input.input.value as Module_Input_Params).value, "A=B=C");
 });
 
-test("correctly handle empty parameters value", async () => {
+test("correctly handle empty parameters value", () => {
   const input = new Module_Input({
     input: {
       case: "params",

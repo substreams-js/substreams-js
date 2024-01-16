@@ -1,4 +1,4 @@
-import { Module } from "../../proto.js";
+import type { Module } from "../../proto.js";
 import { getModuleOrThrow } from "../../utils/get-module.js";
 import { assertAcyclic } from "./assert-acyclic.js";
 import { shortestPaths } from "./shortest-paths.js";
