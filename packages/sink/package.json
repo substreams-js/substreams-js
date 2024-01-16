@@ -24,12 +24,12 @@
   },
   "peerDependencies": {
     "@bufbuild/protobuf": "^1.6.0",
-    "@connectrpc/connect": "^1.2.0",
-    "effect": "2.0.0-next.60"
+    "@connectrpc/connect": "^1.3.0",
+    "effect": "^2.1.0"
   },
   "devDependencies": {
     "@bufbuild/protobuf": "^1.6.0",
     "@connectrpc/connect": "^1.3.0",
-    "effect": "2.1.0"
+    "effect": "^2.1.0"
   }
 }
