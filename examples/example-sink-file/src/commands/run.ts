@@ -13,7 +13,7 @@ function parseSchema<From, To>(schema: Schema.Schema<From, To>) {
     });
 
     return Either.mapLeft(result, (error) =>
-      ValidationError.invalidValue(HelpDoc.p(TreeFormatter.formatErrors(error.errors))),
+      ValidationError.invalidValue(HelpDoc.p(TreeFormatter.formatIssue(error.error))),
     );
   };
 }
