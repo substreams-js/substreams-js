@@ -55,7 +55,7 @@ export const command = Command.make("run", {
     maxRetryDuration: Options.text("max-retry-duration").pipe(
       Options.withDescription("Maximum duration to retry for in seconds"),
       Options.withDefault("300"),
-      Options.mapOrFail(parseSchema(Schema.NumberFromString)),
+      Options.mapEffect(parseSchema(Schema.NumberFromString)),
       Options.map(Duration.seconds),
     ),
   }),
