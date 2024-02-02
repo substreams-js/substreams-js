@@ -158,6 +158,6 @@ export const ManifestSchema = Schema.struct({
 export type Manifest = Schema.Schema.To<typeof ManifestSchema>;
 
 export function parseManifestJson(input: unknown): Manifest {
-  const parse = Schema.parseSync(ManifestSchema);
+  const parse = Schema.decodeUnknownSync(ManifestSchema);
   return parse(input, { errors: "all" });
 }

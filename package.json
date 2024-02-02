@@ -19,20 +19,20 @@
     "lint": "biome check ."
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.4",
-    "@babel/core": "^7.23.7",
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
     "@babel/plugin-transform-export-namespace-from": "^7.23.4",
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
-    "@biomejs/biome": "^1.5.2",
+    "@biomejs/biome": "^1.5.3",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
-    "@effect/build-utils": "^0.7.1",
+    "@effect/build-utils": "^0.7.2",
     "@effect/language-service": "^0.1.0",
-    "@vitest/coverage-v8": "^1.2.0",
+    "@vitest/coverage-v8": "^1.2.2",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
     "glob": "^10.3.10",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vitest": "^1.2.0"
+    "vite": "^5.0.12",
+    "vitest": "^1.2.2"
   }
 }

@@ -30,11 +30,11 @@
     "yaml": "^2.3.4"
   },
   "devDependencies": {
-    "@bufbuild/buf": "^1.28.1",
-    "@bufbuild/protobuf": "^1.6.0",
-    "@effect/schema": "^0.60.2",
-    "@types/node": "^20.11.4",
-    "effect": "^2.1.0",
+    "@bufbuild/buf": "^1.29.0",
+    "@bufbuild/protobuf": "^1.7.2",
+    "@effect/schema": "^0.61.5",
+    "@types/node": "^20.11.16",
+    "effect": "^2.2.3",
     "yaml": "^2.3.4"
   }
 }

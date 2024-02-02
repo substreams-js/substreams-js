@@ -26,14 +26,14 @@ test("can validate the ethereum block metadata manifest", () => {
 });
 
 test("allows different initial block formats", () => {
-  const parse = Schema.parseOption(InitialBlockSchema);
+  const parse = Schema.decodeOption(InitialBlockSchema);
   expect(parse("123")).toMatchObject(Option.some(123n));
   expect(parse(461246n)).toMatchObject(Option.some(461246n));
   expect(parse(0)).toMatchObject(Option.some(0n));
 });
 
 test("does not allow negative initial block values", () => {
-  const parse = Schema.parseOption(InitialBlockSchema);
+  const parse = Schema.decodeOption(InitialBlockSchema);
   expect(parse("-12345")).toMatchObject(Option.none());
   expect(parse(-12345n)).toMatchObject(Option.none());
   expect(parse(-12345)).toMatchObject(Option.none());
