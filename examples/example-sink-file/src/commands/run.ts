@@ -7,7 +7,7 @@ import { Either } from "effect";
 import * as Stream from "../stream/stream.js";
 
 function parseSchema<From, To>(schema: Schema.Schema<never, From, To>) {
-  const decode =  Schema.decodeUnknownEither(schema)
+  const decode = Schema.decodeUnknownEither(schema);
 
   return (value: unknown): Either.Either<ValidationError.ValidationError, To> => {
     const result = decode(value, {
