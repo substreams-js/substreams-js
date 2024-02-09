@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@8.15.1",
   "workspaces": [
     "packages/*",
     "examples/*"
