@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.14.0
+
+### Minor Changes
+
+- [`798710f`](https://github.com/substreams-js/substreams-js/commit/798710fff3467e6a8c9ddf3990e6fe5d1b2b01e9) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies
+
 ## 0.13.0
 
 ### Minor Changes
