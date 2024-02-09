@@ -27,8 +27,7 @@ const cli = Command.run(root, {
   summary: Span.text("A simple file sink for substreams"),
 });
 
-console.log(process.argv.slice(2));
-Effect.suspend(() => cli(process.argv.slice(2))).pipe(Effect.provide(NodeContext.layer), NodeRuntime.runMain);
+Effect.suspend(() => cli(process.argv)).pipe(Effect.provide(NodeContext.layer), NodeRuntime.runMain);
 
 // TODO: Add all the remaining cli options (start block, stop block, cursor, etc. ... ).
 // TODO: Add an option to specify the output location (for .messages and .cursor files).
