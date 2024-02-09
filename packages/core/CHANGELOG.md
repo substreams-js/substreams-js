@@ -1,5 +1,11 @@
 # @substreams/core
 
+## 0.15.1
+
+### Patch Changes
+
+- [`204cfa0`](https://github.com/substreams-js/substreams-js/commit/204cfa0ac332e87fb715cbe87c84459f0a3cf955) Thanks [@fubhy](https://github.com/fubhy)! - Patching type fixes
+
 ## 0.15.0
 
 ### Minor Changes
