@@ -1,12 +1,13 @@
-import { FileSystem } from "@effect/platform-node";
+import { FileSystem } from "@effect/platform";
+import { NodeFileSystem } from "@effect/platform-node";
 import { Context, Effect, Layer, Option } from "effect";
 
 export interface CursorStorage {
-  readonly read: () => Effect.Effect<never, never, Option.Option<string>>;
-  readonly write: (cursor: Option.Option<string>) => Effect.Effect<never, never, void>;
+  readonly read: () => Effect.Effect<Option.Option<string>>;
+  readonly write: (cursor: Option.Option<string>) => Effect.Effect<void>;
 }
 
-export const CursorStorage = Context.Tag<CursorStorage>();
+export const CursorStorage = Context.GenericTag<CursorStorage>("CursorStorage");
 export const CursorStorageLive = Effect.gen(function* (_) {
   const path = ".cursor";
   const fs = yield* _(FileSystem.FileSystem);
@@ -42,4 +43,4 @@ export const CursorStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(CursorStorageLive, FileSystem.layer);
+export const layer = Layer.provide(CursorStorageLive, NodeFileSystem.layer);

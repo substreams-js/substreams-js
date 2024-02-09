@@ -78,7 +78,7 @@ export function createStream({
   startCursor,
   productionMode,
   maxRetrySeconds = 300,
-}: CreateStreamOptions): Stream.Stream<never, StreamError, Response> {
+}: CreateStreamOptions): Stream.Stream<Response, StreamError> {
   const create = Effect.gen(function* (_) {
     const requestActiveStartBlock = yield* _(Ref.make(BigInt(0)));
     const currentCursor = yield* _(Ref.make(startCursor ? Option.some<string>(startCursor) : Option.none<string>()));
@@ -292,5 +292,5 @@ export function createStream({
     );
   });
 
-  return Stream.unwrap(create);
+  return Stream.unwrap(create) as Stream.Stream<Response, StreamError>;
 }

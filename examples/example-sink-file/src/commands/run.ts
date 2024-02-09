@@ -1,12 +1,12 @@
-import { Args, Command, Options } from "@effect/cli";
-import { HelpDoc, ValidationError } from "@effect/cli";
-import { Path } from "@effect/platform-node";
+import { Args, Command, Options, HelpDoc, ValidationError } from "@effect/cli";
+import { Path } from "@effect/platform";
+import { NodePath } from "@effect/platform-node";
 import { Schema, TreeFormatter } from "@effect/schema";
 import { Duration, Effect, Layer } from "effect";
 import { Either } from "effect";
 import * as Stream from "../stream/stream.js";
 
-function parseSchema<From, To>(schema: Schema.Schema<never, From, To>) {
+function parseSchema<To, From>(schema: Schema.Schema<To, From>) {
   const decode = Schema.decodeUnknownEither(schema);
 
   return (value: unknown): Either.Either<ValidationError.ValidationError, To> => {
@@ -75,7 +75,7 @@ export const command = Command.make("run", {
         outputModule: options.outputModule,
       });
 
-      return yield* _(Effect.provide(stream, Layer.merge(Stream.layer, Path.layer)));
+      return yield* _(Effect.provide(stream, Layer.merge(Stream.layer, NodePath.layer)));
     });
   }),
 );

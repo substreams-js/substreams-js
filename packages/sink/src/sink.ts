@@ -17,12 +17,12 @@ export class BlockUndoSignalSinkError extends Data.TaggedClass("SinkError")<{
 }> {}
 
 export type CreateSinkOptions<R1, R2> = {
-  handleBlockScopedData: (message: BlockScopedData) => Effect.Effect<R1, unknown, void>;
-  handleBlockUndoSignal: (message: BlockUndoSignal) => Effect.Effect<R2, unknown, void>;
+  handleBlockScopedData: (message: BlockScopedData) => Effect.Effect<void, unknown, R1>;
+  handleBlockUndoSignal: (message: BlockUndoSignal) => Effect.Effect<void, unknown, R2>;
 };
 
 export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSignal }: CreateSinkOptions<R1, R2>) {
-  return Sink.forEach((response: Response): Effect.Effect<R1 | R2, SinkError, void> => {
+  return Sink.forEach((response: Response): Effect.Effect<void, SinkError, R1 | R2> => {
     const { value: message, case: kind } = response.message;
 
     switch (kind) {

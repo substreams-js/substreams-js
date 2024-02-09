@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command, Options, Span } from "@effect/cli";
-import { NodeContext, Runtime } from "@effect/platform-node";
+import { NodeContext, NodeRuntime } from "@effect/platform-node";
 import { Effect, LogLevel, Logger } from "effect";
 import * as RunCommand from "./commands/run.js";
 
@@ -27,7 +27,8 @@ const cli = Command.run(root, {
   summary: Span.text("A simple file sink for substreams"),
 });
 
-Effect.suspend(() => cli(process.argv.slice(2))).pipe(Effect.provide(NodeContext.layer), Runtime.runMain);
+console.log(process.argv.slice(2));
+Effect.suspend(() => cli(process.argv.slice(2))).pipe(Effect.provide(NodeContext.layer), NodeRuntime.runMain);
 
 // TODO: Add all the remaining cli options (start block, stop block, cursor, etc. ... ).
 // TODO: Add an option to specify the output location (for .messages and .cursor files).

@@ -1,11 +1,12 @@
-import { FileSystem } from "@effect/platform-node";
+import { FileSystem } from "@effect/platform";
+import { NodeFileSystem } from "@effect/platform-node";
 import { Context, Effect, Layer } from "effect";
 
 export interface MessageStorage {
-  readonly append: (message: string) => Effect.Effect<never, never, void>;
+  readonly append: (message: string) => Effect.Effect<void>;
 }
 
-export const MessageStorage = Context.Tag<MessageStorage>();
+export const MessageStorage = Context.GenericTag<MessageStorage>("MessageStorage");
 export const MessageStorageLive = Effect.gen(function* (_) {
   const path = ".messages";
   const fs = yield* _(FileSystem.FileSystem);
@@ -19,4 +20,4 @@ export const MessageStorageLive = Effect.gen(function* (_) {
   );
 }).pipe(Layer.unwrapScoped);
 
-export const layer = Layer.provide(MessageStorageLive, FileSystem.layer);
+export const layer = Layer.provide(MessageStorageLive, NodeFileSystem.layer);
