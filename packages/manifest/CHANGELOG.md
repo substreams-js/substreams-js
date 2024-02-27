@@ -1,5 +1,16 @@
 # @substreams/manifest
 
+## 0.15.0
+
+### Minor Changes
+
+- [`fc92841`](https://github.com/substreams-js/substreams-js/commit/fc928414b3bc814eac0c19d475a15e2770b1690b) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`fc92841`](https://github.com/substreams-js/substreams-js/commit/fc928414b3bc814eac0c19d475a15e2770b1690b)]:
+  - @substreams/core@0.16.0
+
 ## 0.14.1
 
 ### Patch Changes
