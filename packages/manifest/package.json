@@ -25,16 +25,16 @@
   "peerDependencies": {
     "@bufbuild/buf": "^1.29.0",
     "@bufbuild/protobuf": "^1.7.2",
-    "@effect/schema": "^0.62.0",
-    "effect": "^2.3.0",
-    "yaml": "^2.3.4"
+    "@effect/schema": "^0.63.0",
+    "effect": "^2.4.0",
+    "yaml": "^2.4.0"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.29.0",
     "@bufbuild/protobuf": "^1.7.2",
-    "@effect/schema": "^0.62.0",
-    "@types/node": "^20.11.17",
-    "effect": "^2.3.0",
-    "yaml": "^2.3.4"
+    "@effect/schema": "^0.63.0",
+    "@types/node": "^20.11.20",
+    "effect": "^2.4.0",
+    "yaml": "^2.4.0"
   }
 }

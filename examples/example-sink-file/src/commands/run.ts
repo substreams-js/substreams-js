@@ -9,7 +9,7 @@ import * as Stream from "../stream/stream.js";
 function parseSchema<To, From>(schema: Schema.Schema<To, From>) {
   const decode = Schema.decodeUnknownEither(schema);
 
-  return (value: unknown): Either.Either<ValidationError.ValidationError, To> => {
+  return (value: unknown): Either.Either<To, ValidationError.ValidationError> => {
     const result = decode(value, {
       errors: "all",
     });
