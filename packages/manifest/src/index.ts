@@ -2,6 +2,7 @@ export { readPackage } from "./reader/read-package.js";
 export { readPackageFromFile } from "./reader/read-package-from-file.js";
 export { readPackageFromManifest } from "./reader/read-package-from-manifest.js";
 
+export { readDescriptorSetsProtos } from "./protobuf/read-descriptor-sets-protos.js";
 export { readSystemProtos } from "./protobuf/read-system-protos.js";
 export { readLocalProtos } from "./protobuf/read-local-protos.js";
 

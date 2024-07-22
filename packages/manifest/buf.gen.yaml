@@ -1,0 +1,12 @@
+version: v1
+
+managed:
+  enabled: true
+
+plugins:
+  - plugin: buf.build/bufbuild/es
+    out: src/proto
+    opt: target=ts
+  - plugin: buf.build/bufbuild/connect-es
+    out: src/proto
+    opt: target=ts

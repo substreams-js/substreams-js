@@ -104,6 +104,39 @@ exports[`can validate the ethereum block metadata manifest 1`] = `
 }
 `;
 
+exports[`can validate the protobuf descriptorsets manifest 1`] = `
+{
+  "modules": [
+    {
+      "inputs": [
+        {
+          "source": "any",
+        },
+      ],
+      "kind": "map",
+      "name": "index_events",
+      "output": {
+        "type": "out",
+      },
+    },
+  ],
+  "package": {
+    "name": "injective_common",
+    "version": "v0.2.2",
+  },
+  "protobuf": {
+    "descriptorSets": [
+      {
+        "localPath": "generated-buf-build.binpb",
+      },
+    ],
+    "files": [],
+    "importPaths": [],
+  },
+  "specVersion": "v0.1.0",
+}
+`;
+
 exports[`can validate the uniswap v3 manifest 1`] = `
 {
   "binaries": {

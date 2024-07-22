@@ -10,8 +10,17 @@ export type ManifestSpecVersion = Schema.Schema.To<typeof ManifestSpecVersionSch
 export const ProtobufSchema = Schema.struct({
   files: Schema.array(Schema.string.pipe(Schema.pattern(/\.proto$/))),
   importPaths: Schema.array(Schema.string),
+  descriptorSets: Schema.optional(Schema.array(Schema.suspend(() => ProtobufDescriptorSetsSchema))),
 });
 export type Protobuf = Schema.Schema.To<typeof ProtobufSchema>;
+
+export const ProtobufDescriptorSetsSchema = Schema.struct({
+  localPath: Schema.optional(Schema.string),
+  module: Schema.optional(Schema.string),
+  version: Schema.optional(Schema.string),
+  symbols: Schema.optional(Schema.array(Schema.string)),
+});
+export type ProtobufDescriptorSets = Schema.Schema.To<typeof ProtobufDescriptorSetsSchema>;
 
 export const PackageSchema = Schema.struct({
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
