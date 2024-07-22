@@ -2,7 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { Binary, ModuleMetadata, Modules, Package, PackageMetadata } from "@substreams/core/proto";
 import { createModuleFromManifest } from "./create-module-from-manifest.js";
-import type { Manifest } from "./manifest-schema.js";
+import type { BlockIndexModule, Manifest, MapModule, StoreModule } from "./manifest-schema.js";
 
 export type ConvertToPackageOptions = {
   skipSourceCodeImportValidation?: boolean;

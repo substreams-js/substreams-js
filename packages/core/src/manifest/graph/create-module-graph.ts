@@ -148,6 +148,12 @@ export function createModuleNodes(modules: Module[]) {
   for (const module of modules) {
     // biome-ignore lint/style/noNonNullAssertion: guarenteed at this point.
     const adjacents = nodes.get(module)!;
+
+    if (module.blockFilter !== undefined) {
+      const incoming = getModuleOrThrow(modules, module.blockFilter.module);
+      adjacents.add(incoming);
+    }
+
     for (const input of module.inputs) {
       if (input.input.case === "map" || input.input.case === "store") {
         const incoming = getModuleOrThrow(modules, input.input.value.moduleName);

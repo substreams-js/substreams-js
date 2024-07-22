@@ -1,0 +1,30 @@
+# requires substreams v1.7.1 and above
+specVersion: v0.1.0
+package:
+  name: injective_common
+  version: v0.2.2
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: target/wasm32-unknown-unknown/release/injective_common.wasm
+
+modules:
+  - name: filtered_events
+    kind: map
+    blockFilter:
+      module: index_events
+      query:
+        params: true
+    inputs:
+      - params: string
+      - map: all_events
+    output:
+      type: proto:sf.substreams.cosmos.v1.EventList
+    doc: |
+      `filtered_events` reads from `all_events` and applies a filter on the event types and attribute keys,
+      only outputing the events that match the filter.
+      Example usage: `(type:message && attr:action) || (type:wasm && attr:_contract_address)`
+
+params:
+  filtered_events: "(type:message && attr:action) || (type:wasm && attr:_contract_address)"

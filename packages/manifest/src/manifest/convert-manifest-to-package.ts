@@ -72,6 +72,10 @@ async function readImportedPackage(key: string, path: string) {
 function prefixImportedModules(modules: Module[], prefix: string) {
   for (const module of modules) {
     module.name = `${prefix}:${module.name}`;
+    if (module.blockFilter !== undefined) {
+      module.blockFilter.module = `${prefix}:${module.blockFilter.module}`;
+    }
+
     for (const [index, input] of module.inputs.entries()) {
       switch (input.input.case) {
         case "store": {
@@ -105,7 +109,7 @@ async function readImportedProtos(manifest: Manifest, cwd: string) {
   const system = readSystemProtos();
   for (const file of system.file) {
     // Ensure that the manifest doesn't include system protobufs.
-    if (manifest.protobuf.files.find((inner) => inner === file.name)) {
+    if ((manifest.protobuf?.files ?? []).find((inner) => inner === file.name)) {
       throw new Error(`Proto file ${file} already exists in system protobufs, do not include it in your manifest`);
     }
 
@@ -113,7 +117,7 @@ async function readImportedProtos(manifest: Manifest, cwd: string) {
   }
 
   const paths = new Set<string>();
-  for (const imp of manifest.protobuf.importPaths) {
+  for (const imp of manifest.protobuf?.importPaths ?? []) {
     paths.add(path.resolve(cwd, imp));
   }
 
@@ -123,7 +127,7 @@ async function readImportedProtos(manifest: Manifest, cwd: string) {
   // import paths instead of the implicitly added folder.
   paths.add(cwd);
 
-  for (const file of manifest.protobuf.files) {
+  for (const file of manifest.protobuf?.files ?? []) {
     // Find the first readable file in the import paths.
     let context: string | undefined = undefined;
     for (const candidate of paths) {

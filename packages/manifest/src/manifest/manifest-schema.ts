@@ -1,15 +1,15 @@
 import * as Schema from "@effect/schema/Schema";
 import { nameRegExp, semverRegExp } from "@substreams/core";
 
-export const BinaryTypeSchema = Schema.literal("wasm/rust-v1");
+export const BinaryTypeSchema = Schema.union(Schema.literal("wasip1/tinygo-v1"), Schema.literal("wasm/rust-v1"));
 export type BinaryType = Schema.Schema.To<typeof BinaryTypeSchema>;
 
 export const ManifestSpecVersionSchema = Schema.literal("v0.1.0");
 export type ManifestSpecVersion = Schema.Schema.To<typeof ManifestSpecVersionSchema>;
 
 export const ProtobufSchema = Schema.struct({
-  files: Schema.array(Schema.string.pipe(Schema.pattern(/\.proto$/))),
-  importPaths: Schema.array(Schema.string),
+  files: Schema.optional(Schema.array(Schema.string.pipe(Schema.pattern(/\.proto$/)))),
+  importPaths: Schema.optional(Schema.array(Schema.string)),
 });
 export type Protobuf = Schema.Schema.To<typeof ProtobufSchema>;
 
@@ -40,6 +40,23 @@ export const InputSchema = Schema.union(
 );
 export type Input = Schema.Schema.To<typeof InputSchema>;
 
+// Would it be possible to represent this as InputSchema.omit("params") or something like this?
+export const BlockIndexInputSchema = Schema.union(
+  Schema.struct({
+    map: Schema.string,
+  }),
+  Schema.struct({
+    source: Schema.string,
+  }),
+  Schema.struct({
+    store: Schema.string,
+    mode: Schema.optional(Schema.literal("get", "deltas"), {
+      default: () => "get" as const,
+    }),
+  }),
+);
+export type BlockIndexInput = Schema.Schema.To<typeof BlockIndexInputSchema>;
+
 export const InitialBlockSchema = Schema.compose(
   Schema.union(Schema.bigint, Schema.bigintFromSelf, Schema.BigintFromNumber),
   Schema.NonNegativeBigintFromSelf,
@@ -52,6 +69,7 @@ export const StoreModuleSchema = Schema.struct({
   doc: Schema.optional(Schema.string),
   binary: Schema.optional(Schema.string),
   initialBlock: Schema.optional(Schema.suspend(() => InitialBlockSchema)),
+  blockFilter: Schema.optional(Schema.suspend(() => BlockFilterSchema)),
   inputs: Schema.array(Schema.suspend(() => InputSchema)),
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
   valueType: Schema.union(
@@ -109,6 +127,7 @@ export const MapModuleSchema = Schema.struct({
   doc: Schema.optional(Schema.string),
   binary: Schema.optional(Schema.string),
   initialBlock: Schema.optional(Schema.suspend(() => InitialBlockSchema)),
+  blockFilter: Schema.optional(Schema.suspend(() => BlockFilterSchema)),
   inputs: Schema.array(Schema.suspend(() => InputSchema)).pipe(Schema.minItems(1)),
   name: Schema.string.pipe(Schema.pattern(nameRegExp)),
   output: Schema.struct({
@@ -117,7 +136,34 @@ export const MapModuleSchema = Schema.struct({
 });
 export type MapModule = Schema.Schema.To<typeof MapModuleSchema>;
 
-export const ModuleSchema = Schema.union(StoreModuleSchema, MapModuleSchema);
+// FIXME: BlockFilter module's should be validated to ensure it references a valid Module in the
+// manifest and that this referenced module is a `kind: BlockIndex` module.
+export const BlockFilterSchema = Schema.struct({
+  module: Schema.string,
+  query: Schema.suspend(() => BlockFilterQuerySchema),
+});
+export type BlockFilter = Schema.Schema.To<typeof BlockFilterSchema>;
+
+export const BlockFilterQuerySchema = Schema.struct({
+  string: Schema.optional(Schema.string),
+  params: Schema.optional(Schema.boolean),
+});
+export type BlockFilterQuery = Schema.Schema.To<typeof BlockFilterQuerySchema>;
+
+export const BlockIndexModuleSchema = Schema.struct({
+  kind: Schema.literal("blockIndex"),
+  doc: Schema.optional(Schema.string),
+  binary: Schema.optional(Schema.string),
+  initialBlock: Schema.optional(Schema.suspend(() => InitialBlockSchema)),
+  inputs: Schema.array(Schema.suspend(() => BlockIndexInputSchema)).pipe(Schema.minItems(1)),
+  name: Schema.string.pipe(Schema.pattern(nameRegExp)),
+  output: Schema.struct({
+    type: Schema.literal("proto:sf.substreams.index.v1.Keys"),
+  }),
+});
+export type BlockIndexModule = Schema.Schema.To<typeof BlockIndexModuleSchema>;
+
+export const ModuleSchema = Schema.union(StoreModuleSchema, MapModuleSchema, BlockIndexModuleSchema);
 export type Module = Schema.Schema.To<typeof ModuleSchema>;
 
 export const BinarySchema = Schema.struct({
@@ -151,7 +197,7 @@ export const ManifestSchema = Schema.struct({
   ),
   modules: Schema.array(Schema.suspend(() => ModuleSchema)).pipe(Schema.minItems(1)),
   package: Schema.suspend(() => PackageSchema),
-  protobuf: Schema.suspend(() => ProtobufSchema),
+  protobuf: Schema.optional(Schema.suspend(() => ProtobufSchema)),
   params: Schema.optional(Schema.record(Schema.string, Schema.string)),
   sink: Schema.optional(Schema.suspend(() => SinkSchema)),
 });
