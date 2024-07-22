@@ -2,6 +2,7 @@ import * as path from "node:path";
 import type { FileDescriptorProto } from "@bufbuild/protobuf";
 import { createModuleGraph } from "@substreams/core";
 import { type Module, Modules, type Package } from "@substreams/core/proto";
+import { readDescriptorSetsProtos } from "../index.js";
 import { readLocalProtos } from "../protobuf/read-local-protos.js";
 import { readSystemProtos } from "../protobuf/read-system-protos.js";
 import { readPackage } from "../reader/read-package.js";
@@ -11,7 +12,7 @@ import type { Manifest } from "./manifest-schema.js";
 
 export async function convertManifestToPackage(manifest: Manifest, cwd: string): Promise<Package> {
   const pkg = createPackageFromManifest(manifest, cwd);
-  pkg.protoFiles.push(...(await readImportedProtos(manifest, cwd)));
+  pkg.protoFiles.push(...(await readImportedProtos(pkg, manifest, cwd)));
 
   // TODO: Should we prevent recursive dependencies? What about duplicates? Should we merge & deduplicate those?
   for (const [key, value] of Object.entries(manifest.imports ?? {})) {
@@ -99,8 +100,11 @@ function prefixImportedModules(modules: Module[], prefix: string) {
   }
 }
 
-async function readImportedProtos(manifest: Manifest, cwd: string) {
+async function readImportedProtos(pkg: Package, manifest: Manifest, cwd: string): Promise<FileDescriptorProto[]> {
   const output: FileDescriptorProto[] = [];
+
+  const descriptorSets = await readDescriptorSetsProtos(pkg, manifest);
+  output.push(...descriptorSets);
 
   const system = readSystemProtos();
   for (const file of system.file) {

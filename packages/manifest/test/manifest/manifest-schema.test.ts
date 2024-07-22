@@ -15,6 +15,11 @@ function readManifest(name: string): unknown {
   });
 }
 
+test("can validate the protobuf descriptorsets manifest", () => {
+  const manifest = readManifest("protobuf-descriptorsets");
+  expect(parseManifestJson(manifest)).toMatchSnapshot();
+});
+
 test("can validate the uniswap v3 manifest", () => {
   const manifest = readManifest("uniswap-v3");
   expect(parseManifestJson(manifest)).toMatchSnapshot();

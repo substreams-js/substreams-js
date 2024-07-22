@@ -1,0 +1,19 @@
+# requires substreams v1.7.1 and above
+specVersion: v0.1.0
+package:
+  name: injective_common
+  version: v0.2.2
+
+protobuf:
+  importPaths: []
+  files: []
+  descriptorSets:
+  - localPath: generated-buf-build.binpb
+
+modules:
+  - name: index_events
+    kind: map
+    inputs:
+      - source: any
+    output:
+      type: out
