@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import aliases from "vite-tsconfig-paths";
 
+// biome-ignore lint/style/noDefaultExport: <explanation>
 export default defineConfig({
   plugins: [aliases()],
   envPrefix: "SUBSTREAMS_",

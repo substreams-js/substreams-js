@@ -39,6 +39,7 @@ export interface UseSubstreamOptions {
 }
 
 export function useSubstream({ request, transport, handlers }: UseSubstreamOptions) {
+  // biome-ignore lint/suspicious/noEmptyBlockStatements: <explanation>
   const abortRef = useRef<(reason?: any) => void>(() => {});
   const handlersRef = useRef(handlers);
   handlersRef.current = handlers;

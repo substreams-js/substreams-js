@@ -12,7 +12,7 @@
     "test:coverage": "pnpm vitest --coverage",
     "clean": "node ./scripts/clean.mjs",
     "typecheck": "tsc --build tsconfig.json",
-    "format": "biome format --write . && biome check --apply .",
+    "format": "biome format --write . && biome check --write .",
     "lint": "biome check ."
   },
   "devDependencies": {

@@ -27,6 +27,7 @@ export function isReadableLocalFile(filePath: string) {
       fs.accessSync(filePath, fs.constants.R_OK);
       return true;
     }
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: <explanation>
   } catch {}
 
   return false;

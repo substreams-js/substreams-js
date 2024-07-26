@@ -1,6 +1,7 @@
-import * as path from "path";
+import * as path from "node:path";
 import { defineConfig } from "vitest/config";
 
+// biome-ignore lint/style/noDefaultExport: <explanation>
 export default defineConfig({
   test: {
     include: ["./test/**/*.test.ts"],

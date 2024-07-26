@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 import { dirname as pathDirname, resolve as pathResolve } from "node:path";
 
 export const nodeRequire = createRequire(import.meta.url);
-async function resolve(path: string) {
+function resolve(path: string) {
   return nodeRequire.resolve(path);
 }
 
@@ -14,12 +14,14 @@ export const locateBufBinary = memoize(async function locateBufBinary() {
     const buf = await resolve("@bufbuild/buf/package.json");
     const json = JSON.parse(readFileSync(buf, "utf-8"));
     return pathResolve(pathDirname(buf), json.bin.buf);
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: <explanation>
   } catch {}
 
   try {
     // Check if buf is available on the path.
     execSync("buf --version");
     return "buf";
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: <explanation>
   } catch {}
 
   return undefined;
