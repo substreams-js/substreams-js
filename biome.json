@@ -11,7 +11,8 @@
       "coverage",
       "pnpm-lock.yaml",
       "tsconfig.json",
-      "tsconfig.*.json"
+      "tsconfig.*.json",
+      "examples/example-node-manifest/substream"
     ]
   },
   "formatter": {
