@@ -4,9 +4,6 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     include: ["./test/**/*.test.ts"],
-    coverage: {
-      reporter: process.env.CI ? ["lcov"] : ["text", "json", "html"],
-    },
   },
   resolve: {
     alias: {

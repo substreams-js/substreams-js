@@ -1,13 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.5.2/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.8./schema.json",
   "files": {
-    "ignoreUnknown": true,
-    "ignore": ["proto/", "examples/example-node-manifest/substream/"]
-  },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
+    "ignore": [
+      ".direnv",
+      "dist",
+      "build",
+      "generated",
+      "proto",
+      "coverage",
+      "pnpm-lock.yaml",
+      "tsconfig.json",
+      "tsconfig.*.json"
+    ]
   },
   "formatter": {
     "indentStyle": "space",

@@ -1,28 +1,22 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:numtide/flake-utils";
   };
-
-  outputs = { self, nixpkgs, utils, ... }:
-    utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      corepack = pkgs.runCommand "corepack" {} ''
-        mkdir -p $out/bin
-        ${pkgs.nodejs_20}/bin/corepack enable --install-directory $out/bin
-      '';
-    in {
-      formatter = pkgs.alejandra;
-
-      devShells = {
-        default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            bashInteractive
-            bun
-            nodejs_20
-            corepack
-          ];
-        };
+  outputs = {nixpkgs, ...}: let
+    forAllSystems = function:
+      nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed
+      (system: function nixpkgs.legacyPackages.${system});
+  in {
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
+    devShells = forAllSystems (pkgs: {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          bun
+          corepack
+          deno
+          nodejs
+        ];
       };
     });
+  };
 }

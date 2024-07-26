@@ -15,7 +15,7 @@ function parseSchema<To, From>(schema: Schema.Schema<To, From>) {
     });
 
     return Either.mapLeft(result, (error) =>
-      ValidationError.invalidValue(HelpDoc.p(TreeFormatter.formatIssue(error.error))),
+      ValidationError.invalidValue(HelpDoc.p(TreeFormatter.formatIssueSync(error.issue))),
     );
   };
 }

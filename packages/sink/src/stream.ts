@@ -262,7 +262,7 @@ export function createStream({
           return Ref.set(currentCursor, Option.some(response.message.value.lastValidCursor));
         }
 
-        return Effect.unit;
+        return Effect.void;
       }),
       Stream.tapError((error) =>
         Effect.all([

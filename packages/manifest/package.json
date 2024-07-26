@@ -6,7 +6,8 @@
   "type": "module",
   "publishConfig": {
     "access": "public",
-    "directory": "dist"
+    "directory": "dist",
+    "provenance": true
   },
   "repository": {
     "type": "git",
@@ -23,18 +24,18 @@
     "@substreams/core": "workspace:*"
   },
   "peerDependencies": {
-    "@bufbuild/buf": "^1.29.0",
-    "@bufbuild/protobuf": "^1.7.2",
-    "@effect/schema": "^0.63.0",
-    "effect": "^2.4.0",
-    "yaml": "^2.4.0"
+    "@bufbuild/buf": "^1.35.1",
+    "@bufbuild/protobuf": "^1.10.0",
+    "@effect/schema": "^0.69.2",
+    "effect": "^3.5.8",
+    "yaml": "^2.5.0"
   },
   "devDependencies": {
-    "@bufbuild/buf": "^1.29.0",
-    "@bufbuild/protobuf": "^1.7.2",
-    "@effect/schema": "^0.63.0",
-    "@types/node": "^20.11.20",
-    "effect": "^2.4.0",
-    "yaml": "^2.4.0"
+    "@bufbuild/buf": "^1.35.1",
+    "@bufbuild/protobuf": "^1.10.0",
+    "@effect/schema": "^0.69.2",
+    "@types/node": "^20.14.12",
+    "effect": "^3.5.8",
+    "yaml": "^2.5.0"
   }
 }

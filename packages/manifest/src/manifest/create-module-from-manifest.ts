@@ -10,7 +10,7 @@ import {
   Module_Output,
   Module_QueryFromParams,
 } from "@substreams/core/proto";
-import { type BlockFilter as BlockFilterSchema, type Module as ModuleSchema } from "./manifest-schema.js";
+import type { BlockFilter as BlockFilterSchema, Module as ModuleSchema } from "./manifest-schema.js";
 
 const MAX_UINT_64 = BigInt("18446744073709551615");
 

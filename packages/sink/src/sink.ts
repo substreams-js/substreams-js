@@ -57,6 +57,6 @@ export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSigna
       }
     }
 
-    return Effect.unit;
+    return Effect.void;
   });
 }

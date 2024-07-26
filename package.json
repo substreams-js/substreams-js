@@ -1,10 +1,7 @@
 {
   "private": true,
-  "packageManager": "pnpm@8.15.1",
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
+  "packageManager": "pnpm@9.6.0",
+  "workspaces": ["packages/*", "examples/*"],
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",
@@ -19,20 +16,20 @@
     "lint": "biome check ."
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.23.9",
-    "@babel/plugin-transform-export-namespace-from": "^7.23.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
-    "@biomejs/biome": "^1.5.3",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/plugin-transform-export-namespace-from": "^7.24.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+    "@biomejs/biome": "^1.8.3",
     "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.1",
-    "@effect/build-utils": "^0.7.6",
+    "@changesets/cli": "^2.27.7",
+    "@effect/build-utils": "^0.7.7",
     "@effect/language-service": "^0.1.0",
-    "@vitest/coverage-v8": "^1.3.1",
+    "@vitest/coverage-v8": "^2.0.4",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
-    "glob": "^10.3.10",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "vitest": "^1.3.1"
+    "glob": "^11.0.0",
+    "typescript": "^5.5.4",
+    "vite": "^5.3.5",
+    "vitest": "^2.0.4"
   }
 }

@@ -29,7 +29,7 @@ import {
   // the binary format should be prefered anyways.
   const transport = createConnectTransport({
     // NOTE: Support for the `connect` protocol is currently still work in progress.
-    baseUrl: "https://api.streamingfast.io",
+    baseUrl: "https://mainnet.eth.streamingfast.io",
     interceptors: [createAuthInterceptor(token)],
     useBinaryFormat: true,
     jsonOptions: {
