@@ -1,15 +1,38 @@
 import {
   Module,
+  Module_BlockFilter,
   Module_Input,
   Module_Input_Store_Mode,
+  Module_KindBlockIndex,
   Module_KindMap,
   Module_KindStore,
   Module_KindStore_UpdatePolicy,
   Module_Output,
+  Module_QueryFromParams,
 } from "@substreams/core/proto";
-import type { Module as ModuleSchema } from "./manifest-schema.js";
+import { type BlockFilter as BlockFilterSchema, type Module as ModuleSchema } from "./manifest-schema.js";
 
 const MAX_UINT_64 = BigInt("18446744073709551615");
+
+function createBlockFilterFromManifest(filter: BlockFilterSchema): Module_BlockFilter {
+  const bf = new Module_BlockFilter({
+    module: filter.module,
+  });
+
+  if (filter.query.string !== undefined && filter.query.string !== "") {
+    bf.query = {
+      case: "queryString",
+      value: filter.query.string,
+    };
+  } else if (filter.query.params) {
+    bf.query = {
+      case: "queryFromParams",
+      value: new Module_QueryFromParams(),
+    };
+  }
+
+  return bf;
+}
 
 export function createModuleFromManifest(module: ModuleSchema, index: number): Module {
   const out = new Module({
@@ -29,6 +52,10 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
       out.output = new Module_Output({
         type: module.output.type,
       });
+
+      if (module.blockFilter) {
+        out.blockFilter = createBlockFilterFromManifest(module.blockFilter);
+      }
 
       break;
     }
@@ -78,6 +105,23 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
           ...(module.valueType ? { valueType: module.valueType } : {}),
         }),
       };
+
+      if (module.blockFilter) {
+        out.blockFilter = createBlockFilterFromManifest(module.blockFilter);
+      }
+
+      break;
+    }
+
+    case "blockIndex": {
+      out.kind = {
+        case: "kindBlockIndex",
+        value: new Module_KindBlockIndex({ outputType: module.output.type }),
+      };
+
+      out.output = new Module_Output({
+        type: module.output.type,
+      });
 
       break;
     }

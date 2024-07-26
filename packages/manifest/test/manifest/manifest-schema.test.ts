@@ -15,6 +15,16 @@ function readManifest(name: string): unknown {
   });
 }
 
+test("can validate the block index manifest", () => {
+  const manifest = readManifest("block-index");
+  expect(parseManifestJson(manifest)).toMatchSnapshot();
+});
+
+test("can validate the block filter manifest", () => {
+  const manifest = readManifest("block-filter");
+  expect(parseManifestJson(manifest)).toMatchSnapshot();
+});
+
 test("can validate the uniswap v3 manifest", () => {
   const manifest = readManifest("uniswap-v3");
   expect(parseManifestJson(manifest)).toMatchSnapshot();

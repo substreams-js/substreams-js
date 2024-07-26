@@ -1,5 +1,81 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`can validate the block filter manifest 1`] = `
+{
+  "binaries": {
+    "default": {
+      "file": "target/wasm32-unknown-unknown/release/injective_common.wasm",
+      "type": "wasm/rust-v1",
+    },
+  },
+  "modules": [
+    {
+      "blockFilter": {
+        "module": "index_events",
+        "query": {
+          "params": true,
+        },
+      },
+      "doc": "\`filtered_events\` reads from \`all_events\` and applies a filter on the event types and attribute keys,
+only outputing the events that match the filter.
+Example usage: \`(type:message && attr:action) || (type:wasm && attr:_contract_address)\`
+",
+      "inputs": [
+        {
+          "params": "string",
+        },
+        {
+          "map": "all_events",
+        },
+      ],
+      "kind": "map",
+      "name": "filtered_events",
+      "output": {
+        "type": "proto:sf.substreams.cosmos.v1.EventList",
+      },
+    },
+  ],
+  "package": {
+    "name": "injective_common",
+    "version": "v0.2.2",
+  },
+  "params": {
+    "filtered_events": "(type:message && attr:action) || (type:wasm && attr:_contract_address)",
+  },
+  "specVersion": "v0.1.0",
+}
+`;
+
+exports[`can validate the block index manifest 1`] = `
+{
+  "binaries": {
+    "default": {
+      "file": "target/wasm32-unknown-unknown/release/injective_common.wasm",
+      "type": "wasm/rust-v1",
+    },
+  },
+  "modules": [
+    {
+      "inputs": [
+        {
+          "map": "all_events",
+        },
+      ],
+      "kind": "blockIndex",
+      "name": "index_events",
+      "output": {
+        "type": "proto:sf.substreams.index.v1.Keys",
+      },
+    },
+  ],
+  "package": {
+    "name": "injective_common",
+    "version": "v0.2.2",
+  },
+  "specVersion": "v0.1.0",
+}
+`;
+
 exports[`can validate the ethereum block metadata manifest 1`] = `
 {
   "binaries": {
