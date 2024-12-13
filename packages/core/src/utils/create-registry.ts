@@ -9,7 +9,7 @@ export function createRegistry(substream: Package): IMessageTypeRegistry {
 }
 
 // createDescriptorSet expects the files to be topologically sorted
-function topoSort(protoFiles: FileDescriptorProto[]): FileDescriptorProto[] {
+export function topoSort(protoFiles: FileDescriptorProto[]): FileDescriptorProto[] {
   const graph = new Map<string, Set<string>>();
   const deps = new Map<string, Set<string>>();
 
@@ -65,8 +65,4 @@ function topoSort(protoFiles: FileDescriptorProto[]): FileDescriptorProto[] {
   }
 
   return ordered;
-}
-
-if (process.env.NODE_ENV === "test") {
-  module.exports.topoSort = topoSort;
 }
