@@ -1,5 +1,14 @@
 # @substreams/mermaid
 
+## 0.8.1
+
+### Patch Changes
+
+- [`b9f773c`](https://github.com/substreams-js/substreams-js/commit/b9f773cd5becf011bb7fb8c62ae2798040cae18b) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
+- Updated dependencies [[`b9f773c`](https://github.com/substreams-js/substreams-js/commit/b9f773cd5becf011bb7fb8c62ae2798040cae18b), [`fb1837c`](https://github.com/substreams-js/substreams-js/commit/fb1837c8c570391b1777a1ee49122d7a8fa46f36), [`f01896d`](https://github.com/substreams-js/substreams-js/commit/f01896d309b6d7a09d910870f7bdac9ac7360d50)]:
+  - @substreams/core@0.17.0
+
 ## 0.8.0
 
 ### Minor Changes
