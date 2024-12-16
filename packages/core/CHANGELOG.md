@@ -1,5 +1,17 @@
 # @substreams/core
 
+## 0.17.0
+
+### Minor Changes
+
+- [#64](https://github.com/substreams-js/substreams-js/pull/64) [`fb1837c`](https://github.com/substreams-js/substreams-js/commit/fb1837c8c570391b1777a1ee49122d7a8fa46f36) Thanks [@maoueh](https://github.com/maoueh)! - Added support for `blockIndex` module and usage of `blockFilter` in `map` and `store`
+
+- [#68](https://github.com/substreams-js/substreams-js/pull/68) [`f01896d`](https://github.com/substreams-js/substreams-js/commit/f01896d309b6d7a09d910870f7bdac9ac7360d50) Thanks [@sduchesneau](https://github.com/sduchesneau)! - support index modules, fix protobuf ordering causing client errors
+
+### Patch Changes
+
+- [`b9f773c`](https://github.com/substreams-js/substreams-js/commit/b9f773cd5becf011bb7fb8c62ae2798040cae18b) Thanks [@fubhy](https://github.com/fubhy)! - Update dependencies
+
 ## 0.16.0
 
 ### Minor Changes
