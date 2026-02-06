@@ -1,5 +1,6 @@
+import { create } from "@bufbuild/protobuf";
 import { createModuleGraph } from "@substreams/core";
-import { Module } from "@substreams/core/proto";
+import { ModuleSchema } from "@substreams/core/proto";
 import { createSubstreamFixture } from "@substreams/core/testutils";
 import { assert, expect, test } from "vitest";
 
@@ -8,7 +9,7 @@ const uniswap = createSubstreamFixture("uniswap-v3");
 test("should throw if the graph is not acyclic", () => {
   expect(() =>
     createModuleGraph([
-      new Module({
+      create(ModuleSchema, {
         name: "A",
         initialBlock: 0n,
         kind: {
@@ -26,7 +27,7 @@ test("should throw if the graph is not acyclic", () => {
           },
         ],
       }),
-      new Module({
+      create(ModuleSchema, {
         name: "B",
         initialBlock: 0n,
         kind: {

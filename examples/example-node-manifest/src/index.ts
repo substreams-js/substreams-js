@@ -25,7 +25,6 @@ const registry = createRegistry(substream);
 // In browser environments or alternative runtimes, the `connect` transport should be used.
 const transport = createGrpcTransport({
   baseUrl: "https://mainnet.eth.streamingfast.io",
-  httpVersion: "2",
   interceptors: [createAuthInterceptor(TOKEN)],
   jsonOptions: {
     typeRegistry: registry,

@@ -1,12 +1,7 @@
-version: v1
-
-managed:
-  enabled: true
-
+version: v2
 plugins:
-  - plugin: buf.build/bufbuild/es
+  - remote: buf.build/bufbuild/es
     out: src/proto
-    opt: target=ts
-  - plugin: buf.build/bufbuild/connect-es
-    out: src/proto
-    opt: target=ts
+    opt:
+      - target=ts
+      - import_extension=.js

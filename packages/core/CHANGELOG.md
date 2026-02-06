@@ -1,5 +1,101 @@
 # @substreams/core
 
+## 0.19.0
+
+### Major Changes
+
+- **BREAKING**: V3 RPC is now the default. `createRequest` and `streamBlocks` now use the V3 protocol.
+
+  **Migration Guide:**
+
+  If you need to continue using the V2 protocol, rename your imports:
+  ```typescript
+  // Before (V2 was the default)
+  import { createRequest, streamBlocks } from "@substreams/core";
+
+  // After (to keep using V2)
+  import { createRequestV2, streamBlocksV2 } from "@substreams/core";
+  ```
+
+  For new code, simply use the default imports which now use V3:
+  ```typescript
+  import { createRequest, streamBlocks } from "@substreams/core";
+  ```
+
+  **V3 Benefits:**
+  - Sends the full `.spkg` package directly (no client-side module extraction)
+  - Supports `params` for applying user-defined parameters server-side
+  - Supports `network` for network selection
+  - Supports `limitProcessedBlocks` for cost management
+  - Supports `partialBlocks` for receiving partial blocks close to chain head
+
+  **New V3-only options in `createRequest`:**
+  - `params?: Record<string, string>` - Parameters to apply to the package
+  - `network?: string` - Network override
+  - `noopMode?: boolean` - Prepare stores without data output
+  - `limitProcessedBlocks?: bigint` - Cost management safeguard
+  - `devOutputModules?: string[]` - Filter dev mode outputs
+  - `progressMessagesIntervalMs?: bigint` - Customize progress intervals
+  - `partialBlocks?: boolean` - Receive partial blocks near chain head
+
+## 0.18.0
+
+### Major Changes
+
+- **BREAKING**: Upgraded to `@bufbuild/protobuf` v2. This is a major breaking change that affects how you interact with protobuf messages:
+  - Types are now interfaces instead of classes
+  - Use `create(Schema, data)` instead of `new Type(data)` to create messages
+  - Use `fromBinary(Schema, bytes)` instead of `Type.fromBinary(bytes)` to deserialize
+  - Use `toBinary(Schema, message)` instead of `message.toBinary()` to serialize
+  - Use `toJson(Schema, message)` instead of `message.toJson()` for JSON conversion
+  - `IMessageTypeRegistry` is replaced with `Registry`
+  - **Decoding `Any` messages**: Use `anyUnpack(anyMessage, registry)` from `@bufbuild/protobuf/wkt` instead of the old `any.unpack(registry)` method. The unpacked message has a `$typeName` property to identify its type.
+
+  **Example - Decoding Any messages (e.g., map outputs):**
+  ```typescript
+  import { toJson } from "@bufbuild/protobuf";
+  import { anyUnpack } from "@bufbuild/protobuf/wkt";
+
+  // Using the helper function (recommended):
+  const output = unpackMapOutput(response, registry);
+  if (output !== undefined) {
+    // Get the schema from registry using $typeName
+    const schema = registry.getMessage(output.$typeName);
+    if (schema) {
+      console.log(toJson(schema, output));
+    }
+  }
+
+  // Or manually unpacking an Any message:
+  const anyMessage = response.message.value.output?.mapOutput;
+  if (anyMessage) {
+    const decoded = anyUnpack(anyMessage, registry);
+    if (decoded) {
+      const schema = registry.getMessage(decoded.$typeName);
+      // ... use the decoded message
+    }
+  }
+  ```
+
+  For more details on migrating to the new protobuf API, see the [Connect-ES v2 Migration Guide](https://connectrpc.com/docs/node/migrating-to-v2/).
+
+### Minor Changes
+
+- Added Substreams RPC V3 support with new functions:
+  - `createRequestV3()` - Creates a V3 request that sends the full `.spkg` package directly
+  - `streamBlocksV3()` - Streams blocks using the V3 RPC protocol
+  - `v3` namespace export for V3-specific types
+  - `StreamV3` service export for direct Connect client usage
+
+- V3 RPC features:
+  - Sends the full `.spkg` package instead of extracting modules
+  - Supports `params` for applying user-defined parameters to the package server-side
+  - Supports `network` for network selection
+  - Supports `limitProcessedBlocks` for cost management
+  - Supports `devOutputModules` for filtering dev mode outputs
+  - Supports `progressMessagesIntervalMs` for customizing progress message intervals
+  - Supports `partialBlocks` for receiving partial blocks close to chain head
+
 ## 0.17.0
 
 ### Minor Changes

@@ -1,7 +1,8 @@
-import { Module } from "@substreams/core/proto";
+import { create } from "@bufbuild/protobuf";
+import { type Module, ModuleSchema } from "@substreams/core/proto";
 
-export const STANDARD_TEST_MODULES = [
-  new Module({
+export const STANDARD_TEST_MODULES: Module[] = [
+  create(ModuleSchema, {
     name: "As",
     initialBlock: 0n,
     kind: {
@@ -9,7 +10,7 @@ export const STANDARD_TEST_MODULES = [
       value: {},
     },
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "Am",
     initialBlock: 0n,
     kind: {
@@ -17,7 +18,7 @@ export const STANDARD_TEST_MODULES = [
       value: {},
     },
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "B",
     initialBlock: 10n,
     kind: {
@@ -35,7 +36,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "C",
     initialBlock: 0n,
     kind: {
@@ -53,7 +54,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "D",
     initialBlock: 0n,
     kind: {
@@ -71,7 +72,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "E",
     initialBlock: 5n,
     kind: {
@@ -89,7 +90,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "F",
     kind: {
       case: "kindStore",
@@ -106,7 +107,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "G",
     kind: {
       case: "kindStore",
@@ -131,7 +132,7 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "K",
     kind: {
       case: "kindStore",
@@ -148,21 +149,21 @@ export const STANDARD_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "H",
     kind: {
       case: "kindMap",
       value: {},
     },
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "SimpleStore",
     kind: {
       case: "kindStore",
       value: {},
     },
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "MapDependsOnStore",
     kind: {
       case: "kindMap",

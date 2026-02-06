@@ -1,18 +1,19 @@
+import { create } from "@bufbuild/protobuf";
 import { applyParams } from "@substreams/core";
-import { Module, Module_Input, type Module_Input_Params } from "@substreams/core/proto";
+import { type Module_Input, Module_InputSchema, type Module_Input_Params, ModuleSchema } from "@substreams/core/proto";
 import { assert, test } from "vitest";
 
 test("correctly injects parameters into a module", () => {
-  const input = new Module_Input({
+  const input = create(Module_InputSchema, {
     input: {
       case: "params",
       value: {
         value: "",
       },
     },
-  });
+  }) as Module_Input;
 
-  const module = new Module({
+  const module = create(ModuleSchema, {
     name: "a",
     inputs: [input],
   });
@@ -22,16 +23,16 @@ test("correctly injects parameters into a module", () => {
 });
 
 test("correctly handle '=' in parameters value", () => {
-  const input = new Module_Input({
+  const input = create(Module_InputSchema, {
     input: {
       case: "params",
       value: {
         value: "",
       },
     },
-  });
+  }) as Module_Input;
 
-  const module = new Module({
+  const module = create(ModuleSchema, {
     name: "mymodule",
     inputs: [input],
   });
@@ -42,16 +43,16 @@ test("correctly handle '=' in parameters value", () => {
 });
 
 test("correctly handle empty parameters value", () => {
-  const input = new Module_Input({
+  const input = create(Module_InputSchema, {
     input: {
       case: "params",
       value: {
         value: "",
       },
     },
-  });
+  }) as Module_Input;
 
-  const module = new Module({
+  const module = create(ModuleSchema, {
     name: "mymodule",
     inputs: [input],
   });

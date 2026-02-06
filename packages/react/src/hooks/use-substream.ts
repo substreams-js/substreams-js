@@ -1,7 +1,7 @@
 "use client";
 
 import { Code, type ConnectError, type Transport } from "@connectrpc/connect";
-import { streamBlocks } from "@substreams/core";
+import { streamBlocksV2 } from "@substreams/core";
 import type { Request, Response } from "@substreams/core/proto";
 import { useEffect, useRef } from "react";
 
@@ -46,7 +46,7 @@ export function useSubstream({ request, transport, handlers }: UseSubstreamOptio
 
   useEffect(() => {
     const controller = new AbortController();
-    const stream = streamBlocks(transport, request, {
+    const stream = streamBlocksV2(transport, request, {
       signal: controller.signal,
     });
 

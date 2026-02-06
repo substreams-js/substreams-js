@@ -1,7 +1,10 @@
 {
   "private": true,
-  "packageManager": "pnpm@9.6.0",
-  "workspaces": ["packages/*", "examples/*"],
+  "packageManager": "pnpm@10.28.2",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",

@@ -8,7 +8,7 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect": "^1.7.0",
     "@connectrpc/connect-node": "^1.4.0",
     "@effect/cli": "^0.39.2",
     "@effect/platform": "^0.60.2",

@@ -22,7 +22,6 @@ import {
   const registry = createRegistry(substream);
   const transport = createGrpcTransport({
     baseUrl: "https://mainnet.eth.streamingfast.io",
-    httpVersion: "2",
     interceptors: [createAuthInterceptor(token)],
     jsonOptions: {
       typeRegistry: registry,

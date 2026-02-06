@@ -4,6 +4,10 @@ export {
   createRequest,
   type CreateRequestOptions,
 } from "./utils/create-request.js";
+export {
+  createRequestV2,
+  type CreateRequestV2Options,
+} from "./utils/create-request-v2.js";
 export { createSubstream } from "./utils/create-substream.js";
 export { getModule, getModuleOrThrow } from "./utils/get-module.js";
 export {
@@ -18,6 +22,7 @@ export { getProtoTypeName } from "./utils/get-proto-type-name.js";
 export { isMapModule, type MapModule } from "./utils/is-map-module.js";
 export { isStoreModule, type StoreModule } from "./utils/is-store-module.js";
 export { streamBlocks } from "./utils/stream-blocks.js";
+export { streamBlocksV2 } from "./utils/stream-blocks-v2.js";
 export { unpackMapOutput } from "./utils/unpack-map-output.js";
 export { isEmptyMessage } from "./utils/is-empty-message.js";
 export {
@@ -48,3 +53,6 @@ export { validateModules } from "./manifest/validation/validate-modules.js";
 export { validatePackageAndModules } from "./manifest/validation/validate-package-and-modules.js";
 export { calculateHeadBlockTimeDrift } from "./utils/calculate-head-block-time-drift.js";
 export { generateMermaidGraph } from "./utils/generate-mermaid-graph.js";
+
+// V3 RPC types namespace
+export { v3, StreamV3 } from "./proto.js";

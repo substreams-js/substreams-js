@@ -35,7 +35,6 @@ export function runStream({
     const token = yield* _(Config.string("SUBSTREAMS_API_TOKEN"));
     const transport = createGrpcTransport({
       baseUrl: "https://mainnet.eth.streamingfast.io",
-      httpVersion: "2",
       interceptors: [createAuthInterceptor(token)],
     });
 

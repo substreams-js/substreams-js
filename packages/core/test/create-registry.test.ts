@@ -1,18 +1,19 @@
-import { FileDescriptorProto } from "@bufbuild/protobuf";
+import { create } from "@bufbuild/protobuf";
+import { FileDescriptorProtoSchema } from "@bufbuild/protobuf/wkt";
 import { expect, test } from "vitest";
 import { topoSort } from "../src/utils/create-registry.js";
 
-const mockProtoFile1 = new FileDescriptorProto({
+const mockProtoFile1 = create(FileDescriptorProtoSchema, {
   name: "file1.proto",
   dependency: [],
 });
 
-const mockProtoFile2 = new FileDescriptorProto({
+const mockProtoFile2 = create(FileDescriptorProtoSchema, {
   name: "file2.proto",
   dependency: ["file1.proto"],
 });
 
-const mockProtoFile3 = new FileDescriptorProto({
+const mockProtoFile3 = create(FileDescriptorProtoSchema, {
   name: "file3.proto",
   dependency: ["file2.proto", "file1.proto"],
 });

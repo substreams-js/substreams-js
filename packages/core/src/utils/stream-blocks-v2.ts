@@ -1,17 +1,17 @@
 import { type CallOptions, type Transport, createClient } from "@connectrpc/connect";
-import { type Response, StreamV3, v3 } from "../proto.js";
+import { type Request, type Response, Stream } from "../proto.js";
 
 /**
- * Stream blocks using the Substreams RPC V3 protocol.
+ * Stream blocks using the Substreams RPC V2 protocol.
  *
- * V3 sends the full .spkg package directly instead of extracting modules,
+ * @deprecated Use `streamBlocks` (V3) instead. V3 sends the full .spkg package directly
  * and supports additional features like params, network selection, and partial blocks.
  */
-export function streamBlocks(
+export function streamBlocksV2(
   transport: Transport,
-  request: v3.Request,
+  request: Request,
   options?: CallOptions | undefined,
 ): AsyncIterable<Response> {
-  const client = createClient(StreamV3, transport);
+  const client = createClient(Stream, transport);
   return client.blocks(request, options);
 }

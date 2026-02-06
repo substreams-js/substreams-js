@@ -1,14 +1,14 @@
-import { type IMessageTypeRegistry, createDescriptorSet, createRegistryFromDescriptors } from "@bufbuild/protobuf";
-
-import type { FileDescriptorProto } from "@bufbuild/protobuf";
+import { create, createFileRegistry, type FileRegistry } from "@bufbuild/protobuf";
+import { type FileDescriptorProto, FileDescriptorSetSchema } from "@bufbuild/protobuf/wkt";
 import type { Package } from "../proto.js";
 
-export function createRegistry(substream: Package): IMessageTypeRegistry {
-  substream.protoFiles = topoSort(substream.protoFiles);
-  return createRegistryFromDescriptors(createDescriptorSet(substream.protoFiles), true);
+export function createRegistry(substream: Package): FileRegistry {
+  const sortedProtoFiles = topoSort(substream.protoFiles);
+  const fileDescriptorSet = create(FileDescriptorSetSchema, { file: sortedProtoFiles });
+  return createFileRegistry(fileDescriptorSet);
 }
 
-// createDescriptorSet expects the files to be topologically sorted
+// createFileRegistry expects the files to be topologically sorted
 export function topoSort(protoFiles: FileDescriptorProto[]): FileDescriptorProto[] {
   const graph = new Map<string, Set<string>>();
   const deps = new Map<string, Set<string>>();
@@ -34,13 +34,16 @@ export function topoSort(protoFiles: FileDescriptorProto[]): FileDescriptorProto
 
   while (ready.size > 0) {
     // Take the first ready node
-    const current = ready.values().next().value;
+    const current = ready.values().next().value as FileDescriptorProto | undefined;
+    if (current === undefined) {
+      break;
+    }
     ready.delete(current);
     remaining.delete(current);
     ordered.push(current);
 
     // Check what nodes are now ready
-    if (deps.has(current.name)) {
+    if (current.name && deps.has(current.name)) {
       const current_deps = deps.get(current.name);
       if (!current_deps) {
         throw new Error(`Missing dependency for ${current.name}`);

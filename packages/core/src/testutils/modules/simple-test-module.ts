@@ -1,7 +1,8 @@
-import { Module } from "@substreams/core/proto";
+import { create } from "@bufbuild/protobuf";
+import { type Module, ModuleSchema } from "@substreams/core/proto";
 
-export const SIMPLE_TEST_MODULES = [
-  new Module({
+export const SIMPLE_TEST_MODULES: Module[] = [
+  create(ModuleSchema, {
     name: "A",
     initialBlock: 0n,
     kind: {
@@ -9,7 +10,7 @@ export const SIMPLE_TEST_MODULES = [
       value: {},
     },
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "B",
     initialBlock: 0n,
     kind: {
@@ -27,7 +28,7 @@ export const SIMPLE_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "C",
     initialBlock: 0n,
     kind: {
@@ -45,7 +46,7 @@ export const SIMPLE_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "D",
     initialBlock: 0n,
     kind: {
@@ -71,7 +72,7 @@ export const SIMPLE_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "E",
     initialBlock: 0n,
     kind: {
@@ -105,7 +106,7 @@ export const SIMPLE_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "F",
     initialBlock: 0n,
     kind: {
@@ -123,7 +124,7 @@ export const SIMPLE_TEST_MODULES = [
       },
     ],
   }),
-  new Module({
+  create(ModuleSchema, {
     name: "X",
     kind: {
       case: "kindMap",

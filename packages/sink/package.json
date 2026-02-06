@@ -1,7 +1,7 @@
 {
   "name": "@substreams/sink",
   "description": "",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "license": "MIT",
   "type": "module",
   "publishConfig": {
@@ -24,13 +24,13 @@
     "@substreams/core": "workspace:*"
   },
   "peerDependencies": {
-    "@bufbuild/protobuf": "^1.10.0",
-    "@connectrpc/connect": "^1.4.0",
+    "@bufbuild/protobuf": "^2.7.0",
+    "@connectrpc/connect": "^2.0.0",
     "effect": "^3.5.8"
   },
   "devDependencies": {
-    "@bufbuild/protobuf": "^1.10.0",
-    "@connectrpc/connect": "^1.4.0",
+    "@bufbuild/protobuf": "^2.11.0",
+    "@connectrpc/connect": "^2.1.1",
     "effect": "^3.5.8"
   }
 }

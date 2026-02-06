@@ -1,11 +1,23 @@
 import { create } from "@bufbuild/protobuf";
-import { createModuleGraph } from "../manifest/graph/create-module-graph.js";
-import { type Module, type Package, v3 } from "../proto.js";
+import { type ModuleGraph, createModuleGraph } from "../manifest/graph/create-module-graph.js";
+import {
+  type Module,
+  ModuleSchema,
+  type Modules,
+  ModulesSchema,
+  type Package,
+  type Request,
+  RequestSchema,
+} from "../proto.js";
 import { getModuleOrThrow } from "./get-module.js";
 
-export type CreateRequestOptions = {
+/**
+ * @deprecated Use `CreateRequestOptions` (V3) instead. V3 supports additional features
+ * like params, network selection, and partial blocks.
+ */
+export type CreateRequestV2Options = {
   /**
-   * The substream package to use. The full package is sent to the server.
+   * The substream package to use.
    */
   substreamPackage: Package;
   /**
@@ -41,52 +53,18 @@ export type CreateRequestOptions = {
    */
   stopBlockNum?: number | bigint | `+${number}` | undefined;
   /**
-   * Parameters to apply to the package. These override any default params in the package.
-   * The key is the module name and the value is the parameter string.
-   */
-  params?: Record<string, string> | undefined;
-  /**
-   * Network to use. This overrides the network specified in the package.
-   */
-  network?: string | undefined;
-  /**
    * Available only in developer mode.
    */
   debugInitialStoreSnapshotForModules?: string[] | undefined;
-  /**
-   * If set, prepares the stores and caches on the server, sending only progress messages
-   * and minimal clock data (and cursor).
-   */
-  noopMode?: boolean | undefined;
-  /**
-   * If set, the engine will reject a request if the number of blocks to process
-   * (including preparing the stores) is above this limit. Useful as a safeguard for managing costs.
-   */
-  limitProcessedBlocks?: bigint | undefined;
-  /**
-   * Available only in developer mode. If set, the server will only send the output of these modules.
-   * If unset, all outputs are sent. This allows reducing the payload in dev mode.
-   */
-  devOutputModules?: string[] | undefined;
-  /**
-   * Interval between progress messages in milliseconds (minimum 500ms).
-   * Default: starts at 500ms and ramps up to 5000ms within 1 minute.
-   */
-  progressMessagesIntervalMs?: bigint | undefined;
-  /**
-   * If true, blocks close to head will be sent in "partials" as soon as we get them.
-   * This means you will get different versions of the same block number, each an incomplete increment.
-   */
-  partialBlocks?: boolean | undefined;
 };
 
 /**
- * Create a Substreams RPC request using the V3 protocol.
+ * Create a V2 RPC request.
  *
- * V3 sends the full .spkg package directly instead of extracting modules,
+ * @deprecated Use `createRequest` (V3) instead. V3 sends the full .spkg package directly
  * and supports additional features like params, network selection, and partial blocks.
  */
-export function createRequest({
+export function createRequestV2({
   substreamPackage,
   outputModule,
   startBlockNum,
@@ -94,15 +72,8 @@ export function createRequest({
   productionMode,
   startCursor,
   finalBlocksOnly,
-  params,
-  network,
   debugInitialStoreSnapshotForModules,
-  noopMode,
-  limitProcessedBlocks,
-  devOutputModules,
-  progressMessagesIntervalMs,
-  partialBlocks,
-}: CreateRequestOptions): v3.Request {
+}: CreateRequestV2Options): Request {
   const resolvedOutputModule = resolveOutputModule(substreamPackage, outputModule);
   const packageModules = substreamPackage.modules;
   if (packageModules === undefined) {
@@ -110,33 +81,43 @@ export function createRequest({
   }
 
   const moduleGraph = createModuleGraph(packageModules.modules);
+  const requestModules = resolveRequestModules(moduleGraph, packageModules, resolvedOutputModule);
   const resolvedStartBlockNum = resolveStartBlockNum(moduleGraph, resolvedOutputModule, startBlockNum);
   const resolvedStopBlockNum = resolveStopBlockNum(resolvedStartBlockNum, stopBlockNum);
 
-  return create(v3.RequestSchema, {
-    package: substreamPackage,
+  return create(RequestSchema, {
+    modules: requestModules,
     startBlockNum: resolvedStartBlockNum,
     stopBlockNum: resolvedStopBlockNum,
     outputModule: resolvedOutputModule.name,
     productionMode: productionMode ?? false,
     finalBlocksOnly: finalBlocksOnly ?? false,
-    params: params ?? {},
-    network: network ?? "",
     debugInitialStoreSnapshotForModules: debugInitialStoreSnapshotForModules ?? [],
-    noopMode: noopMode ?? false,
-    limitProcessedBlocks: limitProcessedBlocks ?? BigInt(0),
-    devOutputModules: devOutputModules ?? [],
-    progressMessagesIntervalMs: progressMessagesIntervalMs ?? BigInt(0),
-    partialBlocks: partialBlocks ?? false,
     ...(startCursor !== undefined ? { startCursor } : undefined),
   });
 }
 
-function resolveStartBlockNum(
-  moduleGraph: ReturnType<typeof createModuleGraph>,
-  outputModule: Module,
-  startBlockNum?: number | bigint,
-) {
+function resolveRequestModules(moduleGraph: ModuleGraph, packageModules: Modules, outputModule: Module): Modules {
+  const requestModules = create(ModulesSchema, { modules: [], binaries: [] });
+  const requiredModules = [outputModule, ...moduleGraph.ancestorsOf(outputModule)];
+  for (const module of requiredModules) {
+    const moduleBinary = packageModules.binaries[module.binaryIndex];
+    if (moduleBinary === undefined) {
+      throw new Error(`Missing ${module.name} module binary at index ${module.binaryIndex}`);
+    }
+
+    let binaryIndex = requestModules.binaries.indexOf(moduleBinary);
+    if (binaryIndex === -1) {
+      binaryIndex = requestModules.binaries.push(moduleBinary) - 1;
+    }
+
+    requestModules.modules.push(create(ModuleSchema, { ...module, binaryIndex }));
+  }
+
+  return requestModules;
+}
+
+function resolveStartBlockNum(moduleGraph: ModuleGraph, outputModule: Module, startBlockNum?: number | bigint) {
   if (startBlockNum === undefined) {
     return moduleGraph.startBlockFor(outputModule);
   }

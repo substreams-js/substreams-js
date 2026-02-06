@@ -1,6 +1,7 @@
+import { toBinary } from "@bufbuild/protobuf";
 import { Code, ConnectError, type Transport, createPromiseClient } from "@connectrpc/connect";
-import { createRequest } from "@substreams/core";
-import { type Module, type Package, type Response, Stream as StreamService } from "@substreams/core/proto";
+import { createRequestV2 } from "@substreams/core";
+import { type Module, type Package, type Response, ResponseSchema, Stream as StreamService } from "@substreams/core/proto";
 import { Data, Duration, Effect, Metric, Option, Predicate, Ref, Schedule, Sink, Stream } from "effect";
 
 import * as Metrics from "./metrics.js";
@@ -85,7 +86,7 @@ export function createStream({
 
     const metrics = Sink.forEach((response: Response) =>
       Effect.gen(function* (_) {
-        const size = response.toBinary().byteLength;
+        const size = toBinary(ResponseSchema, response).byteLength;
         yield* _(Metric.incrementBy(Metrics.MessageSizeBytes, size));
 
         const { case: kind, value: message } = response.message;
@@ -215,7 +216,7 @@ export function createStream({
       Effect.map((startCursor) => Option.getOrUndefined(startCursor)),
       Effect.map((startCursor) => {
         const client = createPromiseClient(StreamService, connectTransport);
-        const request = createRequest({
+        const request = createRequestV2({
           substreamPackage,
           productionMode,
           outputModule,
