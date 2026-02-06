@@ -30,6 +30,6 @@ jobs:
         run: pnpm run build
 
       - name: Report build size
-        uses: preactjs/compressed-size-action@v2
+        uses: preactjs/compressed-size-action@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
