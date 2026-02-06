@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
-import { FileDescriptorSet } from "@bufbuild/protobuf";
+import { fromBinary } from "@bufbuild/protobuf";
+import { FileDescriptorSetSchema } from "@bufbuild/protobuf/wkt";
 import { locateBufBinary } from "./locate-buf-binary.js";
 
 export async function readLocalProtos(context: string, file: string) {
@@ -27,5 +28,5 @@ export async function readLocalProtos(context: string, file: string) {
     });
   });
 
-  return FileDescriptorSet.fromBinary(data);
+  return fromBinary(FileDescriptorSetSchema, data);
 }

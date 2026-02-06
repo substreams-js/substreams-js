@@ -82,14 +82,14 @@ importers:
   examples/example-node-manifest:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^2.11.0
+        version: 2.11.0
       '@connectrpc/connect':
-        specifier: ^1.7.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)
       '@connectrpc/connect-node':
-        specifier: ^1.4.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -110,14 +110,14 @@ importers:
   examples/example-sea:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^2.11.0
+        version: 2.11.0
       '@connectrpc/connect':
-        specifier: ^1.7.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)
       '@connectrpc/connect-node':
-        specifier: ^1.4.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -146,12 +146,15 @@ importers:
 
   examples/example-sink-file:
     dependencies:
+      '@bufbuild/protobuf':
+        specifier: ^2.11.0
+        version: 2.11.0
       '@connectrpc/connect':
-        specifier: ^1.7.0
-        version: 1.7.0(@bufbuild/protobuf@2.11.0)
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)
       '@connectrpc/connect-node':
-        specifier: ^1.4.0
-        version: 1.7.0(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@2.11.0))
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))
       '@effect/cli':
         specifier: ^0.39.2
         version: 0.39.3(@effect/platform@0.60.3(@effect/schema@0.69.3(effect@3.19.15))(effect@3.19.15))(@effect/printer-ansi@0.33.52(@effect/typeclass@0.24.52(effect@3.19.15))(effect@3.19.15))(@effect/printer@0.33.52(@effect/typeclass@0.24.52(effect@3.19.15))(effect@3.19.15))(@effect/schema@0.69.3(effect@3.19.15))(effect@3.19.15)
@@ -205,14 +208,14 @@ importers:
   examples/example-web:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^2.11.0
+        version: 2.11.0
       '@connectrpc/connect':
-        specifier: ^1.7.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)
       '@connectrpc/connect-web':
-        specifier: ^1.4.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))
       '@substreams/core':
         specifier: workspace:*
         version: link:../../packages/core/dist
@@ -259,8 +262,8 @@ importers:
         specifier: ^1.35.1
         version: 1.64.0
       '@bufbuild/protobuf':
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^2.11.0
+        version: 2.11.0
       '@effect/schema':
         specifier: ^0.69.2
         version: 0.69.3(effect@3.19.15)
@@ -296,14 +299,14 @@ importers:
         version: link:../core/dist
     devDependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^2.11.0
+        version: 2.11.0
       '@connectrpc/connect':
-        specifier: ^1.7.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)
       '@connectrpc/connect-web':
-        specifier: ^1.4.0
-        version: 1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))
+        specifier: ^2.1.1
+        version: 2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.27
@@ -454,24 +457,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@1.9.4':
     resolution: {integrity: sha512-fJIW0+LYujdjUgJJuwesP4EjIBl/N/TcOX3IvIHJQNsAqvV2CHIogsmA94BPG6jZATS4Hi+xv4SkBBQSt1N4/g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@1.9.4':
     resolution: {integrity: sha512-gEhi/jSBhZ2m6wjV530Yy8+fNqG8PAinM3oV7CyO+6c3CEh16Eizm21uHVsyVBEB6RIM8JHIl6AGYCv6Q6Q9Tg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@1.9.4':
     resolution: {integrity: sha512-lRCJv/Vi3Vlwmbd6K+oQ0KhLHMAysN8lXoCI7XeHlxaajk06u7G+UsFSO01NAs5iYuWKmVZjmiOzJ0OJmGsMwg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@1.9.4':
     resolution: {integrity: sha512-tlbhLk+WXZmgwoIKwHIHEBZUwxml7bRJgk0X2sPyNR3S93cdRq6XulAZRQJ17FYGGzWne0fgrXBKpl7l4M87Hg==}
@@ -531,9 +538,6 @@ packages:
     resolution: {integrity: sha512-MC9Zj+pUQsKLEQrsBPmV3CuECYUSD2n82WUcLMu6f49LwSMtKg887B5vPADsf2yMM+6N1LjYHHLb3fN4R1ZGyg==}
     engines: {node: '>=12'}
     hasBin: true
-
-  '@bufbuild/protobuf@1.10.1':
-    resolution: {integrity: sha512-wJ8ReQbHxsAfXhrf9ixl0aYbZorRuOWpBNzm8pL8ftmSxQx/wnJD5Eg861NwJU/czy2VXFIebCeZnZrI9rktIQ==}
 
   '@bufbuild/protobuf@2.11.0':
     resolution: {integrity: sha512-sBXGT13cpmPR5BMgHE6UEEfEaShh5Ror6rfN3yEK5si7QVrtZg8LEPQb0VVhiLRUslD2yLnXtnRzG035J/mZXQ==}
@@ -599,13 +603,6 @@ packages:
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
 
-  '@connectrpc/connect-node@1.7.0':
-    resolution: {integrity: sha512-6vaPIkG/NyhxlYgytLoR9KYbPhczEboFB2OYWkA9qvUz1K7efXfeGrlRxoLtpa+r8VxyIOw73w5ktNe743nD+A==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      '@bufbuild/protobuf': ^1.10.0
-      '@connectrpc/connect': 1.7.0
-
   '@connectrpc/connect-node@2.1.1':
     resolution: {integrity: sha512-s3TfsI1XF+n+1z6MBS9rTnFsxxR4Rw5wmdEnkQINli81ESGxcsfaEet8duzq8LVuuCupmhUsgpRo0Nv9pZkufg==}
     engines: {node: '>=20'}
@@ -613,16 +610,11 @@ packages:
       '@bufbuild/protobuf': ^2.7.0
       '@connectrpc/connect': 2.1.1
 
-  '@connectrpc/connect-web@1.7.0':
-    resolution: {integrity: sha512-qyP0YOnUPRWwCc/VfsoydMJvkb7EyUPr2q9sHgBuJzbADjiqck1gKH5V5ZPzPhTLBvmz5UvG+wiZ5sMRQHU1MQ==}
+  '@connectrpc/connect-web@2.1.1':
+    resolution: {integrity: sha512-J8317Q2MaFRCT1jzVR1o06bZhDIBmU0UAzWx6xOIXzOq8+k71/+k7MUF7AwcBUX+34WIvbm5syRgC5HXQA8fOg==}
     peerDependencies:
-      '@bufbuild/protobuf': ^1.10.0
-      '@connectrpc/connect': 1.7.0
-
-  '@connectrpc/connect@1.7.0':
-    resolution: {integrity: sha512-iNKdJRi69YP3mq6AePRT8F/HrxWCewrhxnLMNm0vpqXAR8biwzRtO6Hjx80C6UvtKJ5sFmffQT7I4Baecz389w==}
-    peerDependencies:
-      '@bufbuild/protobuf': ^1.10.0
+      '@bufbuild/protobuf': ^2.7.0
+      '@connectrpc/connect': 2.1.1
 
   '@connectrpc/connect@2.1.1':
     resolution: {integrity: sha512-JzhkaTvM73m2K1URT6tv53k2RwngSmCXLZJgK580qNQOXRzZRR/BCMfZw3h+90JpnG6XksP5bYT+cz0rpUzUWQ==}
@@ -981,10 +973,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fastify/busboy@2.1.1':
-    resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
-    engines: {node: '>=14'}
-
   '@inquirer/external-editor@1.0.3':
     resolution: {integrity: sha512-RWbSrDiYmO4LbejWY7ttpxczuwQyZLBUyygsA9Nsv95hpzUWwnNTVQmAq3xuh7vNwCp07UTmE5i11XAEExx4RA==}
     engines: {node: '>=18'}
@@ -1076,36 +1064,42 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.6':
     resolution: {integrity: sha512-Ve3gUCG57nuUUSyjBq/MAM0CzArtuIOxsBdQ+ftz6ho8n7s1i9E1Nmk/xmP323r2YL0SONs1EuwqBp2u1k5fxg==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.6':
     resolution: {integrity: sha512-f2g/DT3NhGPdBmMWYoxixqYr3v/UXcmLOYy16Bx0TM20Tchduwr4EaCbmxh1321TABqPGDpS8D/ggOTaljijOA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.6':
     resolution: {integrity: sha512-qb6naMDGlbCwdhLj6hgoVKJl2odL34z2sqkC7Z6kzir8b5W65WYDpLB6R06KabvZdgoHI/zxke4b3zR0wAbDTA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.6':
     resolution: {integrity: sha512-kbT5wvNQlx7NaGjzPFu8nVIW1rWqV780O7ZtkjuWaPUgpv2NMFpjYERVi0UYj1msZNyCzGlaCWEtzc+exjMGbQ==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.6':
     resolution: {integrity: sha512-1JRFeC+h7RdXwldHzTsmdtYR/Ku8SylLgTU/reMuqdVD7CtLwf0VR1FqeprZ0eHQkO0vqsbvFLXUmYm/uNKJBg==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.6':
     resolution: {integrity: sha512-3ukyebjc6eGlw9yRt678DxVF7rjXatWiHvTXqphZLvo7aC5NdEgFufVwjFfY51ijYEWpXbqF5jtrK275z52D4Q==}
@@ -1198,66 +1192,79 @@ packages:
     resolution: {integrity: sha512-eyrr5W08Ms9uM0mLcKfM/Uzx7hjhz2bcjv8P2uynfj0yU8GGPdz8iYrBPhiLOZqahoAMB8ZiolRZPbbU2MAi6Q==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.57.0':
     resolution: {integrity: sha512-Xds90ITXJCNyX9pDhqf85MKWUI4lqjiPAipJ8OLp8xqI2Ehk+TCVhF9rvOoN8xTbcafow3QOThkNnrM33uCFQA==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.57.0':
     resolution: {integrity: sha512-Xws2KA4CLvZmXjy46SQaXSejuKPhwVdaNinldoYfqruZBaJHqVo6hnRa8SDo9z7PBW5x84SH64+izmldCgbezw==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.57.0':
     resolution: {integrity: sha512-hrKXKbX5FdaRJj7lTMusmvKbhMJSGWJ+w++4KmjiDhpTgNlhYobMvKfDoIWecy4O60K6yA4SnztGuNTQF+Lplw==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.57.0':
     resolution: {integrity: sha512-6A+nccfSDGKsPm00d3xKcrsBcbqzCTAukjwWK6rbuAnB2bHaL3r9720HBVZ/no7+FhZLz/U3GwwZZEh6tOSI8Q==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.57.0':
     resolution: {integrity: sha512-4P1VyYUe6XAJtQH1Hh99THxr0GKMMwIXsRNOceLrJnaHTDgk1FTcTimDgneRJPvB3LqDQxUmroBclQ1S0cIJwQ==}
     cpu: [loong64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.57.0':
     resolution: {integrity: sha512-8Vv6pLuIZCMcgXre6c3nOPhE0gjz1+nZP6T+hwWjr7sVH8k0jRkH+XnfjjOTglyMBdSKBPPz54/y1gToSKwrSQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.57.0':
     resolution: {integrity: sha512-r1te1M0Sm2TBVD/RxBPC6RZVwNqUTwJTA7w+C/IW5v9Ssu6xmxWEi+iJQlpBhtUiT1raJ5b48pI8tBvEjEFnFA==}
     cpu: [ppc64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.57.0':
     resolution: {integrity: sha512-say0uMU/RaPm3CDQLxUUTF2oNWL8ysvHkAjcCzV2znxBr23kFfaxocS9qJm+NdkRhF8wtdEEAJuYcLPhSPbjuQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.57.0':
     resolution: {integrity: sha512-/MU7/HizQGsnBREtRpcSbSV1zfkoxSTR7wLsRmBPQ8FwUj5sykrP1MyJTvsxP5KBq9SyE6kH8UQQQwa0ASeoQQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.57.0':
     resolution: {integrity: sha512-Q9eh+gUGILIHEaJf66aF6a414jQbDnn29zeu0eX3dHMuysnhTvsUvZTCAyZ6tJhUjnvzBKE4FtuaYxutxRZpOg==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.57.0':
     resolution: {integrity: sha512-OR5p5yG5OKSxHReWmwvM0P+VTPMwoBS45PXTMYaskKQqybkS3Kmugq1W+YbNWArF8/s7jQScgzXUhArzEQ7x0A==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.57.0':
     resolution: {integrity: sha512-XeatKzo4lHDsVEbm1XDHZlhYZZSQYym6dg2X/Ko0kSFgio+KXLsxwJQprnR48GvdIKDOpqWqssC3iBCjoMcMpw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.57.0':
     resolution: {integrity: sha512-Lu71y78F5qOfYmubYLHPcJm74GZLU6UJ4THkf/a1K7Tz2ycwC2VUbsqbJAXaR6Bx70SRdlVrt2+n5l7F0agTUw==}
@@ -2298,10 +2305,6 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici@5.29.0:
-    resolution: {integrity: sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==}
-    engines: {node: '>=14.0'}
-
   undici@6.23.0:
     resolution: {integrity: sha512-VfQPToRA5FZs/qJxLIinmU59u0r7LXqoJkCzinq3ckNJp3vKEh7jTWN589YQ5+aoAC/TGRLyJLCPKcLQbM8r9g==}
     engines: {node: '>=18.17'}
@@ -2638,8 +2641,6 @@ snapshots:
       '@bufbuild/buf-win32-arm64': 1.64.0
       '@bufbuild/buf-win32-x64': 1.64.0
 
-  '@bufbuild/protobuf@1.10.1': {}
-
   '@bufbuild/protobuf@2.11.0': {}
 
   '@changesets/apply-release-plan@7.0.14':
@@ -2801,35 +2802,15 @@ snapshots:
       human-id: 4.1.3
       prettier: 2.8.8
 
-  '@connectrpc/connect-node@1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))':
-    dependencies:
-      '@bufbuild/protobuf': 1.10.1
-      '@connectrpc/connect': 1.7.0(@bufbuild/protobuf@1.10.1)
-      undici: 5.29.0
-
-  '@connectrpc/connect-node@1.7.0(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@2.11.0))':
-    dependencies:
-      '@bufbuild/protobuf': 2.11.0
-      '@connectrpc/connect': 1.7.0(@bufbuild/protobuf@2.11.0)
-      undici: 5.29.0
-
   '@connectrpc/connect-node@2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))':
     dependencies:
       '@bufbuild/protobuf': 2.11.0
       '@connectrpc/connect': 2.1.1(@bufbuild/protobuf@2.11.0)
 
-  '@connectrpc/connect-web@1.7.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1))':
-    dependencies:
-      '@bufbuild/protobuf': 1.10.1
-      '@connectrpc/connect': 1.7.0(@bufbuild/protobuf@1.10.1)
-
-  '@connectrpc/connect@1.7.0(@bufbuild/protobuf@1.10.1)':
-    dependencies:
-      '@bufbuild/protobuf': 1.10.1
-
-  '@connectrpc/connect@1.7.0(@bufbuild/protobuf@2.11.0)':
+  '@connectrpc/connect-web@2.1.1(@bufbuild/protobuf@2.11.0)(@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0))':
     dependencies:
       '@bufbuild/protobuf': 2.11.0
+      '@connectrpc/connect': 2.1.1(@bufbuild/protobuf@2.11.0)
 
   '@connectrpc/connect@2.1.1(@bufbuild/protobuf@2.11.0)':
     dependencies:
@@ -3042,8 +3023,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.2':
     optional: true
-
-  '@fastify/busboy@2.1.1': {}
 
   '@inquirer/external-editor@1.0.3(@types/node@20.19.30)':
     dependencies:
@@ -4252,10 +4231,6 @@ snapshots:
   ufo@1.6.3: {}
 
   undici-types@6.21.0: {}
-
-  undici@5.29.0:
-    dependencies:
-      '@fastify/busboy': 2.1.1
 
   undici@6.23.0: {}
 

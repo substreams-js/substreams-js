@@ -1,4 +1,4 @@
-import { create, createFileRegistry, type FileRegistry } from "@bufbuild/protobuf";
+import { type FileRegistry, create, createFileRegistry } from "@bufbuild/protobuf";
 import { type FileDescriptorProto, FileDescriptorSetSchema } from "@bufbuild/protobuf/wkt";
 import type { Package } from "../proto.js";
 

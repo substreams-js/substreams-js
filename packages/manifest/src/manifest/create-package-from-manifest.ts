@@ -1,6 +1,14 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { Binary, ModuleMetadata, Modules, Package, PackageMetadata } from "@substreams/core/proto";
+import { create } from "@bufbuild/protobuf";
+import {
+  BinarySchema,
+  ModuleMetadataSchema,
+  ModulesSchema,
+  type Package,
+  PackageMetadataSchema,
+  PackageSchema,
+} from "@substreams/core/proto";
 import { createModuleFromManifest } from "./create-module-from-manifest.js";
 import type { Manifest } from "./manifest-schema.js";
 
@@ -12,18 +20,18 @@ export function createPackageFromManifest(
   manifest: Manifest,
   cwd: string,
   { skipSourceCodeImportValidation = false }: ConvertToPackageOptions = {},
-) {
-  const meta = new PackageMetadata({
+): Package {
+  const meta = create(PackageMetadataSchema, {
     name: manifest.package.name,
     version: manifest.package.version,
     ...(manifest.package.url !== undefined ? { url: manifest.package.url } : undefined),
     ...(manifest.package.doc !== undefined ? { doc: manifest.package.doc } : undefined),
   });
 
-  const pkg = new Package({
+  const pkg = create(PackageSchema, {
     version: BigInt(1),
     packageMeta: [meta],
-    modules: new Modules(),
+    modules: create(ModulesSchema, { modules: [], binaries: [] }),
     ...(manifest.network !== undefined ? { network: manifest.network } : undefined),
   });
 
@@ -33,7 +41,7 @@ export function createPackageFromManifest(
   const code = new Map<string, number>();
   for (const module of manifest.modules) {
     pkg.moduleMeta.push(
-      new ModuleMetadata({
+      create(ModuleMetadataSchema, {
         packageIndex: BigInt(0), // Re-indexing happens later.
         ...(module.doc !== undefined ? { doc: module.doc } : undefined),
       }),
@@ -52,11 +60,11 @@ export function createPackageFromManifest(
       index = modules.binaries.length;
 
       if (skipSourceCodeImportValidation) {
-        modules.binaries.push(new Binary({ type: binaryDefinition.type }));
+        modules.binaries.push(create(BinarySchema, { type: binaryDefinition.type }));
       } else {
         const data = fs.readFileSync(path.join(cwd, binaryDefinition.file));
         modules.binaries.push(
-          new Binary({
+          create(BinarySchema, {
             type: binaryDefinition.type,
             content: new Uint8Array(data),
           }),

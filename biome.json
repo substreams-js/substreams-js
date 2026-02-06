@@ -2,6 +2,9 @@
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "files": {
     "ignore": [
+      ".pnpm-store",
+      ".sbox",
+      "node_modules",
       ".direnv",
       "dist",
       "build",
@@ -23,17 +26,21 @@
     "rules": {
       "all": true,
       "suspicious": {
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "noConsole": "off",
+        "noConsoleLog": "off"
       },
       "nursery": {
         "useImportRestrictions": "off"
       },
       "style": {
         "useNamingConvention": "off",
-        "noNamespaceImport": "off"
+        "noNamespaceImport": "off",
+        "useDefaultSwitchClause": "off"
       },
       "correctness": {
-        "noNodejsModules": "off"
+        "noNodejsModules": "off",
+        "noUndeclaredDependencies": "off"
       },
       "complexity": {
         "noExcessiveCognitiveComplexity": "off",
@@ -41,7 +48,8 @@
       },
       "performance": {
         "noReExportAll": "off",
-        "noBarrelFile": "off"
+        "noBarrelFile": "off",
+        "useTopLevelRegex": "off"
       }
     }
   },

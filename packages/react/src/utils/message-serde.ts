@@ -1,18 +1,20 @@
-import { type Message, type MessageType, protoBase64 } from "@bufbuild/protobuf";
+import { type DescMessage, type Message, fromBinary, toBinary } from "@bufbuild/protobuf";
 
-export type SerializedMessage<TMessage extends Message<TMessage>> = string & {
-  __type: TMessage;
+export type SerializedMessage<TName extends string = string> = string & {
+  __type: TName;
 };
 
-export type MaybeSerializedMessage<TMessage extends Message<TMessage>> = TMessage | SerializedMessage<TMessage>;
+export type MaybeSerializedMessage<TName extends string = string> = Message<TName> | SerializedMessage<TName>;
 
-export function serializeMessage<TMessage extends Message<TMessage>>(message: TMessage) {
-  return protoBase64.enc(message.toBinary()) as SerializedMessage<TMessage>;
+export function serializeMessage<TName extends string>(
+  schema: DescMessage,
+  message: Message<TName>,
+): SerializedMessage<TName> {
+  const binary = toBinary(schema, message);
+  return btoa(String.fromCharCode(...binary)) as SerializedMessage<TName>;
 }
 
-export function deserializeMessage<TMessage extends Message<TMessage>>(
-  type: MessageType<TMessage>,
-  value: SerializedMessage<TMessage>,
-) {
-  return type.fromBinary(protoBase64.dec(value));
+export function deserializeMessage<T extends DescMessage>(schema: T, value: SerializedMessage): Message<T["typeName"]> {
+  const binary = Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
+  return fromBinary(schema, binary);
 }

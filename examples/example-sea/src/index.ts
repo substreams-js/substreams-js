@@ -1,3 +1,4 @@
+import { toJson } from "@bufbuild/protobuf";
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import {
   createAuthInterceptor,
@@ -24,7 +25,7 @@ import {
     baseUrl: "https://mainnet.eth.streamingfast.io",
     interceptors: [createAuthInterceptor(token)],
     jsonOptions: {
-      typeRegistry: registry,
+      registry: registry,
     },
   });
 
@@ -38,7 +39,10 @@ import {
   for await (const response of streamBlocks(transport, request)) {
     const output = unpackMapOutput(response, registry);
     if (output !== undefined && !isEmptyMessage(output)) {
-      console.dir(output.toJson({ typeRegistry: registry }));
+      const schema = registry.getMessage(output.$typeName);
+      if (schema) {
+        console.dir(toJson(schema, output));
+      }
     }
   }
 })();

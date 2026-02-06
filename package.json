@@ -1,10 +1,7 @@
 {
   "private": true,
   "packageManager": "pnpm@10.28.2",
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
+  "workspaces": ["packages/*", "examples/*"],
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "start:node": "pnpm run --recursive --filter example-node start",
@@ -16,7 +13,8 @@
     "clean": "node ./scripts/clean.mjs",
     "typecheck": "tsc --build tsconfig.json",
     "format": "biome format --write . && biome check --write .",
-    "lint": "biome check ."
+    "lint": "biome check .",
+    "precommit": "pnpm run lint && pnpm run typecheck && pnpm vitest run"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",

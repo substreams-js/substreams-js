@@ -1,6 +1,6 @@
 import { create } from "@bufbuild/protobuf";
 import { applyParams } from "@substreams/core";
-import { type Module_Input, Module_InputSchema, type Module_Input_Params, ModuleSchema } from "@substreams/core/proto";
+import { ModuleSchema, type Module_Input, Module_InputSchema, type Module_Input_Params } from "@substreams/core/proto";
 import { assert, test } from "vitest";
 
 test("correctly injects parameters into a module", () => {

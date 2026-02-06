@@ -1,7 +1,13 @@
 import { toBinary } from "@bufbuild/protobuf";
-import { Code, ConnectError, type Transport, createPromiseClient } from "@connectrpc/connect";
+import { Code, ConnectError, type Transport, createClient } from "@connectrpc/connect";
 import { createRequestV2 } from "@substreams/core";
-import { type Module, type Package, type Response, ResponseSchema, Stream as StreamService } from "@substreams/core/proto";
+import {
+  type Module,
+  type Package,
+  type Response,
+  ResponseSchema,
+  Stream as StreamService,
+} from "@substreams/core/proto";
 import { Data, Duration, Effect, Metric, Option, Predicate, Ref, Schedule, Sink, Stream } from "effect";
 
 import * as Metrics from "./metrics.js";
@@ -122,9 +128,9 @@ export function createStream({
             const jobsPerStage = new Map<number, bigint>();
 
             for (const job of message.runningJobs) {
-              totalProcessedBlocks += job.processedBlocks;
+              totalProcessedBlocks += job.progressBlocks;
 
-              const jobEndBlock = job.startBlock + job.processedBlocks;
+              const jobEndBlock = job.startBlock + job.progressBlocks;
               const prevEndBlock = latestEndBlockPerStage.get(job.stage) ?? BigInt(0);
               if (jobEndBlock > prevEndBlock) {
                 latestEndBlockPerStage.set(job.stage, jobEndBlock);
@@ -215,7 +221,7 @@ export function createStream({
     const aquire = Ref.get(currentCursor).pipe(
       Effect.map((startCursor) => Option.getOrUndefined(startCursor)),
       Effect.map((startCursor) => {
-        const client = createPromiseClient(StreamService, connectTransport);
+        const client = createClient(StreamService, connectTransport);
         const request = createRequestV2({
           substreamPackage,
           productionMode,

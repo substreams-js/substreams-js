@@ -1,18 +1,19 @@
-import type { Message, MessageType } from "@bufbuild/protobuf";
+import type { DescMessage, Message } from "@bufbuild/protobuf";
 import { useMemo } from "react";
 import { type MaybeSerializedMessage, type SerializedMessage, deserializeMessage } from "../utils/message-serde.js";
 
-export function useRehydrateMessage<TMessage extends Message<TMessage>>(
-  type: MessageType<TMessage>,
-  message: MaybeSerializedMessage<TMessage>,
-) {
+export function useRehydrateMessage<T extends DescMessage>(
+  schema: T,
+  message: MaybeSerializedMessage<T["typeName"]>,
+): Message<T["typeName"]> {
   const rehydrated = useMemo(() => {
-    if (message instanceof type) {
-      return message;
+    // Check if it's already a message (has $typeName property)
+    if (typeof message === "object" && message !== null && "$typeName" in message) {
+      return message as Message<T["typeName"]>;
     }
 
-    return deserializeMessage(type, message as SerializedMessage<TMessage>);
-  }, [message, type]);
+    return deserializeMessage(schema, message as SerializedMessage);
+  }, [message, schema]);
 
   return rehydrated;
 }

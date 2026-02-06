@@ -1,4 +1,3 @@
-import { type PlainMessage, toPlainMessage } from "@bufbuild/protobuf";
 import type { BlockScopedData, BlockUndoSignal, Response } from "@substreams/core/proto";
 import { Data, Effect, Sink } from "effect";
 
@@ -8,12 +7,12 @@ export class SinkError extends Data.TaggedClass("SinkError")<{
 
 export class BlockScopedDataSinkError extends Data.TaggedClass("SinkError")<{
   readonly cause: unknown;
-  readonly message: PlainMessage<BlockScopedData>;
+  readonly message: BlockScopedData;
 }> {}
 
 export class BlockUndoSignalSinkError extends Data.TaggedClass("SinkError")<{
   readonly cause: unknown;
-  readonly message: PlainMessage<BlockUndoSignal>;
+  readonly message: BlockUndoSignal;
 }> {}
 
 export type CreateSinkOptions<R1, R2> = {
@@ -33,7 +32,7 @@ export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSigna
               new SinkError({
                 cause: new BlockScopedDataSinkError({
                   cause,
-                  message: toPlainMessage(message),
+                  message,
                 }),
               }),
             ),
@@ -48,7 +47,7 @@ export function createSink<R1, R2>({ handleBlockScopedData, handleBlockUndoSigna
               new SinkError({
                 cause: new BlockUndoSignalSinkError({
                   cause,
-                  message: toPlainMessage(message),
+                  message,
                 }),
               }),
             ),

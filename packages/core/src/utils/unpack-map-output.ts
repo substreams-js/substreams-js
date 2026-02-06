@@ -1,4 +1,4 @@
-import { type Registry } from "@bufbuild/protobuf";
+import type { Registry } from "@bufbuild/protobuf";
 import { anyUnpack } from "@bufbuild/protobuf/wkt";
 import type { Response } from "../proto.js";
 

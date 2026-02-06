@@ -1,5 +1,5 @@
 import { type CallOptions, type Transport, createClient } from "@connectrpc/connect";
-import { type Response, StreamV3, v3 } from "../proto.js";
+import { type Response, StreamV3, type v3 } from "../proto.js";
 
 /**
  * Stream blocks using the Substreams RPC V3 protocol.

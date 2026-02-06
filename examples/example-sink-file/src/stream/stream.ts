@@ -1,5 +1,8 @@
+import { toJsonString } from "@bufbuild/protobuf";
+import { timestampDate } from "@bufbuild/protobuf/wkt";
 import { createGrpcTransport } from "@connectrpc/connect-node";
-import { createAuthInterceptor, createRegistry } from "@substreams/core";
+import { createAuthInterceptor } from "@substreams/core";
+import { BlockScopedDataSchema } from "@substreams/core/proto";
 import { readPackage } from "@substreams/manifest";
 import { createSink, createStream } from "@substreams/sink";
 import { Config, Data, Effect, Layer, Option, Stream } from "effect";
@@ -38,7 +41,6 @@ export function runStream({
       interceptors: [createAuthInterceptor(token)],
     });
 
-    const registry = createRegistry(pkg);
     const stream = createStream({
       connectTransport: transport,
       substreamPackage: pkg,
@@ -50,7 +52,7 @@ export function runStream({
       handleBlockScopedData: (message) =>
         Effect.annotateLogs({
           block: message.clock?.number.toString() ?? "???",
-          time: message.clock?.timestamp?.toDate().toLocaleString() ?? "???",
+          time: message.clock?.timestamp ? timestampDate(message.clock.timestamp).toLocaleString() : "???",
           size: `${message.output?.mapOutput?.value?.byteLength ?? 0} bytes`,
         })(
           Effect.gen(function* (_) {
@@ -60,7 +62,7 @@ export function runStream({
               yield* _(Effect.logDebug("received empty message"));
             } else {
               yield* _(Effect.logInfo(`received message of type ${message.output?.mapOutput?.typeUrl}`));
-              yield* _(db.append(message.toJsonString({ typeRegistry: registry })));
+              yield* _(db.append(toJsonString(BlockScopedDataSchema, message)));
             }
           }),
         ),

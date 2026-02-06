@@ -1,3 +1,4 @@
+import { toJsonString } from "@bufbuild/protobuf";
 import { createConnectTransport } from "@connectrpc/connect-web";
 import {
   createAuthInterceptor,
@@ -33,7 +34,7 @@ import {
     interceptors: [createAuthInterceptor(token)],
     useBinaryFormat: true,
     jsonOptions: {
-      typeRegistry: registry,
+      registry: registry,
     },
   });
 
@@ -53,9 +54,10 @@ import {
   for await (const response of streamBlocks(transport, request)) {
     const output = unpackMapOutput(response, registry);
     if (output !== undefined && !isEmptyMessage(output)) {
-      element.textContent += `${output.toJsonString({
-        typeRegistry: registry,
-      })}\n`;
+      const schema = registry.getMessage(output.$typeName);
+      if (schema) {
+        element.textContent += `${toJsonString(schema, output)}\n`;
+      }
     }
   }
 })();

@@ -1,21 +1,24 @@
+import { create } from "@bufbuild/protobuf";
 import {
-  Module,
-  Module_BlockFilter,
-  Module_Input,
+  type Module,
+  type Module_BlockFilter,
+  Module_BlockFilterSchema,
+  Module_InputSchema,
   Module_Input_Store_Mode,
-  Module_KindBlockIndex,
-  Module_KindMap,
-  Module_KindStore,
+  Module_KindBlockIndexSchema,
+  Module_KindMapSchema,
+  Module_KindStoreSchema,
   Module_KindStore_UpdatePolicy,
-  Module_Output,
-  Module_QueryFromParams,
+  Module_OutputSchema,
+  Module_QueryFromParamsSchema,
+  ModuleSchema as ProtoModuleSchema,
 } from "@substreams/core/proto";
-import type { BlockFilter as BlockFilterSchema, Module as ModuleSchema } from "./manifest-schema.js";
+import type { BlockFilter as BlockFilterSchema, Module as ManifestModule } from "./manifest-schema.js";
 
 const MAX_UINT_64 = BigInt("18446744073709551615");
 
 function createBlockFilterFromManifest(filter: BlockFilterSchema): Module_BlockFilter {
-  const bf = new Module_BlockFilter({
+  const bf = create(Module_BlockFilterSchema, {
     module: filter.module,
   });
 
@@ -27,15 +30,15 @@ function createBlockFilterFromManifest(filter: BlockFilterSchema): Module_BlockF
   } else if (filter.query.params) {
     bf.query = {
       case: "queryFromParams",
-      value: new Module_QueryFromParams(),
+      value: create(Module_QueryFromParamsSchema, {}),
     };
   }
 
   return bf;
 }
 
-export function createModuleFromManifest(module: ModuleSchema, index: number): Module {
-  const out = new Module({
+export function createModuleFromManifest(module: ManifestModule, index: number): Module {
+  const out = create(ProtoModuleSchema, {
     name: module.name,
     binaryIndex: index,
     binaryEntrypoint: module.name,
@@ -46,10 +49,10 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
     case "map": {
       out.kind = {
         case: "kindMap",
-        value: new Module_KindMap(module.output?.type ? { outputType: module.output.type } : {}),
+        value: create(Module_KindMapSchema, module.output?.type ? { outputType: module.output.type } : {}),
       };
 
-      out.output = new Module_Output({
+      out.output = create(Module_OutputSchema, {
         type: module.output.type,
       });
 
@@ -100,7 +103,7 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
 
       out.kind = {
         case: "kindStore",
-        value: new Module_KindStore({
+        value: create(Module_KindStoreSchema, {
           updatePolicy: updatePolicy,
           ...(module.valueType ? { valueType: module.valueType } : {}),
         }),
@@ -116,10 +119,10 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
     case "blockIndex": {
       out.kind = {
         case: "kindBlockIndex",
-        value: new Module_KindBlockIndex({ outputType: module.output.type }),
+        value: create(Module_KindBlockIndexSchema, { outputType: module.output.type }),
       };
 
-      out.output = new Module_Output({
+      out.output = create(Module_OutputSchema, {
         type: module.output.type,
       });
 
@@ -130,7 +133,7 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
   for (const [index, input] of module.inputs.entries()) {
     if ("source" in input) {
       out.inputs.push(
-        new Module_Input({
+        create(Module_InputSchema, {
           input: {
             case: "source",
             value: {
@@ -145,7 +148,7 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
 
     if ("map" in input) {
       out.inputs.push(
-        new Module_Input({
+        create(Module_InputSchema, {
           input: {
             case: "map",
             value: {
@@ -178,7 +181,7 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
       }
 
       out.inputs.push(
-        new Module_Input({
+        create(Module_InputSchema, {
           input: {
             case: "store",
             value: {
@@ -198,7 +201,7 @@ export function createModuleFromManifest(module: ModuleSchema, index: number): M
       }
 
       out.inputs.push(
-        new Module_Input({
+        create(Module_InputSchema, {
           input: {
             case: "params",
             value: {
